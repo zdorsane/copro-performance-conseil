@@ -877,6 +877,45 @@ b {
   margin-bottom: var(--sp-6);
 }
 
+/* Mention de gratuité, juste au-dessus des boutons.
+   C'est l'objection n°1 qu'elle lève : « combien ça va me coûter de
+   simplement vous parler ». Elle doit donc se voir avant le bouton. */
+.hero__free {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: var(--sp-5);
+  padding: 0.5rem 0.9rem 0.5rem 0.5rem;
+  border: 1px solid var(--accent-border);
+  border-radius: var(--r-pill);
+  background: var(--accent-soft);
+  font-size: var(--fs-sm);
+  font-weight: 520;
+  line-height: 1.35;
+  color: var(--ink-700);
+}
+
+.hero__free__tag {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--r-pill);
+  background: var(--accent);
+  color: #fff;
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 520px) {
+  .hero__free {
+    display: flex;
+    align-items: flex-start;
+    border-radius: var(--r-md);
+  }
+}
+
 /* Bandeau de réassurance sous le hero */
 .hero__trust {
   display: flex;
@@ -1380,6 +1419,17 @@ body.hide-flags .flag {
 
 .step:last-child {
   border-bottom: 1px solid var(--border);
+}
+
+/* Variante compacte, employee sur l'accueil : les cinq etapes y servent
+   de repere, le detail vit sur approche.html. Un tiers de hauteur en
+   moins sans toucher a la lisibilite. */
+.steps--compact .step {
+  padding-block: clamp(1.25rem, 1rem + 1.1vw, 1.9rem);
+}
+
+.steps--compact .step__body p {
+  font-size: var(--fs-sm);
 }
 
 .step__num {
@@ -2528,6 +2578,299 @@ select.field__control {
   .logo__tag {
     display: none;
   }
+}
+
+/* ==========================================================================
+   15 bis. PAGE RESSOURCES
+   --------------------------------------------------------------------------
+   Repères documentaires et liens vers les sources officielles.
+   ========================================================================== */
+
+.avertissement {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+  max-width: 78ch;
+  padding: 1rem 1.2rem;
+  border-left: 3px solid var(--brass);
+  border-radius: 0 var(--r-md) var(--r-md) 0;
+  background: var(--brass-soft);
+  font-size: var(--fs-sm);
+  line-height: 1.6;
+  color: var(--ink-700);
+}
+
+.avertissement svg {
+  flex: none;
+  margin-top: 0.15em;
+  color: var(--brass);
+}
+
+/* --- Liste des repères --- */
+.reperes {
+  display: grid;
+  gap: 0;
+  border-top: 1px solid var(--border);
+}
+
+.repere {
+  display: grid;
+  grid-template-columns: minmax(60px, 90px) 1fr;
+  gap: clamp(1.25rem, 0.8rem + 2vw, 3rem);
+  padding-block: clamp(2rem, 1.4rem + 2vw, 3.25rem);
+  border-bottom: 1px solid var(--border);
+  scroll-margin-top: calc(var(--header-h) + 2rem);
+}
+
+.repere__num {
+  font-family: var(--font-mono);
+  font-size: clamp(1.4rem, 1.1rem + 1.2vw, 2rem);
+  line-height: 1;
+  color: var(--ink-200);
+  transition: color var(--t-base);
+}
+
+.repere:hover .repere__num,
+.repere:target .repere__num {
+  color: var(--accent);
+}
+
+.repere__corps h2 {
+  font-size: var(--fs-h3);
+  margin-bottom: var(--sp-3);
+}
+
+.repere__corps .lead {
+  font-size: var(--fs-base);
+  color: var(--ink-600);
+  margin-bottom: var(--sp-4);
+}
+
+.repere__corps p {
+  color: var(--text-muted);
+  line-height: 1.68;
+  margin-bottom: var(--sp-4);
+  max-width: 68ch;
+}
+
+.repere__sources-label {
+  font-size: var(--fs-xs);
+  font-weight: 620;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-300);
+  margin-bottom: var(--sp-3);
+}
+
+/* --- Liens vers les sources officielles --- */
+.sources {
+  display: grid;
+  gap: var(--sp-3);
+  max-width: 68ch;          /* même largeur de lecture que le corps du repère */
+}
+
+.sources--large {
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--sp-4);
+  max-width: none;
+}
+
+.source {
+  /* Trois enfants — éditeur, titre, icône — mais deux colonnes : sans zones
+     nommées, l'icône retombe à la ligne suivante. Les zones la font tenir
+     sur les deux rangées, à droite. */
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-areas:
+    "editeur icone"
+    "titre   icone";
+  align-items: center;
+  column-gap: var(--sp-4);
+  padding: 0.85rem 1.1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  background: var(--surface);
+  text-decoration: none;
+  transition: border-color var(--t-base), background var(--t-base),
+    transform var(--t-base);
+}
+
+.source:hover,
+.source:focus-visible {
+  border-color: var(--accent-border);
+  background: var(--accent-soft);
+  transform: translateY(-2px);
+}
+
+.source__editeur {
+  grid-area: editeur;
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+  margin-bottom: 0.2rem;
+}
+
+.source__titre {
+  grid-area: titre;
+  display: block;
+  font-size: var(--fs-sm);
+  font-weight: 560;
+  line-height: 1.4;
+  color: var(--ink-800);
+}
+
+.source svg {
+  grid-area: icone;
+  align-self: center;
+  flex: none;
+  color: var(--ink-300);
+  transition: transform var(--t-base), color var(--t-base);
+}
+
+.source:hover svg {
+  color: var(--accent);
+  transform: translate(2px, -2px);
+}
+
+@media (max-width: 620px) {
+  .repere {
+    grid-template-columns: 1fr;
+    gap: var(--sp-3);
+  }
+
+  .repere__num {
+    font-size: var(--fs-sm);
+    letter-spacing: 0.1em;
+  }
+}
+
+/* ==========================================================================
+   16 bis. ROBUSTESSE RESPONSIVE
+   --------------------------------------------------------------------------
+   Corrections d'un débordement horizontal constaté en dessous de 420 px
+   (iPhone SE, Android compacts) : la page se décalait latéralement et le
+   formulaire sortait de l'écran.
+
+   Trois causes, aucune n'était visible au-dessus de 768 px.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Les éléments de grille et de flex ne descendent pas sous la largeur de
+      leur contenu : leur `min-width` vaut `auto` par défaut. Il suffit alors
+      d'un seul enfant large — un <select>, une adresse e-mail — pour élargir
+      la grille, puis le conteneur, puis la page entière.
+
+      `min-width: 0` les autorise à se comprimer. C'est le correctif de fond :
+      sans lui, tout le reste ne serait qu'un pansement.
+   -------------------------------------------------------------------------- */
+.split > *,
+.grid > *,
+.steps > *,
+.step > *,
+.form__row > *,
+.form > *,
+.field,
+.field > *,
+.tally > *,
+.price-row > *,
+.check-list > *,
+.contact-item > * {
+  min-width: 0;
+}
+
+/* --------------------------------------------------------------------------
+   2. Chaînes insécables. Une adresse e-mail ou une URL ne comporte aucun
+      point de césure : le navigateur préfère déborder plutôt que couper.
+      `overflow-wrap: anywhere` l'autorise à couper là où il faut.
+   -------------------------------------------------------------------------- */
+.contact-item dd,
+.contact-item dd a,
+.contact-panel a,
+.footer a,
+.legal a,
+.link-underline {
+  overflow-wrap: anywhere;
+}
+
+/* --------------------------------------------------------------------------
+   3. Contrôles de formulaire. Un <select> adopte spontanément la largeur de
+      sa plus longue option — ici « Un accompagnement du conseil syndical ».
+      On le ramène à la largeur de son champ.
+   -------------------------------------------------------------------------- */
+.field__control,
+select.field__control,
+textarea.field__control {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+/* Le texte saisi ne doit pas non plus élargir le champ. */
+textarea.field__control {
+  resize: vertical;
+}
+
+/* --------------------------------------------------------------------------
+   4. Confort de saisie sur mobile. En dessous de 640 px, les champs passent
+      à 16 px : en deçà, iOS zoome automatiquement au focus et l'utilisateur
+      se retrouve avec une page décalée qu'il doit repincer.
+   -------------------------------------------------------------------------- */
+@media (max-width: 640px) {
+  .field__control {
+    font-size: 16px;
+  }
+
+  /* Cibles tactiles : 44 px de haut, recommandation WCAG 2.5.5. */
+  .btn,
+  .field__control {
+    min-height: 44px;
+  }
+
+  .btn-group {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .btn-group .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   6. Révélations latérales. `[data-reveal="left"]` et `="right"` décalent
+      l'élément de 26 px horizontalement EN ATTENDANT d'être déclenchés. Sur
+      un écran étroit, un bloc encore non révélé — donc situé sous la ligne
+      de flottaison — pousse la page de 26 px vers la droite. L'utilisateur
+      voit un décalage latéral sans comprendre d'où il vient.
+
+      En dessous de 720 px les mises en page sont de toute façon sur une
+      seule colonne : un décalage horizontal n'y raconte plus rien. On le
+      remplace par le décalage vertical, qui ne peut pas déborder.
+   -------------------------------------------------------------------------- */
+@media (max-width: 720px) {
+  [data-reveal="left"],
+  [data-reveal="right"] {
+    transform: translateY(22px);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   5. Médias. Aucune image, aucun tableau ne doit pouvoir dépasser.
+   -------------------------------------------------------------------------- */
+img,
+svg,
+video,
+picture {
+  max-width: 100%;
+}
+
+/* Un tableau large défile dans son propre cadre, jamais la page. */
+.table-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 /* ==========================================================================

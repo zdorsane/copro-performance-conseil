@@ -213,6 +213,7 @@
       <a class="nav__link" href="services.html">Services</a>
       <a class="nav__link" href="approche.html">Notre approche</a>
       <a class="nav__link" href="a-propos.html">À propos</a>
+      <a class="nav__link" href="ressources.html">Ressources</a>
       <a class="nav__link" href="faq.html">FAQ</a>
     </nav>
 
@@ -243,8 +244,9 @@
       <li><a class="mobile-nav__link" href="services.html">Services <span>02</span></a></li>
       <li><a class="mobile-nav__link" href="approche.html">Notre approche <span>03</span></a></li>
       <li><a class="mobile-nav__link" href="a-propos.html">À propos <span>04</span></a></li>
-      <li><a class="mobile-nav__link" href="faq.html">FAQ <span>05</span></a></li>
-      <li><a class="mobile-nav__link" href="contact.html">Contact <span>06</span></a></li>
+      <li><a class="mobile-nav__link" href="ressources.html">Ressources <span>05</span></a></li>
+      <li><a class="mobile-nav__link" href="faq.html">FAQ <span>06</span></a></li>
+      <li><a class="mobile-nav__link" href="contact.html">Contact <span>07</span></a></li>
     </ul>
   </nav>
   <div class="mobile-nav__footer">
@@ -261,27 +263,34 @@
     <div class="container hero__inner">
 
       <div class="hero__content">
-        <p class="eyebrow" data-reveal="fade">Conseil indépendant en copropriété</p>
+        <p class="eyebrow" data-reveal="fade">Pour les conseils syndicaux</p>
 
         <h1 data-split style="--d:1">
           Comprendre votre copropriété <span class="serif-em">avant</span> de décider.
         </h1>
 
         <p class="hero__sub" data-reveal style="--d:2">
-          Charges, contrats, fonctionnement : nous analysons les documents de votre
-          copropriété et les traduisons en éléments clairs, pour que le conseil
-          syndical décide sur la base de faits plutôt que d’impressions.
+          Nous lisons vos charges, vos contrats et vos procès-verbaux à votre place,
+          et nous vous rendons un rapport que tout le conseil syndical comprend.
+          Vous arrivez en assemblée générale avec des éléments, pas des impressions.
         </p>
 
-        <div class="btn-group hero__cta" data-reveal style="--d:3">
+        <!-- La gratuité du premier temps, annoncée avant même le bouton :
+             c'est ce qui lève l'hésitation à prendre contact. -->
+        <p class="hero__free" data-reveal style="--d:3">
+          <span class="hero__free__tag">Gratuit</span>
+          Premier échange et pré-diagnostic écrit — sans engagement, sans relance.
+        </p>
+
+        <div class="btn-group hero__cta" data-reveal style="--d:4">
           <a class="btn btn--lg magnet" href="contact.html">
-            Demander un premier échange
+            Demander mon pré-diagnostic gratuit
             <svg class="btn__arrow" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </a>
-          <a class="btn btn--ghost btn--lg" href="approche.html">Découvrir notre approche</a>
+          <a class="btn btn--ghost btn--lg" href="#methode">Notre méthode</a>
         </div>
 
-        <ul class="hero__trust" data-reveal style="--d:4">
+        <ul class="hero__trust" data-reveal style="--d:5">
           <li>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
             Aucun lien avec un syndic
@@ -391,121 +400,68 @@
   </section>
 
   <!-- ==================================================================
-       2. PROBLÉMATIQUE
+       2. CE QUE LE CONSEIL SYNDICAL Y GAGNE
+       Remplace les anciennes sections « Problématique » et « Proposition
+       de valeur » : même propos, trois points au lieu de deux écrans.
        ================================================================== -->
-  <section class="section section--alt blueprint" aria-labelledby="t-probleme"
-           data-count-label="Le point de départ">
+  <section class="section section--alt blueprint" aria-labelledby="t-gain"
+           data-count-label="Votre intérêt">
     <div class="container">
 
-      <div class="section-head">
-        <p class="eyebrow" data-reveal="fade">Le point de départ</p>
-        <h2 id="t-probleme" data-split>
+      <div class="section-head section-head--center">
+        <p class="eyebrow" data-reveal="fade">Votre intérêt</p>
+        <h2 id="t-gain" data-split>
           Siéger au conseil syndical ne devrait pas exiger d’être comptable.
         </h2>
         <p class="lead" data-reveal style="--d:1">
-          Les membres du conseil syndical sont des bénévoles à qui l’on demande de
-          contrôler des budgets à cinq ou six chiffres, de relire des contrats
-          techniques et de trancher des sujets qui engagent l’immeuble pour des années.
-          Le plus souvent, sans formation dédiée et sur leur temps libre.
+          Vous êtes bénévole, et l’on vous demande de contrôler un budget à cinq
+          chiffres. Voici ce que nous prenons en charge.
         </p>
       </div>
 
-      <div class="grid grid--4 grid--gap-lg" data-stagger>
+      <div class="grid grid--3 grid--gap-lg" data-stagger>
 
-        <article class="card card--problem" data-reveal>
-          <h3 class="card__title">Des charges qui montent sans explication lisible</h3>
+        <article class="card tilt" data-reveal>
+          <div class="card__icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"/><path d="M7 15l4-5 3 3 5-7"/></svg>
+          </div>
+          <h3 class="card__title">Vous comprenez enfin vos charges</h3>
           <p class="card__text">
-            L’appel de fonds augmente, mais le lien entre cette hausse et une décision
-            précise reste difficile à établir à la seule lecture des annexes comptables.
+            Poste par poste, exercice par exercice, en français. Vous savez à quoi
+            correspond chaque ligne de l’appel de fonds et laquelle mérite une
+            vérification.
           </p>
         </article>
 
-        <article class="card card--problem" data-reveal>
-          <h3 class="card__title">Des contrats reconduits sans être relus</h3>
+        <article class="card tilt" data-reveal>
+          <div class="card__icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 12h6M9 16h4"/><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+          </div>
+          <h3 class="card__title">Vous arrivez préparé en assemblée</h3>
           <p class="card__text">
-            Entretien, ascenseur, chauffage, assurance : beaucoup de contrats se
-            renouvellent par tacite reconduction, parfois depuis plusieurs années,
-            sans que leur périmètre réel soit réexaminé.
+            Un rapport écrit, hiérarchisé du plus au moins significatif, et commenté
+            à l’oral. De quoi poser les bonnes questions au syndic et voter en
+            connaissance de cause.
           </p>
         </article>
 
-        <article class="card card--problem" data-reveal>
-          <h3 class="card__title">Beaucoup de documents, peu de temps</h3>
+        <article class="card tilt" data-reveal>
+          <div class="card__icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+          </div>
+          <h3 class="card__title">Vous gardez la main</h3>
           <p class="card__text">
-            Annexes, procès-verbaux, devis, contrats, factures : la matière existe.
-            C’est le temps de la trier, de la recouper et de l’interpréter qui manque.
-          </p>
-        </article>
-
-        <article class="card card--problem" data-reveal>
-          <h3 class="card__title">Des votes sans éléments de comparaison</h3>
-          <p class="card__text">
-            En assemblée générale, il faut se prononcer sur des budgets et des travaux
-            sans toujours disposer de repères permettant de situer les montants proposés.
+            Nous n’appartenons à aucun groupe de gestion et ne percevons aucune
+            commission de prestataire. La copropriété nous mandate et nous rémunère,
+            personne d’autre. Nous ne décidons rien à votre place.
           </p>
         </article>
 
       </div>
 
-      <div class="mt-7" data-reveal>
-        <blockquote class="pull-quote">
-          Le problème n’est presque jamais le manque de documents.
-          C’est le manque de temps et de méthode pour les faire parler.
-        </blockquote>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ==================================================================
-       3. PROPOSITION DE VALEUR
-       ================================================================== -->
-  <section class="section" aria-labelledby="t-valeur" data-count-label="Notre rôle">
-    <div class="container split split--wide-right">
-
-      <div data-reveal="left">
-        <!-- IMAGE BRIEF · voir IMAGE-BRIEFS.md #02 -->
-        <img src="assets/img/analyse-documents.svg"
-             alt="Analyse des postes de charges d'une copropriété"
-             width="720" height="540"
-             style="border-radius:var(--r-lg); box-shadow:var(--shadow-md);"
-             loading="lazy">
-      </div>
-
-      <div>
-        <p class="eyebrow" data-reveal="fade">Notre rôle</p>
-        <h2 id="t-valeur" data-split>
-          Un regard extérieur, au service du conseil syndical.
-        </h2>
-        <p class="lead mt-4" data-reveal style="--d:1">
-          Nous ne remplaçons ni le syndic ni le conseil syndical. Nous apportons ce
-          qui manque souvent entre les deux : du temps d’analyse, une méthode
-          structurée et une lecture indépendante des documents.
-        </p>
-
-        <ul class="check-list mt-6" data-stagger>
-          <li data-reveal>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
-            <span><strong>Nous lisons ce que personne n’a le temps de lire.</strong> Annexes comptables, contrats, procès-verbaux : nous reprenons les pièces une à une.</span>
-          </li>
-          <li data-reveal>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
-            <span><strong>Nous traduisons les chiffres en langage clair.</strong> Un rapport compréhensible par tous les membres du conseil, pas seulement par ceux qui ont un profil financier.</span>
-          </li>
-          <li data-reveal>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
-            <span><strong>Nous signalons les points à examiner.</strong> Sans dramatiser ni minimiser : ce qui appelle une vérification, et ce qui n’en appelle pas.</span>
-          </li>
-          <li data-reveal>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
-            <span><strong>Nous restons disponibles après la remise.</strong> Un rapport qu’on ne sait pas utiliser ne sert à rien : nous vous aidons à en tirer des décisions.</span>
-          </li>
-        </ul>
-
-        <div class="mt-6" data-reveal>
-          <a class="link-underline" href="approche.html">Voir notre méthode en cinq étapes →</a>
-        </div>
-      </div>
+      <p class="text-center mt-6" data-reveal>
+        <a class="link-underline" href="a-propos.html">Pourquoi notre indépendance change tout →</a>
+      </p>
 
     </div>
   </section>
@@ -528,7 +484,7 @@
         </p>
       </div>
 
-      <div class="grid grid--2 grid--gap-lg" data-stagger>
+      <div class="grid grid--3 grid--gap-lg" data-stagger>
 
         <article class="card card--illu tilt" data-reveal>
           <div class="illu" aria-hidden="true">
@@ -802,10 +758,6 @@
             retour écrit court : ce qui mérite d’être examiné dans votre copropriété,
             ce qui n’en a pas besoin, et par quoi commencer.
           </p>
-          <p class="mt-4">
-            Sans engagement, sans relance commerciale. S’il en ressort qu’aucune
-            mission n’est justifiée, nous vous le dirons — et cela s’arrêtera là.
-          </p>
           <div class="btn-group mt-6">
             <a class="btn btn--light magnet" href="contact.html">
               Demander mon pré-diagnostic gratuit
@@ -854,11 +806,9 @@
         </div>
 
         <p class="muted mt-5" style="font-size:var(--fs-sm); max-width:70ch" data-reveal>
-          Les montants varient selon la taille de la copropriété : une grille unique
-          serait forcément fausse pour la moitié des cas. L’honoraire exact est
-          <strong>annoncé par écrit avant le lancement</strong> de la mission, et
-          jamais indexé sur les économies constatées — nous ne percevons par ailleurs
-          aucune commission des prestataires recommandés.
+          Les montants varient selon la taille de la copropriété. L’honoraire exact est
+          <strong>annoncé par écrit avant le lancement</strong> de la mission, jamais
+          indexé sur les économies constatées.
         </p>
 
         <div class="btn-group mt-6" data-reveal>
@@ -870,258 +820,9 @@
   </section>
 
   <!-- ==================================================================
-       4 bis. LES PIÈCES OUVERTES
-       Le dossier se déploie en éventail à l'entrée dans le champ.
-       Chaque feuille nomme une pièce réellement examinée en mission :
-       la liste est celle transmise après le premier échange.
-       ================================================================== -->
-  <section class="section blueprint" aria-labelledby="t-pieces"
-           data-count-label="Les pièces">
-    <div class="container">
-
-      <div class="section-head section-head--center">
-        <p class="eyebrow" data-reveal="fade">Les pièces</p>
-        <h2 id="t-pieces" data-split>
-          Ce que nous ouvrons, une pièce à la fois.
-        </h2>
-        <p class="lead" data-reveal style="--d:1">
-          Une copropriété ne manque jamais de documents. Elle manque de quelqu’un
-          qui les reprend un par un, les recoupe et les remet dans l’ordre.
-          Voici les pièces sur lesquelles une mission s’appuie.
-        </p>
-      </div>
-
-      <!-- Le dossier. Décoratif dans sa mise en scène : les libellés sont
-           repris en clair juste en dessous, rien n'y est exclusif. -->
-      <div class="dossier" data-dossier data-reveal="scale">
-
-        <article class="dossier__sheet" data-x="-130" data-y="10"  data-r="-11">
-          <span class="dossier__tag">Pièce 01</span>
-          <p class="dossier__name">Annexes comptables des derniers exercices</p>
-          <div class="dossier__lines" aria-hidden="true">
-            <i></i><i></i><i></i><i class="is-flag"></i><i></i><i></i><i></i>
-          </div>
-        </article>
-
-        <article class="dossier__sheet" data-x="-65" data-y="-3" data-r="-5.5">
-          <span class="dossier__tag">Pièce 02</span>
-          <p class="dossier__name">Procès-verbaux d’assemblée générale</p>
-          <div class="dossier__lines" aria-hidden="true">
-            <i></i><i></i><i></i><i></i><i class="is-flag"></i><i></i><i></i>
-          </div>
-        </article>
-
-        <article class="dossier__sheet" data-x="0" data-y="-11" data-r="0">
-          <span class="dossier__tag">Pièce 03</span>
-          <p class="dossier__name">Contrat de syndic</p>
-          <div class="dossier__lines" aria-hidden="true">
-            <i></i><i class="is-flag"></i><i></i><i></i><i></i><i></i><i></i>
-          </div>
-        </article>
-
-        <article class="dossier__sheet" data-x="65" data-y="-3" data-r="5.5">
-          <span class="dossier__tag">Pièce 04</span>
-          <p class="dossier__name">Contrats d’entretien et de fourniture</p>
-          <div class="dossier__lines" aria-hidden="true">
-            <i></i><i></i><i class="is-flag"></i><i></i><i></i><i></i><i></i>
-          </div>
-        </article>
-
-        <article class="dossier__sheet" data-x="130" data-y="10" data-r="11">
-          <span class="dossier__tag">Pièce 05</span>
-          <p class="dossier__name">Règlement de copropriété</p>
-          <div class="dossier__lines" aria-hidden="true">
-            <i></i><i></i><i></i><i></i><i></i><i class="is-flag"></i><i></i>
-          </div>
-        </article>
-
-      </div>
-
-      <ul class="check-list check-list--row mt-6" data-stagger>
-        <li data-reveal>
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
-          <span>La liste précise vous est transmise après le premier échange.</span>
-        </li>
-        <li data-reveal>
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
-          <span>Nous vous aidons à les obtenir, y compris auprès du syndic.</span>
-        </li>
-        <li data-reveal>
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
-          <span>Un dossier incomplet n’empêche pas de commencer : nous travaillons avec ce qui est disponible.</span>
-        </li>
-      </ul>
-
-    </div>
-
-    <!-- Le cadre de la mission, en quatre chiffres qui n'engagent que nous -->
-    <div class="container mt-8">
-      <div class="tally" data-stagger>
-
-        <div class="tally__cell" data-reveal>
-          <p class="tally__num" data-tally="5"><span data-tally-out>5</span></p>
-          <p class="tally__label">
-            <strong>prestations</strong>
-            Menées seules ou combinées, selon ce que vous cherchez à comprendre.
-          </p>
-        </div>
-
-        <div class="tally__cell" data-reveal>
-          <p class="tally__num" data-tally="5"><span data-tally-out>5</span></p>
-          <p class="tally__label">
-            <strong>étapes, toujours les mêmes</strong>
-            Comprendre, rassembler, analyser, restituer, accompagner.
-          </p>
-        </div>
-
-        <div class="tally__cell" data-reveal>
-          <p class="tally__num" data-tally="1"><span data-tally-out>1</span></p>
-          <p class="tally__label">
-            <strong>interlocuteur</strong>
-            Celui qui analyse votre dossier est celui qui vous le restitue.
-          </p>
-        </div>
-
-        <div class="tally__cell" data-reveal>
-          <p class="tally__num" data-tally="0"><span data-tally-out>0</span><i>€</i></p>
-          <p class="tally__label">
-            <strong>commission de prestataire</strong>
-            La copropriété nous mandate et nous rémunère. Personne d’autre.
-          </p>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ==================================================================
-       FRISE — les pièces qui défilent, transition vers la section sombre
-       ================================================================== -->
-  <div class="frise" aria-hidden="true">
-    <div class="frise__track" data-frise>
-      <div class="frise__group">
-        <span class="frise__item">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-5 3 3 5-7"/></svg>
-          Annexes comptables
-        </span>
-        <span class="frise__item">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
-          Procès-verbaux d’assemblée générale
-        </span>
-        <span class="frise__item">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7h-9M14 17H5"/><circle cx="17" cy="17" r="3"/><circle cx="7" cy="7" r="3"/></svg>
-          Contrat de syndic
-        </span>
-        <span class="frise__item">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01M16 6h.01M8 10h.01M16 10h.01M8 14h.01M16 14h.01"/></svg>
-          Contrat d’ascenseur
-        </span>
-        <span class="frise__item">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v6M12 22v-4"/><path d="M4.9 4.9 9 9M19.1 19.1 15 15"/><circle cx="12" cy="12" r="3"/></svg>
-          Chauffage collectif
-        </span>
-        <span class="frise__item">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          Contrat d’assurance
-        </span>
-        <span class="frise__item">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5V5a2 2 0 0 1 2-2h13v18H6a2 2 0 0 1-2-2z"/><path d="M9 7h6"/></svg>
-          Règlement de copropriété
-        </span>
-        <span class="frise__item">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 15l2 2 4-4"/></svg>
-          Devis de travaux
-        </span>
-      </div>
-    </div>
-  </div>
-
-  <!-- ==================================================================
-       5. POURQUOI NOUS
-       ================================================================== -->
-  <section class="section section--ink blueprint spotlight" aria-labelledby="t-pourquoi"
-           data-count-label="Pourquoi nous">
-    <div class="container">
-
-      <div class="section-head">
-        <p class="eyebrow" data-reveal="fade">Pourquoi nous</p>
-        <h2 id="t-pourquoi" data-split>
-          L’indépendance n’est pas un argument. C’est une condition de travail.
-        </h2>
-        <p class="lead" data-reveal style="--d:1">
-          Une analyse n’a de valeur que si rien ne vient l’orienter. C’est pourquoi
-          notre modèle est volontairement simple : la copropriété nous mandate, la
-          copropriété nous rémunère, et personne d’autre.
-        </p>
-      </div>
-
-      <div class="grid grid--4 grid--gap-lg" data-stagger>
-
-        <div class="value-card tilt" data-reveal style="border-top-color:rgba(255,255,255,.14)">
-          <span class="value-card__num" style="color:#7FD3B8">01</span>
-          <h3>Indépendance structurelle</h3>
-          <p>
-            Aucune appartenance à un groupe de gestion immobilière, aucune commission
-            perçue auprès de prestataires ou d’entreprises de travaux.
-          </p>
-        </div>
-
-        <div class="value-card tilt" data-reveal style="border-top-color:rgba(255,255,255,.14)">
-          <span class="value-card__num" style="color:#7FD3B8">02</span>
-          <h3>Un langage compréhensible</h3>
-          <p>
-            Nos rapports sont écrits pour être lus par des bénévoles, pas par des
-            experts-comptables. Chaque constat est expliqué, chiffré et illustré.
-          </p>
-        </div>
-
-        <div class="value-card tilt" data-reveal style="border-top-color:rgba(255,255,255,.14)">
-          <span class="value-card__num" style="color:#7FD3B8">03</span>
-          <h3>Une méthode constante</h3>
-          <p>
-            La même trame d’analyse est appliquée à chaque mission. Vous savez
-            à l’avance ce qui sera examiné et sous quelle forme vous le recevrez.
-          </p>
-        </div>
-
-        <div class="value-card tilt" data-reveal style="border-top-color:rgba(255,255,255,.14)">
-          <span class="value-card__num" style="color:#7FD3B8">04</span>
-          <h3>Un interlocuteur unique</h3>
-          <p>
-            La personne qui analyse votre dossier est celle qui vous le restitue et
-            qui répond à vos questions ensuite. Pas de relais, pas de dossier transféré.
-          </p>
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ==================================================================
-       BANDEAU PHOTO — respiration entre deux sections
-       ================================================================== -->
-  <section class="photo-band" aria-label="Vue sur les toits de Paris">
-    <!-- Photo CC0 (Wikimedia Commons) — voir CREDITS-PHOTOS.md -->
-    <picture>
-      <source srcset="assets/img/toits-paris.webp" type="image/webp">
-      <img src="assets/img/toits-paris.jpg"
-           alt="Vue panoramique sur les toits en zinc et les façades d'immeubles parisiens"
-           width="1700" height="620" loading="lazy" decoding="async"
-           data-parallax="0.16">
-    </picture>
-    <div class="photo-band__overlay">
-      <p data-reveal="fade">
-        Derrière chaque façade, une copropriété qui décide chaque année
-        de ce qu’elle dépense.
-      </p>
-    </div>
-  </section>
-
-  <!-- ==================================================================
        6. MÉTHODOLOGIE
        ================================================================== -->
-  <section class="section" aria-labelledby="t-methode" data-count-label="Notre approche">
+  <section class="section" id="methode" aria-labelledby="t-methode" data-count-label="Notre approche">
     <div class="container">
 
       <div class="section-head">
@@ -1145,15 +846,14 @@
         <span class="trace-methode__head"></span>
       </div>
 
-      <div class="steps" data-stagger>
+      <div class="steps steps--compact" data-stagger>
 
         <article class="step" data-reveal>
           <div class="step__num">01<span class="step__bar" aria-hidden="true"></span></div>
           <div class="step__body">
             <h3>Comprendre</h3>
             <p>
-              Un premier échange, sans engagement, pour cerner votre copropriété :
-              sa taille, son mode de gestion, son historique récent et surtout ce qui
+              Un échange sans engagement pour cerner votre copropriété et ce qui
               vous amène. C’est ce qui détermine le périmètre utile de la mission.
             </p>
           </div>
@@ -1164,9 +864,9 @@
           <div class="step__body">
             <h3>Rassembler</h3>
             <p>
-              Nous vous transmettons une liste précise des documents nécessaires et
-              nous vous accompagnons pour les obtenir, y compris auprès du syndic
-              lorsque c’est nécessaire. Nous travaillons avec ce qui est disponible.
+              Nous vous transmettons la liste des pièces et vous aidons à les
+              obtenir, y compris auprès du syndic. Un dossier incomplet n’empêche
+              pas de commencer.
             </p>
           </div>
         </article>
@@ -1176,9 +876,8 @@
           <div class="step__body">
             <h3>Analyser</h3>
             <p>
-              Le cœur de la mission. Nous reprenons les postes de charges exercice
-              par exercice, confrontons les montants aux contrats et aux décisions
-              votées, et recoupons ce qui doit l’être.
+              Le cœur de la mission : chaque poste repris exercice par exercice,
+              confronté aux contrats et aux décisions votées.
             </p>
           </div>
         </article>
@@ -1188,9 +887,9 @@
           <div class="step__body">
             <h3>Restituer</h3>
             <p>
-              Vous recevez un rapport écrit structuré, hiérarchisant les constats du
-              plus au moins significatif. Il est systématiquement commenté à l’oral :
-              un document qu’on ne comprend pas ne sert à personne.
+              Un rapport écrit, hiérarchisé du plus au moins significatif, et
+              toujours commenté à l’oral : un document qu’on ne comprend pas ne
+              sert à personne.
             </p>
           </div>
         </article>
@@ -1200,9 +899,8 @@
           <div class="step__body">
             <h3>Accompagner</h3>
             <p>
-              Après la remise, nous restons disponibles pour vous aider à formuler
-              vos questions au syndic, à préparer un point d’assemblée générale ou
-              à hiérarchiser les suites à donner.
+              Nous restons disponibles pour vous aider à formuler vos questions au
+              syndic et à préparer votre assemblée générale.
             </p>
           </div>
         </article>
@@ -1212,97 +910,6 @@
 
       <div class="btn-group mt-7" data-reveal>
         <a class="btn btn--ghost" href="approche.html">Détail de la méthode</a>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ==================================================================
-       7. PREUVES / RÉASSURANCE
-       ================================================================== -->
-  <section class="section section--alt" aria-labelledby="t-engagements"
-           data-count-label="Nos engagements">
-    <div class="container">
-
-      <div class="section-head section-head--center">
-        <p class="eyebrow eyebrow--center" data-reveal="fade">Nos engagements</p>
-        <h2 id="t-engagements" data-split>
-          Ce sur quoi vous pouvez compter.
-        </h2>
-        <p class="lead" data-reveal style="--d:1">
-          Plutôt que des promesses de résultat, des engagements de méthode —
-          les seuls que nous puissions tenir avant même de connaître votre dossier.
-        </p>
-      </div>
-
-      <div class="grid grid--3 grid--gap-lg" data-stagger>
-
-        <article class="card tilt" data-reveal>
-          <div class="card__icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 12l2 2 4-4"/><path d="M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9 9 4.03 9 9z"/></svg>
-          </div>
-          <h3 class="card__title">Un périmètre écrit à l’avance</h3>
-          <p class="card__text">
-            Avant toute mission, vous recevez une proposition précisant ce qui sera
-            analysé, ce qui ne le sera pas, le délai et le prix. Sans surprise en cours de route.
-          </p>
-        </article>
-
-        <article class="card tilt" data-reveal>
-          <div class="card__icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-          </div>
-          <h3 class="card__title">Une confidentialité stricte</h3>
-          <p class="card__text">
-            Les documents que vous nous transmettez ne servent qu’à votre mission.
-            Ils ne sont ni partagés, ni réutilisés, ni communiqués à des tiers.
-          </p>
-        </article>
-
-        <article class="card tilt" data-reveal>
-          <div class="card__icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4z"/></svg>
-          </div>
-          <h3 class="card__title">Des constats sourcés</h3>
-          <p class="card__text">
-            Chaque observation renvoie à la pièce dont elle est tirée : une ligne
-            d’annexe, un article de contrat, une décision d’assemblée. Vous pouvez tout vérifier.
-          </p>
-        </article>
-
-        <article class="card tilt" data-reveal>
-          <div class="card__icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 9-9"/><path d="M3 3v6h6"/></svg>
-          </div>
-          <h3 class="card__title">Une restitution commentée</h3>
-          <p class="card__text">
-            Le rapport est présenté et expliqué au conseil syndical, en présentiel ou
-            à distance. Les questions posées ce jour-là font partie de la prestation.
-          </p>
-        </article>
-
-        <article class="card tilt" data-reveal>
-          <div class="card__icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          </div>
-          <h3 class="card__title">Aucun intérêt croisé</h3>
-          <p class="card__text">
-            Nous ne vendons ni travaux, ni contrats, ni prestations d’entreprises
-            partenaires. Nous n’avons donc rien à gagner à orienter une conclusion.
-          </p>
-        </article>
-
-        <article class="card tilt" data-reveal>
-          <div class="card__icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-          </div>
-          <h3 class="card__title">Un ton non conflictuel</h3>
-          <p class="card__text">
-            Notre objectif n’est pas d’opposer la copropriété à son syndic, mais de
-            donner au conseil syndical les moyens d’un dialogue documenté.
-          </p>
-        </article>
-
       </div>
 
     </div>
@@ -1496,7 +1103,6 @@
       </div>
     </div>
   </section>
-
 </main>
 
 <!-- ==================================================================

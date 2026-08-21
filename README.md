@@ -33,30 +33,25 @@ Vercel reconstruit et publie dans la foulée. Aucune commande de déploiement
   <img src="docs/captures/accueil-hero.webp" alt="Page d'accueil : le calque de relevé se dessine sur la photo de façade" width="100%">
 </p>
 
-L'accueil. Un calque d'architecte se dessine sur la photo — équerres de
-cadrage, cotation en laiton, niveaux, points de relevé, annotations — pendant
-qu'une ligne de balayage remonte la façade. C'est la promesse du cabinet,
-jouée littéralement : lire un immeuble comme un architecte lit un plan.
+L'accueil. Un calque d'architecte se dessine sur la photo — équerres de cadrage,
+cotation en laiton, niveaux, annotations — pendant qu'une ligne de balayage
+remonte la façade. Le sur-titre nomme la cible, et la gratuité du premier temps
+est annoncée **avant** le bouton : c'est l'objection qu'elle lève.
 
 | | |
 |:--|:--|
-| <img src="docs/captures/illustrations.webp" alt="Cartes de prestation avec leurs illustrations au trait" width="100%"> | <img src="docs/captures/pieces.webp" alt="Les cinq pièces d'une mission déployées en éventail" width="100%"> |
-| **Cinq illustrations dessinées pour le site.** Aucune banque d'images : elles sont écrites en SVG dans le HTML, ce qui permet de les tracer trait par trait à l'entrée dans le champ. | **Les pièces d'une mission.** Le dossier s'ouvre en éventail. Chaque feuille nomme un document réellement examiné, repris de la liste transmise après le premier échange. |
-| <img src="docs/captures/offres.webp" alt="Section des offres : pré-diagnostic gratuit puis grille tarifaire" width="100%"> | <img src="docs/captures/methode.webp" alt="Les cinq étapes de la méthode reliées par un rail qui se remplit" width="100%"> |
-| **Les offres, annoncées d'emblée.** Le pré-diagnostic gratuit, puis la grille : audit à partir de 400 €, suivi mensuel à partir de 80 €/mois. Pas de plaquette à demander. | **La méthode en cinq étapes.** Un rail vertical se remplit au fil du défilement, avec un repère qui progresse : les étapes se lisent comme un parcours, pas comme une liste. |
+| <img src="docs/captures/illustrations.webp" alt="Les cinq prestations avec leurs illustrations au trait" width="100%"> | <img src="docs/captures/offres.webp" alt="Section des offres : pré-diagnostic gratuit puis grille tarifaire" width="100%"> |
+| **Cinq illustrations dessinées pour le site.** Aucune banque d'images : elles sont écrites en SVG dans le HTML, ce qui permet de les tracer trait par trait. | **Les offres, annoncées d'emblée.** Le pré-diagnostic gratuit, puis la grille : audit à partir de 400 €, suivi mensuel à partir de 80 €/mois. |
+| <img src="docs/captures/methode.webp" alt="Les cinq étapes reliées par un rail qui se remplit au défilement" width="100%"> | <img src="docs/captures/ressources.webp" alt="Page Ressources : repères copropriété et sources officielles" width="100%"> |
+| **La méthode en cinq étapes.** Un rail vertical se remplit au fil du défilement : les étapes se lisent comme un parcours, pas comme une liste. | **La page Ressources.** Six repères pour les conseils syndicaux, chacun renvoyant à sa source officielle vérifiée. |
+| <img src="docs/captures/pieces.webp" alt="Les cinq pièces d'une mission déployées en éventail" width="100%"> | <img src="docs/captures/mobile.webp" alt="Le site sur mobile" width="300"> |
+| **Les pièces d'une mission** (page Approche). Le dossier s'ouvre en éventail ; chaque feuille nomme un document réellement examiné. | **Sur mobile.** Vérifié sans débordement de 320 px à 1440 px, sur les onze pages. |
 
-| | |
-|:--|:--|
-| <img src="docs/captures/page-prestation.webp" alt="Page prestation : illustration en colonne collante" width="100%"> | <img src="docs/captures/mobile.webp" alt="Le site sur mobile" width="300"> |
-| **Une page prestation.** L'illustration reste en colonne collante : elle accompagne toute la lecture du bloc, du problème jusqu'à l'étape suivante. | **Sur mobile.** Le relevé et ses annotations tiennent dans le cadre ; l'éventail de pièces bascule en grille à plat pour rester lisible. |
-
-> Captures prises sur <https://copro-site.vercel.app>. Toutes les animations
-> s'effacent si le visiteur a demandé moins de mouvement
-> (`prefers-reduced-motion`) : l'état final s'affiche alors directement, sans
-> qu'aucun contenu ne soit masqué.
+> Captures prises sur le site. Toutes les animations s'effacent si le visiteur a
+> demandé moins de mouvement (`prefers-reduced-motion`) : l'état final s'affiche
+> alors directement, sans qu'aucun contenu ne soit masqué.
 
 ---
-
 
 ## Démarrer
 
@@ -86,6 +81,7 @@ Puis ouvrir <http://localhost:8000>.
 ├── services.html                   Prestations — Problème / Intervention / Bénéfice / CTA
 ├── approche.html                   Méthode en 5 étapes
 ├── a-propos.html                   Vision, mission, indépendance
+├── ressources.html                 Repères copropriété + sources officielles
 ├── faq.html                        FAQ complète, 4 thèmes, 21 questions
 ├── contact.html                    Formulaire + coordonnées
 ├── mentions-legales.html           ⚠️ à compléter
@@ -94,7 +90,7 @@ Puis ouvrir <http://localhost:8000>.
 ├── 404.html
 │
 ├── assets/
-│   ├── css/style.css               Design system complet, 17 sections commentées
+│   ├── css/style.css               Design system complet, 19 sections commentées
 │   ├── css/signature.css           Calque « Le Relevé » — 14 sections commentées
 │   ├── js/main.js                  ~330 lignes, vanilla, sans dépendance
 │   ├── js/signature.js             ~370 lignes, vanilla, sans dépendance
@@ -345,6 +341,105 @@ Pour en modifier une, chercher `class="illu"` dans `index.html` ou
 **Aucune licence à surveiller** : ces dessins n'existent nulle part ailleurs.
 
 ---
+
+## Retour client — ce qui a été repris
+
+Quatre demandes, traitées et mesurées.
+
+### 1. « La page d'accueil est très longue »
+
+Mesuré avant : **14 409 px, soit 16 écrans, sur 13 sections**. Après : **8 518 px,
+9,5 écrans, 7 sections** — 41 % de moins.
+
+Rien n'a été jeté. Les sections retirées de l'accueil ont rejoint la page où
+elles ont leur place :
+
+| Section | Devenue |
+|---|---|
+| « Ce que nous ouvrons » (les pièces) | `approche.html`, après les cinq étapes |
+| Bandeau photo | `approche.html` |
+| « Ce sur quoi vous pouvez compter » | `a-propos.html`, après l'indépendance |
+| « Problématique » + « Notre rôle » | fondues en une section de trois points |
+| « Pourquoi nous » | déjà traitée en détail sur `a-propos.html` |
+| Frise défilante | supprimée (décorative) |
+
+Les prestations passent de 2 à 3 colonnes : cinq cartes tiennent en deux rangées
+au lieu de trois. Les étapes de la méthode utilisent la variante
+`.steps--compact` sur l'accueil ; `approche.html` garde la version détaillée.
+
+### 2. « L'intérêt n'est pas lisible » et « l'audit est gratuit »
+
+- Le sur-titre du hero nomme désormais la cible : **« Pour les conseils syndicaux »**.
+- Le sous-titre dit ce que le conseil syndical **y gagne**, plus ce que le cabinet fait.
+- Une mention **Gratuit** est posée juste au-dessus du bouton (`.hero__free`) :
+  c'est l'objection qu'elle lève, elle doit donc se voir avant le bouton.
+- Le bouton principal devient « Demander mon pré-diagnostic gratuit ».
+- Une section « Votre intérêt » remplace deux sections par trois bénéfices directs.
+
+> **Les tarifs n'ont pas bougé.** L'audit complet reste à partir de 400 €.
+> Ce qui est gratuit — et qui l'était déjà — c'est le premier échange et le
+> pré-diagnostic écrit. Annoncer « audit gratuit » aurait contredit la grille
+> de `services.html`, de la FAQ et des données structurées.
+
+### 3. « Rendre tout responsive : téléphone, tablette, PC »
+
+C'était un vrai bug, pas une impression : **la page débordait horizontalement
+en dessous de 420 px**. Trois causes, aucune visible au-dessus de 768 px.
+
+1. **`min-width: auto` sur les éléments de grille.** Un `<select>` prend la
+   largeur de sa plus longue option — ici « Un accompagnement du conseil
+   syndical ». Il élargissait son champ, puis le formulaire, puis la page.
+2. **Chaînes insécables.** `contact@coproperformanceconseil.fr` mesure 261 px
+   et ne comporte aucun point de césure.
+3. **Les révélations latérales.** `[data-reveal="right"]` décale l'élément de
+   26 px *en attendant* d'être déclenché : tout bloc encore sous la ligne de
+   flottaison poussait la page vers la droite.
+
+Correctifs dans `style.css` § 16 bis. Ajouté au passage : champs à 16 px sous
+640 px (en deçà, iOS zoome au focus), cibles tactiles à 44 px, boutons pleine
+largeur sur mobile.
+
+**Vérifié : aucun débordement sur les 11 pages, à 320 / 360 / 390 / 414 / 768 /
+1024 / 1440 px.**
+
+### 4. Page « Ressources »
+
+`ressources.html` : six repères pour les conseils syndicaux, chacun renvoyant à
+sa source officielle. Ajoutée à la navigation, au menu mobile, au plan du site
+et au `sitemap.xml`, avec ses propres données structurées (`CollectionPage` +
+`ItemList`).
+
+**Chaque lien externe a été testé en HTTP 200 avant d'être écrit.** Les six
+fiches `service-public.fr` retenues ont été trouvées par balayage et vérifiées
+une par une — plusieurs identifiants plausibles renvoyaient un 404, ou une page
+sans rapport avec la copropriété.
+
+> **Legifrance ne figure pas dans les sources.** Le site renvoie 403 à toute
+> requête automatisée, y compris sur sa racine : ses liens profonds n'ont pas pu
+> être vérifiés. Les textes sont donc cités par leur nom, sans lien. À ajouter à
+> la main si vous les vérifiez vous-même.
+
+#### Sur l'effet SEO attendu
+
+Une précision utile, parce que l'attente exprimée repose sur un malentendu
+courant : **les liens sortants vers des sites .gouv.fr n'apportent pas de
+référencement.** Le « jus » SEO circule des liens *entrants* vers votre site,
+pas l'inverse. Citer des sources officielles sert la **crédibilité** et la
+cohérence thématique — ce qui compte — mais ne fait pas venir Google.
+
+Ce qui amènera réellement du trafic sur cette page :
+
+1. **Le contenu lui-même**, qui répond à des questions réellement tapées
+   (« que peut demander le conseil syndical au syndic », « comment lire les
+   charges de copropriété »). C'est là qu'est la valeur de la page.
+2. **Le retrait du `noindex`.** Tant que l'en-tête `X-Robots-Tag: noindex,
+   nofollow` reste dans `vercel.json`, **cette page ne sera jamais indexée** et
+   tout le reste est sans effet. C'est le point bloquant numéro un.
+3. **La soumission du `sitemap.xml`** dans la Google Search Console, une fois le
+   domaine réel branché.
+
+---
+
 
 ## Accessibilité
 
