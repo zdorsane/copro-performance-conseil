@@ -30,26 +30,24 @@ Vercel reconstruit et publie dans la foulée. Aucune commande de déploiement
 ## Aperçu
 
 <p align="center">
-  <img src="docs/captures/accueil-hero.webp" alt="Page d'accueil : le calque de relevé se dessine sur la photo de façade" width="100%">
+  <img src="docs/captures/selecteur.webp" alt="Sélecteur de profil en tête de la page d'accueil" width="100%">
 </p>
 
-L'accueil. Un calque d'architecte se dessine sur la photo — équerres de cadrage,
-cotation en laiton, niveaux, annotations — pendant qu'une ligne de balayage
-remonte la façade. Le sur-titre nomme la cible, et la gratuité du premier temps
-est annoncée **avant** le bouton : c'est l'objection qu'elle lève.
+**L'accueil aiguille, elle n'expose plus.** Première chose vue : « Vous êtes… »
+et cinq portes d'entrée. Le visiteur se qualifie lui-même et arrive sur une page
+qui ne lui parle que de son cas. Ce sont de vrais liens, pas des boutons
+JavaScript : crawlables, ouvrables dans un nouvel onglet, utilisables au clavier.
 
 | | |
 |:--|:--|
-| <img src="docs/captures/illustrations.webp" alt="Les cinq prestations avec leurs illustrations au trait" width="100%"> | <img src="docs/captures/offres.webp" alt="Section des offres : pré-diagnostic gratuit puis grille tarifaire" width="100%"> |
-| **Cinq illustrations dessinées pour le site.** Aucune banque d'images : elles sont écrites en SVG dans le HTML, ce qui permet de les tracer trait par trait. | **Les offres, annoncées d'emblée.** Le pré-diagnostic gratuit, puis la grille : audit à partir de 400 €, suivi mensuel à partir de 80 €/mois. |
-| <img src="docs/captures/methode.webp" alt="Les cinq étapes reliées par un rail qui se remplit au défilement" width="100%"> | <img src="docs/captures/ressources.webp" alt="Page Ressources : repères copropriété et sources officielles" width="100%"> |
-| **La méthode en cinq étapes.** Un rail vertical se remplit au fil du défilement : les étapes se lisent comme un parcours, pas comme une liste. | **La page Ressources.** Six repères pour les conseils syndicaux, chacun renvoyant à sa source officielle vérifiée. |
-| <img src="docs/captures/pieces.webp" alt="Les cinq pièces d'une mission déployées en éventail" width="100%"> | <img src="docs/captures/mobile.webp" alt="Le site sur mobile" width="300"> |
-| **Les pièces d'une mission** (page Approche). Le dossier s'ouvre en éventail ; chaque feuille nomme un document réellement examiné. | **Sur mobile.** Vérifié sans débordement de 320 px à 1440 px, sur les onze pages. |
+| <img src="docs/captures/accueil-hero.webp" alt="Le hero et son calque de relevé, sous le sélecteur" width="100%"> | <img src="docs/captures/page-profil.webp" alt="Une page profil : conseil syndical" width="100%"> |
+| **Le hero, sous le sélecteur.** Le calque d'architecte se dessine sur la photo — cotation en laiton, niveaux, annotations, balayage. La signature de la marque reste, la page ne fait plus que trois écrans. | **Une page profil.** Problème vécu, trois bénéfices, prestations retenues, FAQ ciblée. Le bouton final pré-remplit le formulaire : le visiteur ne redit pas qui il est. |
+| <img src="docs/captures/ressources.webp" alt="Page Ressources et ses sources officielles" width="100%"> | <img src="docs/captures/mobile.webp" alt="Le site sur mobile" width="300"> |
+| **La page Ressources.** Six repères pour les conseils syndicaux, chacun renvoyant à sa source officielle vérifiée en HTTP 200. | **Sur mobile.** Vérifié sans débordement de 320 px à 1440 px, sur les quinze pages. |
 
-> Captures prises sur le site. Toutes les animations s'effacent si le visiteur a
-> demandé moins de mouvement (`prefers-reduced-motion`) : l'état final s'affiche
-> alors directement, sans qu'aucun contenu ne soit masqué.
+> Toutes les animations s'effacent si le visiteur a demandé moins de mouvement
+> (`prefers-reduced-motion`) : l'état final s'affiche directement, sans qu'aucun
+> contenu ne soit masqué.
 
 ---
 
@@ -81,6 +79,10 @@ Puis ouvrir <http://localhost:8000>.
 ├── services.html                   Prestations — Problème / Intervention / Bénéfice / CTA
 ├── approche.html                   Méthode en 5 étapes
 ├── a-propos.html                   Vision, mission, indépendance
+├── conseil-syndical.html           Page profil — cible principale
+├── coproprietaire.html             Page profil
+├── syndic-benevole.html            Page profil
+├── syndic-professionnel.html       Page profil ⚠️ cadre à confirmer
 ├── ressources.html                 Repères copropriété + sources officielles
 ├── faq.html                        FAQ complète, 4 thèmes, 21 questions
 ├── contact.html                    Formulaire + coordonnées
@@ -437,6 +439,89 @@ Ce qui amènera réellement du trafic sur cette page :
    tout le reste est sans effet. C'est le point bloquant numéro un.
 3. **La soumission du `sitemap.xml`** dans la Google Search Console, une fois le
    domaine réel branché.
+
+---
+
+
+## L'accueil comme aiguillage
+
+Demande du client : *« la page d'accueil doit être minimaliste, vu que l'on
+redirige le trafic sur différentes pages en fonction du type de personne »*.
+
+### Ce que ça donne
+
+**2 925 px, 3,3 écrans**, contre 14 409 px et 16 écrans au point de départ —
+**80 % de moins**. Trois blocs, dans cet ordre :
+
+1. **Le sélecteur** « Vous êtes… », cinq portes d'entrée
+2. **Le hero** et son calque de relevé
+3. **Une bande de clôture** : les cinq prestations en liste, la gratuité, un bouton
+
+Ont quitté l'accueil : les cartes de prestations, la grille tarifaire, la
+méthode, la FAQ et la section « Votre intérêt ». Tout existe sur `services.html`,
+`approche.html`, `faq.html` et sur les pages profil.
+
+### Pourquoi de vraies pages, et pas un filtre JavaScript
+
+| | Vraies pages | Filtre JS |
+|---|---|---|
+| Référencement | chaque page vise ses requêtes | tout reste sur `/` |
+| Lien partageable | oui | non |
+| Sans JavaScript | fonctionne | rien ne s'affiche |
+| Mesure | on sait quel profil convertit | invisible |
+
+Les cinq cartes sont des `<a href>`. Aucune ne dépend du JavaScript.
+
+### Les quatre pages profil
+
+| Page | Angle d'attaque | Prestations retenues |
+|---|---|---|
+| `conseil-syndical.html` | Contrôler sans y passer ses soirées | 4 |
+| `coproprietaire.html` | Comprendre son appel de fonds | 2 |
+| `syndic-benevole.html` | Ne pas être seul face aux textes | 3 |
+| `syndic-professionnel.html` | Objectiver un dossier | 3 |
+
+Chacune attaque par un problème **réellement distinct** et propose un
+sous-ensemble différent de prestations. C'est la condition pour que Google ne
+les lise pas comme des quasi-doublons et n'en garde qu'une.
+
+**Le bouton final pré-remplit le formulaire** : `contact.html?profil=…`
+sélectionne la qualité correspondante. Le visiteur a déjà dit qui il était en
+page d'accueil ; le lui redemander serait une question de trop. Une valeur d'URL
+inconnue est ignorée — un paramètre d'URL est une saisie extérieure, jamais une
+consigne.
+
+### ⚠️ Le point à trancher : « syndic professionnel »
+
+Ajouter ce profil met en tension le positionnement du site. **Neuf affirmations
+deviennent fausses** si un syndic peut vous mandater et vous rémunérer :
+
+| Où | Affirmation |
+|---|---|
+| `index.html` | « Aucun lien avec un syndic » (hero) |
+| `index.html` | « Un tiers, pas une partie » · « Notre seul mandant est la copropriété » |
+| `index.html` ×2 | « rémunérés uniquement par la copropriété qui nous mandate » (FAQ + JSON-LD) |
+| `approche.html` | « La copropriété nous mandate et nous rémunère. Personne d'autre. » |
+| `a-propos.html` | « Un seul mandant : la copropriété. » |
+| `faq.html` | « rémunérés uniquement par la copropriété qui nous mandate » |
+
+**Rien n'a été réécrit.** La page `syndic-professionnel.html` a été rédigée avec
+le seul cadrage qui ne contredit aucune de ces phrases :
+
+> Le syndic est **à l'origine** de l'intervention et en est l'interlocuteur ;
+> le **syndicat des copropriétaires reste le mandant** et le payeur.
+
+C'est aussi le cadrage qui rend le service vendable : un constat n'a de valeur
+pour un syndic que s'il est perçu comme neutre par le conseil syndical.
+
+La page porte une pastille **À valider** sur ce point. Deux suites possibles :
+
+- **Ce cadrage est le bon** → retirer la pastille, rien d'autre à faire.
+- **Vous entendez être payé directement par des syndics** → les neuf phrases
+  ci-dessus doivent être réécrites. La formulation qui resterait vraie :
+  *« Nous n'appartenons à aucun groupe de gestion immobilière et ne percevons
+  aucune commission de prestataire »* — l'indépendance devient financière et
+  structurelle, plus relationnelle.
 
 ---
 

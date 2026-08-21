@@ -477,9 +477,40 @@
   }
 
   /* ----------------------------------------------------------------------
+     11. Profil repris depuis l'URL
+     ----------------------------------------------------------------------
+     Les pages profil pointent vers contact.html?profil=xxx. Le visiteur a
+     déjà dit qui il était en page d'accueil : lui redemander serait une
+     question de trop. On pré-remplit, sans verrouiller — il reste libre
+     de changer.
+     ---------------------------------------------------------------------- */
+  function initProfilUrl() {
+    var champ = document.getElementById("qualite");
+    if (!champ || !window.URLSearchParams) return;
+
+    var voulu;
+    try {
+      voulu = new URLSearchParams(window.location.search).get("profil");
+    } catch (e) {
+      return;
+    }
+    if (!voulu) return;
+
+    // Ne retenir que les valeurs réellement proposées : un paramètre
+    // d'URL est une saisie extérieure, jamais une consigne.
+    var existe = Array.prototype.some.call(champ.options, function (o) {
+      return o.value === voulu;
+    });
+    if (!existe) return;
+
+    champ.value = voulu;
+  }
+
+  /* ----------------------------------------------------------------------
      Démarrage
      ---------------------------------------------------------------------- */
   function start() {
+    initProfilUrl();
     initBoot();
     initDrawings();
     initReleve();

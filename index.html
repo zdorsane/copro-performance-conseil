@@ -257,6 +257,107 @@
 <main id="contenu">
 
   <!-- ==================================================================
+       0. SÉLECTEUR DE PROFIL
+       Première chose vue de la page. Cinq portes d'entrée, cinq vraies
+       pages : des liens, pas des boutons JavaScript, pour rester
+       crawlables et utilisables au clavier.
+       ================================================================== -->
+  <section class="section section--tight profils-section" aria-labelledby="t-profils">
+    <div class="container">
+
+      <div class="section-head section-head--center profils-head">
+        <p class="eyebrow" data-reveal="fade">Commencez ici</p>
+        <h2 id="t-profils" data-split>Vous êtes…</h2>
+        <p class="lead" data-reveal style="--d:1">
+          Nos réponses ne sont pas les mêmes selon votre place dans la copropriété.
+          Choisissez la vôtre : nous vous montrons ce qui vous concerne, et rien d’autre.
+        </p>
+      </div>
+
+      <nav class="profils" aria-label="Choisir votre profil" data-stagger>
+        <a class="profil" href="conseil-syndical.html" data-reveal style="--d:0">
+          <span class="profil__icone illu" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor"
+                 stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+            <circle data-draw style="--i:0" cx="24" cy="16" r="7"/>
+            <circle data-draw style="--i:1" cx="10" cy="34" r="6"/>
+            <circle data-draw style="--i:2" cx="38" cy="34" r="6"/>
+            <path data-draw style="--i:3" d="M24 23v6M18 30l-5 2M30 30l5 2"/>
+            </svg>
+          </span>
+          <span class="profil__titre">Membre du conseil syndical</span>
+          <span class="profil__sous">Contrôler la gestion sans y passer vos soirées</span>
+          <span class="profil__fleche" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </span>
+        </a>
+        <a class="profil" href="coproprietaire.html" data-reveal style="--d:1">
+          <span class="profil__icone illu" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor"
+                 stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+            <path data-draw style="--i:0" d="M8 42V14l16-8 16 8v28"/>
+            <path data-draw style="--i:1" d="M19 42V27h10v15"/>
+            <circle data-pop style="--i:0" cx="26.5" cy="34" r="1.4" fill="currentColor" stroke="none"/>
+            </svg>
+          </span>
+          <span class="profil__titre">Copropriétaire</span>
+          <span class="profil__sous">Comprendre ce que vous payez chaque trimestre</span>
+          <span class="profil__fleche" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </span>
+        </a>
+        <a class="profil" href="syndic-benevole.html" data-reveal style="--d:2">
+          <span class="profil__icone illu" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor"
+                 stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+            <circle data-draw style="--i:0" cx="17" cy="17" r="8"/>
+            <path data-draw style="--i:1" d="m23 23 15 15"/>
+            <path data-draw style="--i:2" d="m32 32 4 4-3 3M38 38l3 3"/>
+            </svg>
+          </span>
+          <span class="profil__titre">Syndic bénévole</span>
+          <span class="profil__sous">Assumer la gestion sans être seul face aux textes</span>
+          <span class="profil__fleche" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </span>
+        </a>
+        <a class="profil" href="syndic-professionnel.html" data-reveal style="--d:3">
+          <span class="profil__icone illu" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor"
+                 stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+            <path data-draw style="--i:0" d="M6 12h18v28H6z"/>
+            <path data-draw style="--i:1" d="M24 12h18v28H24z"/>
+            <path data-draw style="--i:2" d="M11 20h8M11 26h8M29 20h8M29 26h8"/>
+            <circle data-pop style="--i:0" cx="33" cy="33" r="2" fill="currentColor" stroke="none"/>
+            </svg>
+          </span>
+          <span class="profil__titre">Syndic professionnel</span>
+          <span class="profil__sous">Objectiver un dossier par un regard extérieur</span>
+          <span class="profil__fleche" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </span>
+        </a>
+        <a class="profil" href="contact.html" data-reveal style="--d:4">
+          <span class="profil__icone illu" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor"
+                 stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+            <circle data-draw style="--i:0" cx="24" cy="24" r="18"/>
+            <path data-draw style="--i:1" d="M19 19a5 5 0 1 1 6 5v3"/>
+            <circle data-pop style="--i:0" cx="25" cy="34" r="1.6" fill="currentColor" stroke="none"/>
+            </svg>
+          </span>
+          <span class="profil__titre">Autre situation</span>
+          <span class="profil__sous">Décrivez-nous votre cas en quelques lignes</span>
+          <span class="profil__fleche" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </span>
+        </a>
+      </nav>
+
+    </div>
+  </section>
+
+  <!-- ==================================================================
        1. HERO
        ================================================================== -->
   <section class="hero">
@@ -287,7 +388,7 @@
             Demander mon pré-diagnostic gratuit
             <svg class="btn__arrow" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </a>
-          <a class="btn btn--ghost btn--lg" href="#methode">Notre méthode</a>
+          <a class="btn btn--ghost btn--lg" href="services.html">Voir les prestations</a>
         </div>
 
         <ul class="hero__trust" data-reveal style="--d:5">
@@ -400,709 +501,43 @@
   </section>
 
   <!-- ==================================================================
-       2. CE QUE LE CONSEIL SYNDICAL Y GAGNE
-       Remplace les anciennes sections « Problématique » et « Proposition
-       de valeur » : même propos, trois points au lieu de deux écrans.
+       BANDE DE CLÔTURE
+       L'accueil n'expose plus le détail : il vit sur les pages dédiées.
+       Reste le strict nécessaire pour qui arrive de Google sans profil.
        ================================================================== -->
-  <section class="section section--alt blueprint" aria-labelledby="t-gain"
-           data-count-label="Votre intérêt">
+  <section class="section section--alt blueprint" aria-labelledby="t-resume">
     <div class="container">
 
       <div class="section-head section-head--center">
-        <p class="eyebrow" data-reveal="fade">Votre intérêt</p>
-        <h2 id="t-gain" data-split>
-          Siéger au conseil syndical ne devrait pas exiger d’être comptable.
-        </h2>
-        <p class="lead" data-reveal style="--d:1">
-          Vous êtes bénévole, et l’on vous demande de contrôler un budget à cinq
-          chiffres. Voici ce que nous prenons en charge.
+        <p class="eyebrow" data-reveal="fade">En deux mots</p>
+        <h2 id="t-resume" data-split>Cinq prestations, un premier échange gratuit.</h2>
+      </div>
+
+      <ul class="resume-list" data-stagger>
+        <li data-reveal><a href="services.html#audit">Audit complet des charges</a></li>
+        <li data-reveal><a href="services.html#charges">Analyse des charges</a></li>
+        <li data-reveal><a href="services.html#contrats">Renégociation des contrats</a></li>
+        <li data-reveal><a href="services.html#optimisation">Optimisation des charges</a></li>
+        <li data-reveal><a href="services.html#accompagnement">Accompagnement du conseil syndical</a></li>
+      </ul>
+
+      <div class="resume-cta" data-reveal>
+        <p class="hero__free">
+          <span class="hero__free__tag">Gratuit</span>
+          Premier échange et pré-diagnostic écrit — sans engagement, sans relance.
         </p>
-      </div>
-
-      <div class="grid grid--3 grid--gap-lg" data-stagger>
-
-        <article class="card tilt" data-reveal>
-          <div class="card__icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"/><path d="M7 15l4-5 3 3 5-7"/></svg>
-          </div>
-          <h3 class="card__title">Vous comprenez enfin vos charges</h3>
-          <p class="card__text">
-            Poste par poste, exercice par exercice, en français. Vous savez à quoi
-            correspond chaque ligne de l’appel de fonds et laquelle mérite une
-            vérification.
-          </p>
-        </article>
-
-        <article class="card tilt" data-reveal>
-          <div class="card__icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 12h6M9 16h4"/><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
-          </div>
-          <h3 class="card__title">Vous arrivez préparé en assemblée</h3>
-          <p class="card__text">
-            Un rapport écrit, hiérarchisé du plus au moins significatif, et commenté
-            à l’oral. De quoi poser les bonnes questions au syndic et voter en
-            connaissance de cause.
-          </p>
-        </article>
-
-        <article class="card tilt" data-reveal>
-          <div class="card__icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
-          </div>
-          <h3 class="card__title">Vous gardez la main</h3>
-          <p class="card__text">
-            Nous n’appartenons à aucun groupe de gestion et ne percevons aucune
-            commission de prestataire. La copropriété nous mandate et nous rémunère,
-            personne d’autre. Nous ne décidons rien à votre place.
-          </p>
-        </article>
-
-      </div>
-
-      <p class="text-center mt-6" data-reveal>
-        <a class="link-underline" href="a-propos.html">Pourquoi notre indépendance change tout →</a>
-      </p>
-
-    </div>
-  </section>
-
-  <!-- ==================================================================
-       4. SERVICES
-       ================================================================== -->
-  <section class="section section--alt" aria-labelledby="t-services"
-           data-count-label="Nos prestations">
-    <div class="container">
-
-      <div class="section-head">
-        <p class="eyebrow" data-reveal="fade">Nos prestations</p>
-        <h2 id="t-services" data-split>
-          Cinq façons d’y voir plus clair.
-        </h2>
-        <p class="lead" data-reveal style="--d:1">
-          Chaque mission peut être menée seule ou combinée aux autres, selon ce que
-          votre copropriété cherche à comprendre en priorité.
-        </p>
-      </div>
-
-      <div class="grid grid--3 grid--gap-lg" data-stagger>
-
-        <article class="card card--illu tilt" data-reveal>
-          <div class="illu" aria-hidden="true">
-            <svg viewBox="0 0 300 168" fill="none" stroke="currentColor"
-                 stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-              <g class="illu__grid">
-                <path d="M0 42h300M0 84h300M0 126h300"/>
-                <path d="M60 0v168M120 0v168M180 0v168M240 0v168"/>
-              </g>
-              <!-- Sol et élévation -->
-              <line data-draw style="--i:0" x1="30" y1="142" x2="196" y2="142"/>
-              <path data-draw style="--i:1" d="M62 142V58l40-22 40 22v84"/>
-              <line data-draw style="--i:2" x1="62" y1="88" x2="142" y2="88"/>
-              <line data-draw style="--i:3" x1="62" y1="115" x2="142" y2="115"/>
-              <!-- Ouvertures -->
-              <g fill="currentColor" stroke="none" opacity=".18">
-                <rect data-pop style="--i:0" x="73" y="66" width="13" height="14" rx="2"/>
-                <rect data-pop style="--i:1" x="118" y="66" width="13" height="14" rx="2"/>
-                <rect data-pop style="--i:2" x="73" y="95" width="13" height="14" rx="2"/>
-                <rect data-pop style="--i:3" x="118" y="95" width="13" height="14" rx="2"/>
-                <rect data-pop style="--i:4" x="95" y="122" width="14" height="20" rx="2"/>
-              </g>
-              <!-- Cotation de hauteur -->
-              <g stroke="#B9924F" stroke-width="1.3">
-                <line data-draw style="--i:4" x1="166" y1="58" x2="166" y2="142"/>
-                <path data-draw style="--i:5" d="M160 58h12M160 142h12"/>
-              </g>
-              <!-- Examen -->
-              <g data-live>
-                <circle data-draw style="--i:6" cx="226" cy="74" r="26"/>
-                <line data-draw style="--i:7" x1="245" y1="93" x2="266" y2="114"/>
-                <path data-draw style="--i:8" d="M215 74l8 8 15-17"/>
-              </g>
-            </svg>
-          </div>
-          <h3 class="card__title">
-            Audit complet des charges
-            <span class="flag">À valider</span>
-          </h3>
-          <p class="card__text">
-            Une revue d’ensemble du fonctionnement et des dépenses de votre copropriété :
-            structure des charges, exécution du budget, gouvernance, principaux engagements.
-            Le point de départ quand on ne sait pas encore par où commencer.
-          </p>
-          <a class="card__link" href="services.html#audit">
-            En savoir plus
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </a>
-        </article>
-
-        <article class="card card--illu tilt" data-reveal>
-          <div class="illu" aria-hidden="true">
-            <svg viewBox="0 0 300 168" fill="none" stroke="currentColor"
-                 stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-              <g class="illu__grid">
-                <path d="M0 42h300M0 84h300M0 126h300"/>
-                <path d="M60 0v168M120 0v168M180 0v168M240 0v168"/>
-              </g>
-              <!-- Repères -->
-              <path data-draw style="--i:0" d="M44 26v112h224"/>
-              <g class="illu__grid">
-                <path d="M44 66h224M44 102h224"/>
-              </g>
-              <!-- Postes, exercice après exercice -->
-              <g stroke-width="1.7">
-                <rect data-draw style="--i:1" x="66" y="94" width="26" height="44" rx="3"/>
-                <rect data-draw style="--i:2" x="106" y="76" width="26" height="62" rx="3"/>
-                <rect data-draw style="--i:3" x="146" y="84" width="26" height="54" rx="3"/>
-                <rect data-draw style="--i:4" x="186" y="58" width="26" height="80" rx="3"/>
-                <rect data-draw style="--i:5" x="226" y="44" width="26" height="94" rx="3"/>
-              </g>
-              <!-- Tendance relevée -->
-              <path data-draw style="--i:6" stroke="#B9924F" stroke-width="1.6"
-                    stroke-dasharray="5 6" d="M79 96 119 78 159 86 199 60 239 46"/>
-              <g data-live>
-                <circle data-pop style="--i:5" cx="239" cy="46" r="5.5" fill="#B9924F" stroke="none"/>
-              </g>
-            </svg>
-          </div>
-          <h3 class="card__title">
-            Analyse des charges
-            <span class="flag">À valider</span>
-          </h3>
-          <p class="card__text">
-            Un examen poste par poste de vos dépenses sur plusieurs exercices, pour
-            comprendre leur évolution, distinguer le structurel du ponctuel et
-            identifier les postes qui méritent un examen approfondi.
-          </p>
-          <a class="card__link" href="services.html#charges">
-            En savoir plus
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </a>
-        </article>
-
-        <article class="card card--illu tilt" data-reveal>
-          <div class="illu" aria-hidden="true">
-            <svg viewBox="0 0 300 168" fill="none" stroke="currentColor"
-                 stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-              <g class="illu__grid">
-                <path d="M0 42h300M0 84h300M0 126h300"/>
-                <path d="M60 0v168M120 0v168M180 0v168M240 0v168"/>
-              </g>
-              <!-- Pièce du dessous -->
-              <path data-draw style="--i:0" opacity=".45"
-                    d="M74 46 154 26l30 106-80 20z"/>
-              <!-- Pièce examinée, coin replié -->
-              <path data-draw style="--i:1" d="M110 24h64l26 26v96h-90z"/>
-              <path data-draw style="--i:2" d="M174 24v26h26"/>
-              <!-- Corps du texte -->
-              <g stroke-width="1.5" opacity=".55">
-                <line data-draw style="--i:3" x1="126" y1="70" x2="186" y2="70"/>
-                <line data-draw style="--i:4" x1="126" y1="86" x2="176" y2="86"/>
-                <line data-draw style="--i:6" x1="126" y1="118" x2="184" y2="118"/>
-                <line data-draw style="--i:7" x1="126" y1="132" x2="158" y2="132"/>
-              </g>
-              <!-- La clause repérée -->
-              <rect data-pop style="--i:0" x="122" y="96" width="70" height="10" rx="3"
-                    fill="#B9924F" stroke="none" opacity=".8"/>
-              <!-- Échéance -->
-              <g data-live>
-                <circle data-draw style="--i:8" cx="236" cy="112" r="24"/>
-                <path data-draw style="--i:9" d="M236 98v14l10 6"/>
-              </g>
-            </svg>
-          </div>
-          <h3 class="card__title">
-            Renégociation des contrats
-            <span class="flag">À valider</span>
-          </h3>
-          <p class="card__text">
-            Une lecture attentive de vos principaux contrats — syndic, entretien,
-            ascenseur, chauffage, assurance — pour clarifier ce qu’ils couvrent
-            réellement, leurs échéances et leurs points d’attention.
-          </p>
-          <a class="card__link" href="services.html#contrats">
-            En savoir plus
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </a>
-        </article>
-
-        <article class="card card--illu tilt" data-reveal>
-          <div class="illu" aria-hidden="true">
-            <svg viewBox="0 0 300 168" fill="none" stroke="currentColor"
-                 stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-              <g class="illu__grid">
-                <path d="M0 42h300M0 84h300M0 126h300"/>
-                <path d="M60 0v168M120 0v168M180 0v168M240 0v168"/>
-              </g>
-              <!-- Axes gain / effort -->
-              <path data-draw style="--i:0" d="M52 22v116h216"/>
-              <g class="illu__grid">
-                <path d="M52 80h216M160 22v116"/>
-              </g>
-              <!-- Cadran à privilégier -->
-              <path data-draw style="--i:1" stroke="#B9924F" stroke-width="1.3"
-                    stroke-dasharray="4 6" d="M52 80h108V22"/>
-              <!-- Leviers relevés -->
-              <g fill="currentColor" stroke="none">
-                <circle data-pop style="--i:0" cx="84"  cy="52" r="11" opacity=".75"/>
-                <circle data-pop style="--i:1" cx="126" cy="40" r="15" opacity=".55"/>
-                <circle data-pop style="--i:2" cx="112" cy="106" r="8"  opacity=".28"/>
-                <circle data-pop style="--i:3" cx="196" cy="66" r="9"  opacity=".28"/>
-                <circle data-pop style="--i:4" cx="232" cy="112" r="12" opacity=".2"/>
-              </g>
-              <!-- Priorité -->
-              <g data-live>
-                <path data-draw style="--i:5" stroke-width="1.9" d="M212 132 258 86"/>
-                <path data-draw style="--i:6" stroke-width="1.9" d="M238 86h20v20"/>
-              </g>
-            </svg>
-          </div>
-          <h3 class="card__title">
-            Optimisation des charges
-            <span class="flag">À valider</span>
-          </h3>
-          <p class="card__text">
-            L’étape d’après l’analyse : identifier les leviers d’économies réellement
-            actionnables, les hiérarchiser par gain et par effort, et vous outiller
-            pour la mise en concurrence.
-          </p>
-          <a class="card__link" href="services.html#optimisation">
-            En savoir plus
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </a>
-        </article>
-
-        <article class="card card--illu tilt" data-reveal>
-          <div class="illu" aria-hidden="true">
-            <svg viewBox="0 0 300 168" fill="none" stroke="currentColor"
-                 stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-              <g class="illu__grid">
-                <path d="M0 42h300M0 84h300M0 126h300"/>
-                <path d="M60 0v168M120 0v168M180 0v168M240 0v168"/>
-              </g>
-              <!-- La table -->
-              <rect data-draw style="--i:0" x="76" y="46" width="148" height="76" rx="34"/>
-              <!-- Les sièges -->
-              <g fill="currentColor" stroke="none" opacity=".3">
-                <circle data-pop style="--i:0" cx="106" cy="30" r="10"/>
-                <circle data-pop style="--i:1" cx="150" cy="26" r="10"/>
-                <circle data-pop style="--i:2" cx="194" cy="30" r="10"/>
-                <circle data-pop style="--i:3" cx="106" cy="138" r="10"/>
-                <circle data-pop style="--i:4" cx="194" cy="138" r="10"/>
-              </g>
-              <!-- La place occupée par le conseil -->
-              <circle data-pop style="--i:5" cx="150" cy="142" r="11" fill="#B9924F" stroke="none"/>
-              <!-- La pièce posée au centre -->
-              <g data-live>
-                <rect data-draw style="--i:1" x="128" y="66" width="44" height="36" rx="4"/>
-                <g stroke-width="1.4" opacity=".55">
-                  <line data-draw style="--i:2" x1="138" y1="78" x2="162" y2="78"/>
-                  <line data-draw style="--i:3" x1="138" y1="88" x2="155" y2="88"/>
-                </g>
-              </g>
-              <!-- Les questions qui circulent -->
-              <g stroke-width="1.4" stroke-dasharray="3 6" opacity=".5">
-                <path data-draw style="--i:4" d="M112 44c8 10 22 14 34 14"/>
-                <path data-draw style="--i:5" d="M188 44c-8 10-22 14-34 14"/>
-              </g>
-            </svg>
-          </div>
-          <h3 class="card__title">
-            Accompagnement du conseil syndical
-            <span class="flag">À valider</span>
-          </h3>
-          <p class="card__text">
-            Un appui dans la durée : préparation des assemblées générales, lecture
-            des devis, aide à la formulation des questions au syndic. Pour que le
-            conseil syndical exerce sa mission de contrôle sereinement.
-          </p>
-          <a class="card__link" href="services.html#accompagnement">
-            En savoir plus
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </a>
-        </article>
-
-      </div>
-
-      <div class="btn-group mt-7" data-reveal>
-        <a class="btn btn--ghost" href="services.html">Voir le détail des prestations</a>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ==================================================================
-       4 ter. NOS OFFRES
-       Reprise exacte de la grille de services.html#tarifs — un seul
-       endroit fait foi. Toute modification de montant doit être faite
-       aux deux endroits.
-       ================================================================== -->
-  <section class="section" aria-labelledby="t-offres" data-count-label="Nos offres">
-    <div class="container">
-
-      <div class="section-head">
-        <p class="eyebrow" data-reveal="fade">Nos offres</p>
-        <h2 id="t-offres" data-split>
-          Ce que ça coûte, annoncé avant de commencer.
-        </h2>
-        <p class="lead" data-reveal style="--d:1">
-          Pas de plaquette à demander, pas de devis à négocier pour connaître
-          l’ordre de grandeur. Voici nos offres et leurs montants de départ.
-        </p>
-      </div>
-
-      <div class="price-lead" data-reveal="scale">
-        <div>
-          <h3>Premier échange et pré-diagnostic</h3>
-          <p>
-            Une trentaine de minutes pour comprendre votre situation, suivies d’un
-            retour écrit court : ce qui mérite d’être examiné dans votre copropriété,
-            ce qui n’en a pas besoin, et par quoi commencer.
-          </p>
-          <div class="btn-group mt-6">
-            <a class="btn btn--light magnet" href="contact.html">
-              Demander mon pré-diagnostic gratuit
-              <svg class="btn__arrow" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-            </a>
-          </div>
-        </div>
-        <div>
-          <p class="price-lead__tag">Gratuit <span>0 €</span></p>
-        </div>
-      </div>
-
-      <div class="mt-7">
-        <h3 style="font-size:var(--fs-h4)" data-reveal>Puis, si vous décidez d’aller plus loin</h3>
-
-        <div class="price-list" data-stagger>
-
-          <div class="price-row" data-reveal>
-            <span class="price-row__name">Audit complet des charges
-              <span class="price-row__desc">Examen des contrats, vérification des prestations, analyse des dépenses et identification des écarts tarifaires</span>
-            </span>
-            <span class="price-row__value">à partir de 400 €</span>
-          </div>
-
-          <div class="price-row" data-reveal>
-            <span class="price-row__name">Suivi mensuel &amp; conseil
-              <span class="price-row__desc">Accompagnement continu : réponses à vos questions, décryptage contractuel, supervision des prestations</span>
-            </span>
-            <span class="price-row__value">à partir de 80 €/mois</span>
-          </div>
-
-          <div class="price-row" data-reveal>
-            <span class="price-row__name">Renégociation des contrats
-              <span class="price-row__desc">Mise en concurrence, comparatif chiffré et négociation avec les prestataires</span>
-            </span>
-            <span class="price-row__value">Sur devis</span>
-          </div>
-
-          <div class="price-row" data-reveal>
-            <span class="price-row__name">Optimisation des charges — le pack complet
-              <span class="price-row__desc">Audit, renégociation et suivi réunis dans une mission unique</span>
-            </span>
-            <span class="price-row__value">Sur devis</span>
-          </div>
-
-        </div>
-
-        <p class="muted mt-5" style="font-size:var(--fs-sm); max-width:70ch" data-reveal>
-          Les montants varient selon la taille de la copropriété. L’honoraire exact est
-          <strong>annoncé par écrit avant le lancement</strong> de la mission, jamais
-          indexé sur les économies constatées.
-        </p>
-
-        <div class="btn-group mt-6" data-reveal>
-          <a class="btn btn--ghost" href="services.html#tarifs">Voir le détail des tarifs</a>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ==================================================================
-       6. MÉTHODOLOGIE
-       ================================================================== -->
-  <section class="section" id="methode" aria-labelledby="t-methode" data-count-label="Notre approche">
-    <div class="container">
-
-      <div class="section-head">
-        <p class="eyebrow" data-reveal="fade">Notre approche</p>
-        <h2 id="t-methode" data-split>
-          Cinq étapes, du premier échange à la décision.
-        </h2>
-        <p class="lead" data-reveal style="--d:1">
-          Une mission suit toujours le même déroulé. Vous savez où vous en êtes,
-          ce qui vous sera demandé et ce que vous recevrez à la fin.
-        </p>
-      </div>
-
-      <!-- Le fil conducteur : un rail qui se remplit au fil du défilement,
-           pour que les cinq étapes se lisent comme un parcours et non
-           comme une liste. Décoratif ; masqué en dessous de 860 px. -->
-      <div class="methode-stack">
-
-      <div class="trace-methode" data-trace-methode aria-hidden="true">
-        <span class="trace-methode__fill"></span>
-        <span class="trace-methode__head"></span>
-      </div>
-
-      <div class="steps steps--compact" data-stagger>
-
-        <article class="step" data-reveal>
-          <div class="step__num">01<span class="step__bar" aria-hidden="true"></span></div>
-          <div class="step__body">
-            <h3>Comprendre</h3>
-            <p>
-              Un échange sans engagement pour cerner votre copropriété et ce qui
-              vous amène. C’est ce qui détermine le périmètre utile de la mission.
-            </p>
-          </div>
-        </article>
-
-        <article class="step" data-reveal>
-          <div class="step__num">02<span class="step__bar" aria-hidden="true"></span></div>
-          <div class="step__body">
-            <h3>Rassembler</h3>
-            <p>
-              Nous vous transmettons la liste des pièces et vous aidons à les
-              obtenir, y compris auprès du syndic. Un dossier incomplet n’empêche
-              pas de commencer.
-            </p>
-          </div>
-        </article>
-
-        <article class="step" data-reveal>
-          <div class="step__num">03<span class="step__bar" aria-hidden="true"></span></div>
-          <div class="step__body">
-            <h3>Analyser</h3>
-            <p>
-              Le cœur de la mission : chaque poste repris exercice par exercice,
-              confronté aux contrats et aux décisions votées.
-            </p>
-          </div>
-        </article>
-
-        <article class="step" data-reveal>
-          <div class="step__num">04<span class="step__bar" aria-hidden="true"></span></div>
-          <div class="step__body">
-            <h3>Restituer</h3>
-            <p>
-              Un rapport écrit, hiérarchisé du plus au moins significatif, et
-              toujours commenté à l’oral : un document qu’on ne comprend pas ne
-              sert à personne.
-            </p>
-          </div>
-        </article>
-
-        <article class="step" data-reveal>
-          <div class="step__num">05<span class="step__bar" aria-hidden="true"></span></div>
-          <div class="step__body">
-            <h3>Accompagner</h3>
-            <p>
-              Nous restons disponibles pour vous aider à formuler vos questions au
-              syndic et à préparer votre assemblée générale.
-            </p>
-          </div>
-        </article>
-
-      </div>
-      </div><!-- /.methode-stack -->
-
-      <div class="btn-group mt-7" data-reveal>
-        <a class="btn btn--ghost" href="approche.html">Détail de la méthode</a>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ==================================================================
-       8. FAQ
-       ================================================================== -->
-  <section class="section" aria-labelledby="t-faq" data-count-label="Questions fréquentes">
-    <div class="container split split--wide-right">
-
-      <div>
-        <p class="eyebrow" data-reveal="fade">Questions fréquentes</p>
-        <h2 id="t-faq" data-split>
-          Ce que l’on nous demande le plus souvent.
-        </h2>
-        <p class="lead mt-4" data-reveal style="--d:1">
-          Une question qui ne figure pas ici ? Posez-la directement, la réponse
-          est généralement plus rapide qu’un formulaire de devis.
-        </p>
-        <div class="btn-group mt-6" data-reveal style="--d:2">
-          <a class="btn btn--ghost" href="faq.html">Toutes les questions</a>
-        </div>
-      </div>
-
-      <div class="faq" data-faq data-faq-exclusive data-reveal>
-
-        <div class="faq__item">
-          <h3>
-            <button class="faq__trigger" type="button" data-faq-trigger
-                    aria-expanded="false" aria-controls="q1" id="q1-btn">
-              Pourquoi faire analyser sa copropriété ?
-              <span class="faq__icon" aria-hidden="true"></span>
-            </button>
-          </h3>
-          <div class="faq__panel" id="q1" role="region" aria-labelledby="q1-btn">
-            <div><div class="faq__answer">
-              <p>
-                Une copropriété engage chaque année des sommes importantes, réparties
-                sur des dizaines de postes et encadrées par des contrats souvent
-                reconduits d’exercice en exercice.
-              </p>
-              <p>
-                Une analyse indépendante permet de comprendre à quoi ces dépenses
-                correspondent réellement, de repérer les postes qui méritent un examen
-                approfondi, et de disposer d’éléments objectifs avant de voter en
-                assemblée générale.
-              </p>
-            </div></div>
-          </div>
-        </div>
-
-        <div class="faq__item">
-          <h3>
-            <button class="faq__trigger" type="button" data-faq-trigger
-                    aria-expanded="false" aria-controls="q2" id="q2-btn">
-              À qui s’adresse votre accompagnement ?
-              <span class="faq__icon" aria-hidden="true"></span>
-            </button>
-          </h3>
-          <div class="faq__panel" id="q2" role="region" aria-labelledby="q2-btn">
-            <div><div class="faq__answer">
-              <p>
-                Principalement aux <strong>conseils syndicaux</strong> qui souhaitent
-                exercer pleinement leur mission de contrôle sans y consacrer un temps
-                déraisonnable.
-              </p>
-              <p>
-                Également aux copropriétaires souhaitant y voir plus clair dans leurs
-                charges, et aux syndics bénévoles cherchant un appui méthodologique.
-              </p>
-            </div></div>
-          </div>
-        </div>
-
-        <div class="faq__item">
-          <h3>
-            <button class="faq__trigger" type="button" data-faq-trigger
-                    aria-expanded="false" aria-controls="q3" id="q3-btn">
-              Êtes-vous vraiment indépendant du syndic ?
-              <span class="faq__icon" aria-hidden="true"></span>
-            </button>
-          </h3>
-          <div class="faq__panel" id="q3" role="region" aria-labelledby="q3-btn">
-            <div><div class="faq__answer">
-              <p>
-                Oui. Nous n’appartenons à aucun groupe de gestion immobilière et ne
-                percevons aucune commission de la part de prestataires ou d’entreprises
-                de travaux. <span class="flag">À valider</span>
-              </p>
-              <p>
-                Nous sommes rémunérés uniquement par la copropriété qui nous mandate.
-                C’est ce qui garantit que notre analyse ne sert aucun autre intérêt que le sien.
-              </p>
-            </div></div>
-          </div>
-        </div>
-
-        <div class="faq__item">
-          <h3>
-            <button class="faq__trigger" type="button" data-faq-trigger
-                    aria-expanded="false" aria-controls="q4" id="q4-btn">
-              Comment se déroule un audit ?
-              <span class="faq__icon" aria-hidden="true"></span>
-            </button>
-          </h3>
-          <div class="faq__panel" id="q4" role="region" aria-labelledby="q4-btn">
-            <div><div class="faq__answer">
-              <p>
-                En cinq temps : un premier échange pour comprendre votre situation,
-                la collecte des documents, l’analyse, la restitution d’un rapport écrit
-                commenté à l’oral, puis un accompagnement pour vous aider à en tirer
-                des décisions.
-              </p>
-              <p><a href="approche.html">Voir le détail de la méthode →</a></p>
-            </div></div>
-          </div>
-        </div>
-
-        <div class="faq__item">
-          <h3>
-            <button class="faq__trigger" type="button" data-faq-trigger
-                    aria-expanded="false" aria-controls="q5" id="q5-btn">
-              Quels documents faut-il préparer ?
-              <span class="faq__icon" aria-hidden="true"></span>
-            </button>
-          </h3>
-          <div class="faq__panel" id="q5" role="region" aria-labelledby="q5-btn">
-            <div><div class="faq__answer">
-              <p>
-                Les principaux sont les annexes comptables des derniers exercices, les
-                procès-verbaux d’assemblée générale, le contrat de syndic, les
-                principaux contrats d’entretien et de fourniture, et le règlement de copropriété.
-              </p>
-              <p>
-                Nous vous transmettons une liste précise après le premier échange.
-                Si certaines pièces manquent, nous travaillons avec ce qui est
-                disponible et le signalons dans le rapport.
-              </p>
-            </div></div>
-          </div>
-        </div>
-
-        <div class="faq__item">
-          <h3>
-            <button class="faq__trigger" type="button" data-faq-trigger
-                    aria-expanded="false" aria-controls="q6" id="q6-btn">
-              L’accompagnement peut-il se faire à distance ?
-              <span class="faq__icon" aria-hidden="true"></span>
-            </button>
-          </h3>
-          <div class="faq__panel" id="q6" role="region" aria-labelledby="q6-btn">
-            <div><div class="faq__answer">
-              <p>
-                Oui. L’analyse documentaire et les restitutions se déroulent très bien
-                en visioconférence, ce qui nous permet d’intervenir partout en France.
-              </p>
-              <p>
-                Une visite sur place peut être proposée lorsque la nature de la mission
-                le justifie. <span class="flag">À valider</span>
-              </p>
-            </div></div>
-          </div>
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ==================================================================
-       9. CTA FINAL
-       ================================================================== -->
-  <section class="section section--tight" aria-labelledby="t-cta">
-    <div class="container">
-      <div class="cta-band" data-reveal="scale">
-        <p class="eyebrow eyebrow--center" style="color:#7FD3B8">Pré-diagnostic gratuit</p>
-        <h2 id="t-cta">Parlons de votre copropriété.</h2>
-        <p>
-          Le premier échange et le pré-diagnostic écrit sont gratuits. Quelques
-          minutes suffisent souvent pour savoir si une analyse est utile dans votre
-          situation — et si elle ne l’est pas, nous vous le dirons.
-        </p>
-        <div class="btn-group btn-group--center">
-          <a class="btn btn--light btn--lg" href="contact.html">
-            Demander un premier échange
+        <div class="btn-group">
+          <a class="btn btn--lg magnet" href="contact.html">
+            Demander mon pré-diagnostic gratuit
             <svg class="btn__arrow" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </a>
-          <a class="btn btn--outline-light btn--lg" href="services.html">Voir les prestations</a>
+          <a class="btn btn--ghost btn--lg" href="services.html#tarifs">Voir les tarifs</a>
         </div>
       </div>
+
     </div>
   </section>
+
 </main>
 
 <!-- ==================================================================
@@ -1127,6 +562,15 @@
         </p>
       </div>
 
+      <div class="footer__col">
+        <h3>Vous êtes</h3>
+        <ul>
+          <li><a href="conseil-syndical.html">Conseil syndical</a></li>
+          <li><a href="coproprietaire.html">Copropriétaire</a></li>
+          <li><a href="syndic-benevole.html">Syndic bénévole</a></li>
+          <li><a href="syndic-professionnel.html">Syndic professionnel</a></li>
+        </ul>
+      </div>
       <div class="footer__col">
         <h3>Prestations</h3>
         <ul>

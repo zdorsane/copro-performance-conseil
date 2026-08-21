@@ -2581,6 +2581,221 @@ select.field__control {
 }
 
 /* ==========================================================================
+   14 bis. SÉLECTEUR DE PROFIL
+   --------------------------------------------------------------------------
+   Première chose vue en page d'accueil. Cinq portes d'entrée vers cinq
+   pages : ce sont des liens, donc ils fonctionnent sans JavaScript, se
+   parcourent au clavier et s'ouvrent dans un nouvel onglet.
+   ========================================================================== */
+
+.profils-section {
+  padding-top: calc(var(--header-h) + clamp(1.5rem, 1rem + 2vw, 3rem));
+}
+
+.profils-head {
+  margin-bottom: clamp(2rem, 1.4rem + 2vw, 3rem);
+}
+
+.profils {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: clamp(0.9rem, 0.6rem + 1vw, 1.35rem);
+}
+
+.profil {
+  position: relative;
+  display: grid;
+  grid-template-rows: auto auto 1fr auto;
+  gap: 0.55rem;
+  padding: clamp(1.25rem, 1rem + 0.8vw, 1.75rem);
+  min-height: 100%;
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  background: var(--surface);
+  text-decoration: none;
+  transition: border-color var(--t-base), box-shadow var(--t-base),
+    transform var(--t-base), background var(--t-base);
+}
+
+.profil:hover,
+.profil:focus-visible {
+  transform: translateY(-4px);
+  border-color: var(--accent-border);
+  background: var(--accent-soft);
+  box-shadow: var(--shadow-md);
+}
+
+/* L'icône se trace une fois la carte dans le champ — même grammaire que
+   les illustrations de prestation, d'où la classe `illu` qui lui apporte
+   l'animation de tracé.
+
+   Cette classe vient de signature.css, chargé APRÈS cette feuille : son
+   `width: 100%` l'emporterait sur une règle de même poids. D'où le
+   sélecteur en deux niveaux, qui reprend la main sur la taille. */
+.profil .profil__icone {
+  width: 48px;
+  height: 48px;
+  flex: none;
+  color: var(--accent);
+}
+
+.profil .profil__icone svg {
+  width: 48px;
+  height: 48px;
+  overflow: visible;
+}
+
+.profil__titre {
+  font-size: var(--fs-base);
+  font-weight: 640;
+  line-height: 1.28;
+  color: var(--ink-800);
+}
+
+.profil__sous {
+  font-size: var(--fs-sm);
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+
+.profil__fleche {
+  display: inline-flex;
+  align-items: center;
+  color: var(--accent);
+  transition: transform var(--t-base);
+}
+
+.profil:hover .profil__fleche,
+.profil:focus-visible .profil__fleche {
+  transform: translateX(5px);
+}
+
+/* --------------------------------------------------------------------------
+   Prestations retenues pour un profil : une liste de liens, pas des cartes.
+   Les cartes illustrées vivent sur services.html ; ici on oriente, on
+   n'expose pas.
+   -------------------------------------------------------------------------- */
+.presta-liens {
+  display: grid;
+  gap: var(--sp-3);
+  border-top: 1px solid var(--border);
+}
+
+.presta-lien {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: var(--sp-3) var(--sp-5);
+  padding: 1.1rem 0;
+  border-bottom: 1px solid var(--border);
+  text-decoration: none;
+  transition: padding-inline var(--t-base);
+}
+
+.presta-lien:hover,
+.presta-lien:focus-visible {
+  padding-inline: 0.6rem;
+  background: var(--accent-soft);
+}
+
+.presta-lien__nom {
+  font-size: var(--fs-h4);
+  font-weight: 600;
+  color: var(--ink-800);
+}
+
+.presta-lien__desc {
+  grid-column: 1;
+  font-size: var(--fs-sm);
+  color: var(--text-muted);
+  line-height: 1.55;
+  max-width: 62ch;
+}
+
+.presta-lien__fleche {
+  grid-row: 1 / 3;
+  grid-column: 2;
+  display: inline-flex;
+  color: var(--accent);
+  transition: transform var(--t-base);
+}
+
+.presta-lien:hover .presta-lien__fleche {
+  transform: translateX(5px);
+}
+
+@media (max-width: 560px) {
+  .presta-lien {
+    grid-template-columns: 1fr;
+  }
+
+  .presta-lien__fleche {
+    grid-row: auto;
+    grid-column: 1;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Bande de clôture : l'offre en une liste, rien de plus.
+   -------------------------------------------------------------------------- */
+.resume-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem 0.75rem;
+  margin-bottom: var(--sp-7);
+  list-style: none;
+  padding: 0;
+}
+
+.resume-list a {
+  display: inline-block;
+  padding: 0.45rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--r-pill);
+  background: var(--surface);
+  font-size: var(--fs-sm);
+  font-weight: 540;
+  color: var(--ink-700);
+  text-decoration: none;
+  transition: border-color var(--t-base), color var(--t-base),
+    background var(--t-base);
+}
+
+.resume-list a:hover,
+.resume-list a:focus-visible {
+  border-color: var(--accent-border);
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.resume-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-5);
+  text-align: center;
+}
+
+@media (max-width: 520px) {
+  .profils {
+    grid-template-columns: 1fr;
+  }
+
+  /* En colonne unique, l'icône passe à gauche du texte : on gagne de la
+     hauteur sans perdre le repère visuel. */
+  .profil {
+    grid-template-columns: 48px 1fr;
+    grid-template-rows: auto auto;
+    align-items: center;
+    column-gap: var(--sp-4);
+  }
+
+  .profil__icone { grid-row: 1 / 3; }
+  .profil__fleche { display: none; }
+}
+
+/* ==========================================================================
    15 bis. PAGE RESSOURCES
    --------------------------------------------------------------------------
    Repères documentaires et liens vers les sources officielles.
