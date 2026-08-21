@@ -5,6 +5,28 @@ HTML / CSS / JavaScript natifs, **aucune dépendance, aucun build**.
 
 ---
 
+## Dépôt et mise en ligne
+
+| | |
+|---|---|
+| **Site en ligne** | <https://copro-site.vercel.app> |
+| **Dépôt** | <https://github.com/zdorsane/copro-performance-conseil> |
+| **Projet Vercel** | `dorsanes-projects/copro-site` |
+| **Déploiement** | automatique — un `git push` sur `main` met le site à jour |
+
+Le dépôt GitHub est **connecté au projet Vercel**. Le cycle de travail se
+résume donc à :
+
+    git add -A
+    git commit -m "Description du changement"
+    git push
+
+Vercel reconstruit et publie dans la foulée. Aucune commande de déploiement
+à lancer à la main.
+
+---
+
+
 ## Démarrer
 
 Le site est statique : il suffit d'ouvrir `index.html` dans un navigateur.
