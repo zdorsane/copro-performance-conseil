@@ -1,2 +1,6 @@
 *.md
 !README.md
+
+# Les captures d'écran servent au dépôt, pas au site : inutile de les
+# publier sur coproperformanceconseil.fr.
+docs/

@@ -27,6 +27,37 @@ Vercel reconstruit et publie dans la foulée. Aucune commande de déploiement
 ---
 
 
+## Aperçu
+
+<p align="center">
+  <img src="docs/captures/accueil-hero.webp" alt="Page d'accueil : le calque de relevé se dessine sur la photo de façade" width="100%">
+</p>
+
+L'accueil. Un calque d'architecte se dessine sur la photo — équerres de
+cadrage, cotation en laiton, niveaux, points de relevé, annotations — pendant
+qu'une ligne de balayage remonte la façade. C'est la promesse du cabinet,
+jouée littéralement : lire un immeuble comme un architecte lit un plan.
+
+| | |
+|:--|:--|
+| <img src="docs/captures/illustrations.webp" alt="Cartes de prestation avec leurs illustrations au trait" width="100%"> | <img src="docs/captures/pieces.webp" alt="Les cinq pièces d'une mission déployées en éventail" width="100%"> |
+| **Cinq illustrations dessinées pour le site.** Aucune banque d'images : elles sont écrites en SVG dans le HTML, ce qui permet de les tracer trait par trait à l'entrée dans le champ. | **Les pièces d'une mission.** Le dossier s'ouvre en éventail. Chaque feuille nomme un document réellement examiné, repris de la liste transmise après le premier échange. |
+| <img src="docs/captures/offres.webp" alt="Section des offres : pré-diagnostic gratuit puis grille tarifaire" width="100%"> | <img src="docs/captures/methode.webp" alt="Les cinq étapes de la méthode reliées par un rail qui se remplit" width="100%"> |
+| **Les offres, annoncées d'emblée.** Le pré-diagnostic gratuit, puis la grille : audit à partir de 400 €, suivi mensuel à partir de 80 €/mois. Pas de plaquette à demander. | **La méthode en cinq étapes.** Un rail vertical se remplit au fil du défilement, avec un repère qui progresse : les étapes se lisent comme un parcours, pas comme une liste. |
+
+| | |
+|:--|:--|
+| <img src="docs/captures/page-prestation.webp" alt="Page prestation : illustration en colonne collante" width="100%"> | <img src="docs/captures/mobile.webp" alt="Le site sur mobile" width="300"> |
+| **Une page prestation.** L'illustration reste en colonne collante : elle accompagne toute la lecture du bloc, du problème jusqu'à l'étape suivante. | **Sur mobile.** Le relevé et ses annotations tiennent dans le cadre ; l'éventail de pièces bascule en grille à plat pour rester lisible. |
+
+> Captures prises sur <https://copro-site.vercel.app>. Toutes les animations
+> s'effacent si le visiteur a demandé moins de mouvement
+> (`prefers-reduced-motion`) : l'état final s'affiche alors directement, sans
+> qu'aucun contenu ne soit masqué.
+
+---
+
+
 ## Démarrer
 
 Le site est statique : il suffit d'ouvrir `index.html` dans un navigateur.
@@ -72,6 +103,8 @@ Puis ouvrir <http://localhost:8000>.
 ├── robots.txt
 ├── sitemap.xml
 ├── site.webmanifest
+│
+├── docs/captures/                  Captures d'écran du README (hors déploiement)
 │
 ├── CONTENU-A-VALIDER.md            ⚠️ À LIRE EN PREMIER
 ├── IMAGE-BRIEFS.md                 Direction artistique et briefs photo
