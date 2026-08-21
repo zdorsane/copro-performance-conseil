@@ -1,0 +1,11 @@
+# robots.txt — Copro Performance Conseil
+# Remplacer le domaine ci-dessous par le domaine réel avant mise en ligne.
+
+User-agent: *
+Allow: /
+
+# Ressources techniques inutiles à l'indexation
+Disallow: /assets/js/
+Disallow: /*.md$
+
+Sitemap: https://coproperformanceconseil.fr/sitemap.xml

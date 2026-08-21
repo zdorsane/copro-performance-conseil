@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Page introuvable | Copro Performance Conseil</title>
+<meta name="description" content="La page demandée n'existe pas ou a été déplacée.">
+<meta name="robots" content="noindex, follow">
+<meta name="theme-color" content="#0B1C2C">
+
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/style.css">
+<!-- Calque « Le Relevé » — direction artistique, illustrations et animations -->
+<link rel="stylesheet" href="assets/css/signature.css">
+<script src="assets/js/main.js" defer></script>
+<script src="assets/js/signature.js" defer></script>
+</head>
+
+<body>
+
+<!-- ==================================================================
+     RIDEAU D'OUVERTURE (décoratif)
+     La marque se trace, puis le rideau se retire de lui-même. Il ne se
+     joue qu'une fois par session et disparaît si `prefers-reduced-motion`.
+     ================================================================== -->
+<div class="boot" data-boot aria-hidden="true">
+  <svg class="boot__mark" viewBox="0 0 40 40" fill="none"
+       stroke="currentColor" stroke-width="2.4"
+       stroke-linecap="round" stroke-linejoin="round">
+    <line data-boot-stroke style="--i:0" x1="10.5" y1="27.5" x2="22.5" y2="27.5"/>
+    <line data-boot-stroke style="--i:1" x1="10.5" y1="21.5" x2="18.5" y2="21.5"/>
+    <line data-boot-stroke style="--i:2" x1="10.5" y1="15.5" x2="14.5" y2="15.5"/>
+    <path data-boot-stroke style="--i:3" d="M10 30.5 17 23.5 22 27 31 12"/>
+  </svg>
+  <p class="boot__label">Copro Performance Conseil</p>
+</div>
+
+<!-- Grain d'impression (décoratif) -->
+<div class="grain" aria-hidden="true"></div>
+<a class="skip-link" href="#contenu">Aller au contenu principal</a>
+
+<div class="scroll-progress" data-progress aria-hidden="true"></div>
+
+<header class="header" data-header>
+  <div class="container header__inner">
+    <a class="logo" href="index.html" aria-label="Copro Performance Conseil — accueil">
+      <img class="logo__mark" src="assets/img/logo.svg" alt="" width="34" height="34">
+      <span class="logo__text">
+        <span class="logo__name">Copro Performance Conseil</span>
+        <span class="logo__tag">Conseil indépendant en copropriété</span>
+      </span>
+    </a>
+    <nav class="nav" aria-label="Navigation principale">
+      <a class="nav__link" href="services.html">Services</a>
+      <a class="nav__link" href="approche.html">Notre approche</a>
+      <a class="nav__link" href="a-propos.html">À propos</a>
+      <a class="nav__link" href="faq.html">FAQ</a>
+    </nav>
+    <div class="header__actions">
+      <a class="btn magnet" href="contact.html">
+        Demander un échange
+        <svg class="btn__arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <button class="burger" data-burger type="button" aria-expanded="false" aria-controls="menu-mobile" aria-label="Ouvrir le menu">
+        <span class="burger__box"><span class="burger__line"></span><span class="burger__line"></span><span class="burger__line"></span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-nav" id="menu-mobile" data-mobile-nav aria-hidden="true">
+  <nav aria-label="Navigation mobile">
+    <ul class="mobile-nav__list">
+      <li><a class="mobile-nav__link" href="index.html">Accueil <span>01</span></a></li>
+      <li><a class="mobile-nav__link" href="services.html">Services <span>02</span></a></li>
+      <li><a class="mobile-nav__link" href="approche.html">Notre approche <span>03</span></a></li>
+      <li><a class="mobile-nav__link" href="a-propos.html">À propos <span>04</span></a></li>
+      <li><a class="mobile-nav__link" href="faq.html">FAQ <span>05</span></a></li>
+      <li><a class="mobile-nav__link" href="contact.html">Contact <span>06</span></a></li>
+    </ul>
+  </nav>
+  <div class="mobile-nav__footer">
+    <a class="btn btn--block" href="contact.html">Demander un premier échange</a>
+  </div>
+</div>
+
+<main id="contenu">
+  <section class="hero">
+    <div class="container container--narrow text-center">
+      <p class="eyebrow eyebrow--center" data-reveal="fade">Erreur 404</p>
+      <h1 data-reveal style="max-width:22ch; margin-inline:auto">
+        Cette page a changé d’adresse — ou n’a jamais existé.
+      </h1>
+      <p class="lead mt-5 mx-auto" data-reveal style="--d:1; max-width:52ch">
+        Le lien que vous avez suivi ne mène nulle part. Voici les pages les plus
+        consultées pour retrouver ce que vous cherchiez.
+      </p>
+
+      <div class="btn-group btn-group--center mt-6" data-reveal style="--d:2">
+        <a class="btn btn--lg" href="index.html">
+          Retour à l’accueil
+          <svg class="btn__arrow" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a class="btn btn--ghost btn--lg" href="contact.html">Nous contacter</a>
+      </div>
+
+      <div class="anchor-nav mt-7" data-reveal style="justify-content:center; --d:3">
+        <a href="services.html">Prestations</a>
+        <a href="approche.html">Notre approche</a>
+        <a href="faq.html">Questions fréquentes</a>
+        <a href="plan-du-site.html">Plan du site</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__bottom" style="border-top:0; padding-top:0">
+      <p>© <span data-year>2026</span> Copro Performance Conseil. Tous droits réservés.</p>
+      <nav class="footer__legal" aria-label="Liens légaux">
+        <a href="mentions-legales.html">Mentions légales</a>
+        <a href="politique-confidentialite.html">Politique de confidentialité</a>
+        <a href="plan-du-site.html">Plan du site</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

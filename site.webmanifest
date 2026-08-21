@@ -1,0 +1,19 @@
+{
+  "name": "Copro Performance Conseil",
+  "short_name": "Copro Conseil",
+  "description": "Conseil indépendant en copropriété : audit, analyse des charges, analyse des contrats et accompagnement du conseil syndical.",
+  "lang": "fr-FR",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#FBFAF7",
+  "theme_color": "#0B1C2C",
+  "icons": [
+    {
+      "src": "/assets/img/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

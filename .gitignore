@@ -1,0 +1,29 @@
+# --- Vercel ---------------------------------------------------------------
+# .vercel contient l'identifiant du projet et .env.local un jeton OIDC :
+# ni l'un ni l'autre n'a sa place dans un dépôt.
+.vercel/
+.env
+.env.*
+!.env.example
+
+# --- Système --------------------------------------------------------------
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+.DS_Store
+._*
+
+# --- Éditeurs -------------------------------------------------------------
+.vscode/
+.idea/
+*.swp
+*~
+
+# --- Divers ---------------------------------------------------------------
+# Le site est statique : aucune dépendance, aucun build. Ces entrées ne
+# servent qu'à parer un outillage ajouté plus tard.
+node_modules/
+dist/
+.cache/
+*.log

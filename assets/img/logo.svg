@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40" role="img" aria-label="Copro Performance Conseil">
+  <rect width="40" height="40" rx="10" fill="#0B1C2C"/>
+  <!-- Niveaux de l'immeuble -->
+  <g fill="#FBFAF7" opacity="0.92">
+    <rect x="9" y="26" width="15" height="3" rx="1.5"/>
+    <rect x="9" y="20" width="11" height="3" rx="1.5"/>
+    <rect x="9" y="14" width="7" height="3" rx="1.5"/>
+  </g>
+  <!-- Courbe de performance -->
+  <path d="M10 30.5 L17 23.5 L22 27 L31 12"
+        fill="none" stroke="#7FD3B8" stroke-width="2.6"
+        stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="31" cy="12" r="3" fill="#7FD3B8"/>
+</svg>

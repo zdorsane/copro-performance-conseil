@@ -1,0 +1,192 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" width="800" height="1000" role="img" aria-labelledby="heroImgTitle heroImgDesc" preserveAspectRatio="xMidYMid slice">
+  <title id="heroImgTitle">Façade d'immeuble haussmannien</title>
+  <desc id="heroImgDesc">Illustration éditoriale au trait d'une façade d'immeuble résidentiel parisien avec balcons en fer forgé.</desc>
+
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0.3" y2="1">
+      <stop offset="0%" stop-color="#F7F3EB"/>
+      <stop offset="55%" stop-color="#EDE6DA"/>
+      <stop offset="100%" stop-color="#E3DACB"/>
+    </linearGradient>
+
+    <linearGradient id="stone" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FBFAF7"/>
+      <stop offset="100%" stop-color="#EFE9DE"/>
+    </linearGradient>
+
+    <linearGradient id="glass" x1="0" y1="0" x2="0.6" y2="1">
+      <stop offset="0%" stop-color="#1D3B53"/>
+      <stop offset="100%" stop-color="#0B1C2C"/>
+    </linearGradient>
+
+    <linearGradient id="glassLit" x1="0" y1="0" x2="0.6" y2="1">
+      <stop offset="0%" stop-color="#2A5F52"/>
+      <stop offset="100%" stop-color="#17614F"/>
+    </linearGradient>
+
+    <linearGradient id="vignette" x1="0" y1="0.55" x2="0" y2="1">
+      <stop offset="0%" stop-color="#071320" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#071320" stop-opacity="0.20"/>
+    </linearGradient>
+
+    <!-- Motif de ferronnerie de balcon -->
+    <pattern id="ironwork" width="22" height="30" patternUnits="userSpaceOnUse">
+      <path d="M11 0 V30 M0 15 H22 M11 15 m-7 0 a7 7 0 1 0 14 0 a7 7 0 1 0 -14 0"
+            fill="none" stroke="#0B1C2C" stroke-width="1.6" stroke-opacity="0.55"/>
+    </pattern>
+
+    <!-- Grain léger pour éviter l'effet « plat » -->
+    <filter id="grain" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" seed="7"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.05"/>
+      </feComponentTransfer>
+      <feBlend in2="SourceGraphic" mode="multiply"/>
+    </filter>
+  </defs>
+
+  <!-- Ciel -->
+  <rect width="800" height="1000" fill="url(#sky)"/>
+
+  <!-- Immeuble d'arrière-plan, estompé -->
+  <g opacity="0.28" fill="#B4C4CF">
+    <rect x="0" y="180" width="150" height="820"/>
+    <g fill="#7C93A6" opacity="0.6">
+      <rect x="26" y="240" width="36" height="58" rx="3"/>
+      <rect x="90" y="240" width="36" height="58" rx="3"/>
+      <rect x="26" y="350" width="36" height="58" rx="3"/>
+      <rect x="90" y="350" width="36" height="58" rx="3"/>
+      <rect x="26" y="460" width="36" height="58" rx="3"/>
+      <rect x="90" y="460" width="36" height="58" rx="3"/>
+      <rect x="26" y="570" width="36" height="58" rx="3"/>
+      <rect x="90" y="570" width="36" height="58" rx="3"/>
+    </g>
+  </g>
+
+  <!-- Corps principal de la façade -->
+  <rect x="130" y="90" width="670" height="910" fill="url(#stone)"/>
+
+  <!-- Corniche haute -->
+  <g fill="#E3DACB">
+    <rect x="118" y="90" width="694" height="26"/>
+    <rect x="126" y="116" width="678" height="12" fill="#D9CFBD"/>
+  </g>
+
+  <!-- Toit en zinc -->
+  <path d="M118 90 L190 34 L760 34 L812 90 Z" fill="#C6CDD2"/>
+  <path d="M118 90 L190 34 L760 34 L812 90 Z" fill="#0B1C2C" opacity="0.10"/>
+  <!-- Lucarnes -->
+  <g>
+    <rect x="300" y="46" width="46" height="44" rx="4" fill="url(#glass)" opacity="0.82"/>
+    <rect x="470" y="46" width="46" height="44" rx="4" fill="url(#glass)" opacity="0.82"/>
+    <rect x="640" y="46" width="46" height="44" rx="4" fill="url(#glassLit)" opacity="0.9"/>
+  </g>
+
+  <!-- Bandeaux d'étage -->
+  <g fill="#DFD5C4">
+    <rect x="130" y="300" width="670" height="9"/>
+    <rect x="130" y="520" width="670" height="9"/>
+    <rect x="130" y="740" width="670" height="9"/>
+  </g>
+
+  <!-- ÉTAGE 1 (haut) — fenêtres hautes + balcons filants -->
+  <g>
+    <!-- baies -->
+    <g>
+      <rect x="196" y="150" width="84" height="132" rx="42" fill="url(#glass)"/>
+      <rect x="356" y="150" width="84" height="132" rx="42" fill="url(#glassLit)"/>
+      <rect x="516" y="150" width="84" height="132" rx="42" fill="url(#glass)"/>
+      <rect x="676" y="150" width="84" height="132" rx="42" fill="url(#glass)"/>
+    </g>
+    <!-- meneaux -->
+    <g stroke="#FBFAF7" stroke-width="3" opacity="0.55">
+      <path d="M238 152 V282 M198 216 H278"/>
+      <path d="M398 152 V282 M358 216 H438"/>
+      <path d="M558 152 V282 M518 216 H598"/>
+      <path d="M718 152 V282 M678 216 H758"/>
+    </g>
+    <!-- appuis -->
+    <g fill="#D9CFBD">
+      <rect x="186" y="282" width="104" height="8" rx="2"/>
+      <rect x="346" y="282" width="104" height="8" rx="2"/>
+      <rect x="506" y="282" width="104" height="8" rx="2"/>
+      <rect x="666" y="282" width="104" height="8" rx="2"/>
+    </g>
+  </g>
+
+  <!-- ÉTAGE 2 — balcon filant en ferronnerie -->
+  <g>
+    <g>
+      <rect x="196" y="370" width="84" height="122" rx="6" fill="url(#glass)"/>
+      <rect x="356" y="370" width="84" height="122" rx="6" fill="url(#glass)"/>
+      <rect x="516" y="370" width="84" height="122" rx="6" fill="url(#glassLit)"/>
+      <rect x="676" y="370" width="84" height="122" rx="6" fill="url(#glass)"/>
+    </g>
+    <g stroke="#FBFAF7" stroke-width="3" opacity="0.55">
+      <path d="M238 372 V492 M198 431 H278"/>
+      <path d="M398 372 V492 M358 431 H438"/>
+      <path d="M558 372 V492 M518 431 H598"/>
+      <path d="M718 372 V492 M678 431 H758"/>
+    </g>
+    <!-- garde-corps filant -->
+    <rect x="152" y="452" width="626" height="46" fill="url(#ironwork)"/>
+    <rect x="146" y="446" width="638" height="9" rx="3" fill="#0B1C2C" opacity="0.72"/>
+    <rect x="146" y="496" width="638" height="9" rx="3" fill="#0B1C2C" opacity="0.72"/>
+  </g>
+
+  <!-- ÉTAGE 3 -->
+  <g>
+    <g>
+      <rect x="196" y="590" width="84" height="122" rx="6" fill="url(#glassLit)"/>
+      <rect x="356" y="590" width="84" height="122" rx="6" fill="url(#glass)"/>
+      <rect x="516" y="590" width="84" height="122" rx="6" fill="url(#glass)"/>
+      <rect x="676" y="590" width="84" height="122" rx="6" fill="url(#glass)"/>
+    </g>
+    <g stroke="#FBFAF7" stroke-width="3" opacity="0.55">
+      <path d="M238 592 V712 M198 651 H278"/>
+      <path d="M398 592 V712 M358 651 H438"/>
+      <path d="M558 592 V712 M518 651 H598"/>
+      <path d="M718 592 V712 M678 651 H758"/>
+    </g>
+    <!-- petits balcons individuels -->
+    <g>
+      <rect x="342" y="672" width="112" height="40" fill="url(#ironwork)"/>
+      <rect x="338" y="667" width="120" height="8" rx="3" fill="#0B1C2C" opacity="0.72"/>
+      <rect x="338" y="710" width="120" height="8" rx="3" fill="#0B1C2C" opacity="0.72"/>
+
+      <rect x="662" y="672" width="112" height="40" fill="url(#ironwork)"/>
+      <rect x="658" y="667" width="120" height="8" rx="3" fill="#0B1C2C" opacity="0.72"/>
+      <rect x="658" y="710" width="120" height="8" rx="3" fill="#0B1C2C" opacity="0.72"/>
+    </g>
+  </g>
+
+  <!-- REZ-DE-CHAUSSÉE — soubassement + porte cochère -->
+  <g>
+    <rect x="130" y="790" width="670" height="210" fill="#E6DED0"/>
+    <!-- refends de pierre -->
+    <g stroke="#D2C6B1" stroke-width="2.5">
+      <path d="M130 838 H800 M130 890 H800 M130 942 H800"/>
+      <path d="M266 790 V1000 M470 790 V1000 M674 790 V1000"/>
+    </g>
+
+    <!-- porte cochère -->
+    <path d="M330 1000 V890 a70 70 0 0 1 140 0 V1000 Z" fill="#12293D"/>
+    <path d="M330 1000 V890 a70 70 0 0 1 140 0 V1000 Z" fill="none" stroke="#0B1C2C" stroke-width="6"/>
+    <path d="M400 826 V1000" stroke="#B9924F" stroke-width="3" opacity="0.55"/>
+    <g stroke="#B9924F" stroke-width="2.5" opacity="0.45" fill="none">
+      <path d="M400 900 m-44 0 a44 44 0 0 1 88 0"/>
+      <path d="M356 940 H444 M356 972 H444"/>
+    </g>
+    <circle cx="378" cy="946" r="5" fill="#B9924F" opacity="0.8"/>
+
+    <!-- vitrines latérales -->
+    <rect x="176" y="880" width="88" height="120" rx="4" fill="url(#glass)" opacity="0.9"/>
+    <rect x="540" y="880" width="88" height="120" rx="4" fill="url(#glass)" opacity="0.9"/>
+    <rect x="676" y="880" width="88" height="120" rx="4" fill="url(#glassLit)" opacity="0.9"/>
+  </g>
+
+  <!-- Grain + vignettage -->
+  <rect width="800" height="1000" filter="url(#grain)" opacity="0.5" fill="#ffffff" style="mix-blend-mode:multiply"/>
+  <rect width="800" height="1000" fill="url(#vignette)"/>
+</svg>
