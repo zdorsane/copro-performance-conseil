@@ -9,7 +9,8 @@ HTML / CSS / JavaScript natifs, **aucune dépendance, aucun build**.
 
 | | |
 |---|---|
-| **Site en ligne** | <https://copro-site.vercel.app> |
+| **Site en ligne** | <https://copro-performance-conseil.vercel.app> |
+| Adresse historique | <https://copro-site.vercel.app> (toujours valide) |
 | **Dépôt** | <https://github.com/zdorsane/copro-performance-conseil> |
 | **Projet Vercel** | `dorsanes-projects/copro-site` |
 | **Déploiement** | automatique — un `git push` sur `main` met le site à jour |
@@ -661,7 +662,11 @@ Le site est en ligne sur Vercel, en accès public.
 
 ### Lien à transmettre au client
 
-**https://copro-site.vercel.app**
+**https://copro-performance-conseil.vercel.app**
+
+Les deux adresses pointent vers le même déploiement de production ;
+`copro-site.vercel.app` reste valide. La première porte le nom de la marque :
+c'est celle à donner.
 
 C'est l'URL stable du projet : elle pointe toujours vers le dernier déploiement
 de production. À privilégier sur les URL longues à identifiant
@@ -720,7 +725,7 @@ d'erreur explicite.
 
 Vérifier ensuite que la mise à jour est bien en ligne :
 
-    curl -s https://copro-site.vercel.app | grep -c signature.css
+    curl -s https://copro-performance-conseil.vercel.app | grep -c signature.css
 
 ---
 
