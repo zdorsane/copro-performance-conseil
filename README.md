@@ -33,10 +33,11 @@ Vercel reconstruit et publie dans la foulée. Aucune commande de déploiement
   <img src="docs/captures/selecteur.webp" alt="Sélecteur de profil en tête de la page d'accueil" width="100%">
 </p>
 
-**L'accueil aiguille, elle n'expose plus.** Première chose vue : « Vous êtes… »
-et cinq portes d'entrée. Le visiteur se qualifie lui-même et arrive sur une page
-qui ne lui parle que de son cas. Ce sont de vrais liens, pas des boutons
-JavaScript : crawlables, ouvrables dans un nouvel onglet, utilisables au clavier.
+**L'accueil aiguille, elle n'expose plus.** Le choix du profil est posé comme un
+**schéma** : un nœud racine « Vous êtes… » qui se ramifie vers cinq destinations.
+Le visiteur se situe d'un coup d'œil, sans lire. Ce sont de vrais liens, pas des
+boutons JavaScript : crawlables, ouvrables dans un nouvel onglet, utilisables au
+clavier.
 
 | | |
 |:--|:--|
@@ -551,16 +552,28 @@ Les valeurs basses des `clamp()` bougent à peine : sur mobile, la taille était
 déjà juste. C'est le haut de l'échelle — l'affichage sur grand écran — qui
 tenait de l'affiche plutôt que du document professionnel.
 
-### Ce qui a changé dans le sélecteur
+### Le sélecteur, posé comme un diagramme
 
-- **En-tête sur deux colonnes** : titre à gauche, phrase d'explication à droite,
-  alignés sur la même ligne de base, séparés du reste par un filet. Un titre
-  centré de 47 px au-dessus d'un paragraphe centré, c'est une affiche.
-- **Tuiles compactes** : icône de 26 px en tête, deux lignes de texte, bordure
-  fine. La flèche n'apparaît qu'au survol — cinq flèches permanentes alourdissent
-  la rangée sans rien apprendre.
-- **Sous 560 px**, l'icône passe à gauche du texte : les cinq tuiles tiennent
-  alors dans un seul écran de téléphone.
+Une rangée de cartes ne dit pas qu'il faut choisir. Un arbre, si. Le sélecteur
+est donc un schéma de branchement : nœud racine, tige, barre de distribution,
+descentes, nœuds.
+
+**Les traits sont tracés en CSS, pas en SVG.** Ils suivent ainsi la grille à
+toutes les largeurs, sans qu'aucune coordonnée n'ait à être recalculée.
+
+Deux détails de géométrie qui ne se voient que quand ils sont faux :
+
+- La barre de distribution ne s'étend pas de 10 % à 90 %. Avec cinq colonnes et
+  quatre gouttières, une demi-colonne vaut `(100% − 4 × gap) / 10` — soit 4,8 px
+  de plus à 1440 px. Sans cette correction, la barre n'atteint pas les descentes
+  extrêmes.
+- **Sous 960 px** l'arbre bascule à la verticale : une colonne vertébrale à
+  gauche, une amorce vers chaque nœud. Le seuil est haut parce qu'à 860 px un
+  nœud tombe à 151 px et « Membre du conseil syndical » se brise sur trois lignes.
+- La colonne vertébrale n'est pas un trait unique qu'on masquerait sous le
+  dernier nœud : **chaque nœud porte son segment**, et le dernier s'arrête à son
+  amorce. Le trait s'arrête parce qu'il n'est pas dessiné, pas parce qu'on le
+  recouvre — une ruse au rectangle de fond casse dès que le fond change.
 
 ### Un défaut corrigé au passage
 

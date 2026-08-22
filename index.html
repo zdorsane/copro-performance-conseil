@@ -266,95 +266,87 @@
     <div class="container">
 
       <div class="profils-head">
-        <div>
-          <p class="eyebrow" data-reveal="fade">Commencez ici</p>
-          <p class="profils-titre" id="t-profils" data-reveal style="--d:1">Vous êtes…</p>
-        </div>
-        <p class="profils-lead" data-reveal style="--d:2">
+        <p class="eyebrow" data-reveal="fade">Commencez ici</p>
+        <p class="profils-lead" data-reveal style="--d:1">
           Nos réponses ne sont pas les mêmes selon votre place dans la copropriété.
           Choisissez la vôtre : nous vous montrons ce qui vous concerne, et rien d’autre.
         </p>
       </div>
 
-      <nav class="profils" aria-label="Choisir votre profil" data-stagger>
-        <a class="profil" href="conseil-syndical.html" data-reveal style="--d:0">
-          <span class="profil__icone illu" aria-hidden="true">
-            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor"
+      <!-- Le choix du profil, posé comme un schéma : un nœud racine qui se
+           ramifie vers cinq destinations. Les traits sont dessinés en CSS,
+           pas en SVG, pour qu'ils suivent la grille à toutes les largeurs.
+           Sous 720 px l'arbre bascule à la verticale. -->
+      <div class="diagramme">
+
+        <p class="diagramme__racine" data-reveal="fade">Vous êtes…</p>
+
+        <nav class="diagramme__branches" aria-label="Choisir votre profil" data-stagger>
+          <a class="noeud" href="conseil-syndical.html" data-reveal style="--d:1">
+            <span class="noeud__icone illu" aria-hidden="true">
+              <svg viewBox="0 0 48 48" fill="none" stroke="currentColor"
                  stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
             <circle data-draw style="--i:0" cx="24" cy="16" r="7"/>
             <circle data-draw style="--i:1" cx="10" cy="34" r="6"/>
             <circle data-draw style="--i:2" cx="38" cy="34" r="6"/>
             <path data-draw style="--i:3" d="M24 23v6M18 30l-5 2M30 30l5 2"/>
             </svg>
-          </span>
-          <span class="profil__titre">Membre du conseil syndical</span>
-          <span class="profil__sous">Contrôler la gestion sans y passer vos soirées</span>
-          <span class="profil__fleche" aria-hidden="true">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </span>
-        </a>
-        <a class="profil" href="coproprietaire.html" data-reveal style="--d:1">
-          <span class="profil__icone illu" aria-hidden="true">
-            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor"
+            </span>
+            <span class="noeud__titre">Membre du conseil syndical</span>
+            <span class="noeud__sous">Contrôler la gestion sans y passer vos soirées</span>
+          </a>
+          <a class="noeud" href="coproprietaire.html" data-reveal style="--d:2">
+            <span class="noeud__icone illu" aria-hidden="true">
+              <svg viewBox="0 0 48 48" fill="none" stroke="currentColor"
                  stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
             <path data-draw style="--i:0" d="M8 42V14l16-8 16 8v28"/>
             <path data-draw style="--i:1" d="M19 42V27h10v15"/>
             <circle data-pop style="--i:0" cx="26.5" cy="34" r="1.4" fill="currentColor" stroke="none"/>
             </svg>
-          </span>
-          <span class="profil__titre">Copropriétaire</span>
-          <span class="profil__sous">Comprendre ce que vous payez chaque trimestre</span>
-          <span class="profil__fleche" aria-hidden="true">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </span>
-        </a>
-        <a class="profil" href="syndic-benevole.html" data-reveal style="--d:2">
-          <span class="profil__icone illu" aria-hidden="true">
-            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor"
+            </span>
+            <span class="noeud__titre">Copropriétaire</span>
+            <span class="noeud__sous">Comprendre ce que vous payez chaque trimestre</span>
+          </a>
+          <a class="noeud" href="syndic-benevole.html" data-reveal style="--d:3">
+            <span class="noeud__icone illu" aria-hidden="true">
+              <svg viewBox="0 0 48 48" fill="none" stroke="currentColor"
                  stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
             <circle data-draw style="--i:0" cx="17" cy="17" r="8"/>
             <path data-draw style="--i:1" d="m23 23 15 15"/>
             <path data-draw style="--i:2" d="m32 32 4 4-3 3M38 38l3 3"/>
             </svg>
-          </span>
-          <span class="profil__titre">Syndic bénévole</span>
-          <span class="profil__sous">Assumer la gestion sans être seul face aux textes</span>
-          <span class="profil__fleche" aria-hidden="true">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </span>
-        </a>
-        <a class="profil" href="syndic-professionnel.html" data-reveal style="--d:3">
-          <span class="profil__icone illu" aria-hidden="true">
-            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor"
+            </span>
+            <span class="noeud__titre">Syndic bénévole</span>
+            <span class="noeud__sous">Assumer la gestion sans être seul face aux textes</span>
+          </a>
+          <a class="noeud" href="syndic-professionnel.html" data-reveal style="--d:4">
+            <span class="noeud__icone illu" aria-hidden="true">
+              <svg viewBox="0 0 48 48" fill="none" stroke="currentColor"
                  stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
             <path data-draw style="--i:0" d="M6 12h18v28H6z"/>
             <path data-draw style="--i:1" d="M24 12h18v28H24z"/>
             <path data-draw style="--i:2" d="M11 20h8M11 26h8M29 20h8M29 26h8"/>
             <circle data-pop style="--i:0" cx="33" cy="33" r="2" fill="currentColor" stroke="none"/>
             </svg>
-          </span>
-          <span class="profil__titre">Syndic professionnel</span>
-          <span class="profil__sous">Objectiver un dossier par un regard extérieur</span>
-          <span class="profil__fleche" aria-hidden="true">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </span>
-        </a>
-        <a class="profil" href="contact.html" data-reveal style="--d:4">
-          <span class="profil__icone illu" aria-hidden="true">
-            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor"
+            </span>
+            <span class="noeud__titre">Syndic professionnel</span>
+            <span class="noeud__sous">Objectiver un dossier par un regard extérieur</span>
+          </a>
+          <a class="noeud" href="contact.html" data-reveal style="--d:5">
+            <span class="noeud__icone illu" aria-hidden="true">
+              <svg viewBox="0 0 48 48" fill="none" stroke="currentColor"
                  stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
             <circle data-draw style="--i:0" cx="24" cy="24" r="18"/>
             <path data-draw style="--i:1" d="M19 19a5 5 0 1 1 6 5v3"/>
             <circle data-pop style="--i:0" cx="25" cy="34" r="1.6" fill="currentColor" stroke="none"/>
             </svg>
-          </span>
-          <span class="profil__titre">Autre situation</span>
-          <span class="profil__sous">Décrivez-nous votre cas en quelques lignes</span>
-          <span class="profil__fleche" aria-hidden="true">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </span>
-        </a>
-      </nav>
+            </span>
+            <span class="noeud__titre">Autre situation</span>
+            <span class="noeud__sous">Décrivez-nous votre cas en quelques lignes</span>
+          </a>
+        </nav>
+
+      </div>
 
     </div>
   </section>

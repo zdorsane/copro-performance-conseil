@@ -2610,139 +2610,237 @@ select.field__control {
   padding-bottom: clamp(2rem, 1.5rem + 2vw, 3.25rem);
 }
 
-/* En-tête sur deux colonnes : le titre à gauche, la phrase d'explication à
-   droite, alignés sur la même ligne de base. Un titre centré de 47 px
-   au-dessus d'un paragraphe centré, c'est une affiche ; ceci est une page
-   de travail. */
 .profils-head {
-  display: grid;
-  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
-  align-items: end;
-  gap: clamp(1rem, 0.5rem + 2vw, 3rem);
-  margin-bottom: clamp(1.5rem, 1.1rem + 1.6vw, 2.5rem);
-  padding-bottom: var(--sp-5);
-  border-bottom: 1px solid var(--border);
-}
-
-/* Volontairement pas un <h2> : le <h1> de la page vit dans le hero, juste
-   en dessous. Un h2 placé avant lui casserait la hiérarchie des titres. */
-.profils-titre {
-  font-family: var(--font-display);
-  font-size: clamp(1.75rem, 1.4rem + 1.5vw, 2.6rem);
-  line-height: 1.02;
-  letter-spacing: -0.02em;
-  color: var(--ink-900);
+  text-align: center;
+  margin-bottom: clamp(1.5rem, 1.1rem + 1.6vw, 2.25rem);
 }
 
 .profils-lead {
   font-size: var(--fs-base);
   line-height: 1.6;
   color: var(--text-muted);
-  max-width: 54ch;
+  max-width: 62ch;
+  margin-inline: auto;
 }
 
-.profils {
+/* ==========================================================================
+   LE DIAGRAMME DE CHOIX
+   --------------------------------------------------------------------------
+   Un nœud racine qui se ramifie vers cinq destinations. Les traits sont
+   tracés en CSS et non en SVG : ils suivent ainsi la grille quelle que
+   soit la largeur, sans qu'aucune coordonnée n'ait à être recalculée.
+
+   Géométrie horizontale : la grille compte cinq colonnes égales, donc le
+   centre de la première est à 10 % et celui de la dernière à 90 %. La
+   barre de distribution s'étend exactement entre ces deux points.
+   ========================================================================== */
+
+.diagramme {
+  --trait: var(--border-strong);
+  --tige: 26px;          /* hauteur de chaque segment vertical */
+  --gap: 0.75rem;        /* gouttière de la grille — entre aussi dans le calcul
+                            de la barre de distribution, voir plus bas */
+}
+
+/* --- Le nœud racine --- */
+.diagramme__racine {
+  position: relative;
+  display: block;
+  width: max-content;
+  margin: 0 auto var(--tige);
+  padding: 0.5rem 1.4rem;
+  border: 1px solid var(--ink-800);
+  border-radius: var(--r-pill);
+  background: var(--ink-800);
+  color: var(--text-invert);
+  font-family: var(--font-display);
+  font-size: clamp(1.15rem, 1rem + 0.6vw, 1.5rem);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+/* La tige qui descend de la racine vers la barre de distribution */
+.diagramme__racine::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  width: 1px;
+  height: var(--tige);
+  background: var(--trait);
+}
+
+/* --- La ramification --- */
+.diagramme__branches {
+  position: relative;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(178px, 1fr));
-  gap: 0.75rem;
+  grid-template-columns: repeat(5, 1fr);
+  gap: var(--gap);
+  padding-top: var(--tige);
 }
 
-/* Tuile compacte : l'icône en tête, deux lignes de texte, une flèche qui
-   n'apparaît qu'au survol. 254 px de haut auparavant, ~140 désormais. */
-.profil {
+/* La barre horizontale, du centre de la première colonne au centre de la
+   dernière.
+
+   Le raccourci « 10 % » est faux : avec cinq colonnes et quatre
+   gouttières, une colonne ne fait pas 20 % de la largeur. La demi-colonne
+   vaut (100 % − 4 × gouttière) / 10 — soit 4,8 px de plus à 1440 px. Sans
+   cette correction, la barre n'atteint pas les descentes extrêmes. */
+.diagramme__branches::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: calc((100% - 4 * var(--gap)) / 10);
+  right: calc((100% - 4 * var(--gap)) / 10);
+  height: 1px;
+  background: var(--trait);
+}
+
+/* La descente de la barre vers chaque nœud */
+.noeud::before {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  width: 1px;
+  height: var(--tige);
+  background: var(--trait);
+}
+
+/* --- Les nœuds --- */
+.noeud {
   position: relative;
   display: grid;
   grid-template-rows: auto auto 1fr;
-  gap: 0.5rem;
-  padding: 1.05rem 1.1rem 1.15rem;
-  border: 1px solid var(--border);
-  border-radius: var(--r-md);
+  gap: 0.45rem;
+  padding: 0.95rem 1rem 1.1rem;
+  border: 1px solid var(--trait);
+  border-radius: var(--r-sm);
   background: var(--surface);
   text-decoration: none;
   transition: border-color var(--t-fast), background var(--t-fast),
-    transform var(--t-fast);
+    box-shadow var(--t-fast);
 }
 
-.profil:hover,
-.profil:focus-visible {
-  transform: translateY(-2px);
+.noeud:hover,
+.noeud:focus-visible {
   border-color: var(--ink-800);
-  background: var(--surface);
+  background: var(--paper-2);
+  box-shadow: var(--shadow-sm);
 }
 
-.profil .profil__icone {
-  width: 26px;
-  height: 26px;
-  flex: none;
+/* Le trait qui mène au nœud survolé s'assombrit : on voit le chemin. */
+.noeud:hover::before,
+.noeud:focus-visible::before {
+  background: var(--ink-800);
+}
+
+.noeud .noeud__icone {
+  width: 24px;
+  height: 24px;
   color: var(--accent);
 }
 
-.profil .profil__icone svg {
-  width: 26px;
-  height: 26px;
+.noeud .noeud__icone svg {
+  width: 24px;
+  height: 24px;
   overflow: visible;
 }
 
-.profil__titre {
+.noeud__titre {
   font-size: var(--fs-sm);
   font-weight: 640;
   line-height: 1.3;
-  letter-spacing: -0.005em;
   color: var(--ink-900);
 }
 
-.profil__sous {
+.noeud__sous {
   font-size: var(--fs-xs);
   line-height: 1.45;
   color: var(--text-muted);
 }
 
-/* La flèche ne s'affiche qu'à l'approche : cinq flèches permanentes
-   alourdissent la rangée sans rien apprendre. */
-.profil__fleche {
-  position: absolute;
-  top: 1.05rem;
-  right: 1rem;
-  display: inline-flex;
-  color: var(--ink-800);
-  opacity: 0;
-  transform: translateX(-4px);
-  transition: opacity var(--t-fast), transform var(--t-fast);
-}
-
-.profil:hover .profil__fleche,
-.profil:focus-visible .profil__fleche {
-  opacity: 1;
-  transform: none;
-}
-
-@media (max-width: 860px) {
-  .profils-head {
-    grid-template-columns: 1fr;
-    align-items: start;
-    gap: var(--sp-3);
-  }
-}
-
-@media (max-width: 560px) {
-  .profils {
-    grid-template-columns: 1fr;
-    gap: 0.5rem;
+/* --------------------------------------------------------------------------
+   Sous 960 px, cinq colonnes deviennent illisibles : le nœud tombe à
+   125 px de large et « Membre du conseil syndical » se brise sur trois
+   lignes. L'arbre bascule alors à la verticale — une colonne vertébrale à
+   gauche, une amorce horizontale vers chaque nœud. C'est toujours un
+   diagramme, simplement lu de haut en bas.
+   -------------------------------------------------------------------------- */
+@media (max-width: 960px) {
+  .diagramme {
+    --tige: 18px;
+    --rail: 15px;        /* abscisse de la colonne vertébrale */
+    --relais: 16px;      /* longueur de l'amorce horizontale vers un nœud */
+    --stub: 1.35rem;     /* hauteur à laquelle l'amorce rejoint le nœud */
   }
 
-  /* En colonne unique, l'icône passe à gauche : on gagne de la hauteur
-     sans perdre le repère visuel. */
-  .profil {
-    grid-template-columns: 26px 1fr;
+  .diagramme__racine {
+    width: auto;
+    margin-left: 0;
+    margin-right: auto;
+    margin-bottom: var(--tige);
+    border-radius: var(--r-md);
+  }
+
+  /* La tige part du rail, plus du centre. */
+  .diagramme__racine::after {
+    left: var(--rail);
+  }
+
+  .diagramme__branches {
+    grid-template-columns: 1fr;
+    gap: var(--gap);
+    padding-top: 0;
+    padding-left: calc(var(--rail) + var(--relais));
+  }
+
+  /* Plus de colonne vertébrale unique : chaque nœud porte son propre
+     segment. Le masquer sous le dernier nœud demandait un rectangle de la
+     couleur du fond — une ruse qui casse dès que le fond change. Ici le
+     trait s'arrête parce qu'il n'est pas dessiné, pas parce qu'on le
+     recouvre. */
+  .diagramme__branches::before {
+    display: none;
+  }
+
+  /* L'amorce horizontale, du rail vers le nœud. */
+  .noeud::before {
+    bottom: auto;
+    top: var(--stub);
+    left: calc(-1 * var(--relais));
+    width: var(--relais);
+    height: 1px;
+  }
+
+  /* Le segment de colonne vertébrale : du haut du nœud jusqu'au haut du
+     suivant, en traversant la gouttière. */
+  .noeud::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: calc(-1 * var(--gap));
+    left: calc(-1 * var(--relais));
+    width: 1px;
+    background: var(--trait);
+  }
+
+  /* Sous le dernier nœud, le trait s'arrête à son amorce. */
+  .noeud:last-child::after {
+    bottom: auto;
+    height: var(--stub);
+  }
+
+  .noeud {
+    grid-template-columns: 24px 1fr;
     grid-template-rows: auto auto;
     align-items: start;
-    column-gap: 0.85rem;
-    row-gap: 0.2rem;
-    padding: 0.95rem 1rem;
+    column-gap: 0.8rem;
+    row-gap: 0.15rem;
+    padding: 0.85rem 0.95rem;
   }
 
-  .profil .profil__icone { grid-row: 1 / 3; margin-top: 0.1rem; }
-  .profil__fleche { display: none; }
+  .noeud .noeud__icone { grid-row: 1 / 3; margin-top: 0.1rem; }
 }
 
 /* --------------------------------------------------------------------------
