@@ -258,7 +258,8 @@
 
 .releve__annot span {
   display: block;
-  font-size: 0.62rem;
+  /* 0.62rem donnait 9,9 px — voir style.css § 16 ter. */
+  font-size: 0.665rem;
   font-weight: 500;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -496,7 +497,9 @@
   background: var(--accent-soft);
   color: var(--accent);
   font-family: var(--font-mono);
-  font-size: 0.56rem;
+  /* 0.56rem donnait 9,0 px : sous le plancher de lisibilité retenu après
+     l'audit de responsivité (voir style.css § 16 ter). */
+  font-size: 0.665rem;
   letter-spacing: 0.09em;
   text-transform: uppercase;
 }

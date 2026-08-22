@@ -3175,6 +3175,92 @@ select.field__control {
 }
 
 /* ==========================================================================
+   16 ter. PLANCHER DE LISIBILITÉ
+   --------------------------------------------------------------------------
+   Relevé lors de l'audit de responsivité : plusieurs libellés descendaient
+   sous 10 px — jusqu'à 9,0 px pour les onglets du dossier. Le public visé
+   est composé de bénévoles souvent âgés ; en dessous de 10,5 px la lecture
+   devient un effort, même pour un libellé court.
+
+   Ces éléments sont des micro-libellés en capitales avec interlettrage :
+   ils supportent d'être petits, pas d'être minuscules.
+
+   Deux d'entre eux — .dossier__tag et .releve__annot span — sont corrigés
+   dans signature.css et non ici : cette feuille est chargée AVANT le
+   calque, qui l'emporterait à spécificité égale.
+   ========================================================================== */
+
+/* Baseline du logo — 9,6 px relevés. Masquée sous 420 px, mais lisible
+   partout où elle s'affiche. */
+.logo__tag {
+  font-size: 0.655rem;         /* 10,5 px */
+}
+
+/* Éditeur de la source sur la page Ressources — 10,6 px relevés */
+.source__editeur {
+  font-size: 0.68rem;
+}
+
+/* --------------------------------------------------------------------------
+   Longueur de ligne. Au-delà d'environ 90 caractères, l'œil peine à
+   retrouver le début de la ligne suivante. L'audit relevait jusqu'à
+   119 caractères pour les aides de formulaire à 768 px.
+   -------------------------------------------------------------------------- */
+.field__hint,
+.field__error {
+  max-width: 62ch;
+}
+
+.card__text,
+.value-card p {
+  max-width: 68ch;
+}
+
+/* --------------------------------------------------------------------------
+   Mesure du texte courant. Entre 721 et 960 px, les mises en page à deux
+   colonnes se sont repliées sur une seule mais le conteneur reste large :
+   les paragraphes s'étirent alors jusqu'à 99 caractères. Au-delà d'environ
+   90, l'œil peine à retrouver le début de la ligne suivante.
+
+   La contrainte ne vaut que dans cette bande : au-dessus, les colonnes
+   sont revenues et bornent déjà la mesure.
+   -------------------------------------------------------------------------- */
+@media (min-width: 721px) and (max-width: 960px) {
+  .container > p,
+  .split > div > p,
+  .section-head > p,
+  .service-block__aside p,
+  .service-step p {
+    max-width: 74ch;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Navigation d'ancres des pages prestation : 39 px de haut relevés. Six
+   liens serrés les uns contre les autres, c'est précisément le cas où un
+   doigt se trompe de cible.
+   -------------------------------------------------------------------------- */
+@media (max-width: 960px) {
+  .anchor-nav a {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Cible tactile du logo : 34 px de haut relevés. La largeur (233 px) rend
+   le lien facile à viser, mais autant respecter les 44 px recommandés là
+   où le doigt remplace la souris.
+   -------------------------------------------------------------------------- */
+@media (max-width: 960px) {
+  .logo {
+    padding-block: 0.3rem;
+    min-height: 44px;
+  }
+}
+
+/* ==========================================================================
    16 bis. ROBUSTESSE RESPONSIVE
    --------------------------------------------------------------------------
    Corrections d'un débordement horizontal constaté en dessous de 420 px

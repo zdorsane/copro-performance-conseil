@@ -590,6 +590,77 @@ est désormais `H1 > H2 > H3`.
 ---
 
 
+## Audit de responsivité
+
+Mené avant transmission au client. **15 pages × 17 largeurs = 255 mesures**,
+automatisées : chaque page est chargée une fois, puis le viewport varie sans
+rechargement. Les animations de révélation sont neutralisées avant mesure —
+sans quoi tout bloc encore sous la ligne de flottaison serait mesuré à son
+état initial, décalé et transparent, et non à sa place réelle.
+
+Largeurs couvertes : 320, 360, 375, 390, 412, 428, 480, 600, 640, 768, 820,
+1024, 1180, 1280, 1440, 1920, plus 844 × 390 en paysage. La mesure à 640 px
+tient lieu de **zoom 200 %** sur un portable 1280.
+
+### Résultat
+
+| Contrôle | Avant | Après |
+|---|---|---|
+| Débordement horizontal | **0 / 255** | 0 / 255 |
+| Lignes de plus de 95 caractères | 18 cas | **0** |
+| Cibles tactiles sous 44 px | 255 cas | **87, tous ≥ 1024 px** (souris) |
+| Texte sous 10,5 px | 4 composants | **0** |
+| Champs déclenchant le zoom iOS | 0 réel | 0 réel |
+
+### Ce qui a été corrigé
+
+- **Texte sous le plancher de lisibilité.** Les onglets « Pièce 01 » du dossier
+  tombaient à **9,0 px**, les sur-titres du relevé à 9,9 px, la baseline du logo
+  à 9,6 px. Tous remontés au-dessus de 10,5 px. Le public visé est composé de
+  bénévoles souvent âgés : en dessous, la lecture devient un effort.
+- **Mesure du texte.** Entre 721 et 960 px, les mises en page à deux colonnes se
+  replient mais le conteneur reste large : les paragraphes s'étiraient jusqu'à
+  **119 caractères**. Bornés à 74ch dans cette bande uniquement.
+- **Cibles tactiles.** Navigation d'ancres des pages prestation (39 px) et logo
+  (34 px) portés à 44 px sous 960 px.
+
+### Les faux positifs, et pourquoi ils en sont
+
+Un audit automatique signale beaucoup de choses ; les écarter demande de les
+regarder une par une.
+
+| Signalé | Verdict |
+|---|---|
+| `input` à 15,6 px sur contact | Le **piège à robots**, positionné à −9999 px. Jamais focalisé par un humain. |
+| Case de consentement 18 × 18 px | **Tout le label (323 × 105) est cliquable et coche la case.** Cible réelle conforme. |
+| Lien « politique de confidentialité » 160 × 18 | Lien **en plein milieu d'une phrase** : cas explicitement exempté par WCAG 2.5.5. |
+| 87 cibles sous 44 px restantes | Toutes à **1024 px et au-delà** — liens de navigation au pointeur, pas au doigt. |
+| `.flag` à 10,1 px | Les pastilles « À valider », marqueurs internes destinés à disparaître. |
+
+### ⚠️ Un point à trancher avant l'envoi
+
+**50 pastilles « À valider » sont visibles** sur le site :
+
+| Page | Pastilles |
+|---|---|
+| `mentions-legales.html` | 17 |
+| `politique-confidentialite.html` | 11 |
+| `faq.html` | 9 |
+| `a-propos.html` | 6 |
+| `approche.html`, `contact.html`, `services.html` | 2 chacune |
+| `syndic-professionnel.html` | 1 |
+
+Elles signalent ce que le cabinet doit confirmer — c'est leur raison d'être. Mais
+si le lien part vers un tiers, elles donnent l'impression d'un site inachevé.
+
+Un interrupteur existe, documenté plus haut : ajouter `hide-flags` sur le `<body>`
+les masque toutes sans les supprimer.
+
+    <body class="hide-flags">
+
+---
+
+
 ## Accessibilité
 
 Conçu en visant WCAG 2.1 niveau AA :
