@@ -450,8 +450,8 @@ redirige le trafic sur différentes pages en fonction du type de personne »*.
 
 ### Ce que ça donne
 
-**2 925 px, 3,3 écrans**, contre 14 409 px et 16 écrans au point de départ —
-**80 % de moins**. Trois blocs, dans cet ordre :
+**2 273 px, 2,5 écrans**, contre 14 409 px et 16 écrans au point de départ —
+**84 % de moins**. Trois blocs, dans cet ordre :
 
 1. **Le sélecteur** « Vous êtes… », cinq portes d'entrée
 2. **Le hero** et son calque de relevé
@@ -522,6 +522,56 @@ La page porte une pastille **À valider** sur ce point. Deux suites possibles :
   *« Nous n'appartenons à aucun groupe de gestion immobilière et ne percevons
   aucune commission de prestataire »* — l'indépendance devient financière et
   structurelle, plus relationnelle.
+
+---
+
+
+## L'échelle typographique, resserrée
+
+Retour client : *« le design est trop grand »*. C'était mesurable.
+
+| | Avant | Après |
+|---|---|---|
+| `h1` à 1440 px | 59 px | **46 px** |
+| `h2` | 47 px | **34 px** |
+| Corps de texte | 17 px | **16 px** |
+| Padding vertical de section | 128 px | **76 px** |
+| Tuile du sélecteur | 254 px de haut | **132 px** |
+| Page d'accueil | 2 925 px | **2 273 px** |
+
+### Pourquoi la modification est globale et non limitée à l'accueil
+
+La demande portait sur la page d'accueil. L'échelle typographique est pourtant
+une décision de design system : une accueil 30 % plus dense que le reste du site
+aurait produit un décrochage visible à chaque clic dans le menu. Les jetons
+`--fs-*` et `--section-y` ont donc été resserrés **partout**, ce qui bénéficie
+aussi aux pages longues — `services.html` passe de 10 900 à 8 944 px.
+
+Les valeurs basses des `clamp()` bougent à peine : sur mobile, la taille était
+déjà juste. C'est le haut de l'échelle — l'affichage sur grand écran — qui
+tenait de l'affiche plutôt que du document professionnel.
+
+### Ce qui a changé dans le sélecteur
+
+- **En-tête sur deux colonnes** : titre à gauche, phrase d'explication à droite,
+  alignés sur la même ligne de base, séparés du reste par un filet. Un titre
+  centré de 47 px au-dessus d'un paragraphe centré, c'est une affiche.
+- **Tuiles compactes** : icône de 26 px en tête, deux lignes de texte, bordure
+  fine. La flèche n'apparaît qu'au survol — cinq flèches permanentes alourdissent
+  la rangée sans rien apprendre.
+- **Sous 560 px**, l'icône passe à gauche du texte : les cinq tuiles tiennent
+  alors dans un seul écran de téléphone.
+
+### Un défaut corrigé au passage
+
+Le hero réservait la hauteur du header (`padding-top: calc(var(--header-h) + …)`)
+alors qu'il n'ouvre plus la page depuis que le sélecteur le précède. Les deux
+espacements se cumulaient : près de 200 px de vide entre les deux blocs. La règle
+`.hero:not(:first-child)` supprime ce report.
+
+Le titre du sélecteur est par ailleurs passé de `<h2>` à un paragraphe stylé : il
+précédait le `<h1>` du hero, ce qui inversait la hiérarchie des titres. L'ordre
+est désormais `H1 > H2 > H3`.
 
 ---
 
