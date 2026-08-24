@@ -1234,6 +1234,10 @@ body.hide-flags .flag {
   margin-bottom: var(--sp-3);
 }
 
+/* Le niveau du titre depend de la page : h3 la ou une section h2 le
+   precede, h2 sur le plan du site ou il ouvre le contenu. Le style ne
+   doit pas dependre de ce choix semantique. */
+.value-card h2,
 .value-card h3 {
   font-size: var(--fs-h4);
   margin-bottom: var(--sp-3);
@@ -3751,6 +3755,14 @@ main > .page-head:first-child {
   margin-bottom: var(--sp-3);
 }
 
+.cas__titre {
+  font-size: var(--fs-h4);
+  font-weight: 620;
+  line-height: 1.3;
+  color: var(--ink-900);
+  margin-bottom: var(--sp-3);
+}
+
 .cas__corps p {
   font-size: var(--fs-base);
   line-height: 1.65;
@@ -3831,6 +3843,24 @@ main > .page-head:first-child {
   font-size: var(--fs-xs);
   line-height: 1.5;
   color: var(--text-muted);
+}
+
+/* Énoncé d'objectif : même cadre que le témoignage, mais sans guillemets
+   ni attribution — rien ici ne se fait passer pour une parole de client. */
+.temoignage__label {
+  font-size: 0.7rem;
+  font-weight: 640;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.temoignage__texte {
+  font-family: var(--font-display);
+  font-size: var(--fs-lg);
+  line-height: 1.4;
+  color: var(--ink-800);
+  max-width: 54ch;
 }
 
 /* --------------------------------------------------------------------------
@@ -3962,6 +3992,13 @@ main > .page-head:first-child {
   line-height: 1.62;
   color: var(--text-muted);
   max-width: 46ch;
+}
+
+/* Bandeau des pages légales. Ce n'est pas une note de développement : il
+   informe le lecteur que le document n'est pas encore définitif, ce qui
+   reste exact tant que les mentions obligatoires ne sont pas fournies. */
+.avertissement strong {
+  color: var(--ink-900);
 }
 
 /* Ligne de contact du 404 : discrète, mais présente. */
