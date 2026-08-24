@@ -2369,6 +2369,18 @@ select.field__control {
   padding-bottom: clamp(1.25rem, 0.8rem + 1.6vw, 2.25rem);
 }
 
+/* Le header est en `position: fixed` : il ne pousse rien. Sur la plupart
+   des pages, le fil d'Ariane placé en tête de <main> fait office de
+   dégagement. Quand .page-head ouvre directement la page, ce dégagement
+   n'existe pas et le sur-titre passe sous le logo.
+
+   Plutôt que de compter sur la présence d'un fil d'Ariane, la section se
+   réserve elle-même la hauteur du header dès qu'elle est en première
+   position. */
+main > .page-head:first-child {
+  padding-top: calc(var(--header-h) + var(--sp-5));
+}
+
 .page-head h1 {
   max-width: 18ch;
 }
@@ -2640,6 +2652,9 @@ select.field__control {
   --tige: 26px;          /* hauteur de chaque segment vertical */
   --gap: 0.75rem;        /* gouttière de la grille — entre aussi dans le calcul
                             de la barre de distribution, voir plus bas */
+  --n: 4;                /* nombre de nœuds. La grille ET la barre en dépendent :
+                            ajouter ou retirer un profil ne demande donc de
+                            changer qu'une seule valeur. */
 }
 
 /* --- Le nœud racine --- */
@@ -2674,7 +2689,7 @@ select.field__control {
 .diagramme__branches {
   position: relative;
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(var(--n), 1fr);
   gap: var(--gap);
   padding-top: var(--tige);
 }
@@ -2682,16 +2697,16 @@ select.field__control {
 /* La barre horizontale, du centre de la première colonne au centre de la
    dernière.
 
-   Le raccourci « 10 % » est faux : avec cinq colonnes et quatre
-   gouttières, une colonne ne fait pas 20 % de la largeur. La demi-colonne
-   vaut (100 % − 4 × gouttière) / 10 — soit 4,8 px de plus à 1440 px. Sans
-   cette correction, la barre n'atteint pas les descentes extrêmes. */
+   Un pourcentage fixe serait faux : avec N colonnes et N−1 gouttières,
+   une colonne ne vaut pas 100/N pour cent de la largeur. La demi-colonne
+   vaut (100 % − (N−1) × gouttière) / 2N. Sans ce calcul, la barre n'atteint
+   pas les descentes extrêmes — ou les dépasse dès qu'on retire un nœud. */
 .diagramme__branches::before {
   content: "";
   position: absolute;
   top: 0;
-  left: calc((100% - 4 * var(--gap)) / 10);
-  right: calc((100% - 4 * var(--gap)) / 10);
+  left: calc((100% - (var(--n) - 1) * var(--gap)) / (2 * var(--n)));
+  right: calc((100% - (var(--n) - 1) * var(--gap)) / (2 * var(--n)));
   height: 1px;
   background: var(--trait);
 }
@@ -3009,92 +3024,193 @@ select.field__control {
 }
 
 /* ==========================================================================
-   15 bis. PAGE RESSOURCES
+   15 bis. RESSOURCES : INDEX ET ARTICLES
    --------------------------------------------------------------------------
-   Repères documentaires et liens vers les sources officielles.
+   La page Ressources est un index de cartes ; chaque article vit sur sa
+   propre page, ce qui lui permet de viser ses propres requêtes.
    ========================================================================== */
 
-.avertissement {
+/* --------------------------------------------------------------------------
+   Index : les cartes d'article
+   -------------------------------------------------------------------------- */
+.cartes-articles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: clamp(0.9rem, 0.6rem + 1vw, 1.4rem);
+}
+
+.carte-article {
+  display: grid;
+  grid-template-rows: auto auto 1fr auto;
+  gap: 0.7rem;
+  padding: clamp(1.3rem, 1rem + 1vw, 1.8rem);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  background: var(--surface);
+  text-decoration: none;
+  transition: border-color var(--t-fast), box-shadow var(--t-fast),
+    transform var(--t-fast);
+}
+
+.carte-article:hover,
+.carte-article:focus-visible {
+  transform: translateY(-3px);
+  border-color: var(--ink-800);
+  box-shadow: var(--shadow-md);
+}
+
+.carte-article__meta,
+.article-meta {
   display: flex;
-  align-items: flex-start;
-  gap: 0.8rem;
-  max-width: 78ch;
-  padding: 1rem 1.2rem;
-  border-left: 3px solid var(--brass);
+  align-items: center;
+  gap: 0.7rem;
+  font-size: var(--fs-xs);
+  color: var(--ink-300);
+}
+
+.article-cat {
+  display: inline-block;
+  padding: 0.2rem 0.55rem;
+  border-radius: var(--r-pill);
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-weight: 640;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: 0.68rem;
+}
+
+.carte-article__titre {
+  font-size: var(--fs-h4);
+  font-weight: 640;
+  line-height: 1.28;
+  color: var(--ink-900);
+}
+
+.carte-article__extrait {
+  font-size: var(--fs-sm);
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
+.carte-article__lire {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.35rem;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.carte-article__lire svg {
+  transition: transform var(--t-fast);
+}
+
+.carte-article:hover .carte-article__lire svg {
+  transform: translateX(4px);
+}
+
+/* --------------------------------------------------------------------------
+   Page d'article
+   -------------------------------------------------------------------------- */
+.article-head {
+  padding-top: clamp(1.5rem, 1rem + 2vw, 3rem);
+  padding-bottom: clamp(1.5rem, 1rem + 2vw, 2.5rem);
+}
+
+.article-head .article-meta {
+  margin-bottom: var(--sp-4);
+}
+
+.article-head h1 {
+  font-size: clamp(1.7rem, 1.35rem + 1.5vw, 2.55rem);
+  line-height: 1.12;
+  margin-bottom: var(--sp-4);
+}
+
+/* Le corps rédactionnel : une seule colonne, mesure confortable. */
+.article-corps {
+  padding-block: clamp(1.5rem, 1rem + 1.6vw, 2.5rem);
+  border-top: 1px solid var(--border);
+}
+
+.article-corps h2 {
+  font-size: var(--fs-h3);
+  line-height: 1.22;
+  margin-top: var(--sp-7);
+  margin-bottom: var(--sp-4);
+}
+
+.article-corps h2:first-child {
+  margin-top: 0;
+}
+
+.article-corps p {
+  line-height: 1.72;
+  color: var(--ink-600);
+  margin-bottom: var(--sp-4);
+  max-width: 70ch;
+}
+
+.article-corps .check-list {
+  margin-bottom: var(--sp-5);
+}
+
+/* --------------------------------------------------------------------------
+   « L'essentiel » — pour qui ne lit pas tout
+   -------------------------------------------------------------------------- */
+.essentiel {
+  padding: clamp(1.3rem, 1rem + 1.2vw, 1.9rem);
+  border: 1px solid var(--accent-border);
+  border-left: 3px solid var(--accent);
   border-radius: 0 var(--r-md) var(--r-md) 0;
-  background: var(--brass-soft);
+  background: var(--accent-soft);
+  margin-bottom: var(--sp-7);
+}
+
+.essentiel h2 {
+  font-size: var(--fs-h4);
+  margin-bottom: var(--sp-4);
+  color: var(--accent-hover);
+}
+
+.essentiel ul {
+  display: grid;
+  gap: 0.7rem;
+  margin: 0;
+  padding-left: 1.1rem;
+}
+
+.essentiel li {
   font-size: var(--fs-sm);
   line-height: 1.6;
   color: var(--ink-700);
 }
 
-.avertissement svg {
-  flex: none;
-  margin-top: 0.15em;
-  color: var(--brass);
-}
-
-/* --- Liste des repères --- */
-.reperes {
-  display: grid;
-  gap: 0;
+/* --------------------------------------------------------------------------
+   Sources officielles
+   -------------------------------------------------------------------------- */
+.article-sources {
+  padding-block: var(--sp-6);
   border-top: 1px solid var(--border);
 }
 
-.repere {
-  display: grid;
-  grid-template-columns: minmax(60px, 90px) 1fr;
-  gap: clamp(1.25rem, 0.8rem + 2vw, 3rem);
-  padding-block: clamp(2rem, 1.4rem + 2vw, 3.25rem);
-  border-bottom: 1px solid var(--border);
-  scroll-margin-top: calc(var(--header-h) + 2rem);
-}
-
-.repere__num {
-  font-family: var(--font-mono);
-  font-size: clamp(1.4rem, 1.1rem + 1.2vw, 2rem);
-  line-height: 1;
-  color: var(--ink-200);
-  transition: color var(--t-base);
-}
-
-.repere:hover .repere__num,
-.repere:target .repere__num {
-  color: var(--accent);
-}
-
-.repere__corps h2 {
-  font-size: var(--fs-h3);
+.article-sources h2 {
+  font-size: var(--fs-h4);
   margin-bottom: var(--sp-3);
 }
 
-.repere__corps .lead {
-  font-size: var(--fs-base);
-  color: var(--ink-600);
-  margin-bottom: var(--sp-4);
+.article-sources .muted {
+  font-size: var(--fs-sm);
+  line-height: 1.6;
+  max-width: 70ch;
 }
 
-.repere__corps p {
-  color: var(--text-muted);
-  line-height: 1.68;
-  margin-bottom: var(--sp-4);
-  max-width: 68ch;
-}
-
-.repere__sources-label {
-  font-size: var(--fs-xs);
-  font-weight: 620;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--ink-300);
-  margin-bottom: var(--sp-3);
-}
-
-/* --- Liens vers les sources officielles --- */
 .sources {
   display: grid;
   gap: var(--sp-3);
-  max-width: 68ch;          /* même largeur de lecture que le corps du repère */
+  max-width: 68ch;
 }
 
 .sources--large {
@@ -3105,8 +3221,7 @@ select.field__control {
 
 .source {
   /* Trois enfants — éditeur, titre, icône — mais deux colonnes : sans zones
-     nommées, l'icône retombe à la ligne suivante. Les zones la font tenir
-     sur les deux rangées, à droite. */
+     nommées, l'icône retomberait à la ligne suivante. */
   display: grid;
   grid-template-columns: 1fr auto;
   grid-template-areas:
@@ -3134,7 +3249,7 @@ select.field__control {
   grid-area: editeur;
   display: block;
   font-family: var(--font-mono);
-  font-size: 0.66rem;
+  font-size: 0.68rem;
   letter-spacing: 0.06em;
   color: var(--accent);
   margin-bottom: 0.2rem;
@@ -3162,101 +3277,744 @@ select.field__control {
   transform: translate(2px, -2px);
 }
 
-@media (max-width: 620px) {
-  .repere {
-    grid-template-columns: 1fr;
-    gap: var(--sp-3);
-  }
-
-  .repere__num {
-    font-size: var(--fs-sm);
-    letter-spacing: 0.1em;
-  }
-}
-
-/* ==========================================================================
-   16 ter. PLANCHER DE LISIBILITÉ
-   --------------------------------------------------------------------------
-   Relevé lors de l'audit de responsivité : plusieurs libellés descendaient
-   sous 10 px — jusqu'à 9,0 px pour les onglets du dossier. Le public visé
-   est composé de bénévoles souvent âgés ; en dessous de 10,5 px la lecture
-   devient un effort, même pour un libellé court.
-
-   Ces éléments sont des micro-libellés en capitales avec interlettrage :
-   ils supportent d'être petits, pas d'être minuscules.
-
-   Deux d'entre eux — .dossier__tag et .releve__annot span — sont corrigés
-   dans signature.css et non ici : cette feuille est chargée AVANT le
-   calque, qui l'emporterait à spécificité égale.
-   ========================================================================== */
-
-/* Baseline du logo — 9,6 px relevés. Masquée sous 420 px, mais lisible
-   partout où elle s'affiche. */
-.logo__tag {
-  font-size: 0.655rem;         /* 10,5 px */
-}
-
-/* Éditeur de la source sur la page Ressources — 10,6 px relevés */
-.source__editeur {
-  font-size: 0.68rem;
-}
-
 /* --------------------------------------------------------------------------
-   Longueur de ligne. Au-delà d'environ 90 caractères, l'œil peine à
-   retrouver le début de la ligne suivante. L'audit relevait jusqu'à
-   119 caractères pour les aides de formulaire à 768 px.
+   Passerelle vers la prestation, en fin d'article
    -------------------------------------------------------------------------- */
-.field__hint,
-.field__error {
+.article-cta {
+  display: grid;
+  gap: var(--sp-5);
+  padding: clamp(1.4rem, 1.1rem + 1.4vw, 2.1rem);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  background: var(--paper-2);
+  margin-bottom: var(--sp-7);
+}
+
+.article-cta h2 {
+  font-size: var(--fs-h4);
+  margin-bottom: var(--sp-3);
+}
+
+.article-cta p {
+  font-size: var(--fs-sm);
+  line-height: 1.6;
+  color: var(--text-muted);
   max-width: 62ch;
 }
 
-.card__text,
-.value-card p {
-  max-width: 68ch;
+@media (min-width: 761px) {
+  /* La colonne des boutons se dimensionne sur son contenu : en fraction
+     fixe, le libelle le plus long passait a la ligne. */
+  .article-cta {
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: var(--sp-6);
+  }
 }
 
-/* --------------------------------------------------------------------------
-   Mesure du texte courant. Entre 721 et 960 px, les mises en page à deux
-   colonnes se sont repliées sur une seule mais le conteneur reste large :
-   les paragraphes s'étirent alors jusqu'à 99 caractères. Au-delà d'environ
-   90, l'œil peine à retrouver le début de la ligne suivante.
+.article-cta .btn-group {
+  flex-direction: column;
+  align-items: stretch;
+}
 
-   La contrainte ne vaut que dans cette bande : au-dessus, les colonnes
-   sont revenues et bornent déjà la mesure.
-   -------------------------------------------------------------------------- */
-@media (min-width: 721px) and (max-width: 960px) {
-  .container > p,
-  .split > div > p,
-  .section-head > p,
-  .service-block__aside p,
-  .service-step p {
-    max-width: 74ch;
+.article-cta .btn {
+  justify-content: center;
+}
+
+/* `nowrap` empêche le libellé le plus long de passer à la ligne dans la
+   colonne de droite — mais seulement là où cette colonne existe. En
+   dessous de 761 px la mise en page est sur une seule colonne, et forcer
+   le non-retour élargissait le bloc de 34 px au-delà de l'écran. */
+@media (min-width: 761px) {
+  .article-cta .btn {
+    white-space: nowrap;
   }
 }
 
 /* --------------------------------------------------------------------------
-   Navigation d'ancres des pages prestation : 39 px de haut relevés. Six
-   liens serrés les uns contre les autres, c'est précisément le cas où un
-   doigt se trompe de cible.
+   « À lire aussi »
    -------------------------------------------------------------------------- */
-@media (max-width: 960px) {
-  .anchor-nav a {
-    min-height: 44px;
-    display: inline-flex;
+.lire-aussi__titre-section {
+  font-size: var(--fs-h4);
+  margin-bottom: var(--sp-5);
+}
+
+.lire-aussi {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--sp-4);
+}
+
+.lire-aussi__item {
+  display: grid;
+  gap: 0.5rem;
+  align-content: start;
+  padding: 1.1rem 1.2rem;
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  background: var(--surface);
+  text-decoration: none;
+  transition: border-color var(--t-fast), transform var(--t-fast);
+}
+
+.lire-aussi__item:hover,
+.lire-aussi__item:focus-visible {
+  transform: translateY(-2px);
+  border-color: var(--ink-800);
+}
+
+.lire-aussi__cat {
+  font-size: 0.68rem;
+  font-weight: 640;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.lire-aussi__titre {
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--ink-900);
+}
+
+/* --------------------------------------------------------------------------
+   Avertissement — conservé, encore employé sur les pages profil
+   -------------------------------------------------------------------------- */
+.avertissement {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+  max-width: 78ch;
+  padding: 1rem 1.2rem;
+  border-left: 3px solid var(--brass);
+  border-radius: 0 var(--r-md) var(--r-md) 0;
+  background: var(--brass-soft);
+  font-size: var(--fs-sm);
+  line-height: 1.6;
+  color: var(--ink-700);
+}
+
+.avertissement svg {
+  flex: none;
+  margin-top: 0.15em;
+  color: var(--brass);
+}
+
+/* ==========================================================================
+   15 ter. PAGE SYNDIC PROFESSIONNEL
+   --------------------------------------------------------------------------
+   Le syndic professionnel n'est pas un prospect comme un autre : il arrive
+   avec trois objections précises. La page y répond dans l'ordre — d'abord
+   les règles d'or, ensuite seulement les bénéfices.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Les trois règles d'or
+   -------------------------------------------------------------------------- */
+.regles {
+  padding: clamp(1.5rem, 1.2rem + 1.6vw, 2.5rem);
+  border: 1px solid var(--accent-border);
+  border-radius: var(--r-lg);
+  background: var(--accent-soft);
+}
+
+.regles__titre {
+  font-size: var(--fs-h4);
+  margin-bottom: var(--sp-5);
+  color: var(--accent-hover);
+}
+
+.regles__liste {
+  display: grid;
+  gap: var(--sp-5);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.regles__liste li {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--sp-4);
+  align-items: start;
+}
+
+.regle__num {
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--accent);
+  padding-top: 0.15rem;
+}
+
+.regles__liste strong {
+  display: block;
+  font-size: var(--fs-base);
+  color: var(--ink-900);
+  margin-bottom: 0.3rem;
+}
+
+.regles__liste p {
+  font-size: var(--fs-sm);
+  line-height: 1.6;
+  color: var(--ink-600);
+  max-width: 68ch;
+}
+
+@media (min-width: 861px) {
+  .regles__liste {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--sp-6);
+  }
+
+  .regles__liste li {
+    grid-template-columns: 1fr;
+    gap: var(--sp-3);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Les quatre piliers
+   -------------------------------------------------------------------------- */
+.piliers {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: clamp(0.9rem, 0.6rem + 1vw, 1.4rem);
+}
+
+.pilier {
+  position: relative;
+  display: grid;
+  grid-template-rows: auto auto auto 1fr;
+  gap: 0.55rem;
+  padding: clamp(1.3rem, 1rem + 1vw, 1.8rem);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  background: var(--surface);
+}
+
+.pilier__icone {
+  display: block;
+  width: 34px;
+  height: 34px;
+  margin-bottom: 0.4rem;
+  color: var(--accent);
+}
+
+.pilier__icone svg {
+  width: 34px;
+  height: 34px;
+}
+
+.pilier__sur {
+  font-size: 0.68rem;
+  font-weight: 640;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-300);
+}
+
+.pilier__titre {
+  font-size: var(--fs-h4);
+  line-height: 1.25;
+  color: var(--ink-900);
+}
+
+.pilier__texte {
+  font-size: var(--fs-sm);
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
+/* --------------------------------------------------------------------------
+   Périmètre : ce que nous examinons, ce que nous ne touchons pas.
+   La colonne de droite est celle qui rassure — elle mérite d'être aussi
+   lisible que l'autre, pas reléguée en petits caractères.
+   -------------------------------------------------------------------------- */
+.perimetre {
+  display: grid;
+  gap: clamp(1rem, 0.7rem + 1.2vw, 1.75rem);
+}
+
+@media (min-width: 761px) {
+  .perimetre {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.perimetre__col {
+  padding: clamp(1.2rem, 1rem + 1vw, 1.75rem);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  background: var(--surface);
+}
+
+.perimetre__col--oui {
+  border-left: 3px solid var(--accent);
+}
+
+.perimetre__col--non {
+  border-left: 3px solid var(--ink-200);
+  background: var(--paper-2);
+}
+
+.perimetre__label {
+  font-size: 0.7rem;
+  font-weight: 640;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: var(--sp-4);
+  color: var(--ink-300);
+}
+
+.perimetre__col--oui .perimetre__label {
+  color: var(--accent);
+}
+
+.perimetre__col ul {
+  display: grid;
+  gap: 0.6rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.perimetre__col li {
+  position: relative;
+  padding-left: 1.6rem;
+  font-size: var(--fs-sm);
+  line-height: 1.5;
+  color: var(--ink-700);
+}
+
+/* Une coche pour ce que l'on examine, une barre pour ce que l'on ne
+   touche pas : la distinction se lit sans avoir à relire l'intitulé. */
+.perimetre__col--oui li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.42em;
+  width: 9px;
+  height: 5px;
+  border-left: 2px solid var(--accent);
+  border-bottom: 2px solid var(--accent);
+  transform: rotate(-45deg);
+}
+
+.perimetre__col--non li {
+  color: var(--text-muted);
+}
+
+.perimetre__col--non li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.68em;
+  width: 11px;
+  height: 2px;
+  border-radius: 1px;
+  background: var(--ink-200);
+}
+
+/* ==========================================================================
+   15 quater. LEVIERS DE CONVERSION
+   --------------------------------------------------------------------------
+   Visuel du livrable, cas pratique, preuve sociale, diagnostic rapide et
+   CTA collant mobile.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Le rapport rendu — matérialiser un service qui, sans cela, reste abstrait
+   -------------------------------------------------------------------------- */
+.rapport {
+  display: grid;
+  gap: clamp(1.5rem, 1rem + 2.4vw, 3.5rem);
+  align-items: center;
+}
+
+@media (min-width: 861px) {
+  .rapport {
+    grid-template-columns: 1.05fr 0.95fr;
+  }
+}
+
+.rapport__feuille {
+  padding: clamp(1rem, 0.7rem + 1.6vw, 2rem);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  background:
+    radial-gradient(ellipse 80% 90% at 50% 0%, var(--accent-soft) 0%, transparent 70%),
+    var(--surface);
+  box-shadow: var(--shadow-md);
+}
+
+.rapport__feuille .illu {
+  display: block;
+  color: var(--accent);
+}
+
+.rapport__feuille .illu svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.rapport__legende {
+  display: grid;
+  gap: var(--sp-4);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.rapport__legende li {
+  position: relative;
+  padding-left: 1.7rem;
+  font-size: var(--fs-sm);
+  line-height: 1.6;
+  color: var(--text-muted);
+  max-width: 58ch;
+}
+
+.rapport__legende li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.42em;
+  width: 9px;
+  height: 5px;
+  border-left: 2px solid var(--accent);
+  border-bottom: 2px solid var(--accent);
+  transform: rotate(-45deg);
+}
+
+.rapport__legende strong {
+  color: var(--ink-800);
+  font-weight: 620;
+}
+
+/* --------------------------------------------------------------------------
+   Cas pratique — la preuve par l'exemple
+   -------------------------------------------------------------------------- */
+.cas {
+  display: grid;
+  gap: clamp(1.25rem, 1rem + 1.6vw, 2.25rem);
+  padding: clamp(1.4rem, 1.1rem + 1.6vw, 2.25rem);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  background: var(--surface);
+}
+
+@media (min-width: 761px) {
+  .cas {
+    grid-template-columns: auto 1fr;
     align-items: center;
   }
 }
 
+.cas__chiffre {
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 0.15rem;
+  min-width: 140px;
+  padding: clamp(1rem, 0.8rem + 1vw, 1.5rem);
+  border-radius: var(--r-md);
+  background: var(--ink-900);
+  color: var(--text-invert);
+  text-align: center;
+}
+
+.cas__chiffre b {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 1.7rem + 2vw, 3rem);
+  line-height: 1;
+  color: #7FD3B8;
+  font-weight: 400;
+}
+
+.cas__chiffre span {
+  font-size: var(--fs-xs);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(238, 243, 246, 0.6);
+}
+
+.cas__label {
+  font-size: 0.7rem;
+  font-weight: 640;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-300);
+  margin-bottom: var(--sp-3);
+}
+
+.cas__corps p {
+  font-size: var(--fs-base);
+  line-height: 1.65;
+  color: var(--ink-600);
+  max-width: 62ch;
+  margin-bottom: var(--sp-3);
+}
+
+.cas__corps p:last-child {
+  margin-bottom: 0;
+}
+
 /* --------------------------------------------------------------------------
-   Cible tactile du logo : 34 px de haut relevés. La largeur (233 px) rend
-   le lien facile à viser, mais autant respecter les 44 px recommandés là
-   où le doigt remplace la souris.
+   Preuve sociale : disponibilité et témoignages
    -------------------------------------------------------------------------- */
-@media (max-width: 960px) {
-  .logo {
-    padding-block: 0.3rem;
-    min-height: 44px;
+.dispo {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--sp-4);
+  margin-bottom: var(--sp-7);
+}
+
+.dispo__item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.85rem;
+  align-items: start;
+  padding: 1rem 1.15rem;
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  background: var(--surface);
+}
+
+.dispo__item svg {
+  color: var(--accent);
+  margin-top: 0.1rem;
+}
+
+.dispo__item strong {
+  display: block;
+  font-size: var(--fs-sm);
+  color: var(--ink-900);
+  margin-bottom: 0.15rem;
+}
+
+.dispo__item span {
+  font-size: var(--fs-xs);
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+
+.temoignages {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--sp-4);
+}
+
+.temoignage {
+  display: grid;
+  gap: var(--sp-4);
+  align-content: start;
+  padding: clamp(1.3rem, 1rem + 1vw, 1.75rem);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent-border);
+  border-radius: 0 var(--r-md) var(--r-md) 0;
+  background: var(--surface);
+}
+
+.temoignage blockquote {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--fs-lg);
+  line-height: 1.4;
+  color: var(--ink-800);
+}
+
+.temoignage figcaption {
+  font-size: var(--fs-xs);
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+
+/* --------------------------------------------------------------------------
+   Diagnostic rapide en trois questions
+   -------------------------------------------------------------------------- */
+.diagnostic {
+  padding: clamp(1.4rem, 1.1rem + 1.6vw, 2.25rem);
+  border: 1px solid var(--accent-border);
+  border-radius: var(--r-lg);
+  background: var(--accent-soft);
+}
+
+.diagnostic__etape[hidden] {
+  display: none;
+}
+
+.diagnostic__progres {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: var(--sp-5);
+}
+
+.diagnostic__jalon {
+  flex: 1;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--accent-border);
+  transition: background var(--t-base);
+}
+
+.diagnostic__jalon.is-faite {
+  background: var(--accent);
+}
+
+.diagnostic__question {
+  font-size: var(--fs-h4);
+  line-height: 1.3;
+  margin-bottom: var(--sp-4);
+  color: var(--ink-900);
+}
+
+.diagnostic__choix {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.diagnostic__choix button {
+  padding: 0.6rem 1.1rem;
+  min-height: 44px;
+  border: 1px solid var(--accent-border);
+  border-radius: var(--r-pill);
+  background: var(--surface);
+  font: inherit;
+  font-size: var(--fs-sm);
+  font-weight: 540;
+  color: var(--ink-800);
+  cursor: pointer;
+  transition: border-color var(--t-fast), background var(--t-fast),
+    color var(--t-fast);
+}
+
+.diagnostic__choix button:hover,
+.diagnostic__choix button:focus-visible {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: #fff;
+}
+
+.diagnostic__resultat h3 {
+  font-size: var(--fs-h4);
+  margin-bottom: var(--sp-3);
+}
+
+.diagnostic__resultat p {
+  font-size: var(--fs-sm);
+  line-height: 1.6;
+  color: var(--ink-600);
+  max-width: 60ch;
+  margin-bottom: var(--sp-5);
+}
+
+.diagnostic__recommence {
+  background: none;
+  border: 0;
+  padding: 0;
+  margin-top: var(--sp-4);
+  font: inherit;
+  font-size: var(--fs-sm);
+  color: var(--text-muted);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+
+/* --------------------------------------------------------------------------
+   Les trois craintes du conseil syndical.
+   L’objection est citée telle qu’on l’entend, puis la réponse. Les séparer
+   visuellement évite que la peur et sa réponse se lisent d’un bloc.
+   -------------------------------------------------------------------------- */
+.craintes {
+  display: grid;
+  gap: var(--sp-5);
+}
+
+@media (min-width: 861px) {
+  .craintes { grid-template-columns: repeat(3, 1fr); gap: var(--sp-6); }
+}
+
+.crainte {
+  padding-top: var(--sp-5);
+  border-top: 2px solid var(--border-strong);
+  transition: border-color var(--t-base);
+}
+
+.crainte:hover { border-top-color: var(--accent); }
+
+.crainte__peur {
+  font-family: var(--font-display);
+  font-size: var(--fs-h4);
+  line-height: 1.3;
+  color: var(--ink-900);
+  margin-bottom: var(--sp-3);
+}
+
+.crainte__réponse {
+  font-size: var(--fs-sm);
+  line-height: 1.62;
+  color: var(--text-muted);
+  max-width: 46ch;
+}
+
+/* Ligne de contact du 404 : discrète, mais présente. */
+.footer__contact-404 {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: var(--sp-5);
+  padding-bottom: var(--sp-5);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  font-size: var(--fs-sm);
+  color: rgba(238, 243, 246, 0.7);
+}
+
+/* --------------------------------------------------------------------------
+   CTA collant mobile
+   -------------------------------------------------------------------------- */
+.sticky-cta {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 190;
+  padding: 0.7rem var(--gutter) calc(0.7rem + env(safe-area-inset-bottom, 0px));
+  background: rgba(251, 250, 247, 0.92);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid var(--border);
+  transform: translateY(110%);
+  transition: transform 320ms var(--ease-out);
+}
+
+.sticky-cta.is-visible {
+  transform: none;
+}
+
+/* Au-dessus de 720 px, le bouton du header est déjà visible en permanence :
+   un second bouton fixe ne ferait que voler de la place. */
+@media (min-width: 721px) {
+  .sticky-cta { display: none; }
+}
+
+@media print {
+  .sticky-cta { display: none; }
+}
+
+/* Le CTA collant recouvre le bas de page : on rend au document la hauteur
+   qu'il lui prend, sinon les dernières lignes du pied de page sont
+   inatteignables. */
+@media (max-width: 720px) {
+  body:has(.sticky-cta) {
+    padding-bottom: 4.5rem;
   }
 }
 

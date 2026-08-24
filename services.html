@@ -68,7 +68,7 @@
 <header class="header" data-header>
   <div class="container header__inner">
     <a class="logo" href="index.html" aria-label="Copro Performance Conseil — accueil">
-      <img class="logo__mark" src="assets/img/logo.svg" alt="" width="34" height="34">
+      <img class="logo__mark" src="assets/img/logo.svg" alt="Logo Copro Performance Conseil" width="34" height="34">
       <span class="logo__text">
         <span class="logo__name">Copro Performance Conseil</span>
         <span class="logo__tag">Conseil indépendant en copropriété</span>
@@ -143,14 +143,7 @@
         <a href="#tarifs">Tarifs</a>
       </nav>
 
-      <p class="mt-6" data-reveal style="--d:3">
-        <span class="flag">À valider</span>
-        <span class="muted" style="font-size:var(--fs-sm)">
-          Le contenu détaillé des prestations ci-dessous constitue une proposition
-          éditoriale. Il doit être confirmé et ajusté par le cabinet avant mise en ligne
-          (voir <code>CONTENU-A-VALIDER.md</code>).
-        </span>
-      </p>
+      
     </div>
   </section>
 
@@ -197,8 +190,8 @@
         <span class="service-block__num">01 — Prestation</span>
         <h2 id="t-audit">Audit complet des charges</h2>
         <p class="muted">
-          La vue d’ensemble. Recommandée quand on sent que « quelque chose ne va pas »
-          sans pouvoir dire quoi, ou lors d’un changement de conseil syndical.
+          La vue d’ensemble. Recommandée lorsqu’on pressent un dysfonctionnement ou un
+          doute sur la gestion, ou lors d’un changement de conseil syndical.
         </p>
         <div class="mt-5">
           <span class="chip">Vue d’ensemble</span>
@@ -250,7 +243,7 @@
           <h3>Un premier échange pour cadrer le périmètre.</h3>
           <p>
             La taille de la copropriété et le nombre d’exercices à examiner déterminent
-            l’ampleur de la mission. Nous en discutons avant tout devis.
+            l’ampleur de la mission. Nous en échangeons avant d’établir tout devis.
           </p>
           <div class="btn-group mt-5">
             <a class="btn" href="contact.html?sujet=audit">
@@ -330,7 +323,7 @@
           <p>
             Nous reconstituons l’évolution de vos charges sur plusieurs exercices, nous
             séparons le récurrent de l’exceptionnel, et nous confrontons chaque poste
-            significatif au contrat qui le porte et aux décisions qui l’ont autorisé.
+            significatif au contrat qui le régit et aux décisions qui l’ont autorisé.
             Les écarts sont alors expliqués, ou signalés comme restant à expliquer.
           </p>
         </div>
@@ -551,7 +544,7 @@
           </p>
           <p class="mt-4">
             Pour les postes retenus, nous vous aidons à structurer la consultation :
-            rédiger un cahier des charges qui décrit vraiment votre besoin, ramener
+            rédiger un cahier des charges qui définit précisément votre besoin, ramener
             les offres reçues à des bases comparables, et préparer la résolution à
             soumettre au vote.
           </p>
@@ -712,6 +705,86 @@
   <!-- ==================================================================
        TARIFS
        ================================================================== -->
+  <!-- ==================================================================
+       LE LIVRABLE
+       Montrer ce que le client reçoit : le service est immatériel tant
+       qu'on ne l'a pas vu.
+       ================================================================== -->
+  <section class="section section--alt" aria-labelledby="t-livrable">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow" data-reveal="fade">Le livrable</p>
+        <h2 id="t-livrable" data-split>Ce que vous recevez, concrètement.</h2>
+      </div>
+      <div class="rapport" data-reveal="scale">
+        <div class="rapport__feuille">
+          <span class="illu" aria-hidden="true">
+            <svg viewBox="0 0 340 260" fill="none" stroke="currentColor"
+                 stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+
+              <g class="illu__grid">
+                <path d="M0 52h340M0 104h340M0 156h340M0 208h340"/>
+                <path d="M68 0v260M136 0v260M204 0v260M272 0v260"/>
+              </g>
+
+              <!-- La page -->
+              <path data-draw style="--i:0" d="M26 14h198l30 30v202H26z"/>
+              <path data-draw style="--i:1" d="M224 14v30h30"/>
+
+              <!-- En-tête du rapport -->
+              <line data-draw style="--i:2" x1="46" y1="70" x2="150" y2="70"/>
+              <line data-draw style="--i:2" x1="46" y1="82" x2="118" y2="82" opacity=".5"/>
+
+              <!-- Le graphique : cinq postes de charges -->
+              <path data-draw style="--i:3" d="M46 176V106"/>
+              <path data-draw style="--i:3" d="M46 176h164"/>
+              <g stroke-width="1.5">
+                <rect data-draw style="--i:4" x="60"  y="146" width="16" height="30" rx="2"/>
+                <rect data-draw style="--i:5" x="88"  y="132" width="16" height="44" rx="2"/>
+                <rect data-draw style="--i:6" x="116" y="140" width="16" height="36" rx="2"/>
+                <rect data-draw style="--i:7" x="144" y="112" width="16" height="64" rx="2"/>
+                <rect data-draw style="--i:8" x="172" y="126" width="16" height="50" rx="2"/>
+              </g>
+
+              <!-- Le poste relevé, surligné en laiton -->
+              <rect data-pop style="--i:0" x="140" y="108" width="24" height="72" rx="3"
+                    fill="#B9924F" stroke="none" opacity=".16"/>
+              <circle data-pop style="--i:1" cx="152" cy="112" r="4.5"
+                      fill="#B9924F" stroke="none"/>
+
+              <!-- Constats surlignés -->
+              <g stroke-width="1.4">
+                <line data-draw style="--i:9"  x1="46" y1="200" x2="200" y2="200" opacity=".45"/>
+                <line data-draw style="--i:10" x1="46" y1="214" x2="176" y2="214" opacity=".45"/>
+              </g>
+              <rect data-pop style="--i:2" x="43" y="194" width="120" height="11" rx="3"
+                    fill="#B9924F" stroke="none" opacity=".8"/>
+
+              <!-- L'étiquette de constat, posée en surimpression -->
+              <g data-live>
+                <rect data-draw style="--i:11" x="196" y="88" width="126" height="50" rx="8"
+                      fill="var(--surface)"/>
+                <line data-draw style="--i:12" x1="212" y1="106" x2="278" y2="106"/>
+                <line data-draw style="--i:13" x1="212" y1="120" x2="252" y2="120" opacity=".5"/>
+                <circle data-pop style="--i:3" cx="300" cy="113" r="9"
+                        fill="none" stroke="#B9924F" stroke-width="1.8"/>
+                <path data-pop style="--i:4" d="m296 113 3 3 6-7" stroke="#B9924F" stroke-width="1.8"/>
+              </g>
+
+            </svg>
+          </span>
+        </div>
+
+        <ul class="rapport__legende">
+          <li><strong>Un rapport écrit</strong> structuré et hiérarchisé, du plus au moins significatif.</li>
+          <li><strong>Chaque poste chiffré</strong> et confronté au contrat qui le régit.</li>
+          <li><strong>Chaque constat sourcé</strong> : il renvoie à la pièce dont il est tiré.</li>
+          <li><strong>Commenté à l’oral</strong> — un document qu’on ne comprend pas ne sert à personne.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
   <section class="section section--tight" id="tarifs" aria-labelledby="t-tarifs">
     <div class="container">
 
@@ -863,7 +936,7 @@
     <div class="footer__top">
       <div>
         <a class="logo" href="index.html" aria-label="Copro Performance Conseil — accueil">
-          <img class="logo__mark" src="assets/img/logo.svg" alt="" width="34" height="34">
+          <img class="logo__mark" src="assets/img/logo.svg" alt="Logo Copro Performance Conseil" width="34" height="34">
           <span class="logo__text">
             <span class="logo__name">Copro Performance Conseil</span>
             <span class="logo__tag">Conseil indépendant en copropriété</span>
@@ -871,16 +944,15 @@
         </a>
         <p class="footer__pitch">
           Nous aidons les conseils syndicaux à comprendre les charges, les contrats
-          et le fonctionnement de leur copropriété, pour décider sur la base de faits.
+          et le fonctionnement de leur copropriété, pour prendre des décisions fondées sur des faits.
         </p>
       </div>
       <div class="footer__col">
         <h3>Vous êtes</h3>
         <ul>
-          <li><a href="conseil-syndical.html">Conseil syndical</a></li>
-          <li><a href="coproprietaire.html">Copropriétaire</a></li>
-          <li><a href="syndic-benevole.html">Syndic bénévole</a></li>
           <li><a href="syndic-professionnel.html">Syndic professionnel</a></li>
+          <li><a href="conseil-syndical.html">conseil syndical</a></li>
+          <li><a href="coproprietaire.html">Copropriétaire</a></li>
         </ul>
       </div>
       <div class="footer__col">
@@ -907,7 +979,7 @@
         <ul>
           <li><a href="mailto:contact@coproperformanceconseil.fr">contact@coproperformanceconseil.fr</a></li>
           <li><a href="tel:+33617470857">+33 6 17 47 08 57</a></li>
-          <li>France entière, à distance</li>
+          <li>Intervention dans toute la France (à distance)</li>
         </ul>
       </div>
     </div>
@@ -921,6 +993,20 @@
     </div>
   </div>
 </footer>
+
+
+<!-- ==================================================================
+     CTA COLLANT (mobile)
+     Le bouton principal reste accessible à tout moment de la lecture.
+     Masqué au-dessus de 720 px et à l'impression. Il s'efface quand le
+     pied de page arrive : à ce moment le vrai bouton est à l'écran.
+     ================================================================== -->
+<div class="sticky-cta" data-sticky-cta>
+  <a class="btn btn--block magnet" href="contact.html">
+    Pré-diagnostic gratuit
+    <svg class="btn__arrow" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+  </a>
+</div>
 
 </body>
 </html>

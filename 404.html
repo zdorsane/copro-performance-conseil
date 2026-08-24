@@ -45,7 +45,7 @@
 <header class="header" data-header>
   <div class="container header__inner">
     <a class="logo" href="index.html" aria-label="Copro Performance Conseil — accueil">
-      <img class="logo__mark" src="assets/img/logo.svg" alt="" width="34" height="34">
+      <img class="logo__mark" src="assets/img/logo.svg" alt="Logo Copro Performance Conseil" width="34" height="34">
       <span class="logo__text">
         <span class="logo__name">Copro Performance Conseil</span>
         <span class="logo__tag">Conseil indépendant en copropriété</span>
@@ -119,6 +119,16 @@
 
 <footer class="footer">
   <div class="container">
+    <!-- Une page d'erreur est l'endroit où un visiteur perdu a le plus
+         besoin d'un moyen de contact : le pied de page reste réduit, mais
+         il porte les coordonnées. -->
+    <p class="footer__contact-404">
+      Une question ?
+      <a href="mailto:contact@coproperformanceconseil.fr">contact@coproperformanceconseil.fr</a>
+      <span aria-hidden="true">·</span>
+      <a href="tel:+33617470857">+33 6 17 47 08 57</a>
+    </p>
+
     <div class="footer__bottom" style="border-top:0; padding-top:0">
       <p>© <span data-year>2026</span> Copro Performance Conseil. Tous droits réservés.</p>
       <nav class="footer__legal" aria-label="Liens légaux">
@@ -129,6 +139,20 @@
     </div>
   </div>
 </footer>
+
+
+<!-- ==================================================================
+     CTA COLLANT (mobile)
+     Le bouton principal reste accessible à tout moment de la lecture.
+     Masqué au-dessus de 720 px et à l'impression. Il s'efface quand le
+     pied de page arrive : à ce moment le vrai bouton est à l'écran.
+     ================================================================== -->
+<div class="sticky-cta" data-sticky-cta>
+  <a class="btn btn--block magnet" href="contact.html">
+    Pré-diagnostic gratuit
+    <svg class="btn__arrow" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+  </a>
+</div>
 
 </body>
 </html>

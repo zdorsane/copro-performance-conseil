@@ -507,10 +507,139 @@
   }
 
   /* ----------------------------------------------------------------------
+     12. CTA collant (mobile)
+     ----------------------------------------------------------------------
+     Le bouton n'apparaît qu'une fois le hero dépassé — l'afficher d'emblée
+     reviendrait à masquer le contenu au moment où le visiteur le découvre.
+     Il s'efface quand le pied de page entre dans le champ : à cet instant
+     le vrai bouton est visible, et deux appels à l'action simultanés se
+     nuisent l'un à l'autre.
+     ---------------------------------------------------------------------- */
+  function initStickyCta() {
+    var cta = document.querySelector("[data-sticky-cta]");
+    if (!cta) return;
+
+    var pied = document.querySelector("footer, .footer");
+    var seuil = 480; // hauteur approximative du premier écran
+    var ticking = false;
+    var piedVisible = false;
+
+    if (canObserve && pied) {
+      new IntersectionObserver(
+        function (entries) {
+          piedVisible = entries[0].isIntersecting;
+          maj();
+        },
+        { rootMargin: "0px 0px -40% 0px" }
+      ).observe(pied);
+    }
+
+    function maj() {
+      var assezBas = window.scrollY > seuil;
+      cta.classList.toggle("is-visible", assezBas && !piedVisible);
+      ticking = false;
+    }
+
+    window.addEventListener(
+      "scroll",
+      function () {
+        if (ticking) return;
+        ticking = true;
+        window.requestAnimationFrame(maj);
+      },
+      { passive: true }
+    );
+
+    maj();
+  }
+
+  /* ----------------------------------------------------------------------
+     13. Diagnostic rapide en trois questions
+     ----------------------------------------------------------------------
+     Trois questions, une orientation. Le module est entièrement construit
+     dans le HTML : sans JavaScript, les trois étapes restent lisibles et
+     les liens de sortie fonctionnent. Le script ne fait qu'enchaîner.
+     ---------------------------------------------------------------------- */
+  function initDiagnostic() {
+    var bloc = document.querySelector("[data-diagnostic]");
+    if (!bloc) return;
+
+    var etapes = bloc.querySelectorAll("[data-etape]");
+    var jalons = bloc.querySelectorAll(".diagnostic__jalon");
+    var sortie = bloc.querySelector("[data-diagnostic-sortie]");
+    var reponses = {};
+
+    function montrer(i) {
+      etapes.forEach(function (e, k) {
+        e.hidden = k !== i;
+      });
+      jalons.forEach(function (j, k) {
+        j.classList.toggle("is-faite", k <= i);
+      });
+      // Déplacer le focus sur la question : sans cela, un utilisateur au
+      // clavier reste sur un bouton qui vient de disparaître.
+      var titre = etapes[i].querySelector(".diagnostic__question, h3");
+      if (titre) {
+        titre.setAttribute("tabindex", "-1");
+        titre.focus({ preventScroll: true });
+      }
+    }
+
+    function conclure() {
+      // L'orientation dépend d'abord du rôle : c'est lui qui détermine la
+      // page de destination.
+      var carte = {
+        "syndic-pro": ["syndic-professionnel.html", "Votre page syndic professionnel"],
+        "conseil-syndical": ["conseil-syndical.html", "Votre page conseil syndical"],
+        coproprietaire: ["coproprietaire.html", "Votre page copropriétaire"]
+      };
+      var cible = carte[reponses.role] || ["contact.html", "Nous décrire votre situation"];
+
+      var presta = bloc.querySelector("[data-diagnostic-presta]");
+      if (presta) {
+        var textes = {
+          charges: "l’analyse des charges",
+          contrats: "la relecture de vos contrats",
+          ag: "la préparation de votre assemblée générale",
+          "sais-pas": "un audit complet, pour partir de la vue d’ensemble"
+        };
+        presta.textContent = textes[reponses.besoin] || textes["sais-pas"];
+      }
+
+      if (sortie) {
+        sortie.setAttribute("href", cible[0]);
+        var lib = sortie.querySelector("[data-diagnostic-libelle]");
+        if (lib) lib.textContent = cible[1];
+      }
+
+      montrer(etapes.length - 1);
+    }
+
+    bloc.addEventListener("click", function (e) {
+      var b = e.target.closest("button[data-champ]");
+      if (b) {
+        reponses[b.getAttribute("data-champ")] = b.getAttribute("data-valeur");
+        var i = parseInt(b.closest("[data-etape]").getAttribute("data-etape"), 10);
+        if (i + 1 >= etapes.length - 1) conclure();
+        else montrer(i + 1);
+        return;
+      }
+      if (e.target.closest("[data-diagnostic-recommence]")) {
+        reponses = {};
+        montrer(0);
+      }
+    });
+
+    montrer(0);
+  }
+
+  /* ----------------------------------------------------------------------
      Démarrage
      ---------------------------------------------------------------------- */
   function start() {
     initProfilUrl();
+    initStickyCta();
+    initDiagnostic();
     initBoot();
     initDrawings();
     initReleve();

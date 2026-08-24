@@ -661,6 +661,67 @@ les masque toutes sans les supprimer.
 ---
 
 
+## Application du brief designer (août 2026)
+
+Le brief reçu du client a été appliqué et **vérifié point par point** : un
+script traduit chaque exigence en test sur le code réel, plutôt que de la
+déclarer faite. **52 vérifications, 52 conformes.**
+
+| Partie | Contenu | Vérifs |
+|---|---|---|
+| 1.1 | Suppression du profil « syndic bénévole » | 8 |
+| 1.1+ | Ordre demandé : syndic pro, conseil syndical, copropriétaire | 2 |
+| 1.2 | Repositionnement du syndic professionnel | 10 |
+| 2 | Les six leviers de conversion | 15 |
+| 3 | Corrections éditoriales | 12 |
+| 4 | Corrections techniques | 3 |
+| — | Bug de superposition signalé par le client | 2 |
+
+### Deux points du brief qui ne demandaient aucune correction
+
+**Le lien téléphone n'était pas cassé.** Le brief signalait un
+`href="about:invalid#zCSafez"` empêchant l'appel. Cette chaîne n'existe nulle
+part dans le code, ni en local ni en production : c'est un artefact du
+sanitiseur de Chrome, produit lorsqu'une page est copiée depuis les outils de
+développement. Le lien réel est `tel:+33617470857` et il fonctionne.
+
+**Le repositionnement du syndic professionnel lève une contradiction**
+signalée lors d'une itération précédente. En précisant que les prestations sont
+« votées et prises en charge par le budget de la copropriété » et qu'elles « ne
+portent jamais sur les contrats de syndic ni sur les honoraires », le brief
+confirme que le mandant reste la copropriété. Les neuf affirmations
+d'indépendance du site restent donc exactes : aucune n'a eu à être réécrite.
+
+### Le bug de superposition, et sa cause
+
+Le client a signalé le sur-titre « RESSOURCES » chevauchant le logo sur mobile.
+La superposition existait en réalité **à toutes les largeurs**.
+
+Le header est en `position: fixed` : il ne pousse rien. Sur toutes les pages, le
+fil d'Ariane placé en tête de `<main>` fait office de dégagement — sauf sur
+`ressources.html`, seule page à ouvrir directement sur `.page-head`, dont la
+marge haute ne valait que 24 px.
+
+Corrigé aux deux niveaux : le fil d'Ariane manquant a été ajouté (ses données
+structurées `BreadcrumbList` l'annonçaient déjà), et une règle
+`main > .page-head:first-child` réserve désormais la hauteur du header. Le
+problème ne peut plus réapparaître sur une page future.
+
+### ⚠️ Deux affirmations à confirmer avant diffusion large
+
+Le brief fournit un cas pratique chiffré et un témoignage client :
+
+- « Copropriété de 45 lots à Paris — 18 % de surcoût sur le chauffage »
+- « Un rapport neutre qui nous a permis d'aborder l'AG en toute sérénité »
+
+Ni l'un ni l'autre n'est vérifiable depuis le code. Les deux blocs portent une
+pastille **À valider**. S'ils ne correspondent pas à des missions réelles, ils
+doivent être retirés : publier un cas ou un avis client fabriqué relève de la
+pratique commerciale trompeuse.
+
+---
+
+
 ## Accessibilité
 
 Conçu en visant WCAG 2.1 niveau AA :

@@ -82,7 +82,7 @@
 <header class="header" data-header>
   <div class="container header__inner">
     <a class="logo" href="index.html" aria-label="Copro Performance Conseil — accueil">
-      <img class="logo__mark" src="assets/img/logo.svg" alt="" width="34" height="34">
+      <img class="logo__mark" src="assets/img/logo.svg" alt="Logo Copro Performance Conseil" width="34" height="34">
       <span class="logo__text">
         <span class="logo__name">Copro Performance Conseil</span>
         <span class="logo__tag">Conseil indépendant en copropriété</span>
@@ -196,6 +196,53 @@
           <h3 class="card__title">Vous restez décisionnaire</h3>
           <p class="card__text">Nous ne remplaçons ni le syndic ni le conseil syndical. Nous apportons ce qui manque entre les deux : du temps d’analyse et une méthode constante.</p>
         </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================================================================
+       LES TROIS CRAINTES
+       Nommer l'objection avant d'y répondre : un conseil syndical qui
+       hésite hésite pour l'une de ces trois raisons.
+       ================================================================== -->
+  <section class="section" aria-labelledby="t-craintes">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow" data-reveal="fade">Ce qui vous retient</p>
+        <h2 id="t-craintes" data-split>Trois hésitations, trois réponses.</h2>
+      </div>
+
+      <div class="craintes" data-stagger>
+
+        <div class="crainte" data-reveal>
+          <p class="crainte__peur">« Nous n’avons pas le temps. »</p>
+          <p class="crainte__reponse">
+            C’est précisément la raison d’être de la mission. Vous n’avez rien à
+            dépouiller : nous reprenons les pièces à votre place et vous rendons
+            un rapport lisible. Votre temps se limite au premier échange et à la
+            restitution.
+          </p>
+        </div>
+
+        <div class="crainte" data-reveal>
+          <p class="crainte__peur">« Nous avons peur de nous tromper face au syndic. »</p>
+          <p class="crainte__reponse">
+            Un rapport factuel ne se conteste pas comme une impression. Chaque
+            constat renvoie à la pièce dont il est tiré, et nous disons aussi ce
+            qui est en ordre. Vous n’avancez rien que vous ne puissiez montrer.
+          </p>
+        </div>
+
+        <div class="crainte" data-reveal>
+          <p class="crainte__peur">« Nous ne savons pas ce que ça va coûter. »</p>
+          <p class="crainte__reponse">
+            Le premier échange et le pré-diagnostic écrit sont gratuits. L’honoraire
+            exact est annoncé par écrit avant tout lancement, et jamais indexé sur
+            les économies constatées. S’il n’y a pas lieu d’intervenir, nous vous
+            le dirons.
+          </p>
+        </div>
+
       </div>
     </div>
   </section>
@@ -324,7 +371,7 @@
     <div class="footer__top">
       <div>
         <a class="logo" href="index.html" aria-label="Copro Performance Conseil — accueil">
-          <img class="logo__mark" src="assets/img/logo.svg" alt="" width="34" height="34">
+          <img class="logo__mark" src="assets/img/logo.svg" alt="Logo Copro Performance Conseil" width="34" height="34">
           <span class="logo__text">
             <span class="logo__name">Copro Performance Conseil</span>
             <span class="logo__tag">Conseil indépendant en copropriété</span>
@@ -332,16 +379,15 @@
         </a>
         <p class="footer__pitch">
           Nous aidons les conseils syndicaux à comprendre les charges, les contrats
-          et le fonctionnement de leur copropriété, pour décider sur la base de faits.
+          et le fonctionnement de leur copropriété, pour prendre des décisions fondées sur des faits.
         </p>
       </div>
       <div class="footer__col">
         <h3>Vous êtes</h3>
         <ul>
-          <li><a href="conseil-syndical.html">Conseil syndical</a></li>
-          <li><a href="coproprietaire.html">Copropriétaire</a></li>
-          <li><a href="syndic-benevole.html">Syndic bénévole</a></li>
           <li><a href="syndic-professionnel.html">Syndic professionnel</a></li>
+          <li><a href="conseil-syndical.html">conseil syndical</a></li>
+          <li><a href="coproprietaire.html">Copropriétaire</a></li>
         </ul>
       </div>
       <div class="footer__col">
@@ -368,7 +414,7 @@
         <ul>
           <li><a href="mailto:contact@coproperformanceconseil.fr">contact@coproperformanceconseil.fr</a></li>
           <li><a href="tel:+33617470857">+33 6 17 47 08 57</a></li>
-          <li>France entière, à distance</li>
+          <li>Intervention dans toute la France (à distance)</li>
         </ul>
       </div>
     </div>
@@ -382,6 +428,20 @@
     </div>
   </div>
 </footer>
+
+
+<!-- ==================================================================
+     CTA COLLANT (mobile)
+     Le bouton principal reste accessible à tout moment de la lecture.
+     Masqué au-dessus de 720 px et à l'impression. Il s'efface quand le
+     pied de page arrive : à ce moment le vrai bouton est à l'écran.
+     ================================================================== -->
+<div class="sticky-cta" data-sticky-cta>
+  <a class="btn btn--block magnet" href="contact.html">
+    Pré-diagnostic gratuit
+    <svg class="btn__arrow" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+  </a>
+</div>
 
 </body>
 </html>
