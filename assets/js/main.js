@@ -248,6 +248,25 @@
       return valid;
     }
 
+    /* Retour d'un envoi effectue sans JavaScript : le service a redirige
+       vers `?envoi=ok` (champ cache `_next`). On affiche la meme confirmation
+       qu'en envoi normal, puis on retire le parametre de la barre d'adresse
+       pour qu'un rechargement ne rejoue pas un message trompeur. */
+    if (window.URLSearchParams && /[?&]envoi=ok(&|$)/.test(window.location.search)) {
+      showStatus(
+        "ok",
+        "Merci, votre demande est bien enregistrée. Nous revenons vers vous " +
+          "sous 48 h ouvrées pour convenir d’un créneau."
+      );
+      if (window.history && window.history.replaceState) {
+        window.history.replaceState(
+          null,
+          "",
+          window.location.pathname + window.location.hash
+        );
+      }
+    }
+
     // Validation au blur, nettoyage à la saisie
     form.querySelectorAll(".field").forEach(function (field) {
       var control = field.querySelector(".field__control");
@@ -369,6 +388,13 @@
         form.submit();
         return;
       }
+
+      /* Adresse de reponse. Sans elle, repondre au courriel de notification
+         renvoie vers le service, pas vers le visiteur. Le champ n'est ajoute
+         qu'une fois rempli : vide, il ecraserait la detection automatique que
+         le service opere sur le champ `email` lorsque le script est absent. */
+      var courriel = form.querySelector('[name="email"]');
+      if (courriel && courriel.value) data.set("_replyto", courriel.value);
 
       window
         .fetch(endpoint, {

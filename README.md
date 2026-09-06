@@ -207,7 +207,7 @@ L'ordre est celui du **parcours du visiteur**, pas l'ordre alphabétique.
 | # | Fichier | Contenu |
 |---|---|---|
 | 24 | `plan-du-site.html` | Toutes les pages, classées en quatre colonnes |
-| 25 | `mentions-legales.html` | ⚠️ Trame à compléter — obligation légale |
+| 25 | `mentions-legales.html` | 12 sections renseignées — obligation légale |
 | 26 | `politique-confidentialite.html` | ⚠️ Trame à compléter |
 | 27 | `404.html` *(racine)* | Page d'erreur (hors sitemap, volontairement) |
 
@@ -229,7 +229,7 @@ demande de développement.
 |---|---|---|---|
 | 1 | Le site demande aux moteurs de **ne pas l'indexer** | Retirer `X-Robots-Tag: noindex` de `vercel.json`, une fois le domaine réel branché | Technique |
 | 2 | Le formulaire est branché, mais **FormSubmit n'est pas encore activé** | Envoyer un premier message depuis le site, puis cliquer le lien de confirmation reçu sur `contact@coproperformanceconseil.fr` — voir [`DEPLOIEMENT.md`](docs/DEPLOIEMENT.md) § 4 | **Cabinet** |
-| 3 | Les **deux pages légales sont des trames** | Fournir SIREN, siège, directeur de publication, hébergeur | **Cabinet** |
+| 3 | La **politique de confidentialité est une trame** | Fournir responsable de traitement, sous-traitants et durées de conservation. Les mentions légales, elles, sont renseignées depuis le 6 septembre 2026 — reste à confirmer l'hébergeur déclaré (Hostinger) au regard de l'hébergement réel (Vercel) | **Cabinet** |
 
 Le point 3 est une obligation légale (LCEN art. 6-III et RGPD) : en l'état, le
 site est en infraction.

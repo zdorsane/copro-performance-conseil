@@ -13,9 +13,10 @@
      Rôle :
      Obligation légale (LCEN art. 6-III).
 
-     /!\ TRAME INCOMPLÈTE : éditeur, SIREN, siège, directeur de la publication
-     et hébergeur restent à renseigner. Le site ne peut pas être publié en
-     l'état. Voir ../docs/CONTENU-A-VALIDER.md.
+     Mentions renseignées par le cabinet le 6 septembre 2026 : éditeur, SIREN,
+     SIRET, siège, directeur de la publication et hébergeur. Toute correction
+     de ces informations doit être reportée ici et dans
+     ../docs/CONTENU-A-VALIDER.md.
 
      Plan du <main> :
        01. 1. Éditeur du site
@@ -23,11 +24,13 @@
        03. 3. Hébergement
        04. 4. Activité et cadre d’exercice
        05. 5. Propriété intellectuelle
-       06. 6. Liens hypertextes
-       07. 7. Responsabilité et limites
-       08. 8. Accessibilité
-       09. 9. Données personnelles et cookies
-       10. 10. Droit applicable
+       06. 6. Responsabilité
+       07. 7. Données personnelles
+       08. 8. Cookies
+       09. 9. Liens externes
+       10. 10. Accessibilité
+       11. 11. Droit applicable
+       12. 12. Contact
 
      Entrées : Pied de page de toutes les pages.
      Sorties : politique-confidentialite.html, contact.html.
@@ -42,11 +45,11 @@
 
 <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
 <link rel="manifest" href="../site.webmanifest">
-<link rel="stylesheet" href="../assets/css/style.css?v=20260830">
+<link rel="stylesheet" href="../assets/css/style.css?v=20260906">
 <!-- Calque « Le Relevé » — direction artistique, illustrations et animations -->
-<link rel="stylesheet" href="../assets/css/signature.css?v=20260830">
-<script src="../assets/js/main.js?v=20260830" defer></script>
-<script src="../assets/js/signature.js?v=20260830" defer></script>
+<link rel="stylesheet" href="../assets/css/signature.css?v=20260906">
+<script src="../assets/js/main.js?v=20260906" defer></script>
+<script src="../assets/js/signature.js?v=20260906" defer></script>
 </head>
 
 <body>
@@ -141,45 +144,53 @@
       <div class="prose">
 
         <h2>1. Éditeur du site</h2>
-        <p>Le présent site est édité par :</p>
+        <p>Le site <strong>coproperformanceconseil.fr</strong> est édité par :</p>
         <div class="table-scroll">
           <table>
             <tbody>
               <tr>
-                <th scope="row">Dénomination sociale</th>
+                <th scope="row">Nom commercial</th>
                 <td>Copro Performance Conseil</td>
               </tr>
               <tr>
-                <th scope="row">Forme juridique</th>
-                <td>[Forme juridique — SAS, SASU, EURL, entreprise individuelle…]</td>
+                <th scope="row">Éditeur</th>
+                <td>Chakib BENSALEM — Entrepreneur individuel (EI)</td>
+              </tr>
+              <tr>
+                <th scope="row">Adresse professionnelle</th>
+                <td>11 avenue Guillaume Apollinaire, 94190 Villeneuve-Saint-Georges, France</td>
+              </tr>
+              <tr>
+                <th scope="row">SIREN</th>
+                <td>900 079 195</td>
+              </tr>
+              <tr>
+                <th scope="row">SIRET</th>
+                <td>900 079 195 00039</td>
+              </tr>
+              <tr>
+                <th scope="row">Immatriculation</th>
+                <td>Registre national des entreprises (RNE), sous le numéro SIREN 900 079 195</td>
               </tr>
               <tr>
                 <th scope="row">Capital social</th>
-                <td>[Montant du capital social, le cas échéant]</td>
+                <td>Non applicable — entreprise individuelle</td>
               </tr>
               <tr>
-                <th scope="row">Siège social</th>
-                <td>[Adresse complète du siège social]</td>
-              </tr>
-              <tr>
-                <th scope="row">SIREN / SIRET</th>
-                <td>[Numéro SIREN ou SIRET]</td>
-              </tr>
-              <tr>
-                <th scope="row">RCS</th>
-                <td>[Ville d’immatriculation et numéro RCS]</td>
-              </tr>
-              <tr>
-                <th scope="row">N° TVA intracommunautaire</th>
-                <td>[Numéro de TVA, ou mention « TVA non applicable, art. 293 B du CGI »]</td>
+                <th scope="row">TVA</th>
+                <td>TVA non applicable, article 293 B du Code général des impôts, sous réserve du maintien du régime de franchise en base de TVA</td>
               </tr>
               <tr>
                 <th scope="row">Téléphone</th>
-                <td>[Numéro de téléphone]</td>
+                <td><a href="tel:+33617470857">+33 6 17 47 08 57</a></td>
               </tr>
               <tr>
                 <th scope="row">E-mail</th>
-                <td>[Adresse e-mail de contact]</td>
+                <td><a href="mailto:contact@coproperformanceconseil.fr">contact@coproperformanceconseil.fr</a></td>
+              </tr>
+              <tr>
+                <th scope="row">Site internet</th>
+                <td><a href="../index.html">coproperformanceconseil.fr</a></td>
               </tr>
             </tbody>
           </table>
@@ -187,7 +198,12 @@
 
         <h2>2. Directeur de la publication</h2>
         <p>
-          [Prénom NOM], en qualité de [fonction — gérant, président, dirigeant…].
+          Le directeur de la publication du site est <strong>Chakib BENSALEM</strong>,
+          entrepreneur individuel exploitant Copro Performance Conseil.
+        </p>
+        <p>
+          Contact :
+          <a href="mailto:contact@coproperformanceconseil.fr">contact@coproperformanceconseil.fr</a>.
         </p>
 
         <h2>3. Hébergement</h2>
@@ -197,15 +213,11 @@
             <tbody>
               <tr>
                 <th scope="row">Hébergeur</th>
-                <td>[Nom de l’hébergeur]</td>
+                <td>Hostinger International Ltd</td>
               </tr>
               <tr>
                 <th scope="row">Adresse</th>
-                <td>[Adresse postale complète de l’hébergeur]</td>
-              </tr>
-              <tr>
-                <th scope="row">Téléphone</th>
-                <td>[Numéro de téléphone de l’hébergeur]</td>
+                <td>61 Lordou Vironos Street, 6023 Larnaca, Chypre</td>
               </tr>
             </tbody>
           </table>
@@ -213,70 +225,102 @@
 
         <h2>4. Activité et cadre d’exercice</h2>
         <p>
-          Copro Performance Conseil exerce une activité de conseil et d’analyse en
-          matière de copropriété. Le cabinet <strong>n’exerce pas d’activité de syndic
-          de copropriété</strong> et n’assure aucune mission de gestion, d’administration
+          Copro Performance Conseil exerce une activité de conseil, d’analyse et
+          d’accompagnement dans le domaine de la copropriété.
+        </p>
+        <p>
+          Ses prestations peuvent notamment porter sur l’analyse des charges de
+          copropriété, l’analyse des contrats de prestataires, la comparaison de devis,
+          la recherche et la mise en concurrence de prestataires, l’identification de
+          pistes d’optimisation des charges ainsi que l’accompagnement des conseils
+          syndicaux, copropriétaires et syndics professionnels.
+        </p>
+        <p>
+          Copro Performance Conseil <strong>n’exerce pas d’activité de syndic de
+          copropriété</strong> et n’assure aucune mission de gestion, d’administration
           de biens ou de transaction immobilière.
         </p>
         <p>
-          Les analyses réalisées ne constituent ni une certification légale des comptes,
-          ni une consultation juridique. Les points relevant du droit sont signalés comme
-          tels et renvoyés à un professionnel habilité.
+          Les informations, analyses et recommandations proposées ne constituent ni une
+          certification légale des comptes, ni une consultation juridique, fiscale ou
+          comptable réglementée.
         </p>
         <p>
-          [Le cas échéant : mention de l’assurance de responsabilité civile
-          professionnelle — nom de l’assureur, numéro de police et couverture
-          géographique.]
+          Lorsque la situation relève d’une profession réglementée, le client est invité
+          à consulter un professionnel compétent.
         </p>
 
         <h2>5. Propriété intellectuelle</h2>
         <p>
-          L’ensemble des éléments composant ce site — structure, textes, illustrations,
-          identité visuelle, code source — est protégé par le droit de la propriété
-          intellectuelle. Sauf mention contraire, ces éléments sont la propriété
-          exclusive de l’éditeur.
+          L’ensemble des éléments présents sur le site coproperformanceconseil.fr,
+          notamment les textes, graphismes, logos, illustrations, photographies,
+          documents, éléments visuels, structure et mise en page, est protégé par les
+          dispositions applicables en matière de propriété intellectuelle.
         </p>
         <p>
-          Toute reproduction, représentation, adaptation ou exploitation, totale ou
-          partielle, par quelque procédé que ce soit, sans autorisation écrite
-          préalable de l’éditeur, est interdite et susceptible de constituer une
-          contrefaçon au sens des articles L.335-2 et suivants du Code de la propriété
-          intellectuelle.
+          Toute reproduction, représentation, adaptation, modification, diffusion ou
+          exploitation, totale ou partielle, d’un contenu appartenant à Copro
+          Performance Conseil est interdite sans autorisation préalable, sauf exceptions
+          prévues par la loi.
         </p>
         <p>
-          La citation de courts extraits reste possible, à condition d’indiquer
-          clairement la source et d’insérer un lien vers la page concernée.
+          Les contenus appartenant à des tiers demeurent la propriété de leurs auteurs
+          ou titulaires respectifs.
         </p>
 
-        <h2>6. Liens hypertextes</h2>
+        <h2>6. Responsabilité</h2>
         <p>
-          Le site peut proposer des liens vers des ressources externes. L’éditeur
-          n’exerce aucun contrôle sur ces sites et décline toute responsabilité quant
-          à leur contenu, leur disponibilité ou les pratiques de leurs exploitants en
-          matière de données personnelles.
+          Copro Performance Conseil s’efforce de fournir sur son site des informations
+          fiables, compréhensibles et à jour.
         </p>
         <p>
-          La création d’un lien vers le présent site est libre, dès lors qu’elle ne
-          porte pas atteinte à l’image de l’éditeur et n’induit pas en erreur sur
-          l’origine du contenu.
-        </p>
-
-        <h2>7. Responsabilité et limites</h2>
-        <p>
-          Les informations diffusées sur ce site sont fournies à titre indicatif et
-          présentées de bonne foi. Elles ont une vocation générale d’information et
-          <strong>ne sauraient constituer un conseil personnalisé</strong> : chaque
-          copropriété présente une situation propre, qui ne peut être appréciée
-          qu’après examen des documents la concernant.
+          Les informations diffusées sur le site sont néanmoins fournies à titre général
+          et informatif. Elles ne sauraient remplacer l’analyse individualisée de la
+          situation d’une copropriété.
         </p>
         <p>
-          L’éditeur s’efforce de maintenir ces informations à jour, sans garantir leur
-          exactitude, leur exhaustivité ni leur actualité permanentes, notamment au
-          regard des évolutions réglementaires. Sa responsabilité ne saurait être
-          engagée du fait d’une décision prise sur la seule base du contenu de ce site.
+          Copro Performance Conseil ne saurait être tenu responsable d’une décision prise
+          uniquement sur la base des informations générales disponibles sur le site.
         </p>
 
-        <h2>8. Accessibilité</h2>
+        <h2>7. Données personnelles</h2>
+        <p>
+          Les données personnelles transmises par l’intermédiaire du site, notamment via
+          le formulaire de contact, sont utilisées afin de traiter les demandes adressées
+          à Copro Performance Conseil et d’assurer le suivi des échanges.
+        </p>
+        <p>
+          Les modalités de traitement, les durées de conservation et les droits des
+          utilisateurs sont détaillés dans la
+          <a href="politique-confidentialite.html">politique de confidentialité</a> du site.
+        </p>
+        <p>
+          Pour toute demande concernant vos données personnelles :
+          <a href="mailto:contact@coproperformanceconseil.fr">contact@coproperformanceconseil.fr</a>.
+        </p>
+
+        <h2>8. Cookies</h2>
+        <p>
+          Le site peut utiliser des cookies ou technologies similaires nécessaires à son
+          fonctionnement ainsi que, lorsque le consentement de l’utilisateur est requis,
+          des cookies liés à la mesure d’audience ou à certains services tiers.
+        </p>
+        <p>
+          Les préférences relatives aux cookies peuvent être gérées depuis le module de
+          consentement disponible sur le site.
+        </p>
+
+        <h2>9. Liens externes</h2>
+        <p>
+          Le site peut contenir des liens vers des sites internet ou services appartenant
+          à des tiers.
+        </p>
+        <p>
+          Copro Performance Conseil ne contrôle pas ces sites et ne saurait être tenu
+          responsable de leur contenu, de leur disponibilité ou de leurs pratiques.
+        </p>
+
+        <h2>10. Accessibilité</h2>
         <p>
           Ce site a été conçu en recherchant la conformité aux critères du référentiel
           RGAA et aux recommandations WCAG 2.1 niveau AA : structure sémantique,
@@ -290,24 +334,29 @@
           moyen dans l’intervalle.
         </p>
 
-        <h2>9. Données personnelles et cookies</h2>
-        <p>
-          Le traitement des données personnelles est décrit dans notre
-          <a href="politique-confidentialite.html">politique de confidentialité</a>,
-          qui précise les finalités, les bases légales, les durées de conservation
-          et les modalités d’exercice de vos droits.
-        </p>
-
-        <h2>10. Droit applicable</h2>
+        <h2>11. Droit applicable</h2>
         <p>
           Les présentes mentions légales sont régies par le droit français. En cas de
           litige, et à défaut de résolution amiable, les tribunaux français seront
           seuls compétents.
         </p>
 
+        <h2>12. Contact</h2>
+        <p>
+          Copro Performance Conseil<br>
+          Chakib BENSALEM — Entrepreneur individuel<br>
+          11 avenue Guillaume Apollinaire<br>
+          94190 Villeneuve-Saint-Georges<br>
+          France
+        </p>
+        <p>
+          Téléphone : <a href="tel:+33617470857">+33 6 17 47 08 57</a><br>
+          E-mail : <a href="mailto:contact@coproperformanceconseil.fr">contact@coproperformanceconseil.fr</a>
+        </p>
+
         <hr>
         <p class="muted" style="font-size:var(--fs-sm)">
-          Dernière mise à jour : 25 août 2026.
+          Dernière mise à jour : 6 septembre 2026.
         </p>
 
       </div>

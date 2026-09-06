@@ -44,11 +44,11 @@
 
 <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
 <link rel="manifest" href="../site.webmanifest">
-<link rel="stylesheet" href="../assets/css/style.css?v=20260830">
+<link rel="stylesheet" href="../assets/css/style.css?v=20260906">
 <!-- Calque « Le Relevé » — direction artistique, illustrations et animations -->
-<link rel="stylesheet" href="../assets/css/signature.css?v=20260830">
-<script src="../assets/js/main.js?v=20260830" defer></script>
-<script src="../assets/js/signature.js?v=20260830" defer></script>
+<link rel="stylesheet" href="../assets/css/signature.css?v=20260906">
+<script src="../assets/js/main.js?v=20260906" defer></script>
+<script src="../assets/js/signature.js?v=20260906" defer></script>
 
 <script type="application/ld+json">
 {
@@ -191,6 +191,13 @@
           <input type="hidden" name="_subject" value="Nouvelle demande — coproperformanceconseil.fr">
           <input type="hidden" name="_template" value="table">
           <input type="hidden" name="_captcha" value="false">
+
+          <!-- Retour sans JavaScript : plutot que la page de remerciement du
+               service, le visiteur revient sur cette page, ou le parametre
+               `envoi=ok` declenche le meme message de confirmation qu'en
+               envoi normal. Ignore lorsque le script prend la main : la
+               variante `/ajax/` repond en JSON, sans redirection. -->
+          <input type="hidden" name="_next" value="https://coproperformanceconseil.fr/pages/contact.html?envoi=ok">
 
           <!-- Piege a robots (invisible, ne pas remplir). `_honey` est le nom
                attendu par FormSubmit, qui rejette l'envoi si le champ est

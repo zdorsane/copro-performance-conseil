@@ -139,20 +139,27 @@ ancienneté et aucune qualification n'ont été inventés.
 
 ---
 
-## 5. Pages légales — OBLIGATOIRES, incomplètes
+## 5. Pages légales — OBLIGATOIRES
 
-`pages/mentions-legales.html` et `pages/politique-confidentialite.html` sont des **trames
-conformes** au droit français, mais elles **ne peuvent pas être publiées en
-l'état**. Tous les champs entre crochets `[…]` sont à renseigner.
+`pages/politique-confidentialite.html` reste une **trame conforme** au droit
+français mais **non publiable en l'état** : tous les champs entre crochets
+`[…]` sont à renseigner.
 
-### Mentions légales — champs manquants
-- [ ] Forme juridique, capital social
-- [ ] Adresse du siège social
-- [ ] SIREN / SIRET, RCS, n° TVA intracommunautaire
-- [ ] Nom du directeur de la publication
-- [ ] Coordonnées complètes de l'hébergeur (nom, adresse, téléphone)
-- [ ] Assurance de responsabilité civile professionnelle (si souscrite)
-- [ ] Date de dernière mise à jour
+### Mentions légales — renseignées le 6 septembre 2026
+Fournies par le cabinet et intégrées : entrepreneur individuel Chakib BENSALEM,
+adresse professionnelle, SIREN 900 079 195, SIRET 900 079 195 00039, RNE,
+franchise en base de TVA (art. 293 B du CGI), directeur de la publication et
+hébergeur.
+
+Deux points restent à trancher :
+
+- [ ] ⚠️ **Hébergeur déclaré : Hostinger**, alors que le site est déployé sur
+      **Vercel**. La mention doit désigner l'hébergeur réel au jour de la
+      publication — soit corriger la mention, soit héberger effectivement chez
+      Hostinger. Le même arbitrage vaut pour la liste des sous-traitants de la
+      politique de confidentialité.
+- [ ] Assurance de responsabilité civile professionnelle (si souscrite) — non
+      mentionnée à ce jour
 
 ### Politique de confidentialité — champs manquants
 - [ ] Identité du responsable de traitement

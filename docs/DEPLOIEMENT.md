@@ -62,11 +62,16 @@ acceptés côté visiteur mais **aucun courriel n'arrive**.
 C'est l'affaire de deux minutes, et cela se fait depuis le site publié — voir
 § 4 ci-dessous.
 
-### 2.3 Compléter les deux pages légales
+### 2.3 Compléter la politique de confidentialité
 
-`mentions-legales.html` et `politique-confidentialite.html` sont des trames :
-SIREN, adresse du siège, directeur de la publication, hébergeur restent à
-renseigner. Ces mentions sont **obligatoires** (art. 6-III de la LCEN).
+`mentions-legales.html` est renseignée depuis le 6 septembre 2026 (éditeur,
+SIREN / SIRET, siège, directeur de la publication, hébergeur). ⚠️ Elle déclare
+**Hostinger** comme hébergeur alors que le site est déployé sur **Vercel** :
+cette contradiction est à lever avant publication.
+
+`politique-confidentialite.html` reste une trame : responsable de traitement,
+sous-traitants et durées de conservation restent à renseigner. Ces mentions sont
+**obligatoires** (art. 6-III de la LCEN, RGPD art. 13).
 
 Le détail est suivi dans [`CONTENU-A-VALIDER.md`](CONTENU-A-VALIDER.md).
 
@@ -117,9 +122,18 @@ coproperformanceconseil.fr » (`_subject`), et sans page captcha intermédiaire
 `main.js` gère la validation, l'état de chargement, les messages de retour, le
 piège à robots (`_honey`) et le consentement RGPD. À l'envoi, il bascule
 l'adresse vers la variante `https://formsubmit.co/ajax/…`, qui répond en JSON :
-le visiteur **ne quitte pas la page**. Si JavaScript est indisponible, le
-navigateur poste le formulaire normalement et FormSubmit affiche sa propre page
-de confirmation.
+le visiteur **ne quitte pas la page**.
+
+Deux réglages complètent le circuit jusqu'à la boîte du cabinet :
+
+| Réglage | Où | Effet |
+|---|---|---|
+| `_replyto` | ajouté à l'envoi par `main.js`, depuis le champ `email` | Répondre au courriel de notification écrit **au visiteur**, pas au service. Le champ n'est posé que s'il est rempli : vide, il écraserait la détection automatique du service. |
+| `_next` | champ caché de `contact.html` | Sans JavaScript, le navigateur poste le formulaire normalement ; le service redirige alors vers `…/contact.html?envoi=ok` plutôt que vers sa propre page de remerciement, et `main.js` y affiche la même confirmation qu'en envoi normal, puis retire le paramètre de la barre d'adresse. |
+
+> `_next` pointe sur le **domaine définitif**. Tant que le site vit sur son
+> adresse `.vercel.app`, ce retour n'aboutit pas — il ne concerne que les
+> visiteurs sans JavaScript, et se rétablit dès le domaine branché (§ 3).
 
 ### ⚠️ L'activation, à faire une fois
 
@@ -165,8 +179,9 @@ Champs envoyés, dans l'ordre du formulaire — c'est aussi l'ordre du corps du
 courriel de notification, `FormData` suivant l'ordre du DOM :
 
 `nom`, `prenom`, `email`, `telephone`, `qualite`, `sujet`, `lots`, `message`,
-`consentement`, plus `_gotcha` (champ piège : s'il est rempli, la requête vient
-d'un robot et doit être ignorée côté serveur également).
+`consentement`, plus `_honey` (champ piège : s'il est rempli, la requête vient
+d'un robot et doit être ignorée côté serveur également) et `_replyto`, ajouté à
+l'envoi par `main.js` à partir du champ `email`.
 
 ### Option C — lien e-mail uniquement
 

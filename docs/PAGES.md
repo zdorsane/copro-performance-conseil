@@ -40,7 +40,7 @@ Sauf mention contraire, les fichiers cités plus bas sont dans `pages/`.
 | 22 | `faq.html` | Conversion | 4 thèmes, questions fréquentes |
 | 23 | `contact.html` | Conversion | Formulaire + coordonnées |
 | 24 | `plan-du-site.html` | Service | Toutes les pages, classées |
-| 25 | `mentions-legales.html` | Légal | ⚠️ Trame à compléter |
+| 25 | `mentions-legales.html` | Légal | 12 sections, renseignées |
 | 26 | `politique-confidentialite.html` | Légal | ⚠️ Trame à compléter |
 | 27 | `404.html` *(racine)* | Service | Page d'erreur |
 
@@ -240,10 +240,15 @@ fois** chez le service avant que les messages arrivent — voir
 Toutes les pages, classées en quatre colonnes : Le cabinet · Vous êtes… ·
 Ressources · Aide et informations. À mettre à jour à chaque page ajoutée.
 
-### `mentions-legales.html` ⚠️
+### `mentions-legales.html`
 
-Dix sections. **Trame incomplète** : éditeur, directeur de publication,
-hébergeur, SIREN restent à renseigner. Obligation légale (LCEN art. 6-III).
+Douze sections, **renseignées par le cabinet le 6 septembre 2026** : éditeur
+(Chakib BENSALEM, entrepreneur individuel), SIREN / SIRET, siège, directeur de
+la publication et hébergeur. Obligation légale (LCEN art. 6-III).
+
+⚠️ L'hébergeur déclaré est **Hostinger**, alors que le site est aujourd'hui
+déployé sur **Vercel**. La mention doit désigner l'hébergeur réel au jour de la
+publication : à trancher avant mise en ligne.
 
 ### `politique-confidentialite.html` ⚠️
 

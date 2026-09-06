@@ -584,24 +584,58 @@
       return;
     }
 
-    var depasse = false; // le premier bloc CTA est sorti par le haut
+    var depasse = false; // le seuil d'apparition est franchi
     var vus = []; // éléments concurrents actuellement à l'écran
 
     function maj() {
       afficher(depasse && vus.length === 0);
     }
 
-    // 1. Franchissement du premier bloc CTA.
-    new IntersectionObserver(
-      function (entries) {
-        entries.forEach(function (e) {
-          // `top < 0` distingue « déjà lu » de « pas encore atteint ».
-          depasse = !e.isIntersecting && e.boundingClientRect.top < 0;
-          maj();
-        });
-      },
-      { threshold: 0 }
-    ).observe(blocs[0]);
+    /* 1. Seuil d'apparition.
+       Deux cas se présentent selon la page.
+
+       L'accueil ouvre sur un bloc CTA : on l'observe, et le bouton flottant
+       prend le relais dès que ce bloc sort par le haut. C'est le repère le
+       plus juste, puisqu'il suit le contenu et non une hauteur en dur.
+
+       Les pages de profil, elles, n'ont qu'un seul bloc CTA, tout en bas.
+       L'observer reviendrait à n'afficher le bouton qu'après l'avoir dépassé,
+       c'est-à-dire jamais utilement. On retombe alors sur le seuil de
+       défilement du CTA collant : le premier écran reste dégagé, puis le
+       bouton accompagne la lecture. */
+    if (blocs.length > 1) {
+      new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (e) {
+            // `top < 0` distingue « déjà lu » de « pas encore atteint ».
+            depasse = !e.isIntersecting && e.boundingClientRect.top < 0;
+            maj();
+          });
+        },
+        { threshold: 0 }
+      ).observe(blocs[0]);
+    } else {
+      var seuil = 480; // hauteur approximative du premier écran
+      var ticking = false;
+
+      var surDefilement = function () {
+        depasse = window.scrollY > seuil;
+        ticking = false;
+        maj();
+      };
+
+      window.addEventListener(
+        "scroll",
+        function () {
+          if (ticking) return;
+          ticking = true;
+          window.requestAnimationFrame(surDefilement);
+        },
+        { passive: true }
+      );
+
+      surDefilement();
+    }
 
     // 2. Effacement dès qu'un vrai bouton occupe l'écran.
     function surveiller(cibles, marge) {

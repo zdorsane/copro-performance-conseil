@@ -47,11 +47,11 @@
 
 <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
 <link rel="manifest" href="../site.webmanifest">
-<link rel="stylesheet" href="../assets/css/style.css?v=20260830">
+<link rel="stylesheet" href="../assets/css/style.css?v=20260906">
 <!-- Calque « Le Relevé » — direction artistique, illustrations et animations -->
-<link rel="stylesheet" href="../assets/css/signature.css?v=20260830">
-<script src="../assets/js/main.js?v=20260830" defer></script>
-<script src="../assets/js/signature.js?v=20260830" defer></script>
+<link rel="stylesheet" href="../assets/css/signature.css?v=20260906">
+<script src="../assets/js/main.js?v=20260906" defer></script>
+<script src="../assets/js/signature.js?v=20260906" defer></script>
 
 
 
@@ -402,7 +402,7 @@
             justifiée, nous vous le dirons.
           </p>
         </div>
-        <div class="btn-group btn-group--cta">
+        <div class="btn-group btn-group--cta" data-cta>
           <a class="btn btn--lg magnet" href="contact.html">
             Demander mon premier échange gratuit
             <svg class="btn__arrow" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
@@ -471,14 +471,18 @@
 
 
 <!-- ==================================================================
-     CTA COLLANT (mobile)
-     Le bouton principal reste accessible à tout moment de la lecture.
-     Masqué au-dessus de 720 px et à l'impression. Il s'efface quand le
-     pied de page arrive : à ce moment le vrai bouton est à l'écran.
+     CTA FLOTTANT
+     Le bouton principal reste accessible à tout moment de la lecture :
+     pastille en bas à droite sur grand écran, barre pleine largeur sous
+     720 px. Il n'apparaît qu'une fois le premier écran dépassé et s'efface
+     dès que le bloc d'appel à l'action ou le pied de page arrive : deux
+     appels simultanés se nuisent l'un à l'autre. Masqué à l'impression.
      ================================================================== -->
-<div class="sticky-cta" data-sticky-cta>
-  <a class="btn btn--block magnet" href="contact.html">
-    Premier échange gratuit
+<div class="cta-flottant" data-cta-flottant aria-hidden="true">
+  <a class="btn btn--lg cta-flottant__lien"
+     href="contact.html"
+     aria-label="Demander mon premier échange gratuit — aller au formulaire de contact">
+    Demander mon premier échange gratuit
     <svg class="btn__arrow" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
   </a>
 </div>
