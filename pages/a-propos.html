@@ -4,9 +4,32 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
+<!-- ==================================================================
+     PAGE 07/27 — À propos
+     Fichier : pages/a-propos.html
+     URL     : /pages/a-propos.html
+     Gabarit : Page cabinet — voir ../docs/PAGES.md
+     ------------------------------------------------------------------
+     Rôle :
+     Vision, convictions et — surtout — ce que l'indépendance signifie
+     concrètement : aucune commission de prestataire, aucun groupe de gestion.
+
+     Plan du <main> :
+       01. Le constat de départ
+       02. Trois convictions.
+       03. L’indépendance, concrètement.
+       04. Ce sur quoi vous pouvez compter.
+       05. Comment nous travaillons avec vous.
+       06. Qui est derrière Copro Performance Conseil.
+       07. La meilleure façon de nous juger, c’est de nous parler.
+
+     Entrées : Navigation principale, pied de page, recherche de marque.
+     Sorties : contact.html, approche.html, services.html.
+     ================================================================== -->
+
 <title>À propos — Un conseil indépendant en copropriété | Copro Performance Conseil</title>
 <meta name="description" content="Pourquoi Copro Performance Conseil existe, ce que signifie concrètement l'indépendance dans le conseil en copropriété, et la relation que nous construisons avec les conseils syndicaux.">
-<link rel="canonical" href="https://coproperformanceconseil.fr/a-propos.html">
+<link rel="canonical" href="https://coproperformanceconseil.fr/pages/a-propos.html">
 
 <meta name="theme-color" content="#0B1C2C">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
@@ -16,17 +39,17 @@
 <meta property="og:site_name" content="Copro Performance Conseil">
 <meta property="og:title" content="À propos — Un conseil indépendant en copropriété">
 <meta property="og:description" content="Pourquoi nous existons, ce que signifie l'indépendance, et la relation que nous construisons avec les conseils syndicaux.">
-<meta property="og:url" content="https://coproperformanceconseil.fr/a-propos.html">
+<meta property="og:url" content="https://coproperformanceconseil.fr/pages/a-propos.html">
 <meta property="og:image" content="https://coproperformanceconseil.fr/assets/img/og-image.jpg">
 <meta name="twitter:card" content="summary_large_image">
 
-<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
-<link rel="manifest" href="site.webmanifest">
-<link rel="stylesheet" href="assets/css/style.css">
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="manifest" href="../site.webmanifest">
+<link rel="stylesheet" href="../assets/css/style.css?v=20260830">
 <!-- Calque « Le Relevé » — direction artistique, illustrations et animations -->
-<link rel="stylesheet" href="assets/css/signature.css">
-<script src="assets/js/main.js" defer></script>
-<script src="assets/js/signature.js" defer></script>
+<link rel="stylesheet" href="../assets/css/signature.css?v=20260830">
+<script src="../assets/js/main.js?v=20260830" defer></script>
+<script src="../assets/js/signature.js?v=20260830" defer></script>
 
 <script type="application/ld+json">
 {
@@ -34,7 +57,7 @@
   "@type": "BreadcrumbList",
   "itemListElement": [
     { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://coproperformanceconseil.fr/" },
-    { "@type": "ListItem", "position": 2, "name": "À propos", "item": "https://coproperformanceconseil.fr/a-propos.html" }
+    { "@type": "ListItem", "position": 2, "name": "À propos", "item": "https://coproperformanceconseil.fr/pages/a-propos.html" }
   ]
 }
 </script>
@@ -67,23 +90,21 @@
 
 <header class="header" data-header>
   <div class="container header__inner">
-    <a class="logo" href="index.html" aria-label="Copro Performance Conseil — accueil">
-      <img class="logo__mark" src="assets/img/logo.svg" alt="Logo Copro Performance Conseil" width="34" height="34">
+    <a class="logo" href="../index.html" aria-label="Copro Performance Conseil — accueil">
+      <img class="logo__mark" src="../assets/img/logo.svg" alt="Logo Copro Performance Conseil" width="34" height="34">
       <span class="logo__text">
         <span class="logo__name">Copro Performance Conseil</span>
         <span class="logo__tag">Conseil indépendant en copropriété</span>
       </span>
     </a>
     <nav class="nav" aria-label="Navigation principale">
-      <a class="nav__link" href="services.html">Services</a>
-      <a class="nav__link" href="approche.html">Notre approche</a>
       <a class="nav__link" href="a-propos.html" aria-current="page">À propos</a>
       <a class="nav__link" href="ressources.html">Ressources</a>
       <a class="nav__link" href="faq.html">FAQ</a>
     </nav>
     <div class="header__actions">
       <a class="btn magnet" href="contact.html">
-        Demander un échange
+        Demander mon premier échange gratuit
         <svg class="btn__arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </a>
       <button class="burger" data-burger type="button" aria-expanded="false" aria-controls="menu-mobile" aria-label="Ouvrir le menu">
@@ -96,17 +117,15 @@
 <div class="mobile-nav" id="menu-mobile" data-mobile-nav aria-hidden="true">
   <nav aria-label="Navigation mobile">
     <ul class="mobile-nav__list">
-      <li><a class="mobile-nav__link" href="index.html">Accueil <span>01</span></a></li>
-      <li><a class="mobile-nav__link" href="services.html">Services <span>02</span></a></li>
-      <li><a class="mobile-nav__link" href="approche.html">Notre approche <span>03</span></a></li>
-      <li><a class="mobile-nav__link" href="a-propos.html" aria-current="page">À propos <span>04</span></a></li>
-      <li><a class="mobile-nav__link" href="ressources.html">Ressources <span>05</span></a></li>
-      <li><a class="mobile-nav__link" href="faq.html">FAQ <span>06</span></a></li>
-      <li><a class="mobile-nav__link" href="contact.html">Contact <span>07</span></a></li>
+      <li><a class="mobile-nav__link" href="../index.html">Accueil <span>01</span></a></li>
+      <li><a class="mobile-nav__link" href="a-propos.html" aria-current="page">À propos <span>02</span></a></li>
+      <li><a class="mobile-nav__link" href="ressources.html">Ressources <span>03</span></a></li>
+      <li><a class="mobile-nav__link" href="faq.html">FAQ <span>04</span></a></li>
+      <li><a class="mobile-nav__link" href="contact.html">Contact <span>05</span></a></li>
     </ul>
   </nav>
   <div class="mobile-nav__footer">
-    <a class="btn btn--block" href="contact.html">Demander un premier échange</a>
+    <a class="btn btn--block" href="contact.html">Demander mon premier échange gratuit</a>
   </div>
 </div>
 
@@ -115,7 +134,7 @@
   <div class="container">
     <nav class="breadcrumb" aria-label="Fil d'Ariane">
       <ol>
-        <li><a href="index.html">Accueil</a></li>
+        <li><a href="../index.html">Accueil</a></li>
         <li aria-current="page">À propos</li>
       </ol>
     </nav>
@@ -124,7 +143,7 @@
   <section class="page-head">
     <div class="container">
       <p class="eyebrow" data-reveal="fade">À propos</p>
-      <h1 data-split>Nous existons parce que personne ne devrait voter à l’aveugle.</h1>
+      <h1 data-split>Nous rendons la copropriété plus lisible pour mieux décider.</h1>
       <p class="lead" data-reveal style="--d:1">
         Chaque année, des centaines de milliers de copropriétaires approuvent des
         budgets qu’ils n’ont pas les moyens de comprendre. Non par négligence —
@@ -142,7 +161,7 @@
       <div class="prose" data-stagger>
         <h2 id="t-constat" data-split>Le constat de départ</h2>
         <p data-reveal>
-          La copropriété française repose sur un équilibre singulier : un professionnel
+          La copropriété repose sur un équilibre singulier : un professionnel
           gère, un conseil de bénévoles contrôle, une assemblée décide. Cet équilibre
           fonctionne — à condition que chacun dispose des moyens d’exercer son rôle.
         </p>
@@ -170,21 +189,33 @@
   <!-- ==================================================================
        RESPIRATION VISUELLE
        ================================================================== -->
-  <section class="section section--tight" aria-label="Illustration : une copropriété vue de chez soi">
-    <div class="container">
-      <!-- Photo CC0 (Wikimedia Commons) — voir CREDITS-PHOTOS.md -->
+  <section class="section section--tight" aria-label="Illustration : une rue d'immeubles d'habitation à la tombée du jour">
+    <div class="container container--narrow">
+      <!-- ==============================================================
+           EMPLACEMENT D'IMAGE — « Partout, la même mécanique »
+           Fichiers à écraser pour changer le visuel (mêmes noms, aucune
+           modification de balisage hormis width/height) :
+             • assets/img/rue-paris.jpg       — rendu principal
+             • assets/img/rue-paris.webp      — même image, format WebP
+             • assets/img/rue-paris-tiny.jpg  — aperçu flou (blur-up)
+           Le fichier fourni est en portrait 736 × 1046 : le cadre est donc
+           tenu en conteneur étroit (780 px) plutôt qu'en pleine largeur,
+           pour ne pas l'agrandir au-delà de sa définition réelle.
+           `object-position` remonte le cadrage sur les façades éclairées.
+           ============================================================== -->
       <figure class="media media--box media--tint" data-media
-              style="background-image:url('assets/img/fenetre-balcon-tiny.jpg')">
+              style="background-image:url('../assets/img/rue-paris-tiny.jpg')">
         <picture>
-          <source srcset="assets/img/fenetre-balcon.webp" type="image/webp">
-          <img src="assets/img/fenetre-balcon.jpg"
-               alt="Fenêtre ouverte sur un balcon en fer forgé donnant sur la cour intérieure d'un immeuble"
-               width="1300" height="812" loading="lazy" decoding="async">
+          <source srcset="../assets/img/rue-paris.webp" type="image/webp">
+          <img class="media__img--haut"
+               src="../assets/img/rue-paris.jpg"
+               alt="Rue bordée d'immeubles d'habitation haussmanniens aux fenêtres éclairées, à la tombée du jour"
+               width="736" height="1046" loading="lazy" decoding="async">
         </picture>
         <figcaption class="media__caption">
-          <strong>Une copropriété, vue de chez soi</strong>
-          Derrière chaque fenêtre, un copropriétaire qui vote un budget
-          qu’il n’a pas toujours les moyens de comprendre.
+          <strong>Partout, la même mécanique</strong>
+          Derrière chaque fenêtre éclairée, des copropriétaires qui votent
+          un budget qu’ils n’ont pas toujours les moyens de comprendre.
         </figcaption>
       </figure>
     </div>
@@ -207,8 +238,7 @@
           <span class="value-card__num">Vision</span>
           <h3>Une copropriété se pilote, elle ne se subit pas.</h3>
           <p>
-            Un immeuble bien compris coûte moins cher à faire vivre, se dégrade moins
-            vite et génère moins de conflits entre voisins. La compréhension n’est pas
+            Une copropriété bien comprise facilite la maîtrise des dépenses, l’anticipation des besoins et des décisions plus sereines. La compréhension n’est pas
             un luxe administratif : c’est la condition d’une gestion sereine.
           </p>
         </div>
@@ -262,7 +292,7 @@
         <ul class="check-list">
           <li data-reveal>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
-            <span><strong>Un seul mandant : la copropriété.</strong> Nous sommes rémunérés par ceux que nous conseillons, et par personne d’autre.</span>
+            <span><strong>Une rémunération transparente, définie à l’avance.</strong> Nous ne percevons aucune commission des prestataires et n’avons aucun intérêt dans les contrats analysés.</span>
           </li>
           <li data-reveal>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
@@ -274,7 +304,7 @@
           </li>
           <li data-reveal>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
-            <span><strong>Une honoraire fixe, connue d’avance.</strong> Jamais indexée sur les économies constatées : un conseil payé au résultat n’est plus un conseil neutre.</span>
+            <span><strong>Un honoraire fixe, connu d’avance.</strong> Jamais indexé sur les économies constatées : notre rémunération ne dépend pas du résultat de l’analyse.</span>
           </li>
           <li data-reveal>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
@@ -322,8 +352,7 @@
           </div>
           <h3 class="card__title">Une confidentialité stricte</h3>
           <p class="card__text">
-            Les documents que vous nous transmettez ne servent qu’à votre mission.
-            Ils ne sont ni partagés, ni réutilisés, ni communiqués à des tiers.
+            Les documents que vous nous transmettez sont utilisés uniquement pour votre mission. Leur accès est limité aux personnes et prestataires techniques nécessaires à son traitement, dans le respect de notre politique de confidentialité.
           </p>
         </article>
 
@@ -333,8 +362,7 @@
           </div>
           <h3 class="card__title">Des constats sourcés</h3>
           <p class="card__text">
-            Chaque observation renvoie à la pièce dont elle est tirée : une ligne
-            d’annexe, un article de contrat, une décision d’assemblée. Vous pouvez tout vérifier.
+            Chaque observation renvoie à la pièce dont elle est tirée.
           </p>
         </article>
 
@@ -344,8 +372,8 @@
           </div>
           <h3 class="card__title">Une restitution commentée</h3>
           <p class="card__text">
-            Le rapport est présenté et expliqué au conseil syndical, en présentiel ou
-            à distance. Les questions posées ce jour-là font partie de la prestation.
+            Le rapport est présenté et expliqué aux interlocuteurs concernés — syndic
+            professionnel et/ou conseil syndical selon la mission — à distance.
           </p>
         </article>
 
@@ -366,8 +394,8 @@
           </div>
           <h3 class="card__title">Un ton non conflictuel</h3>
           <p class="card__text">
-            Notre objectif n’est pas d’opposer la copropriété à son syndic, mais de
-            donner au conseil syndical les moyens d’un dialogue documenté.
+            Notre objectif est de faciliter un dialogue documenté entre les différents
+            acteurs de la copropriété, à partir d’éléments clairs et vérifiables.
           </p>
         </article>
 
@@ -378,7 +406,7 @@
   <!-- ==================================================================
        LA RELATION CLIENT
        ================================================================== -->
-  <section class="section section--ink blueprint spotlight" aria-labelledby="t-relation">
+  <section class="section section--pale blueprint spotlight" aria-labelledby="t-relation">
     <div class="container">
 
       <div class="section-head">
@@ -409,9 +437,7 @@
           </div>
           <h3 class="card__title">Un langage sans jargon</h3>
           <p class="card__text">
-            Nous partons du principe que vous n’êtes pas du métier — c’est même la
-            raison pour laquelle vous nous appelez. Chaque terme technique employé
-            dans nos rapports y est expliqué.
+            Nous adaptons le niveau de détail à chaque interlocuteur. Chaque terme technique employé dans nos rapports est expliqué afin que les conclusions soient immédiatement compréhensibles et exploitables.
           </p>
         </article>
 
@@ -421,9 +447,7 @@
           </div>
           <h3 class="card__title">Un prix annoncé avant de commencer</h3>
           <p class="card__text">
-            Vous recevez une proposition écrite précisant le périmètre, le délai et
-            l’honoraire. Si le périmètre doit évoluer en cours de mission, nous en
-            discutons avant, jamais après.
+            Vous recevez une proposition écrite.
           </p>
         </article>
 
@@ -471,56 +495,41 @@
        INFORMATIONS À COMPLÉTER PAR LE CLIENT
        ================================================================== -->
   <section class="section" aria-labelledby="t-cabinet">
-    <div class="container container--narrow">
+    <div class="container">
 
-      <div class="section-head">
+      <div class="section-head section-head--center">
         <p class="eyebrow" data-reveal="fade">Le cabinet</p>
         <h2 id="t-cabinet" data-split>Qui est derrière Copro Performance Conseil.</h2>
       </div>
 
-      <div class="card" data-reveal style="border-style:dashed; background:var(--brass-soft); border-color:rgba(185,146,79,.5)">
-        <h3 class="card__title" style="margin-bottom:var(--sp-4)">
-        </h3>
-        <p class="card__text" style="color:var(--ink-600)">
-          Cette section doit accueillir la présentation réelle du ou des fondateurs.
-          Aucun élément biographique n’a été inventé : nous ne disposons d’aucune
-          information vérifiable sur le parcours, l’ancienneté ou les qualifications
-          du cabinet.
-        </p>
+      <div class="fondateur" data-stagger>
 
-        <div class="mt-5">
-          <p style="font-size:var(--fs-sm); font-weight:620; color:var(--ink-700); margin-bottom:var(--sp-3)">
-            Éléments à fournir pour compléter cette page :
+        <figure class="fondateur__portrait media media--tall" data-media data-reveal
+                style="background-image:url('../assets/img/chakib-bensalem-tiny.jpg')">
+          <picture>
+            <source srcset="../assets/img/chakib-bensalem.webp" type="image/webp">
+            <img src="../assets/img/chakib-bensalem.jpg"
+                 alt="Chakib Bensalem, fondateur de Copro Performance Conseil"
+                 width="800" height="1000" loading="lazy" decoding="async">
+          </picture>
+        </figure>
+
+        <div class="fondateur__texte">
+          <h3 class="fondateur__nom" data-reveal style="--d:1">Chakib Bensalem</h3>
+          <p class="fondateur__fonction" data-reveal style="--d:2">
+            Fondateur de Copro Performance Conseil, consultant en optimisation
+            des charges de copropriété.
           </p>
-          <ul class="check-list" style="font-size:var(--fs-sm)">
-            <li>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/></svg>
-              <span>Prénom, nom et fonction du ou des fondateurs</span>
-            </li>
-            <li>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/></svg>
-              <span>Parcours professionnel et expérience du secteur (années, secteurs d’origine)</span>
-            </li>
-            <li>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/></svg>
-              <span>Diplômes, certifications ou affiliations professionnelles éventuelles</span>
-            </li>
-            <li>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/></svg>
-              <span>Année de création du cabinet</span>
-            </li>
-            <li>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/></svg>
-              <span>Zone géographique d’intervention réelle</span>
-            </li>
-            <li>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/></svg>
-              <span>Un portrait photographique professionnel (aucune photo de personne n’a été générée)</span>
-            </li>
-          </ul>
+          <p class="fondateur__parcours" data-reveal style="--d:3">
+            Membre d’un conseil syndical depuis 2019 et président de conseil
+            syndical depuis 2026, Chakib Bensalem connaît la copropriété de
+            l’intérieur : suivi des prestataires, mise en concurrence, audit des
+            contrats et recherche d’économies. Il fonde Copro Performance Conseil
+            en 2026 pour mettre cette expérience de terrain au service d’autres
+            copropriétés.
+          </p>
         </div>
 
-        
       </div>
 
     </div>
@@ -531,16 +540,15 @@
       <div class="cta-band" data-reveal="scale">
         <p class="eyebrow eyebrow--center" style="color:#7FD3B8">Faisons connaissance</p>
         <h2>La meilleure façon de nous juger, c’est de nous parler.</h2>
-        <p>
+        <p class="cta-band__accroche">
           Un premier échange sans engagement vaut mieux qu’une page de présentation.
           Vous verrez vite si notre façon de travailler vous convient.
         </p>
         <div class="btn-group btn-group--center">
           <a class="btn btn--light btn--lg" href="contact.html">
-            Demander un premier échange
+            Demander mon premier échange gratuit
             <svg class="btn__arrow" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </a>
-          <a class="btn btn--outline-light btn--lg" href="approche.html">Notre méthode</a>
         </div>
       </div>
     </div>
@@ -548,58 +556,49 @@
 
 </main>
 
-<footer class="footer">
+<footer class="footer footer--compact">
   <div class="container">
+
     <div class="footer__top">
-      <div>
-        <a class="logo" href="index.html" aria-label="Copro Performance Conseil — accueil">
-          <img class="logo__mark" src="assets/img/logo.svg" alt="Logo Copro Performance Conseil" width="34" height="34">
+
+      <div class="footer__marque">
+        <a class="logo" href="../index.html" aria-label="Copro Performance Conseil — accueil">
+          <img class="logo__mark" src="../assets/img/logo.svg" alt="Logo Copro Performance Conseil" width="34" height="34">
           <span class="logo__text">
             <span class="logo__name">Copro Performance Conseil</span>
             <span class="logo__tag">Conseil indépendant en copropriété</span>
           </span>
         </a>
         <p class="footer__pitch">
-          Nous aidons les conseils syndicaux à comprendre les charges, les contrats
-          et le fonctionnement de leur copropriété, pour prendre des décisions fondées sur des faits.
+          Nous accompagnons les syndics professionnels et les conseils syndicaux dans l’analyse des charges, des contrats et des prestations de copropriété, afin de faciliter des décisions fondées sur des éléments clairs et vérifiables.
         </p>
       </div>
-      <div class="footer__col">
-        <h3>Vous êtes</h3>
-        <ul>
-          <li><a href="syndic-professionnel.html">Syndic professionnel</a></li>
-          <li><a href="conseil-syndical.html">conseil syndical</a></li>
-          <li><a href="coproprietaire.html">Copropriétaire</a></li>
-        </ul>
+
+      <div class="footer__cols">
+        <div class="footer__col">
+          <h3>Prestations</h3>
+          <ul>
+            <li><a href="services.html#audit">Audit complet des contrats</a></li>
+            <li><a href="services.html#charges">Analyse des dépenses de la copropriété</a></li>
+            <li><a href="services.html#contrats">Renégociation des contrats</a></li>
+            <li><a href="services.html#optimisation">Optimisation des charges</a></li>
+            <li><a href="services.html#accompagnement">Accompagnement et conseil</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__col">
+          <h3>Le cabinet</h3>
+          <ul>
+            <li><a href="a-propos.html">À propos</a></li>
+            <li><a href="approche.html">Notre approche</a></li>
+            <li><a href="faq.html">Questions fréquentes</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
       </div>
-      <div class="footer__col">
-        <h3>Prestations</h3>
-        <ul>
-          <li><a href="services.html#audit">Audit complet des charges</a></li>
-          <li><a href="services.html#charges">Analyse des charges</a></li>
-          <li><a href="services.html#contrats">Renégociation des contrats</a></li>
-          <li><a href="services.html#optimisation">Optimisation des charges</a></li>
-          <li><a href="services.html#accompagnement">Accompagnement du conseil syndical</a></li>
-        </ul>
-      </div>
-      <div class="footer__col">
-        <h3>Le cabinet</h3>
-        <ul>
-          <li><a href="a-propos.html">À propos</a></li>
-          <li><a href="approche.html">Notre approche</a></li>
-          <li><a href="faq.html">Questions fréquentes</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </div>
-      <div class="footer__col">
-        <h3>Nous joindre</h3>
-        <ul>
-          <li><a href="mailto:contact@coproperformanceconseil.fr">contact@coproperformanceconseil.fr</a></li>
-          <li><a href="tel:+33617470857">+33 6 17 47 08 57</a></li>
-          <li>Intervention dans toute la France (à distance)</li>
-        </ul>
-      </div>
+
     </div>
+
     <div class="footer__bottom">
       <p>© <span data-year>2026</span> Copro Performance Conseil. Tous droits réservés.</p>
       <nav class="footer__legal" aria-label="Liens légaux">
@@ -608,6 +607,7 @@
         <a href="plan-du-site.html">Plan du site</a>
       </nav>
     </div>
+
   </div>
 </footer>
 

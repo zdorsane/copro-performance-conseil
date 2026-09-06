@@ -393,6 +393,17 @@ b {
   color: var(--text-invert);
 }
 
+/* Section claire « pâle » — bleu très pâle de la palette. Retenue plutôt que
+   le beige --paper-2 : « La relation » suit immédiatement une section
+   --section--alt, déjà beige ; deux beiges contigus supprimaient la coupure.
+   Aucune règle de couleur n'est nécessaire ici : les valeurs par défaut du
+   design system (titres --ink-800, texte --text-muted, accent --accent) sont
+   toutes conçues pour un fond clair et vérifiées AA sur #EEF2F6 :
+   titres 15,3:1 · lead 10,4:1 · texte de carte 6,7:1 · accent 6,5:1. */
+.section--pale {
+  background: #EEF2F6;
+}
+
 .section--ink h1,
 .section--ink h2,
 .section--ink h3,
@@ -580,6 +591,20 @@ b {
   justify-content: center;
 }
 
+/* Bouton d'appel a l'action isole sous un bloc de texte. `.cta-band` est
+   centre, mais `.btn-group` est un flex qui laissait le bouton cale a
+   gauche. Centrage explicite, >= 32 px au-dessus et >= 48 px en dessous
+   (0,5 rem ici + le padding bas du bandeau, au minimum 2,5 rem). */
+.btn-group--cta {
+  justify-content: center;
+  margin-top: var(--sp-6);
+  margin-bottom: var(--sp-2);
+}
+
+.btn-group--cta .btn {
+  max-width: 100%;
+}
+
 /* ==========================================================================
    06. HEADER / NAVIGATION
    ========================================================================== */
@@ -706,6 +731,23 @@ b {
   align-items: center;
   gap: var(--sp-3);
   flex: none;
+}
+
+/* Le bouton du header porte desormais le libelle complet de la demande
+   d'echange, deux fois plus long que l'ancien. Entre 940 px (ou la barre
+   passe au burger) et 1180 px, il serait a l'etroit entre la navigation et
+   le logo : on resserre la fonte et les marges laterales sur cette plage,
+   et on empeche la cesure sur deux lignes. */
+.header__actions .btn {
+  white-space: nowrap;
+}
+
+@media (min-width: 941px) and (max-width: 1180px) {
+  .header__actions .btn {
+    padding-left: var(--sp-3);
+    padding-right: var(--sp-3);
+    font-size: var(--fs-sm);
+  }
 }
 
 /* Burger */
@@ -897,42 +939,6 @@ b {
 /* Mention de gratuité, juste au-dessus des boutons.
    C'est l'objection n°1 qu'elle lève : « combien ça va me coûter de
    simplement vous parler ». Elle doit donc se voir avant le bouton. */
-.hero__free {
-  display: inline-flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 0.6rem;
-  margin-bottom: var(--sp-5);
-  padding: 0.5rem 0.9rem 0.5rem 0.5rem;
-  border: 1px solid var(--accent-border);
-  border-radius: var(--r-pill);
-  background: var(--accent-soft);
-  font-size: var(--fs-sm);
-  font-weight: 520;
-  line-height: 1.35;
-  color: var(--ink-700);
-}
-
-.hero__free__tag {
-  display: inline-block;
-  padding: 0.2rem 0.6rem;
-  border-radius: var(--r-pill);
-  background: var(--accent);
-  color: #fff;
-  font-size: var(--fs-xs);
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-}
-
-@media (max-width: 520px) {
-  .hero__free {
-    display: flex;
-    align-items: flex-start;
-    border-radius: var(--r-md);
-  }
-}
-
 /* Bandeau de réassurance sous le hero */
 .hero__trust {
   display: flex;
@@ -1024,7 +1030,15 @@ b {
   border: 1px solid var(--accent-border);
 }
 
-/* Marqueur « à valider » — voir CONTENU-A-VALIDER.md
+/* Étiquette longue : elle se plie sur deux lignes plutôt que de déborder
+   de la colonne à 375 px. */
+.chip--wide {
+  max-width: 100%;
+  line-height: 1.35;
+  text-align: center;
+}
+
+/* Marqueur « à valider » — voir docs/CONTENU-A-VALIDER.md
    Pour masquer partout : ajouter la classe .hide-flags sur <body> */
 .flag {
   display: inline-flex;
@@ -1206,9 +1220,7 @@ body.hide-flags .flag {
    « muted » définies plus bas pour .value-card et .step (même
    spécificité sinon → contraste insuffisant). */
 .section--ink .card__text,
-.section--ink .value-card p,
-.section--ink .step__body p,
-.contact-panel .card__text {
+.section--ink .value-card p {
   color: rgba(238, 243, 246, 0.8);
 }
 
@@ -1317,7 +1329,7 @@ body.hide-flags .flag {
 }
 
 /* --------------------------------------------------------------------------
-   09 bis. TARIFS
+   09 bis. PREMIER ECHANGE ET DIAGNOSTIC
    -------------------------------------------------------------------------- */
 
 .price-lead {
@@ -1377,45 +1389,8 @@ body.hide-flags .flag {
   color: rgba(238, 243, 246, 0.62);
 }
 
-.price-list {
-  display: grid;
-  gap: 0;
-  margin-top: var(--sp-6);
-  border-top: 1px solid var(--border);
-}
-
-.price-row {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: var(--sp-4);
-  align-items: baseline;
-  padding: 1.1rem 0;
-  border-bottom: 1px solid var(--border);
-}
-
-.price-row__name {
-  font-weight: 600;
-  color: var(--ink-900);
-}
-
-.price-row__desc {
-  display: block;
-  font-weight: 400;
-  font-size: var(--fs-sm);
-  color: var(--text-muted);
-  margin-top: 0.2rem;
-}
-
-.price-row__value {
-  font-family: var(--font-mono);
-  font-size: var(--fs-sm);
-  color: var(--accent);
-  white-space: nowrap;
-}
-
 @media (max-width: 720px) {
   .price-lead { grid-template-columns: 1fr; }
-  .price-row { grid-template-columns: 1fr; gap: 0.35rem; }
 }
 
 /* ==========================================================================
@@ -1485,17 +1460,257 @@ body.hide-flags .flag {
   gap: var(--sp-2);
 }
 
-.section--ink .step,
-.section--ink .step:last-child {
-  border-color: rgba(255, 255, 255, 0.12);
+/* Variante claire de la section « Le déroulé » (approche.html).
+   Le fond encre d'origine écrasait une page déjà longue : même trame, posée
+   sur un gris très clair. Toutes les couleurs héritées du fond sombre sont
+   reprises ici, aucune ne subsiste. */
+.section--etapes {
+  background: #F7F8FA;
+  color: #1A1A1A;
 }
 
-.section--ink .step__num {
-  color: rgba(255, 255, 255, 0.24);
+.section--etapes h2,
+.section--etapes .step__body h3 {
+  color: #0B1C2C;
 }
 
-.section--ink .step:hover .step__num {
-  color: #7FD3B8;
+/* Texte courant — #1A1A1A sur #F7F8FA : 16,4:1 */
+.section--etapes p,
+.section--etapes .lead,
+.section--etapes .step__body p {
+  color: #1A1A1A;
+}
+
+/* Le sur-titre garde le vert de marque commun a toutes les sections
+   claires : 6,9:1 sur #F7F8FA. */
+.section--etapes .eyebrow {
+  color: var(--accent);
+}
+
+.section--etapes .step,
+.section--etapes .step:last-child {
+  border-color: #D9D9D9;
+}
+
+/* Numéros d'étape. Le laiton demandé (#B08D57) plafonne à 2,9:1 sur ce
+   fond — sous le seuil AA même en grand texte, et les numéros retombent à
+   22,4 px sous 720 px. Assombri à 4,8:1, la teinte dorée est conservée. */
+.section--etapes .step__num,
+.section--etapes .step:hover .step__num,
+.section--etapes .step.is-active .step__num {
+  color: #8A6A2F;
+}
+
+/* « systematiquement commente a l'oral » et toute autre mise en valeur :
+   `strong` est calé globalement sur --ink-900, invisible sur l'ancien fond
+   encre. Sur fond clair il reprend la couleur des titres, souligné d'un
+   filet laiton. */
+.section--etapes .step__body strong {
+  color: #0B1C2C;
+  border-bottom: 2px solid #B08D57;
+  padding-bottom: 1px;
+}
+
+/* Étiquettes : texte encre sur blanc, 17,3:1 */
+.section--etapes .chip {
+  background: var(--white);
+  color: #0B1C2C;
+  border-color: #D9D9D9;
+}
+
+/* Le halo du curseur était un vert clair pensé pour le fond sombre. */
+.section--etapes.spotlight::after {
+  background: radial-gradient(
+    620px circle at var(--sx, 50%) var(--sy, 30%),
+    rgba(23, 97, 79, 0.06),
+    transparent 65%
+  );
+}
+
+/* --------------------------------------------------------------------------
+   Variante « diagramme » de la méthodologie (approche.html)
+   --------------------------------------------------------------------------
+   Les cinq étapes se lisent comme un schéma de processus : un rail vertical
+   qui se trace au défilement, un nœud numéroté par étape, une fiche à droite.
+
+   Deux moteurs déjà présents pilotent l'ensemble, aucun script n'est ajouté :
+     • `[data-trace-methode]` (signature.js) écrit --p, de 0 à 1, selon la
+       position de la section dans la fenêtre → hauteur du rail plein ;
+     • `initSteps` (main.js) pose .is-active sur l'étape centrée → nœud allumé.
+
+   La variante compacte de syndic-professionnel.html n'est pas concernée :
+   tout est porté par .steps--diagram.
+   -------------------------------------------------------------------------- */
+
+.steps--diagram {
+  --node: 54px;
+  --gutter: clamp(1rem, 0.6rem + 1.4vw, 2rem);
+  position: relative;
+  grid-template-columns: 1fr;
+  /* Les paragraphes sont plafonnes a 62ch : au-dela, la fiche s'etirerait
+     en laissant la moitie droite vide. On cale le schema sur sa mesure. */
+  max-width: 52rem;
+}
+
+/* Rail creux : il court du centre du premier nœud à celui du dernier. */
+.steps--diagram::before,
+.steps--diagram::after {
+  content: "";
+  position: absolute;
+  left: calc(var(--node) / 2);
+  top: calc(var(--node) / 2);
+  bottom: calc(var(--node) / 2);
+  width: 2px;
+  transform: translateX(-50%);
+  border-radius: 2px;
+  pointer-events: none;
+}
+
+.steps--diagram::before {
+  background: #DCE0E6;
+}
+
+/* Rail plein : la progression suit le défilement. `transform` plutôt que
+   `height` — la propriété est composée, la mise à jour ne déclenche pas
+   de calcul de mise en page à chaque image. */
+.steps--diagram::after {
+  background: #B08D57;
+  transform: translateX(-50%) scaleY(var(--p, 0));
+  transform-origin: top center;
+}
+
+.steps--diagram .step,
+.steps--diagram .step:last-child {
+  grid-template-columns: var(--node) 1fr;
+  gap: var(--gutter);
+  border: 0;
+  padding-block: clamp(0.6rem, 0.4rem + 0.9vw, 1.1rem);
+  align-items: start;
+}
+
+/* Le rail doit démarrer et finir au centre d'un nœud, pas dans le vide. */
+.steps--diagram .step:first-child { padding-top: 0; }
+.steps--diagram .step:last-child  { padding-bottom: 0; }
+
+/* --- Le nœud ---------------------------------------------------------- */
+.steps--diagram .step__num {
+  position: relative;
+  z-index: 1;
+  width: var(--node);
+  height: var(--node);
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--white);
+  border: 2px solid #DCE0E6;
+  /* Le nœud garde sa taille : c'est un repère de schéma, pas un titre. */
+  font-size: 1.05rem;
+  line-height: 1;
+  color: #8A6A2F;             /* 5,1:1 sur blanc */
+  transition:
+    border-color var(--t-base),
+    box-shadow var(--t-base),
+    transform var(--t-base);
+}
+
+.steps--diagram .step.is-active .step__num,
+.steps--diagram .step:hover .step__num {
+  border-color: #B08D57;
+  box-shadow: 0 0 0 6px rgba(176, 141, 87, 0.13);
+  transform: scale(1.06);
+  color: #8A6A2F;
+}
+
+/* --- La fiche ---------------------------------------------------------- */
+.steps--diagram .step__body {
+  position: relative;
+  background: var(--white);
+  border: 1px solid #E4E7EC;
+  border-radius: var(--r-md);
+  padding: clamp(1.1rem, 0.9rem + 0.8vw, 1.65rem) clamp(1.15rem, 0.9rem + 1vw, 1.9rem);
+  box-shadow: var(--shadow-xs);
+  transition:
+    border-color var(--t-base),
+    box-shadow var(--t-base),
+    transform var(--t-base);
+}
+
+.steps--diagram .step.is-active .step__body {
+  border-color: #DFD0B4;
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+/* Le trait qui relie le rail à la fiche : il se tire à l'activation. */
+.steps--diagram .step__body::before {
+  content: "";
+  position: absolute;
+  top: calc(var(--node) / 2 - 1px);
+  right: 100%;
+  width: var(--gutter);
+  height: 2px;
+  background: #DCE0E6;
+  transform: scaleX(0.35);
+  transform-origin: left center;
+  transition: transform var(--t-base), background var(--t-base);
+}
+
+.steps--diagram .step.is-active .step__body::before {
+  background: #B08D57;
+  transform: scaleX(1);
+}
+
+.steps--diagram .step__body h3 {
+  margin-bottom: var(--sp-2);
+}
+
+/* Sur la fiche blanche, l'étiquette blanche disparaîtrait : elle reprend le
+   gris de fond de la section. #0B1C2C sur #F7F8FA = 16,2:1. */
+.section--etapes .steps--diagram .chip {
+  background: #F7F8FA;
+  border-color: #DCE0E6;
+  color: #0B1C2C;
+}
+
+/* --------------------------------------------------------------------------
+   Diagramme — écrans étroits
+   Le rail est conservé : c'est lui qui porte la lecture en étapes. Seules
+   les dimensions se resserrent. `.step` repasserait en une colonne à 940 px
+   (§ 16), la variante l'emporte par spécificité.
+   -------------------------------------------------------------------------- */
+@media (max-width: 720px) {
+  .steps--diagram {
+    --node: 42px;
+    --gutter: 0.85rem;
+  }
+
+  .steps--diagram .step__num {
+    font-size: 0.9rem;
+    border-width: 1.5px;
+  }
+
+  /* Trop court pour se voir, et il mange la largeur de la fiche. */
+  .steps--diagram .step__body::before {
+    display: none;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Mouvement réduit
+   signature.js n'écrit pas --p dans ce mode : sans cette règle le rail
+   plein resterait à zéro. Il s'affiche donc complet, d'emblée.
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .steps--diagram { --p: 1; }
+
+  .steps--diagram .step__num,
+  .steps--diagram .step__body,
+  .steps--diagram .step__body::before {
+    transition: none;
+  }
+
+  .steps--diagram .step.is-active .step__num { transform: none; }
+  .steps--diagram .step.is-active .step__body { transform: none; }
 }
 
 /* ==========================================================================
@@ -1768,21 +1983,64 @@ select.field__control {
   overflow: hidden;
 }
 
-/* Panneau de contact latéral */
-.contact-panel {
-  background: var(--ink-900);
-  color: var(--text-invert);
-  border-radius: var(--r-lg);
-  padding: clamp(1.75rem, 1.3rem + 1.6vw, 2.75rem);
+/* --------------------------------------------------------------------------
+   Page contact — formulaire, puis deux cartes complémentaires
+   --------------------------------------------------------------------------
+   Le formulaire est l'élément principal : il occupe seul la largeur utile.
+   Les deux cartes viennent dessous, à égalité de largeur, sur un fond clair
+   qui les distingue de la page sans concurrencer le formulaire.
+   -------------------------------------------------------------------------- */
+
+.contact-layout {
+  display: grid;
+  gap: clamp(2.5rem, 1.8rem + 2.6vw, 4rem);
+  max-width: 920px;
+}
+
+/* La carte « Nous joindre » ayant ete retiree, il ne reste qu'une carte :
+   une grille figee a deux colonnes la laisserait a mi-largeur. `auto-fit`
+   lui fait occuper toute la ligne, tout en reprenant deux colonnes si une
+   seconde carte revient un jour. */
+.contact-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+  gap: clamp(1.25rem, 0.9rem + 1.4vw, 2rem);
+  align-items: stretch;
+}
+
+.contact-card {
+  --contact-or: #B08D57; /* laiton de la page contact, réservé aux numéros */
+
+  display: flex;
+  flex-direction: column;
   height: 100%;
+  padding: clamp(1.5rem, 1.1rem + 1.1vw, 2.15rem);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
 }
 
-.contact-panel h2,
-.contact-panel h3 {
-  color: #fff;
+
+.contact-card__title {
+  font-size: var(--fs-h3);
+  color: #0B1C2C;
+  margin-top: var(--sp-2);
 }
 
-.contact-panel__list {
+/* Carte sans surtitre : on réserve la hauteur de l'œillet de la carte
+   voisine pour que les deux titres restent sur la même ligne de base. */
+.contact-card__title--seul {
+  margin-top: calc(var(--fs-xs) * 1.4 + var(--sp-2));
+}
+
+.contact-card__intro {
+  color: #1A1A1A;
+  font-size: var(--fs-sm);
+  line-height: 1.62;
+  margin-top: var(--sp-4);
+}
+
+.contact-card__list {
   display: grid;
   gap: var(--sp-5);
   margin-top: var(--sp-6);
@@ -1801,8 +2059,8 @@ select.field__control {
   width: 40px;
   height: 40px;
   border-radius: var(--r-md);
-  background: rgba(255, 255, 255, 0.07);
-  color: #7FD3B8;
+  background: var(--accent-soft);
+  color: var(--accent);
   flex: none;
 }
 
@@ -1811,19 +2069,64 @@ select.field__control {
   font-weight: 620;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: rgba(238, 243, 246, 0.5);
+  color: var(--text-muted);
   margin-bottom: 0.25rem;
 }
 
 .contact-item dd {
   margin: 0;
   font-size: var(--fs-base);
-  color: #fff;
+  color: #1A1A1A;
   line-height: 1.5;
 }
 
+.contact-item dd a {
+  color: #0B1C2C;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 .contact-item dd a:hover {
-  color: #7FD3B8;
+  color: var(--accent);
+}
+
+/* Étapes 01–04. Les numéros sont un repère visuel, doublé par l'ordre du
+   <ol> : ils sont masqués aux lecteurs d'écran (aria-hidden dans le HTML).
+   Composés en gras à 1.5rem, ils relèvent du « texte de grande taille »
+   WCAG (seuil 3:1) — le laiton #B08D57 sur blanc mesure 3,1:1. */
+.contact-steps {
+  display: grid;
+  gap: var(--sp-4);
+  margin-top: var(--sp-6);
+  list-style: none;
+  padding: 0;
+}
+
+.contact-steps li {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--sp-4);
+  align-items: baseline;
+  font-size: var(--fs-sm);
+  line-height: 1.62;
+  color: #1A1A1A;
+}
+
+.contact-steps__num {
+  font-family: var(--font-mono);
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--contact-or);
+  flex: none;
+}
+
+/* Sous 768 px, les deux cartes s'empilent : côte à côte, elles tomberaient
+   sous le plancher de lisibilité de la ligne de texte. */
+@media (max-width: 768px) {
+  .contact-cards {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* ==========================================================================
@@ -1943,6 +2246,116 @@ select.field__control {
   color: rgba(238, 243, 246, 0.74);
 }
 
+/* Accroche du bandeau final : le gris translucide (0,74) tombait sous le
+   confort de lecture, et --fs-base descend a 15,5 px. Couleur pleine
+   (#E8EDF2 sur --ink-900 : 15,8:1), plancher de 16 px, interlignage 1,5. */
+.cta-band p.cta-band__accroche {
+  color: #E8EDF2;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* Deuxieme ligne du titre : meme voix que le titre, un cran en dessous.
+   `.cta-band p` a la meme specificite : on la depasse explicitement. */
+.cta-band p.cta-band__sous-titre {
+  max-width: 24ch;
+  margin: var(--sp-2) auto 0;
+  font-family: var(--font-display);
+  font-size: var(--fs-h3);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: rgba(255, 255, 255, 0.86);
+}
+
+/* --- Bloc de présentation du fondateur --- */
+/* Portrait à gauche, texte à droite. Le bloc est borné en largeur et les deux
+   colonnes sont proportionnelles : la précédente version fixait le texte à
+   62ch en calant le tout à gauche, ce qui laissait une bande morte de près de
+   200 px à droite sur un écran large. Les colonnes se répondent verticalement
+   (`center`) au lieu de pendre depuis le haut. */
+.fondateur {
+  display: grid;
+  grid-template-columns: minmax(240px, 1fr) minmax(0, 1.55fr);
+  gap: clamp(1.75rem, 1rem + 3vw, 3.5rem);
+  align-items: center;
+  /* Deux colonnes ne peuvent pas remplir 1120 px sans soit un portrait de
+     556 px de large, soit une ligne de 84 caracteres. Le bloc est donc borne
+     — et centre, pour que la place restante se lise comme deux marges egales
+     et non comme un trou a droite. Le titre de section est centre avec lui. */
+  max-width: 58rem;
+  margin-inline: auto;
+}
+
+/* Le portrait reprend le cadre photo maison (.media) : voile de révélation,
+   blur-up et léger Ken Burns, comme toutes les autres photos du site.
+   Le ratio 4/5 de .media--tall correspond exactement au fichier 800 × 1000. */
+.fondateur__portrait {
+  margin: 0;
+  /* La photo est cadrée sur un fond très sombre. Sur fond clair elle se
+     découperait en rectangle flottant : l'anneau extérieur et l'ombre basse
+     lui donnent une assise, sans retoucher le fichier. */
+  box-shadow: 0 0 0 1px var(--border), var(--shadow-lg);
+}
+
+/* Liseré intérieur clair : adoucit la coupure franche entre le fond sombre
+   de la photo et le fond clair de la page. Au-dessus du voile (z-index 2)
+   pour rester visible pendant la révélation. */
+.fondateur__portrait::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  border-radius: inherit;
+  pointer-events: none;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.16);
+}
+
+.fondateur__nom {
+  font-size: var(--fs-h3);
+  margin-bottom: var(--sp-2);
+}
+
+.fondateur__fonction {
+  font-size: var(--fs-lg);
+  line-height: 1.5;
+  color: var(--ink-600);
+  margin-bottom: var(--sp-4);
+}
+
+.fondateur__parcours {
+  color: var(--text);
+  margin-bottom: var(--sp-4);
+}
+
+.fondateur__mentions {
+  font-size: var(--fs-sm);
+  color: var(--ink-600);
+  padding-top: var(--sp-4);
+  border-top: 1px solid var(--border);
+}
+
+/* Sous 860 px, deux colonnes réduisaient le portrait à 200 px de large :
+   il devenait un timbre posé à côté d'un pavé de texte. On empile, et le
+   portrait reprend une largeur qui tient debout. */
+@media (max-width: 860px) {
+  .fondateur {
+    grid-template-columns: 1fr;
+    gap: var(--sp-5);
+    max-width: none;
+    align-items: start;
+  }
+
+  .fondateur__portrait {
+    width: min(320px, 100%);
+  }
+
+  /* Empile, le texte prendrait toute la largeur : 88 caracteres par ligne a
+     768 px. On le borne a une mesure de lecture. */
+  .fondateur__texte {
+    max-width: 62ch;
+  }
+}
+
 /* ==========================================================================
    14. ANIMATIONS & MOTION
    ========================================================================== */
@@ -2024,6 +2437,17 @@ select.field__control {
 .media--wide { aspect-ratio: 2 / 1; }
 .media--box  { aspect-ratio: 16 / 10; }
 
+/* Sur mobile, un cadre large ne fait plus que ~170 px de haut : la légende en
+   surimpression mange alors les deux tiers de la photo. On redresse le cadre
+   en 4/3, la légende ne couvre plus qu'un tiers. */
+@media (max-width: 720px) {
+  .media--box { aspect-ratio: 5 / 4; }
+}
+
+/* Cadrage haut : pour une source en portrait recadrée en paysage, le centre
+   par défaut coupe le sujet. On remonte la fenêtre de recadrage. */
+.media__img--haut { object-position: 50% 38%; }
+
 /* <picture> ne doit pas casser le dimensionnement du cadre */
 .media picture {
   display: block;
@@ -2096,6 +2520,10 @@ select.field__control {
   left: 1rem;
   bottom: 1rem;
   right: 1rem;
+  /* Sur un cadre large, une légende courte étirée sur 1 200 px se lit comme
+     une barre vide : on la borne à une mesure de lecture. En dessous de cette
+     largeur, `right` reprend la main et la légende reste dans le cadre. */
+  max-width: 48ch;
   padding: 0.85rem 1.05rem;
   background: rgba(251, 250, 247, 0.92);
   -webkit-backdrop-filter: blur(10px);
@@ -2111,6 +2539,15 @@ select.field__control {
   display: block;
   font-size: var(--fs-sm);
   margin-bottom: 0.15rem;
+}
+
+@media (max-width: 520px) {
+  .media__caption {
+    left: 0.6rem;
+    right: 0.6rem;
+    bottom: 0.6rem;
+    padding: 0.7rem 0.85rem;
+  }
 }
 
 /* --- Bandeau photo pleine largeur --- */
@@ -2188,10 +2625,6 @@ select.field__control {
 
 .step.is-active .step__num {
   color: var(--accent);
-}
-
-.section--ink .step.is-active .step__num {
-  color: #7FD3B8;
 }
 
 .step__bar {
@@ -3438,28 +3871,43 @@ main > .page-head:first-child {
 }
 
 .regles__liste li {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: var(--sp-4);
-  align-items: start;
-}
-
-.regle__num {
-  font-family: var(--font-mono);
-  font-size: var(--fs-sm);
-  font-weight: 600;
-  color: var(--accent);
-  padding-top: 0.15rem;
-}
-
-.regles__liste strong {
   display: block;
-  font-size: var(--fs-base);
-  color: var(--ink-900);
-  margin-bottom: 0.3rem;
 }
 
-.regles__liste p {
+/* Numero et titre sur une meme ligne de base, le texte explicatif dessous.
+   Le numero a une largeur fixe : les trois titres s'alignent donc entre eux,
+   et un titre qui passe sur deux lignes revient sous son propre premier mot
+   plutot que sous le numero. */
+.regle__entete {
+  display: flex;
+  align-items: baseline;
+  gap: 0.875rem;
+  margin-bottom: 0.4rem;
+}
+
+/* Laiton demande (#B08D57) : 2,7:1 sur --accent-soft, sous le seuil AA.
+   Assombri a 4,7:1, la teinte doree est conservee. */
+.regle__num {
+  flex: 0 0 2.25rem;
+  font-family: var(--font-mono);
+  font-size: var(--fs-lg);
+  font-weight: 600;
+  line-height: 1;
+  color: #856429;
+}
+
+.regle__titre {
+  flex: 1 1 auto;
+  min-width: 0;
+  font-size: var(--fs-base);
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--ink-900);
+  margin: 0;
+}
+
+.regles__liste p,
+.regle__texte {
   font-size: var(--fs-sm);
   line-height: 1.6;
   color: var(--ink-600);
@@ -3470,11 +3918,6 @@ main > .page-head:first-child {
   .regles__liste {
     grid-template-columns: repeat(3, 1fr);
     gap: var(--sp-6);
-  }
-
-  .regles__liste li {
-    grid-template-columns: 1fr;
-    gap: var(--sp-3);
   }
 }
 
@@ -3563,38 +4006,25 @@ main > .page-head:first-child {
   background: var(--paper-2);
 }
 
-.perimetre__label {
-  font-size: 0.7rem;
-  font-weight: 640;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  margin-bottom: var(--sp-4);
-  color: var(--ink-300);
-}
 
-.perimetre__col--oui .perimetre__label {
-  color: var(--accent);
-}
-
-.perimetre__col ul {
-  display: grid;
-  gap: 0.6rem;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.perimetre__col li {
+/* Les deux colonnes ne portent plus de chapeau ni de liste : chacune tient
+   en une phrase. Le repere visuel qui les distinguait — la coche d'un cote,
+   la barre de l'autre — est donc reporte de `li` sur cette phrase, sinon
+   rien ne separerait plus le perimetre inclus du perimetre exclu. */
+.perimetre__phrase {
   position: relative;
   padding-left: 1.6rem;
+  margin: 0;
   font-size: var(--fs-sm);
-  line-height: 1.5;
+  line-height: 1.6;
   color: var(--ink-700);
 }
 
-/* Une coche pour ce que l'on examine, une barre pour ce que l'on ne
-   touche pas : la distinction se lit sans avoir à relire l'intitulé. */
-.perimetre__col--oui li::before {
+.perimetre__col--non .perimetre__phrase {
+  color: var(--text-muted);
+}
+
+.perimetre__col--oui .perimetre__phrase::before {
   content: "";
   position: absolute;
   left: 0;
@@ -3606,11 +4036,7 @@ main > .page-head:first-child {
   transform: rotate(-45deg);
 }
 
-.perimetre__col--non li {
-  color: var(--text-muted);
-}
-
-.perimetre__col--non li::before {
+.perimetre__col--non .perimetre__phrase::before {
   content: "";
   position: absolute;
   left: 0;
@@ -3621,11 +4047,11 @@ main > .page-head:first-child {
   background: var(--ink-200);
 }
 
+
 /* ==========================================================================
    15 quater. LEVIERS DE CONVERSION
    --------------------------------------------------------------------------
-   Visuel du livrable, cas pratique, preuve sociale, diagnostic rapide et
-   CTA collant mobile.
+   Visuel du livrable, cas pratique, preuve sociale et CTA collant mobile.
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
@@ -3746,14 +4172,6 @@ main > .page-head:first-child {
   color: rgba(238, 243, 246, 0.6);
 }
 
-.cas__label {
-  font-size: 0.7rem;
-  font-weight: 640;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--ink-300);
-  margin-bottom: var(--sp-3);
-}
 
 .cas__titre {
   font-size: var(--fs-h4);
@@ -3861,100 +4279,6 @@ main > .page-head:first-child {
   line-height: 1.4;
   color: var(--ink-800);
   max-width: 54ch;
-}
-
-/* --------------------------------------------------------------------------
-   Diagnostic rapide en trois questions
-   -------------------------------------------------------------------------- */
-.diagnostic {
-  padding: clamp(1.4rem, 1.1rem + 1.6vw, 2.25rem);
-  border: 1px solid var(--accent-border);
-  border-radius: var(--r-lg);
-  background: var(--accent-soft);
-}
-
-.diagnostic__etape[hidden] {
-  display: none;
-}
-
-.diagnostic__progres {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  margin-bottom: var(--sp-5);
-}
-
-.diagnostic__jalon {
-  flex: 1;
-  height: 3px;
-  border-radius: 2px;
-  background: var(--accent-border);
-  transition: background var(--t-base);
-}
-
-.diagnostic__jalon.is-faite {
-  background: var(--accent);
-}
-
-.diagnostic__question {
-  font-size: var(--fs-h4);
-  line-height: 1.3;
-  margin-bottom: var(--sp-4);
-  color: var(--ink-900);
-}
-
-.diagnostic__choix {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.55rem;
-}
-
-.diagnostic__choix button {
-  padding: 0.6rem 1.1rem;
-  min-height: 44px;
-  border: 1px solid var(--accent-border);
-  border-radius: var(--r-pill);
-  background: var(--surface);
-  font: inherit;
-  font-size: var(--fs-sm);
-  font-weight: 540;
-  color: var(--ink-800);
-  cursor: pointer;
-  transition: border-color var(--t-fast), background var(--t-fast),
-    color var(--t-fast);
-}
-
-.diagnostic__choix button:hover,
-.diagnostic__choix button:focus-visible {
-  border-color: var(--accent);
-  background: var(--accent);
-  color: #fff;
-}
-
-.diagnostic__resultat h3 {
-  font-size: var(--fs-h4);
-  margin-bottom: var(--sp-3);
-}
-
-.diagnostic__resultat p {
-  font-size: var(--fs-sm);
-  line-height: 1.6;
-  color: var(--ink-600);
-  max-width: 60ch;
-  margin-bottom: var(--sp-5);
-}
-
-.diagnostic__recommence {
-  background: none;
-  border: 0;
-  padding: 0;
-  margin-top: var(--sp-4);
-  font: inherit;
-  font-size: var(--fs-sm);
-  color: var(--text-muted);
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  cursor: pointer;
 }
 
 /* --------------------------------------------------------------------------
@@ -4083,7 +4407,6 @@ main > .page-head:first-child {
 .field,
 .field > *,
 .tally > *,
-.price-row > *,
 .check-list > *,
 .contact-item > * {
   min-width: 0;
@@ -4096,7 +4419,7 @@ main > .page-head:first-child {
    -------------------------------------------------------------------------- */
 .contact-item dd,
 .contact-item dd a,
-.contact-panel a,
+.contact-card a,
 .footer a,
 .legal a,
 .link-underline {
@@ -4215,5 +4538,301 @@ picture {
     content: " (" attr(href) ")";
     font-size: 9pt;
     color: #555;
+  }
+}
+
+
+/* ==========================================================================
+   17. CTA FLOTTANT (page d'accueil)
+   --------------------------------------------------------------------------
+   Un seul appel à l'action fixe à la fois : le bouton n'existe qu'entre le
+   premier bloc CTA et le suivant, et disparaît dès qu'un vrai bouton est à
+   l'écran. Tout le mouvement passe par `transform` et `opacity` — jamais
+   `top` ni `left` — pour rester composé par le GPU.
+   ========================================================================== */
+
+.cta-flottant {
+  position: fixed;
+  z-index: 200;
+  right: max(24px, var(--gutter));
+  bottom: max(24px, env(safe-area-inset-bottom, 0px));
+
+  /* État de départ : hors champ, transparent et non focalisable.
+     `visibility` évite qu'une tabulation atteigne un bouton invisible. */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: opacity 350ms var(--ease-out), transform 350ms var(--ease-out),
+    visibility 0s linear 350ms;
+}
+
+.cta-flottant.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  transition: opacity 350ms var(--ease-out), transform 350ms var(--ease-out),
+    visibility 0s linear 0s;
+}
+
+.cta-flottant__lien {
+  box-shadow: var(--shadow-md);
+  transition: background 200ms var(--ease-out), border-color 200ms var(--ease-out),
+    color 200ms var(--ease-out), transform 200ms var(--ease-out),
+    box-shadow 200ms var(--ease-out);
+}
+
+.cta-flottant__lien:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.cta-flottant__lien:active {
+  transform: translateY(0);
+}
+
+/* Rappel d'attention : un halo qui s'ouvre une fois toutes les 7 secondes.
+   Jamais continu, jamais clignotant, et purement décoratif. */
+.cta-flottant__lien::after {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border: 2px solid var(--accent);
+  border-radius: var(--r-pill);
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(1);
+}
+
+.cta-flottant.is-visible .cta-flottant__lien::after {
+  animation: cta-flottant-halo 7s var(--ease-out) 2.5s infinite;
+}
+
+@keyframes cta-flottant-halo {
+  0%   { opacity: 0;    transform: scale(1); }
+  3%   { opacity: 0.55; transform: scale(1); }
+  16%  { opacity: 0;    transform: scale(1.16); }
+  100% { opacity: 0;    transform: scale(1.16); }
+}
+
+/* Mobile : barre pleine largeur, calée sur le bas de l'écran. */
+@media (max-width: 720px) {
+  .cta-flottant {
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 0.7rem var(--gutter) calc(0.7rem + env(safe-area-inset-bottom, 0px));
+    background: rgba(251, 250, 247, 0.94);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid var(--border);
+  }
+
+  .cta-flottant__lien {
+    display: flex;
+    width: 100%;
+    min-height: 48px; /* zone de clic confortable, au-dessus du plancher de 44 px */
+  }
+
+  /* La barre recouvre le bas du document : on lui rend la hauteur qu'elle
+     prend, sinon les dernières lignes du pied de page sont inatteignables. */
+  body:has(.cta-flottant) {
+    padding-bottom: 5rem;
+  }
+}
+
+@media print {
+  .cta-flottant { display: none; }
+}
+
+/* Mouvement réduit : le bouton reste utile, simplement immobile. */
+@media (prefers-reduced-motion: reduce) {
+  .cta-flottant.is-visible .cta-flottant__lien::after {
+    animation: none;
+  }
+
+  .cta-flottant__lien:hover {
+    transform: none;
+  }
+}
+
+/* ==========================================================================
+   18. PIED DE PAGE COMPACT (page d'accueil)
+   --------------------------------------------------------------------------
+   Deux colonnes de liens au lieu de quatre : la grille générale, calibrée
+   pour quatre, laissait un vide à droite. On repart d'un partage marque /
+   liens, avec des espacements et une hiérarchie propres à cette page.
+   ========================================================================== */
+
+/* La colonne de marque recevait 1,15fr — soit près de 590 px à 1280 — alors
+   que son contenu est borné à 42ch (~340 px). Les 250 px restants creusaient
+   un trou entre la marque et les liens. La marque prend désormais l'espace
+   souple, les colonnes de liens sont dimensionnées sur leur contenu et calées
+   sur le bord droit : l'écart devient une respiration voulue. */
+/* Trois colonnes reelles reparties sur toute la largeur. `.footer__cols` est
+   un simple conteneur : `display: contents` le fait disparaitre de la mise en
+   page pour que ses deux colonnes deviennent des colonnes du pied de page.
+   Sans cela, marque et liens se partagent la largeur en deux et laissent un
+   vide de 300 px au milieu. */
+.footer--compact .footer__top {
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr) minmax(0, 1fr);
+  align-items: start;
+  gap: clamp(2rem, 1.2rem + 2.5vw, 4rem);
+  padding-bottom: clamp(2.25rem, 1.6rem + 2vw, 3.25rem);
+}
+
+.footer--compact .footer__cols {
+  display: contents;
+}
+
+.footer--compact .footer__marque {
+  max-width: 42ch;
+}
+
+.footer--compact .footer__pitch {
+  margin-top: var(--sp-4);
+  max-width: 42ch;
+  line-height: 1.68;
+  color: rgba(238, 243, 246, 0.72);
+}
+
+.footer--compact .footer__col h3 {
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  color: rgba(238, 243, 246, 0.55);
+  padding-bottom: var(--sp-3);
+  margin-bottom: var(--sp-4);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.footer--compact .footer__col ul {
+  gap: 0.62rem;
+}
+
+.footer--compact .footer__col a {
+  color: rgba(238, 243, 246, 0.8);
+  line-height: 1.45;
+}
+
+.footer--compact .footer__bottom {
+  gap: var(--sp-3) var(--sp-6);
+  padding-top: var(--sp-5);
+  color: rgba(238, 243, 246, 0.6);
+}
+
+.footer--compact .footer__legal {
+  gap: var(--sp-3) var(--sp-5);
+}
+
+.footer--compact .footer__legal a {
+  color: rgba(238, 243, 246, 0.75);
+}
+
+/* Sous 860 px : marque en pleine largeur, puis les deux colonnes de liens
+   cote a cote. `.footer__cols` redevient une grille a part entiere. */
+@media (max-width: 860px) {
+  .footer--compact .footer__top {
+    grid-template-columns: 1fr;
+    row-gap: var(--sp-7);
+  }
+
+  .footer--compact .footer__cols {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(1.75rem, 1rem + 2.5vw, 3.25rem);
+  }
+}
+
+@media (max-width: 460px) {
+  .footer--compact .footer__cols {
+    grid-template-columns: 1fr;
+    row-gap: var(--sp-6);
+  }
+
+  .footer--compact .footer__bottom {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Cartes d'acces (pages profils)
+   Deux portes vers l'offre et vers la methode, posees avant l'appel a
+   l'action final. La carte entiere est cliquable ; le focus clavier reprend
+   le contour global (:focus-visible) et l'etat de survol.
+   -------------------------------------------------------------------------- */
+.acces-cartes {
+  display: grid;
+  gap: var(--sp-4);
+}
+
+@media (min-width: 768px) {
+  .acces-cartes {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.acces-carte {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  padding: clamp(1.3rem, 1rem + 1vw, 1.8rem);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  background: var(--surface);
+  text-decoration: none;
+  transition: border-color var(--t-fast), box-shadow var(--t-fast),
+    transform var(--t-fast);
+}
+
+.acces-carte:hover,
+.acces-carte:focus-visible {
+  transform: translateY(-3px);
+  border-color: var(--ink-800);
+  box-shadow: var(--shadow-md);
+}
+
+.acces-carte__titre {
+  margin: 0;
+  font-size: var(--fs-h4);
+  color: #0B1C2C;
+}
+
+.acces-carte__texte {
+  flex: 1 1 auto;
+  margin: 0;
+  font-size: var(--fs-sm);
+  line-height: 1.6;
+  color: #1A1A1A;
+}
+
+/* L'action est le bouton principal du site : c'est le seul chemin de cette
+   page vers l'offre et vers la methode depuis le retrait des entrees de
+   menu. `.btn` fournit la mise en forme ; on ne fixe ici que le calage. */
+.acces-carte__lien {
+  align-self: flex-start;
+  margin-top: var(--sp-1);
+}
+
+/* Le bouton n'est qu'un habillage : c'est la carte entiere qui est le lien.
+   Il doit donc reagir au survol et au focus de la carte, pas seulement au
+   sien. */
+.acces-carte:hover .acces-carte__lien,
+.acces-carte:focus-visible .acces-carte__lien {
+  --btn-bg: var(--accent-hover);
+  --btn-bd: var(--accent-hover);
+}
+
+.acces-carte:hover .acces-carte__lien .btn__arrow {
+  transform: translateX(4px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .acces-carte {
+    transition: none;
+  }
+
+  .acces-carte:hover,
+  .acces-carte:focus-visible {
+    transform: none;
   }
 }

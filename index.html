@@ -4,8 +4,31 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
+<!-- ==================================================================
+     PAGE 01/27 — Accueil
+     Fichier : index.html
+     URL     : /index.html
+     Gabarit : Accueil (gabarit unique) — voir docs/PAGES.md
+     ------------------------------------------------------------------
+     Rôle :
+     L'accueil AIGUILLE, il n'expose pas. Le visiteur doit se situer en
+     un coup d'œil et repartir vers sa page profil. Trois écrans, pas plus :
+     le détail vit sur les pages dédiées.
+
+     Plan du <main> :
+       01. Sélecteur de profil — « Vous êtes… », 4 destinations
+       02. Hero — promesse, premier échange gratuit, calque de relevé
+       03. Ce que vous recevez, concrètement.
+       04. À quoi ressemble un constat. (cas pratique — à confirmer)
+       05. Un interlocuteur à votre écoute.
+       06. Cinq prestations, un premier échange gratuit.
+
+     Entrées : Racine du domaine, référencement de marque, liens entrants.
+     Sorties : Les 3 pages profil (le sélecteur), contact.html, services.html.
+     ================================================================== -->
+
 <title>Copro Performance Conseil — Conseil indépendant en copropriété</title>
-<meta name="description" content="Conseil indépendant en copropriété : audit, analyse des charges, lecture des contrats et accompagnement du conseil syndical. Des analyses claires pour décider en connaissance de cause.">
+<meta name="description" content="Conseil indépendant en copropriété : audit, analyse des dépenses de la copropriété, lecture des contrats et accompagnement du conseil syndical. Des analyses claires pour décider en connaissance de cause.">
 <link rel="canonical" href="https://coproperformanceconseil.fr/">
 
 <meta name="theme-color" content="#0B1C2C">
@@ -17,7 +40,7 @@
 <meta property="og:locale" content="fr_FR">
 <meta property="og:site_name" content="Copro Performance Conseil">
 <meta property="og:title" content="Copro Performance Conseil — Conseil indépendant en copropriété">
-<meta property="og:description" content="Audit, analyse des charges, lecture des contrats et accompagnement du conseil syndical. Des analyses claires pour décider en connaissance de cause.">
+<meta property="og:description" content="Audit, analyse des dépenses de la copropriété, lecture des contrats et accompagnement du conseil syndical. Des analyses claires pour décider en connaissance de cause.">
 <meta property="og:url" content="https://coproperformanceconseil.fr/">
 <meta property="og:image" content="https://coproperformanceconseil.fr/assets/img/og-image.jpg">
 <meta property="og:image:width" content="1200">
@@ -27,19 +50,19 @@
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Copro Performance Conseil — Conseil indépendant en copropriété">
-<meta name="twitter:description" content="Audit, analyse des charges, lecture des contrats et accompagnement du conseil syndical.">
+<meta name="twitter:description" content="Audit, analyse des dépenses de la copropriété, lecture des contrats et accompagnement du conseil syndical.">
 <meta name="twitter:image" content="https://coproperformanceconseil.fr/assets/img/og-image.jpg">
 
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
 <link rel="manifest" href="site.webmanifest">
 
-<link rel="preload" href="assets/css/style.css" as="style">
-<link rel="stylesheet" href="assets/css/style.css">
+<link rel="preload" href="assets/css/style.css?v=20260830" as="style">
+<link rel="stylesheet" href="assets/css/style.css?v=20260830">
 <!-- Calque « Le Relevé » — direction artistique, illustrations et animations -->
-<link rel="stylesheet" href="assets/css/signature.css">
-<script src="assets/js/main.js" defer></script>
-<script src="assets/js/signature.js" defer></script>
+<link rel="stylesheet" href="assets/css/signature.css?v=20260830">
+<script src="assets/js/main.js?v=20260830" defer></script>
+<script src="assets/js/signature.js?v=20260830" defer></script>
 
 <!-- Données structurées : organisation -->
 <script type="application/ld+json">
@@ -48,20 +71,19 @@
   "@type": "ProfessionalService",
   "@id": "https://coproperformanceconseil.fr/#organisation",
   "name": "Copro Performance Conseil",
-  "description": "Conseil indépendant en copropriété : audit, analyse des charges, analyse des contrats et accompagnement du conseil syndical.",
+  "description": "Conseil indépendant en copropriété : audit, analyse des dépenses de la copropriété, analyse des contrats et accompagnement du conseil syndical.",
   "url": "https://coproperformanceconseil.fr/",
   "logo": "https://coproperformanceconseil.fr/assets/img/logo.svg",
   "image": "https://coproperformanceconseil.fr/assets/img/og-image.jpg",
   "telephone": "+33617470857",
   "email": "contact@coproperformanceconseil.fr",
-  "areaServed": { "@type": "Country", "name": "France" },
   "availableLanguage": "fr",
   "knowsAbout": [
     "Copropriété",
     "Charges de copropriété",
     "Conseil syndical",
     "Contrats de copropriété",
-    "Audit complet des charges"
+    "Audit complet des contrats"
   ],
   "hasOfferCatalog": {
     "@type": "OfferCatalog",
@@ -69,13 +91,13 @@
     "itemListElement": [
       {
         "@type": "Offer",
-        "itemOffered": { "@type": "Service", "name": "Premier échange et pré-diagnostic" },
+        "itemOffered": { "@type": "Service", "name": "Premier échange gratuit" },
         "price": "0",
         "priceCurrency": "EUR"
       },
       {
         "@type": "Offer",
-        "itemOffered": { "@type": "Service", "name": "Audit complet des charges" },
+        "itemOffered": { "@type": "Service", "name": "Audit complet des contrats" },
         "priceSpecification": {
           "@type": "PriceSpecification",
           "minPrice": "400",
@@ -92,10 +114,10 @@
           "unitCode": "MON"
         }
       },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Analyse des charges" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Analyse des dépenses de la copropriété" } },
       { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Renégociation des contrats" } },
       { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Optimisation des charges" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Accompagnement du conseil syndical" } }
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Accompagnement et conseil" } }
     ]
   }
 }
@@ -152,7 +174,7 @@
       "name": "L'accompagnement peut-il se faire à distance ?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Oui. L'analyse documentaire et les restitutions se déroulent très bien en visioconférence, ce qui permet d'intervenir partout en France. L'ensemble de la mission se déroule à distance : il n'y a pas de frais de déplacement."
+        "text": "Oui. L'analyse documentaire et les échanges se déroulent très bien en visioconférence, pour une bonne compréhension mutuelle. L'ensemble de la mission se déroule à distance : il n'y a pas de frais de déplacement."
       }
     }
   ]
@@ -210,16 +232,14 @@
     </a>
 
     <nav class="nav" aria-label="Navigation principale">
-      <a class="nav__link" href="services.html">Services</a>
-      <a class="nav__link" href="approche.html">Notre approche</a>
-      <a class="nav__link" href="a-propos.html">À propos</a>
-      <a class="nav__link" href="ressources.html">Ressources</a>
-      <a class="nav__link" href="faq.html">FAQ</a>
+      <a class="nav__link" href="pages/a-propos.html">À propos</a>
+      <a class="nav__link" href="pages/ressources.html">Ressources</a>
+      <a class="nav__link" href="pages/faq.html">FAQ</a>
     </nav>
 
     <div class="header__actions">
-      <a class="btn magnet" href="contact.html">
-        Demander un échange
+      <a class="btn magnet" href="pages/contact.html">
+        Demander mon premier échange gratuit
         <svg class="btn__arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </a>
 
@@ -241,16 +261,14 @@
   <nav aria-label="Navigation mobile">
     <ul class="mobile-nav__list">
       <li><a class="mobile-nav__link" href="index.html" aria-current="page">Accueil <span>01</span></a></li>
-      <li><a class="mobile-nav__link" href="services.html">Services <span>02</span></a></li>
-      <li><a class="mobile-nav__link" href="approche.html">Notre approche <span>03</span></a></li>
-      <li><a class="mobile-nav__link" href="a-propos.html">À propos <span>04</span></a></li>
-      <li><a class="mobile-nav__link" href="ressources.html">Ressources <span>05</span></a></li>
-      <li><a class="mobile-nav__link" href="faq.html">FAQ <span>06</span></a></li>
-      <li><a class="mobile-nav__link" href="contact.html">Contact <span>07</span></a></li>
+      <li><a class="mobile-nav__link" href="pages/a-propos.html">À propos <span>02</span></a></li>
+      <li><a class="mobile-nav__link" href="pages/ressources.html">Ressources <span>03</span></a></li>
+      <li><a class="mobile-nav__link" href="pages/faq.html">FAQ <span>04</span></a></li>
+      <li><a class="mobile-nav__link" href="pages/contact.html">Contact <span>05</span></a></li>
     </ul>
   </nav>
   <div class="mobile-nav__footer">
-    <a class="btn btn--block" href="contact.html">Demander un premier échange</a>
+    <a class="btn btn--block" href="pages/contact.html">Demander mon premier échange gratuit</a>
   </div>
 </div>
 
@@ -266,10 +284,11 @@
     <div class="container">
 
       <div class="profils-head">
-        <p class="eyebrow" data-reveal="fade">Commencez ici</p>
+        <p class="eyebrow" data-reveal="fade">Premiers repères</p>
         <p class="profils-lead" data-reveal style="--d:1">
-          Nos réponses s’adaptent à votre rôle au sein de la copropriété.
-          Choisissez la vôtre : nous vous montrons ce qui vous concerne, et rien d’autre.
+          Que vous soyez syndic professionnel, membre d’un conseil syndical ou
+          copropriétaire, CoproPerformance est là pour vous aider, à travers
+          ses prestations.
         </p>
       </div>
 
@@ -282,7 +301,7 @@
         <p class="diagramme__racine" data-reveal="fade">Vous êtes…</p>
 
         <nav class="diagramme__branches" aria-label="Choisir votre profil" data-stagger>
-          <a class="noeud" href="syndic-professionnel.html" data-reveal style="--d:1">
+          <a class="noeud" href="pages/syndic-professionnel.html" data-reveal style="--d:1">
             <span class="noeud__icone illu" aria-hidden="true">
               <svg viewBox="0 0 48 48" fill="none" stroke="currentColor"
                  stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
@@ -295,7 +314,7 @@
             <span class="noeud__titre">Syndic professionnel</span>
             <span class="noeud__sous">Externalisez l’analyse technique : du temps gagné pour vos gestionnaires, sans impact sur vos honoraires.</span>
           </a>
-          <a class="noeud" href="conseil-syndical.html" data-reveal style="--d:2">
+          <a class="noeud" href="pages/conseil-syndical.html" data-reveal style="--d:2">
             <span class="noeud__icone illu" aria-hidden="true">
               <svg viewBox="0 0 48 48" fill="none" stroke="currentColor"
                  stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
@@ -308,7 +327,7 @@
             <span class="noeud__titre">Membre du conseil syndical</span>
             <span class="noeud__sous">Contrôler la gestion sans y passer vos soirées</span>
           </a>
-          <a class="noeud" href="coproprietaire.html" data-reveal style="--d:3">
+          <a class="noeud" href="pages/coproprietaire.html" data-reveal style="--d:3">
             <span class="noeud__icone illu" aria-hidden="true">
               <svg viewBox="0 0 48 48" fill="none" stroke="currentColor"
                  stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
@@ -320,7 +339,7 @@
             <span class="noeud__titre">Copropriétaire</span>
             <span class="noeud__sous">Comprendre ce que vous payez chaque trimestre</span>
           </a>
-          <a class="noeud" href="contact.html" data-reveal style="--d:4">
+          <a class="noeud" href="pages/contact.html" data-reveal style="--d:4">
             <span class="noeud__icone illu" aria-hidden="true">
               <svg viewBox="0 0 48 48" fill="none" stroke="currentColor"
                  stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
@@ -346,37 +365,32 @@
     <div class="container hero__inner">
 
       <div class="hero__content">
-        <p class="eyebrow" data-reveal="fade">Pour les conseils syndicaux</p>
+        <p class="eyebrow" data-reveal="fade">Une vision claire de votre copropriété</p>
 
         <h1 data-split style="--d:1">
-          Comprenez votre copropriété <span class="serif-em">avant</span> de décider.
+          Externalisez l’analyse des charges et des contrats,
+          <span class="serif-em">sans alourdir</span> le travail de vos équipes.
         </h1>
 
         <p class="hero__sub" data-reveal style="--d:2">
-          Nous lisons vos charges, vos contrats et vos procès-verbaux à votre place,
-          et nous vous rendons un rapport que tout le conseil syndical comprend.
-          Vous arrivez en assemblée générale avec des éléments, pas des impressions.
+          Copro Performance Conseil intervient en appui de vos gestionnaires pour analyser
+          les charges, relire les contrats de prestataires et identifier les points qui
+          méritent une vérification ou une optimisation. Vous gagnez du temps sur les
+          dossiers complexes et disposez d’un rapport clair pour faciliter les échanges
+          avec le conseil syndical.
         </p>
 
-        <!-- La gratuité du premier temps, annoncée avant même le bouton :
-             c'est ce qui lève l'hésitation à prendre contact. -->
-        <p class="hero__free" data-reveal style="--d:3">
-          <span class="hero__free__tag">Gratuit</span>
-          Premier échange et pré-diagnostic écrit — sans engagement, sans relance.
-        </p>
-
-        <div class="btn-group hero__cta" data-reveal style="--d:4">
-          <a class="btn btn--lg magnet" href="contact.html">
-            Demander mon pré-diagnostic gratuit
+        <div class="btn-group hero__cta" data-reveal data-cta style="--d:4">
+          <a class="btn btn--lg magnet" href="pages/contact.html">
+            Demander mon premier échange gratuit
             <svg class="btn__arrow" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </a>
-          <a class="btn btn--ghost btn--lg" href="services.html">Voir les prestations</a>
         </div>
 
         <ul class="hero__trust" data-reveal style="--d:5">
           <li>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-            Aucun lien avec un syndic
+            Un tiers indépendant
           </li>
           <li>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
@@ -384,7 +398,7 @@
           </li>
           <li>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-            Pré-diagnostic gratuit
+            Premier échange gratuit
           </li>
         </ul>
       </div>
@@ -398,7 +412,7 @@
            ---------------------------------------------------------------- -->
       <div class="hero__visual releve" data-releve data-reveal="scale" style="--d:2">
 
-        <!-- Photo CC0 (Wikimedia Commons) — voir CREDITS-PHOTOS.md
+        <!-- Photo CC0 (Wikimedia Commons) — voir docs/CREDITS-PHOTOS.md
              Le fond flou de basse définition évite l'écran blanc au chargement. -->
         <div class="hero__frame media media--tint" data-media data-parallax="0.05"
              style="background-image:url('assets/img/hero-immeuble-tiny.jpg')">
@@ -475,7 +489,7 @@
 
         <div class="hero__badge" data-reveal style="--d:5">
           <strong>Un tiers indépendant, pas une partie prenante</strong>
-          <p>Nous n’encaissons aucune commission de prestataire. Notre seul mandant est la copropriété.</p>
+          <p>Nous n’encaissons aucune commission de prestataire et n’avons aucun intérêt dans les contrats analysés. Notre intervention reste indépendante et son cadre est défini avant chaque mission.</p>
         </div>
       </div>
 
@@ -490,7 +504,7 @@
   <section class="section" aria-labelledby="t-livrable">
     <div class="container">
       <div class="section-head">
-        <p class="eyebrow" data-reveal="fade">Le livrable</p>
+        <p class="eyebrow" data-reveal="fade">Ce que vous recevez</p>
         <h2 id="t-livrable" data-split>Ce que vous recevez, concrètement.</h2>
       </div>
       <div class="rapport" data-reveal="scale">
@@ -573,107 +587,28 @@
       <div class="section-head">
         <p class="eyebrow" data-reveal="fade">Un cas concret</p>
         <h2 id="t-cas" data-split>À quoi ressemble un constat.</h2>
-        <p class="lead" data-reveal style="--d:1">
-          L’exemple ci-dessous illustre le type d’écart qu’une relecture de
-          contrat permet de mettre au jour, et la façon dont il est restitué.
-        </p>
       </div>
 
       <div class="cas" data-reveal>
         <div class="cas__chiffre">
-          <b>18 %</b>
-          <span>de surcoût</span>
+          <b>50 %</b>
+          <span>d’économie</span>
         </div>
         <div class="cas__corps">
-          <p class="cas__label">Cas pratique illustratif</p>
           <p class="cas__titre">
-            Copropriété de 45 lots à Paris — audit du poste chauffage collectif
+            Copropriété de 50 lots à Paris — contrats d’entretien de 2 ascenseurs
           </p>
           <p>
-            L’examen du contrat de chauffage a fait apparaître une formule
-            d’indexation défavorable, appliquée sans que personne ne l’ait
-            réexaminée depuis sa signature. Le surcoût représentait
-            <strong>18 % du poste</strong>.
+            La copropriété disposait de deux ascenseurs d’environ 10 ans, dont les
+            contrats d’entretien représentaient un coût total de 8 000 € par an.
+            Après analyse du contrat et mise en concurrence de plusieurs prestataires,
+            un changement d’ascensoriste a permis de conserver un niveau de service et
+            des prestations équivalents, pour un coût ramené à 4 000 € par an.
+            Résultat : 4 000 € d’économie chaque année, soit une réduction de 50 %
+            du budget consacré à l’entretien des ascenseurs, sans diminution de la
+            qualité de service.
           </p>
-          <p>
-            Le constat ne tenait pas à une erreur de facturation : tout était
-            conforme au contrat. C’est le contrat lui-même qu’il fallait relire —
-            exactement le travail que personne n’a le temps de faire.
-          </p>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==================================================================
-       DIAGNOSTIC RAPIDE
-       Trois questions, une orientation. Entièrement écrit dans le HTML :
-       sans JavaScript, les étapes restent lisibles et le lien de sortie
-       fonctionne. Le script ne fait qu'enchaîner les étapes.
-       ================================================================== -->
-  <section class="section" aria-labelledby="t-diag">
-    <div class="container container--narrow">
-      <div class="section-head section-head--center">
-        <p class="eyebrow" data-reveal="fade">Trente secondes</p>
-        <h2 id="t-diag" data-split>Vous ne savez pas par où commencer ?</h2>
-      </div>
-
-      <div class="diagnostic" data-diagnostic data-reveal>
-
-        <div class="diagnostic__progres" aria-hidden="true">
-          <span class="diagnostic__jalon"></span>
-          <span class="diagnostic__jalon"></span>
-          <span class="diagnostic__jalon"></span>
-        </div>
-
-        <div class="diagnostic__etape" data-etape="0">
-          <p class="diagnostic__question">1. Quel est votre rôle ?</p>
-          <div class="diagnostic__choix">
-            <button type="button" data-champ="role" data-valeur="syndic-pro">Syndic professionnel</button>
-            <button type="button" data-champ="role" data-valeur="conseil-syndical">Conseil syndical</button>
-            <button type="button" data-champ="role" data-valeur="coproprietaire">Copropriétaire</button>
-          </div>
-        </div>
-
-        <div class="diagnostic__etape" data-etape="1" hidden>
-          <p class="diagnostic__question">2. Combien de lots compte la copropriété ?</p>
-          <div class="diagnostic__choix">
-            <button type="button" data-champ="lots" data-valeur="moins-20">Moins de 20</button>
-            <button type="button" data-champ="lots" data-valeur="20-50">20 à 50</button>
-            <button type="button" data-champ="lots" data-valeur="plus-50">Plus de 50</button>
-            <button type="button" data-champ="lots" data-valeur="sais-pas">Je ne sais pas</button>
-          </div>
-        </div>
-
-        <div class="diagnostic__etape" data-etape="2" hidden>
-          <p class="diagnostic__question">3. Qu’est-ce qui vous amène ?</p>
-          <div class="diagnostic__choix">
-            <button type="button" data-champ="besoin" data-valeur="charges">Des charges qui montent</button>
-            <button type="button" data-champ="besoin" data-valeur="contrats">Des contrats à relire</button>
-            <button type="button" data-champ="besoin" data-valeur="ag">Une assemblée à préparer</button>
-            <button type="button" data-champ="besoin" data-valeur="sais-pas">Je ne sais pas encore</button>
-          </div>
-        </div>
-
-        <div class="diagnostic__etape diagnostic__resultat" data-etape="3" hidden>
-          <h3>Ce que nous vous suggérons</h3>
-          <p>
-            D’après vos réponses, le point de départ le plus utile est
-            <strong data-diagnostic-presta>un audit complet</strong>. Le premier
-            échange et le pré-diagnostic écrit restent gratuits, quelle que soit
-            la suite.
-          </p>
-          <div class="btn-group">
-            <a class="btn magnet" href="contact.html" data-diagnostic-sortie>
-              <span data-diagnostic-libelle>Demander mon pré-diagnostic gratuit</span>
-              <svg class="btn__arrow" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-            </a>
-          </div>
-          <button type="button" class="diagnostic__recommence" data-diagnostic-recommence>
-            Recommencer
-          </button>
-        </div>
-
       </div>
     </div>
   </section>
@@ -688,7 +623,7 @@
     <div class="container">
       <div class="section-head">
         <p class="eyebrow" data-reveal="fade">Nous joindre</p>
-        <h2 id="t-preuve" data-split>Un interlocuteur, partout en France.</h2>
+        <h2 id="t-preuve" data-split>Un interlocuteur à votre écoute.</h2>
       </div>
 
       <div class="dispo" data-stagger>
@@ -696,20 +631,20 @@
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
           <div>
             <strong>Par téléphone</strong>
-            <span>Du lundi au vendredi, au <a href="tel:+33617470857">+33 6 17 47 08 57</a></span>
+            <span>Du lundi au vendredi, de 8h00 à 19h00, au <a href="tel:+33617470857">+33 6 17 47 08 57</a></span>
           </div>
         </div>
         <div class="dispo__item" data-reveal>
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m23 7-7 5 7 5z"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
           <div>
             <strong>En visioconférence</strong>
-            <span>L’analyse et les restitutions se déroulent très bien à distance</span>
+            <span>L’analyse et les échanges se déroulent très bien à distance, pour une bonne compréhension mutuelle</span>
           </div>
         </div>
         <div class="dispo__item" data-reveal>
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
           <div>
-            <strong>Partout en France</strong>
+            <strong>À distance</strong>
             <span>Tout se fait à distance : aucun frais de déplacement</span>
           </div>
         </div>
@@ -721,11 +656,12 @@
            qui ne les a pas dits. -->
       <div class="temoignages" data-stagger>
         <div class="temoignage" data-reveal>
-          <p class="temoignage__label">Ce que la mission vise</p>
+          <p class="temoignage__label">Ce que la prestation vise</p>
           <p class="temoignage__texte">
-            Que le conseil syndical aborde son assemblée générale avec des
-            éléments vérifiables plutôt qu’avec des impressions — et qu’il
-            puisse répondre, pièce à l’appui, à chaque question posée.
+            Que chaque copropriété — syndic professionnel, conseil syndical ou
+            copropriétaire — dispose d’éléments vérifiables plutôt que
+            d’impressions, et puisse répondre, pièce à l’appui, à chaque
+            question posée.
           </p>
         </div>
       </div>
@@ -746,24 +682,19 @@
       </div>
 
       <ul class="resume-list" data-stagger>
-        <li data-reveal><a href="services.html#audit">Audit complet des charges</a></li>
-        <li data-reveal><a href="services.html#charges">Analyse des charges</a></li>
-        <li data-reveal><a href="services.html#contrats">Renégociation des contrats</a></li>
-        <li data-reveal><a href="services.html#optimisation">Optimisation des charges</a></li>
-        <li data-reveal><a href="services.html#accompagnement">Accompagnement du conseil syndical</a></li>
+        <li data-reveal><a href="pages/services.html#audit">Audit complet des contrats</a></li>
+        <li data-reveal><a href="pages/services.html#charges">Analyse des dépenses de la copropriété</a></li>
+        <li data-reveal><a href="pages/services.html#contrats">Renégociation des contrats</a></li>
+        <li data-reveal><a href="pages/services.html#optimisation">Optimisation des charges</a></li>
+        <li data-reveal><a href="pages/services.html#accompagnement">Accompagnement et conseil</a></li>
       </ul>
 
       <div class="resume-cta" data-reveal>
-        <p class="hero__free">
-          <span class="hero__free__tag">Gratuit</span>
-          Premier échange et pré-diagnostic écrit — sans engagement, sans relance.
-        </p>
-        <div class="btn-group">
-          <a class="btn btn--lg magnet" href="contact.html">
-            Demander mon pré-diagnostic gratuit
+        <div class="btn-group" data-cta>
+          <a class="btn btn--lg magnet" href="pages/contact.html">
+            Demander mon premier échange gratuit
             <svg class="btn__arrow" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </a>
-          <a class="btn btn--ghost btn--lg" href="services.html#tarifs">Voir les tarifs</a>
         </div>
       </div>
 
@@ -775,12 +706,12 @@
 <!-- ==================================================================
      FOOTER
      ================================================================== -->
-<footer class="footer">
+<footer class="footer footer--compact">
   <div class="container">
 
     <div class="footer__top">
 
-      <div>
+      <div class="footer__marque">
         <a class="logo" href="index.html" aria-label="Copro Performance Conseil — accueil">
           <img class="logo__mark" src="assets/img/logo.svg" alt="Logo Copro Performance Conseil" width="34" height="34">
           <span class="logo__text">
@@ -789,47 +720,31 @@
           </span>
         </a>
         <p class="footer__pitch">
-          Nous aidons les conseils syndicaux à comprendre les charges, les contrats
-          et le fonctionnement de leur copropriété, pour prendre des décisions fondées sur des faits.
+          Nous accompagnons les syndics professionnels et les conseils syndicaux dans l’analyse des charges, des contrats et des prestations de copropriété, afin de faciliter des décisions fondées sur des éléments clairs et vérifiables.
         </p>
       </div>
 
-      <div class="footer__col">
-        <h3>Vous êtes</h3>
-        <ul>
-          <li><a href="syndic-professionnel.html">Syndic professionnel</a></li>
-          <li><a href="conseil-syndical.html">conseil syndical</a></li>
-          <li><a href="coproprietaire.html">Copropriétaire</a></li>
-        </ul>
-      </div>
-      <div class="footer__col">
-        <h3>Prestations</h3>
-        <ul>
-          <li><a href="services.html#audit">Audit complet des charges</a></li>
-          <li><a href="services.html#charges">Analyse des charges</a></li>
-          <li><a href="services.html#contrats">Renégociation des contrats</a></li>
-          <li><a href="services.html#optimisation">Optimisation des charges</a></li>
-          <li><a href="services.html#accompagnement">Accompagnement du conseil syndical</a></li>
-        </ul>
-      </div>
+      <div class="footer__cols">
+        <div class="footer__col">
+          <h3>Prestations</h3>
+          <ul>
+            <li><a href="pages/services.html#audit">Audit complet des contrats</a></li>
+            <li><a href="pages/services.html#charges">Analyse des dépenses de la copropriété</a></li>
+            <li><a href="pages/services.html#contrats">Renégociation des contrats</a></li>
+            <li><a href="pages/services.html#optimisation">Optimisation des charges</a></li>
+            <li><a href="pages/services.html#accompagnement">Accompagnement et conseil</a></li>
+          </ul>
+        </div>
 
-      <div class="footer__col">
-        <h3>Le cabinet</h3>
-        <ul>
-          <li><a href="a-propos.html">À propos</a></li>
-          <li><a href="approche.html">Notre approche</a></li>
-          <li><a href="faq.html">Questions fréquentes</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </div>
-
-      <div class="footer__col">
-        <h3>Nous joindre</h3>
-        <ul>
-          <li><a href="mailto:contact@coproperformanceconseil.fr">contact@coproperformanceconseil.fr</a></li>
-          <li><a href="tel:+33617470857">+33 6 17 47 08 57</a></li>
-          <li>Intervention dans toute la France (à distance)</li>
-        </ul>
+        <div class="footer__col">
+          <h3>Le cabinet</h3>
+          <ul>
+            <li><a href="pages/a-propos.html">À propos</a></li>
+            <li><a href="pages/approche.html">Notre approche</a></li>
+            <li><a href="pages/faq.html">Questions fréquentes</a></li>
+            <li><a href="pages/contact.html">Contact</a></li>
+          </ul>
+        </div>
       </div>
 
     </div>
@@ -837,9 +752,9 @@
     <div class="footer__bottom">
       <p>© <span data-year>2026</span> Copro Performance Conseil. Tous droits réservés.</p>
       <nav class="footer__legal" aria-label="Liens légaux">
-        <a href="mentions-legales.html">Mentions légales</a>
-        <a href="politique-confidentialite.html">Politique de confidentialité</a>
-        <a href="plan-du-site.html">Plan du site</a>
+        <a href="pages/mentions-legales.html">Mentions légales</a>
+        <a href="pages/politique-confidentialite.html">Politique de confidentialité</a>
+        <a href="pages/plan-du-site.html">Plan du site</a>
       </nav>
     </div>
 
@@ -848,14 +763,19 @@
 
 
 <!-- ==================================================================
-     CTA COLLANT (mobile)
-     Le bouton principal reste accessible à tout moment de la lecture.
-     Masqué au-dessus de 720 px et à l'impression. Il s'efface quand le
-     pied de page arrive : à ce moment le vrai bouton est à l'écran.
+     CTA FLOTTANT
+     Il remplace le CTA collant mobile sur cette page : un seul appel à
+     l'action fixe à la fois. Invisible au chargement, il n'apparaît
+     qu'une fois le premier bloc CTA dépassé, et s'efface dès qu'un des
+     deux blocs CTA de la page — ou le pied de page — entre à l'écran.
+     Tout le mouvement est en CSS, sur `transform` et `opacity`, et se
+     coupe sous `prefers-reduced-motion`.
      ================================================================== -->
-<div class="sticky-cta" data-sticky-cta>
-  <a class="btn btn--block magnet" href="contact.html">
-    Pré-diagnostic gratuit
+<div class="cta-flottant" data-cta-flottant aria-hidden="true">
+  <a class="btn btn--lg cta-flottant__lien"
+     href="pages/contact.html"
+     aria-label="Demander mon premier échange gratuit — aller au formulaire de contact">
+    Demander mon premier échange gratuit
     <svg class="btn__arrow" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
   </a>
 </div>

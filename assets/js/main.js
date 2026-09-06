@@ -227,12 +227,15 @@
     var status = form.querySelector("[data-form-status]");
     var submit = form.querySelector('[type="submit"]');
 
-    function showStatus(type, message) {
+    /* `html` n'est vrai que pour des messages ecrits ici meme, jamais pour
+       une donnee saisie par le visiteur : aucun risque d'injection. */
+    function showStatus(type, message, html) {
       if (!status) return;
       status.className =
         "form__status is-visible form__status--" +
         (type === "ok" ? "ok" : "err");
-      status.textContent = message;
+      if (html) status.innerHTML = message;
+      else status.textContent = message;
       status.setAttribute("role", type === "ok" ? "status" : "alert");
     }
 
@@ -261,13 +264,26 @@
       e.preventDefault();
 
       // Piège à robots
-      var honeypot = form.querySelector('[name="_gotcha"]');
+      var honeypot = form.querySelector('[name="_honey"]');
       if (honeypot && honeypot.value) return;
 
       var firstInvalid = null;
       form.querySelectorAll(".field").forEach(function (field) {
         if (!validateField(field) && !firstInvalid) firstInvalid = field;
       });
+
+      /* Les champs sont controles AVANT le consentement : sur un formulaire
+         vide, annoncer d'abord « acceptez la politique » et deplacer le focus
+         tout en bas laissait croire que le reste etait rempli. */
+      if (firstInvalid) {
+        showStatus(
+          "err",
+          "Certains champs doivent être complétés ou corrigés avant l’envoi."
+        );
+        var control = firstInvalid.querySelector(".field__control");
+        if (control) control.focus();
+        return;
+      }
 
       var consent = form.querySelector('[name="consentement"]');
       if (consent && !consent.checked) {
@@ -279,71 +295,92 @@
         return;
       }
 
-      if (firstInvalid) {
-        showStatus(
-          "err",
-          "Certains champs doivent être complétés ou corrigés avant l’envoi."
-        );
-        var control = firstInvalid.querySelector(".field__control");
-        if (control) control.focus();
-        return;
-      }
-
       /* ------------------------------------------------------------------
-         ENVOI — à brancher par le client.
-         Aucun back-end n'est fourni : le formulaire ne part nulle part
-         tant que l'une de ces options n'est pas configurée.
-
-         Option A — service tiers sans serveur (Formspree, Web3Forms…) :
-           renseigner l'attribut `action` du <form> puis supprimer le bloc
-           de simulation ci-dessous et laisser le navigateur soumettre.
-
-         Option B — endpoint PHP/Node maison : remplacer par un fetch().
-
-         Voir README.md § « Brancher le formulaire ».
+         ENVOI DE LA DEMANDE
+         Le formulaire est poste au service de reception configure dans son
+         attribut `action`. Le visiteur ne quitte pas la page : on affiche
+         la confirmation sur place et on remet le formulaire a zero.
          ------------------------------------------------------------------ */
       var endpoint = form.getAttribute("action");
 
       if (!endpoint || endpoint === "#") {
         showStatus(
           "err",
-          "Le formulaire n’est pas encore relié à une boîte de réception. " +
-            "En attendant, écrivez-nous directement par e-mail."
+          "L’envoi du formulaire n’est pas encore configuré. " +
+            "Écrivez-nous directement à " +
+            '<a href="mailto:contact@coproperformanceconseil.fr">' +
+            "contact@coproperformanceconseil.fr</a>.",
+          true
         );
         return;
       }
 
-      if (submit) {
-        submit.disabled = true;
-        submit.dataset.label = submit.textContent;
-        submit.textContent = "Envoi en cours…";
+      /* FormSubmit expose deux points d'entree pour la meme adresse : celui
+         de `action` renvoie une page HTML de remerciement — c'est le filet
+         sans JavaScript — tandis que la variante `/ajax/` repond en JSON et
+         laisse le visiteur sur la page. Le second n'existant que pour ce
+         service, on ne bascule que si l'adresse est bien la sienne. */
+      if (/^https:\/\/formsubmit\.co\/(?!ajax\/)/.test(endpoint)) {
+        endpoint = endpoint.replace(
+          "https://formsubmit.co/",
+          "https://formsubmit.co/ajax/"
+        );
       }
 
-      fetch(endpoint, {
-        method: "POST",
-        body: new FormData(form),
-        headers: { Accept: "application/json" },
-      })
-        .then(function (res) {
-          if (!res.ok) throw new Error("HTTP " + res.status);
-          form.reset();
-          showStatus(
-            "ok",
-            "Message bien reçu. Nous revenons vers vous rapidement pour convenir d’un premier échange."
-          );
+      var initialLabel = submit ? submit.textContent : "";
+      if (submit) {
+        submit.disabled = true;
+        submit.textContent = "Envoi…";
+      }
+
+      function restoreSubmit() {
+        if (!submit) return;
+        submit.disabled = false;
+        submit.textContent = initialLabel;
+      }
+
+      function onFailure() {
+        showStatus(
+          "err",
+          "L’envoi a échoué. Merci de réessayer, ou de nous écrire à " +
+            '<a href="mailto:contact@coproperformanceconseil.fr">' +
+            "contact@coproperformanceconseil.fr</a>.",
+          true
+        );
+        restoreSubmit();
+      }
+
+      function onSuccess() {
+        showStatus(
+          "ok",
+          "Merci, votre demande est bien enregistrée. Nous revenons vers vous " +
+            "sous 48 h ouvrées pour convenir d’un créneau."
+        );
+        form.reset();
+        restoreSubmit();
+      }
+
+      var data = new FormData(form);
+
+      /* `fetch` garde le visiteur sur la page. Sans lui — navigateur ancien,
+         script bloque — le formulaire part en POST classique et le service
+         affiche sa propre page de confirmation. */
+      if (!window.fetch) {
+        form.submit();
+        return;
+      }
+
+      window
+        .fetch(endpoint, {
+          method: "POST",
+          body: data,
+          headers: { Accept: "application/json" }
         })
-        .catch(function () {
-          showStatus(
-            "err",
-            "L’envoi n’a pas abouti. Merci de réessayer, ou de nous écrire directement par e-mail."
-          );
+        .then(function (response) {
+          if (response.ok) onSuccess();
+          else onFailure();
         })
-        .finally(function () {
-          if (submit) {
-            submit.disabled = false;
-            submit.textContent = submit.dataset.label || "Envoyer";
-          }
-        });
+        .catch(onFailure);
     });
   }
 

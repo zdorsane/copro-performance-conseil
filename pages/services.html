@@ -4,9 +4,38 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
+<!-- ==================================================================
+     PAGE 05/27 — Les prestations
+     Fichier : pages/services.html
+     URL     : /pages/services.html
+     Gabarit : Page cabinet — voir ../docs/PAGES.md
+     ------------------------------------------------------------------
+     Rôle :
+     Les cinq prestations, chacune sur le schéma Problème > Intervention >
+     Bénéfice, chacune avec son ancre stable (#audit, #charges, #contrats,
+     #optimisation, #accompagnement) citée depuis tout le site.
+
+     Contient aussi « Ce que nous ne faisons pas » : le périmètre, dit
+     franchement. Page la plus liée du site (pied de page de chaque page).
+
+     Plan du <main> :
+       01. Audit complet des contrats
+       02. Analyse des dépenses de la copropriété
+       03. Renégociation des contrats
+       04. Optimisation des charges
+       05. Accompagnement et conseil
+       06. Ce que vous recevez, concrètement.
+       07. Commencez sans rien dépenser.
+       08. Ce que nous ne faisons pas.
+       09. Une question précise ?
+
+     Entrées : Pied de page de TOUTES les pages, accueil, pages profil, articles.
+     Sorties : contact.html, approche.html.
+     ================================================================== -->
+
 <title>Nos prestations — Audit, charges, contrats | Copro Performance Conseil</title>
-<meta name="description" content="Audit complet des charges, analyse des charges, analyse des contrats et accompagnement du conseil syndical. Pour chaque prestation : le problème traité, notre intervention et ce que vous en retirez.">
-<link rel="canonical" href="https://coproperformanceconseil.fr/services.html">
+<meta name="description" content="Audit complet des contrats, analyse des dépenses de la copropriété, renégociation des contrats, accompagnement et conseil. Pour chaque prestation&nbsp;: le problème traité, notre intervention et ce que vous en retirez.">
+<link rel="canonical" href="https://coproperformanceconseil.fr/pages/services.html">
 
 <meta name="theme-color" content="#0B1C2C">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
@@ -15,18 +44,18 @@
 <meta property="og:locale" content="fr_FR">
 <meta property="og:site_name" content="Copro Performance Conseil">
 <meta property="og:title" content="Nos prestations — Audit, charges, contrats | Copro Performance Conseil">
-<meta property="og:description" content="Audit complet des charges, analyse des charges, analyse des contrats et accompagnement du conseil syndical.">
-<meta property="og:url" content="https://coproperformanceconseil.fr/services.html">
+<meta property="og:description" content="Audit complet des contrats, analyse des dépenses de la copropriété, renégociation des contrats, accompagnement et conseil.">
+<meta property="og:url" content="https://coproperformanceconseil.fr/pages/services.html">
 <meta property="og:image" content="https://coproperformanceconseil.fr/assets/img/og-image.jpg">
 <meta name="twitter:card" content="summary_large_image">
 
-<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
-<link rel="manifest" href="site.webmanifest">
-<link rel="stylesheet" href="assets/css/style.css">
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="manifest" href="../site.webmanifest">
+<link rel="stylesheet" href="../assets/css/style.css?v=20260830">
 <!-- Calque « Le Relevé » — direction artistique, illustrations et animations -->
-<link rel="stylesheet" href="assets/css/signature.css">
-<script src="assets/js/main.js" defer></script>
-<script src="assets/js/signature.js" defer></script>
+<link rel="stylesheet" href="../assets/css/signature.css?v=20260830">
+<script src="../assets/js/main.js?v=20260830" defer></script>
+<script src="../assets/js/signature.js?v=20260830" defer></script>
 
 <script type="application/ld+json">
 {
@@ -34,7 +63,7 @@
   "@type": "BreadcrumbList",
   "itemListElement": [
     { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://coproperformanceconseil.fr/" },
-    { "@type": "ListItem", "position": 2, "name": "Prestations", "item": "https://coproperformanceconseil.fr/services.html" }
+    { "@type": "ListItem", "position": 2, "name": "Prestations", "item": "https://coproperformanceconseil.fr/pages/services.html" }
   ]
 }
 </script>
@@ -67,23 +96,21 @@
 
 <header class="header" data-header>
   <div class="container header__inner">
-    <a class="logo" href="index.html" aria-label="Copro Performance Conseil — accueil">
-      <img class="logo__mark" src="assets/img/logo.svg" alt="Logo Copro Performance Conseil" width="34" height="34">
+    <a class="logo" href="../index.html" aria-label="Copro Performance Conseil — accueil">
+      <img class="logo__mark" src="../assets/img/logo.svg" alt="Logo Copro Performance Conseil" width="34" height="34">
       <span class="logo__text">
         <span class="logo__name">Copro Performance Conseil</span>
         <span class="logo__tag">Conseil indépendant en copropriété</span>
       </span>
     </a>
     <nav class="nav" aria-label="Navigation principale">
-      <a class="nav__link" href="services.html" aria-current="page">Services</a>
-      <a class="nav__link" href="approche.html">Notre approche</a>
       <a class="nav__link" href="a-propos.html">À propos</a>
       <a class="nav__link" href="ressources.html">Ressources</a>
       <a class="nav__link" href="faq.html">FAQ</a>
     </nav>
     <div class="header__actions">
       <a class="btn magnet" href="contact.html">
-        Demander un échange
+        Demander mon premier échange gratuit
         <svg class="btn__arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </a>
       <button class="burger" data-burger type="button" aria-expanded="false" aria-controls="menu-mobile" aria-label="Ouvrir le menu">
@@ -96,17 +123,15 @@
 <div class="mobile-nav" id="menu-mobile" data-mobile-nav aria-hidden="true">
   <nav aria-label="Navigation mobile">
     <ul class="mobile-nav__list">
-      <li><a class="mobile-nav__link" href="index.html">Accueil <span>01</span></a></li>
-      <li><a class="mobile-nav__link" href="services.html" aria-current="page">Services <span>02</span></a></li>
-      <li><a class="mobile-nav__link" href="approche.html">Notre approche <span>03</span></a></li>
-      <li><a class="mobile-nav__link" href="a-propos.html">À propos <span>04</span></a></li>
-      <li><a class="mobile-nav__link" href="ressources.html">Ressources <span>05</span></a></li>
-      <li><a class="mobile-nav__link" href="faq.html">FAQ <span>06</span></a></li>
-      <li><a class="mobile-nav__link" href="contact.html">Contact <span>07</span></a></li>
+      <li><a class="mobile-nav__link" href="../index.html">Accueil <span>01</span></a></li>
+      <li><a class="mobile-nav__link" href="a-propos.html">À propos <span>02</span></a></li>
+      <li><a class="mobile-nav__link" href="ressources.html">Ressources <span>03</span></a></li>
+      <li><a class="mobile-nav__link" href="faq.html">FAQ <span>04</span></a></li>
+      <li><a class="mobile-nav__link" href="contact.html">Contact <span>05</span></a></li>
     </ul>
   </nav>
   <div class="mobile-nav__footer">
-    <a class="btn btn--block" href="contact.html">Demander un premier échange</a>
+    <a class="btn btn--block" href="contact.html">Demander mon premier échange gratuit</a>
   </div>
 </div>
 
@@ -115,7 +140,7 @@
   <div class="container">
     <nav class="breadcrumb" aria-label="Fil d'Ariane">
       <ol>
-        <li><a href="index.html">Accueil</a></li>
+        <li><a href="../index.html">Accueil</a></li>
         <li aria-current="page">Prestations</li>
       </ol>
     </nav>
@@ -129,18 +154,16 @@
       <p class="eyebrow" data-reveal="fade">Nos prestations</p>
       <h1 data-split>Des missions cadrées, pour des questions précises.</h1>
       <p class="lead" data-reveal style="--d:1">
-        Chaque copropriété arrive avec une question différente. Nos quatre prestations
-        répondent chacune à un besoin distinct — elles se combinent, ou se prennent
-        séparément. Dans tous les cas, le périmètre est écrit avant de commencer.
+        Chaque copropriété arrive avec une question différente.
+        Nos cinq prestations répondent chacune à un besoin distinct.
       </p>
 
       <nav class="anchor-nav" aria-label="Accès rapide aux prestations" data-reveal style="--d:2">
-        <a href="#audit">Audit complet des charges</a>
-        <a href="#charges">Analyse des charges</a>
+        <a href="#audit">Audit complet des contrats</a>
+        <a href="#charges">Analyse des dépenses de la copropriété</a>
         <a href="#contrats">Renégociation des contrats</a>
         <a href="#optimisation">Optimisation des charges</a>
-        <a href="#accompagnement">Accompagnement du conseil syndical</a>
-        <a href="#tarifs">Tarifs</a>
+        <a href="#accompagnement">Accompagnement et conseil</a>
       </nav>
 
       
@@ -188,7 +211,7 @@
             </svg>
         </div>
         <span class="service-block__num">01 — Prestation</span>
-        <h2 id="t-audit">Audit complet des charges</h2>
+        <h2 id="t-audit">Audit complet des contrats</h2>
         <p class="muted">
           La vue d’ensemble. Recommandée lorsqu’on pressent un dysfonctionnement ou un
           doute sur la gestion, ou lors d’un changement de conseil syndical.
@@ -215,10 +238,11 @@
           <p class="service-step__label">Notre intervention</p>
           <h3>Nous passons en revue le fonctionnement d’ensemble.</h3>
           <p>
-            Nous reprenons la structure des charges sur plusieurs exercices, l’exécution
-            du budget par rapport au voté, les principaux engagements contractuels et
-            les décisions d’assemblée générale récentes. L’objectif n’est pas l’exhaustivité
-            comptable, mais l’identification des zones qui méritent d’être creusées.
+            Nous examinons l’ensemble des contrats en cours de la copropriété&nbsp;: leur
+            date de signature, leur ancienneté, le périmètre réellement couvert et les
+            conditions tarifaires appliquées. Nous sollicitons ensuite des devis auprès
+            d’autres prestataires, afin de vérifier si un niveau de service équivalent
+            peut être obtenu à un coût inférieur.
           </p>
         </div>
 
@@ -233,24 +257,16 @@
           </p>
           <div class="step__meta">
             <span class="chip">Rapport écrit</span>
-            <span class="chip">Restitution commentée</span>
-            <span class="chip">Constats sourcés</span>
+            <span class="chip">Échange et accompagnement</span>
+            <span class="chip">Devis</span>
           </div>
         </div>
 
-        <div class="service-step" data-reveal>
-          <p class="service-step__label">L’étape suivante</p>
-          <h3>Un premier échange pour cadrer le périmètre.</h3>
-          <p>
-            La taille de la copropriété et le nombre d’exercices à examiner déterminent
-            l’ampleur de la mission. Nous en échangeons avant d’établir tout devis.
-          </p>
-          <div class="btn-group mt-5">
-            <a class="btn" href="contact.html?sujet=audit">
-              Demander un audit
-              <svg class="btn__arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-            </a>
-          </div>
+        <div class="btn-group" data-reveal>
+          <a class="btn btn--lg magnet" href="contact.html">
+            Demander mon premier échange gratuit
+            <svg class="btn__arrow" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
         </div>
 
       </div>
@@ -293,10 +309,9 @@
             </svg>
         </div>
         <span class="service-block__num">02 — Prestation</span>
-        <h2 id="t-charges">Analyse des charges</h2>
+        <h2 id="t-charges">Analyse des dépenses de la copropriété</h2>
         <p class="muted">
-          L’examen approfondi des dépenses, poste par poste et exercice par exercice.
-          La prestation la plus demandée.
+          L’examen approfondi des dépenses, poste par poste.
         </p>
         <div class="mt-5">
           <span class="chip">Analyse chiffrée</span>
@@ -309,10 +324,8 @@
           <p class="service-step__label">Le problème</p>
           <h3>Les chiffres sont là, mais ils ne parlent pas.</h3>
           <p>
-            Les annexes comptables sont transmises chaque année. Elles sont exactes,
-            complètes, conformes — et pourtant illisibles pour qui n’en fait pas son
-            métier. Une hausse de 12 % sur un poste : est-ce une dérive, un rattrapage,
-            un effet de périmètre, ou l’indexation normale d’un contrat ? Sans mise en
+            Une hausse de 12&nbsp;% sur un poste&nbsp;: est-ce une dérive, un rattrapage,
+            un effet de périmètre, ou l’indexation normale d’un contrat&nbsp;? Sans mise en
             perspective, la question reste ouverte.
           </p>
         </div>
@@ -321,10 +334,11 @@
           <p class="service-step__label">Notre intervention</p>
           <h3>Nous mettons chaque poste en perspective.</h3>
           <p>
-            Nous reconstituons l’évolution de vos charges sur plusieurs exercices, nous
-            séparons le récurrent de l’exceptionnel, et nous confrontons chaque poste
-            significatif au contrat qui le régit et aux décisions qui l’ont autorisé.
-            Les écarts sont alors expliqués, ou signalés comme restant à expliquer.
+            Nous reprenons vos dépenses poste par poste — ascenseurs, chauffage, eau,
+            entretien, assurance, nettoyage — et nous les comparons aux niveaux
+            habituellement constatés pour une copropriété comparable. Vous recevez un
+            rapport qui identifie précisément les postes sur lesquels vous payez plus
+            que nécessaire, et de combien.
           </p>
         </div>
 
@@ -334,8 +348,7 @@
           <p>
             Vous comprenez où va l’argent de la copropriété, quels postes pèsent le plus,
             lesquels évoluent anormalement et lesquels sont simplement mal compris.
-            Vous disposez d’un support chiffré pour interroger votre syndic, sur des
-            points précis plutôt que sur une impression générale.
+            Vous disposez d’un support chiffré.
           </p>
           <div class="step__meta">
             <span class="chip">Évolution pluriannuelle</span>
@@ -344,20 +357,6 @@
           </div>
         </div>
 
-        <div class="service-step" data-reveal>
-          <p class="service-step__label">L’étape suivante</p>
-          <h3>Réunissez vos annexes comptables.</h3>
-          <p>
-            Deux à trois exercices suffisent pour dégager une tendance exploitable.
-            Nous vous indiquons précisément quelles pièces réunir.
-          </p>
-          <div class="btn-group mt-5">
-            <a class="btn" href="contact.html?sujet=charges">
-              Faire analyser mes charges
-              <svg class="btn__arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-            </a>
-          </div>
-        </div>
 
       </div>
     </article>
@@ -403,8 +402,7 @@
         <span class="service-block__num">03 — Prestation</span>
         <h2 id="t-contrats">Renégociation des contrats</h2>
         <p class="muted">
-          La relecture des engagements qui structurent le budget : syndic, entretien,
-          ascenseur, chauffage, assurance.
+          La relecture des engagements qui structurent le budget : entretien, ascenseur, chauffage, assurance et autres contrats de prestataires.
         </p>
         <div class="mt-5">
           <span class="chip">Lecture contractuelle</span>
@@ -417,22 +415,20 @@
           <p class="service-step__label">Le problème</p>
           <h3>Personne ne les a relus depuis leur signature.</h3>
           <p>
-            La plupart des contrats d’une copropriété se renouvellent par tacite
-            reconduction. Les conseils syndicaux changent, les contrats restent.
-            Résultat : on paie parfois pour des prestations dont on ignore le périmètre
-            exact, on suppose couvertes des interventions qui sont en réalité facturées
-            en sus, et on laisse passer des fenêtres de résiliation sans le savoir.
+            De nombreux contrats de prestataires prévoient une reconduction automatique ou des échéances qu’il convient d’anticiper. Les syndics changent, les contrats restent.
+            Résultat&nbsp;: on paie parfois pour des prestations dont on ignore le
+            périmètre exact.
           </p>
         </div>
 
         <div class="service-step" data-reveal>
           <p class="service-step__label">Notre intervention</p>
-          <h3>Nous reprenons chaque contrat, article par article.</h3>
+          <h3>Nous reprenons chaque contrat.</h3>
           <p>
             Nous établissons ce que chaque contrat couvre réellement, ce qu’il exclut,
             sa durée, ses conditions de reconduction et de résiliation, ses modalités
-            de révision tarifaire. Puis nous rapprochons ces éléments de ce qui est
-            effectivement facturé dans les comptes.
+            de révision tarifaire. Puis nous renégocions ces contrats auprès des
+            prestataires, sur la base de ces éléments.
           </p>
         </div>
 
@@ -454,7 +450,7 @@
 
         <div class="service-step" data-reveal>
           <p class="service-step__label">L’étape suivante</p>
-          <h3>Dites-nous quels contrats vous préoccupent.</h3>
+          <h3>Quels contrats vous préoccupent&nbsp;?</h3>
           <p>
             La mission peut porter sur l’ensemble des contrats ou se concentrer sur
             les deux ou trois qui pèsent le plus dans votre budget.
@@ -525,8 +521,7 @@
           <p class="service-step__label">Le problème</p>
           <h3>Vous sentez qu’il y a des économies à faire. Reste à savoir où.</h3>
           <p>
-            L’intuition est presque toujours juste : dans une copropriété qui n’a pas
-            été examinée depuis des années, il existe généralement des marges. Le
+            Dans une copropriété dont les contrats et les charges n’ont pas été réexaminés depuis plusieurs années, des marges d’optimisation peuvent parfois être identifiées. Le
             problème est ailleurs : sur quels postes agir en premier, avec quel gain
             réaliste, et à quel prix pour la qualité du service ? Sans réponse à ces
             trois questions, la volonté d’économiser se heurte vite à l’assemblée générale.
@@ -537,16 +532,14 @@
           <p class="service-step__label">Notre intervention</p>
           <h3>Nous hiérarchisons les leviers, puis nous outillons la mise en concurrence.</h3>
           <p>
-            À partir de l’analyse de vos charges et de vos contrats, nous établissons
-            les postes où une action est possible, en distinguant ce qui relève d’une
-            renégociation, d’une remise en concurrence, d’un ajustement de périmètre
-            ou d’une simple correction de facturation.
+            À partir de l’analyse de vos contrats, nous établissons les postes où une
+            action est possible, en distinguant ce qui relève d’une renégociation,
+            d’une remise en concurrence ou d’un ajustement de périmètre.
           </p>
           <p class="mt-4">
-            Pour les postes retenus, nous vous aidons à structurer la consultation :
-            rédiger un cahier des charges qui définit précisément votre besoin, ramener
-            les offres reçues à des bases comparables, et préparer la résolution à
-            soumettre au vote.
+            Pour les postes retenus, nous vous aidons à structurer la consultation&nbsp;:
+            rédiger un cahier des charges qui définit précisément votre besoin et ramener
+            les offres reçues à des bases comparables.
           </p>
         </div>
 
@@ -555,9 +548,7 @@
           <h3>Des leviers chiffrés, classés par effort et par gain.</h3>
           <p>
             Un plan d’action où chaque piste porte une estimation de gain, un niveau
-            de difficulté et un calendrier réaliste. Vous voyez immédiatement ce qui
-            se joue à la prochaine assemblée générale et ce qui demandera un exercice
-            de plus.
+            de difficulté et un calendrier réaliste.
           </p>
           <p class="mt-4">
             Ce que vous n’obtiendrez pas : un pourcentage d’économies promis avant
@@ -567,25 +558,10 @@
           <div class="step__meta">
             <span class="chip">Leviers hiérarchisés</span>
             <span class="chip">Gains estimés</span>
-            <span class="chip">Appui à la mise en concurrence</span>
+            <span class="chip">Appui à la demande de devis</span>
           </div>
         </div>
 
-        <div class="service-step" data-reveal>
-          <p class="service-step__label">L’étape suivante</p>
-          <h3>Cette mission suppose une analyse préalable.</h3>
-          <p>
-            Elle se combine naturellement avec l’analyse des charges ou celle des
-            contrats, qui lui fournissent sa matière. Si vous les avez déjà fait
-            réaliser, nous partons de vos documents existants.
-          </p>
-          <div class="btn-group mt-5">
-            <a class="btn" href="contact.html?sujet=optimisation">
-              Identifier mes leviers d’économies
-              <svg class="btn__arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-            </a>
-          </div>
-        </div>
 
       </div>
     </article>
@@ -633,10 +609,10 @@
             </svg>
         </div>
         <span class="service-block__num">05 — Prestation</span>
-        <h2 id="t-accomp">Accompagnement du conseil syndical</h2>
+        <h2 id="t-accomp">Accompagnement et conseil</h2>
         <p class="muted">
-          Un appui dans la durée, plutôt qu’une mission ponctuelle. Pour les conseils
-          syndicaux qui veulent monter en autonomie.
+          Un appui dans la durée, plutôt qu’une mission ponctuelle. Pour ceux qui
+          veulent monter en autonomie.
         </p>
         <div class="mt-5">
           <span class="chip">Dans la durée</span>
@@ -647,13 +623,13 @@
 
         <div class="service-step" data-reveal>
           <p class="service-step__label">Le problème</p>
-          <h3>La mission de contrôle repose sur des bénévoles.</h3>
+          <h3>Les décisions se prennent souvent sans appui extérieur.</h3>
           <p>
-            La loi confie au conseil syndical un rôle d’assistance et de contrôle du
-            syndic. Dans les faits, ce rôle est exercé par des copropriétaires qui ont
-            un métier, une famille, et rarement une formation en gestion immobilière.
-            Beaucoup souhaitent bien faire mais ne savent pas toujours quoi demander,
-            ni quand.
+            Syndic professionnel, conseil syndical ou copropriétaire&nbsp;: chacun doit
+            arbitrer sur des sujets techniques — un devis, un poste de charges, une
+            clause de contrat — sans toujours disposer du temps ni des points de
+            comparaison nécessaires. Beaucoup souhaitent bien faire mais ne savent
+            pas toujours quoi demander, ni quand.
           </p>
         </div>
 
@@ -662,9 +638,9 @@
           <h3>Nous sommes le tiers que vous appelez avant de décider.</h3>
           <p>
             Préparation des points d’assemblée générale, lecture critique des devis
-            reçus, aide à la formulation de questions écrites au syndic, décryptage
-            d’un poste de charges qui interroge. Un appui régulier, calibré sur votre
-            rythme réel plutôt que sur un forfait théorique.
+            reçus, aide à la formulation de questions écrites, décryptage d’un poste
+            de charges qui interroge. Un appui régulier, calibré sur votre rythme
+            réel plutôt que sur un forfait théorique.
           </p>
         </div>
 
@@ -672,9 +648,9 @@
           <p class="service-step__label">Ce que vous obtenez</p>
           <h3>De l’autonomie, pas de la dépendance.</h3>
           <p>
-            Notre objectif est que le conseil syndical sache, au bout de quelques mois,
-            repérer seul ce qui mérite attention. Nous expliquons systématiquement le
-            raisonnement derrière chaque conseil : c’est ce qui reste quand la mission s’arrête.
+            Notre objectif est que vous sachiez, au bout de quelques mois, repérer par
+            vous-même ce qui mérite attention. Nous expliquons systématiquement le
+            raisonnement derrière chaque conseil&nbsp;: c’est ce qui reste quand la mission s’arrête.
           </p>
           <div class="step__meta">
             <span class="chip">Appui régulier</span>
@@ -703,7 +679,7 @@
   </section>
 
   <!-- ==================================================================
-       TARIFS
+       PREMIER ÉCHANGE ET DIAGNOSTIC
        ================================================================== -->
   <!-- ==================================================================
        LE LIVRABLE
@@ -785,12 +761,12 @@
     </div>
   </section>
 
-  <section class="section section--tight" id="tarifs" aria-labelledby="t-tarifs">
+  <section class="section section--tight" id="premier-echange" aria-labelledby="t-premier-echange">
     <div class="container">
 
       <div class="section-head">
-        <p class="eyebrow" data-reveal="fade">Tarifs</p>
-        <h2 id="t-tarifs" data-split>Commencez sans rien dépenser.</h2>
+        <p class="eyebrow" data-reveal="fade">Premier échange et diagnostic</p>
+        <h2 id="t-premier-echange" data-split>Commencez sans rien dépenser.</h2>
         <p class="lead" data-reveal style="--d:1">
           Nous préférons que vous jugiez sur pièces plutôt que sur une plaquette.
           Le premier temps de la relation est donc entièrement gratuit.
@@ -799,7 +775,7 @@
 
       <div class="price-lead" data-reveal="scale">
         <div>
-          <h3>Premier échange et pré-diagnostic</h3>
+          <h3>Premier échange gratuit</h3>
           <p>
             Une trentaine de minutes pour comprendre votre situation, suivies d’un
             retour écrit court : ce qui mérite d’être examiné dans votre copropriété,
@@ -810,8 +786,8 @@
             mission n’est justifiée, nous vous le dirons — et cela s’arrêtera là.
           </p>
           <div class="btn-group mt-6">
-            <a class="btn btn--light" href="contact.html">
-              Demander mon pré-diagnostic gratuit
+            <a class="btn btn--light btn--lg magnet" href="contact.html">
+              Demander mon premier échange gratuit
               <svg class="btn__arrow" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
             </a>
           </div>
@@ -819,44 +795,6 @@
         <div>
           <p class="price-lead__tag">Gratuit <span>0 €</span></p>
         </div>
-      </div>
-
-      <div class="mt-7">
-        <h3 style="font-size:var(--fs-h4)" data-reveal>Puis, si vous décidez d’aller plus loin</h3>
-        <div class="price-list">
-          <div class="price-row">
-            <span class="price-row__name">Audit complet des charges
-              <span class="price-row__desc">Examen des contrats, vérification des prestations, analyse des dépenses et identification des écarts tarifaires</span>
-            </span>
-            <span class="price-row__value">à partir de 400 €</span>
-          </div>
-          <div class="price-row">
-            <span class="price-row__name">Suivi mensuel &amp; conseil
-              <span class="price-row__desc">Accompagnement continu : réponses à vos questions, décryptage contractuel, supervision des prestations</span>
-            </span>
-            <span class="price-row__value">à partir de 80 €/mois</span>
-          </div>
-          <div class="price-row">
-            <span class="price-row__name">Renégociation des contrats
-              <span class="price-row__desc">Mise en concurrence, comparatif chiffré et négociation avec les prestataires</span>
-            </span>
-            <span class="price-row__value">Sur devis</span>
-          </div>
-          <div class="price-row">
-            <span class="price-row__name">Optimisation des charges — le pack complet
-              <span class="price-row__desc">Audit, renégociation et suivi réunis dans une mission unique</span>
-            </span>
-            <span class="price-row__value">Sur devis</span>
-          </div>
-        </div>
-
-        <p class="muted mt-5" style="font-size:var(--fs-sm); max-width:70ch">
-          Les montants varient selon la taille de la copropriété : une grille unique
-          serait forcément fausse pour la moitié des cas. L’honoraire exact est
-          <strong>annoncé par écrit avant le lancement</strong> de la mission, et
-          jamais indexé sur les économies constatées — nous ne percevons par ailleurs
-          aucune commission des prestataires recommandés.
-        </p>
       </div>
 
     </div>
@@ -913,17 +851,17 @@
     <div class="container">
       <div class="cta-band" data-reveal="scale">
         <p class="eyebrow eyebrow--center" style="color:#7FD3B8">Prochaine étape</p>
-        <h2>Une question précise ? Commençons par en parler.</h2>
+        <h2>Une question précise&nbsp;?</h2>
+        <p class="cta-band__sous-titre">Commençons par en parler.</p>
         <p>
           Le premier échange sert à déterminer si une mission est justifiée et,
           si oui, laquelle. Il est sans engagement.
         </p>
         <div class="btn-group btn-group--center">
           <a class="btn btn--light btn--lg" href="contact.html">
-            Demander un premier échange
+            Demander mon premier échange gratuit
             <svg class="btn__arrow" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </a>
-          <a class="btn btn--outline-light btn--lg" href="approche.html">Comment nous travaillons</a>
         </div>
       </div>
     </div>
@@ -931,58 +869,49 @@
 
 </main>
 
-<footer class="footer">
+<footer class="footer footer--compact">
   <div class="container">
+
     <div class="footer__top">
-      <div>
-        <a class="logo" href="index.html" aria-label="Copro Performance Conseil — accueil">
-          <img class="logo__mark" src="assets/img/logo.svg" alt="Logo Copro Performance Conseil" width="34" height="34">
+
+      <div class="footer__marque">
+        <a class="logo" href="../index.html" aria-label="Copro Performance Conseil — accueil">
+          <img class="logo__mark" src="../assets/img/logo.svg" alt="Logo Copro Performance Conseil" width="34" height="34">
           <span class="logo__text">
             <span class="logo__name">Copro Performance Conseil</span>
             <span class="logo__tag">Conseil indépendant en copropriété</span>
           </span>
         </a>
         <p class="footer__pitch">
-          Nous aidons les conseils syndicaux à comprendre les charges, les contrats
-          et le fonctionnement de leur copropriété, pour prendre des décisions fondées sur des faits.
+          Nous accompagnons les syndics professionnels et les conseils syndicaux dans l’analyse des charges, des contrats et des prestations de copropriété, afin de faciliter des décisions fondées sur des éléments clairs et vérifiables.
         </p>
       </div>
-      <div class="footer__col">
-        <h3>Vous êtes</h3>
-        <ul>
-          <li><a href="syndic-professionnel.html">Syndic professionnel</a></li>
-          <li><a href="conseil-syndical.html">conseil syndical</a></li>
-          <li><a href="coproprietaire.html">Copropriétaire</a></li>
-        </ul>
+
+      <div class="footer__cols">
+        <div class="footer__col">
+          <h3>Prestations</h3>
+          <ul>
+            <li><a href="services.html#audit">Audit complet des contrats</a></li>
+            <li><a href="services.html#charges">Analyse des dépenses de la copropriété</a></li>
+            <li><a href="services.html#contrats">Renégociation des contrats</a></li>
+            <li><a href="services.html#optimisation">Optimisation des charges</a></li>
+            <li><a href="services.html#accompagnement">Accompagnement et conseil</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__col">
+          <h3>Le cabinet</h3>
+          <ul>
+            <li><a href="a-propos.html">À propos</a></li>
+            <li><a href="approche.html">Notre approche</a></li>
+            <li><a href="faq.html">Questions fréquentes</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
       </div>
-      <div class="footer__col">
-        <h3>Prestations</h3>
-        <ul>
-          <li><a href="services.html#audit">Audit complet des charges</a></li>
-          <li><a href="services.html#charges">Analyse des charges</a></li>
-          <li><a href="services.html#contrats">Renégociation des contrats</a></li>
-          <li><a href="services.html#optimisation">Optimisation des charges</a></li>
-          <li><a href="services.html#accompagnement">Accompagnement du conseil syndical</a></li>
-        </ul>
-      </div>
-      <div class="footer__col">
-        <h3>Le cabinet</h3>
-        <ul>
-          <li><a href="a-propos.html">À propos</a></li>
-          <li><a href="approche.html">Notre approche</a></li>
-          <li><a href="faq.html">Questions fréquentes</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </div>
-      <div class="footer__col">
-        <h3>Nous joindre</h3>
-        <ul>
-          <li><a href="mailto:contact@coproperformanceconseil.fr">contact@coproperformanceconseil.fr</a></li>
-          <li><a href="tel:+33617470857">+33 6 17 47 08 57</a></li>
-          <li>Intervention dans toute la France (à distance)</li>
-        </ul>
-      </div>
+
     </div>
+
     <div class="footer__bottom">
       <p>© <span data-year>2026</span> Copro Performance Conseil. Tous droits réservés.</p>
       <nav class="footer__legal" aria-label="Liens légaux">
@@ -991,6 +920,7 @@
         <a href="plan-du-site.html">Plan du site</a>
       </nav>
     </div>
+
   </div>
 </footer>
 
@@ -1003,7 +933,7 @@
      ================================================================== -->
 <div class="sticky-cta" data-sticky-cta>
   <a class="btn btn--block magnet" href="contact.html">
-    Pré-diagnostic gratuit
+    Premier échange gratuit
     <svg class="btn__arrow" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
   </a>
 </div>

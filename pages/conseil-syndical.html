@@ -4,9 +4,34 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
+<!-- ==================================================================
+     PAGE 03/27 — Profil — Conseil syndical
+     Fichier : pages/conseil-syndical.html
+     URL     : /pages/conseil-syndical.html
+     Gabarit : Page profil — voir ../docs/PAGES.md
+     ------------------------------------------------------------------
+     Rôle :
+     Parler au conseiller syndical bénévole : il a les documents, c'est le
+     temps et les repères qui manquent. Page profil la mieux maillée du site
+     — six articles de ressources y renvoient.
+
+     Plan du <main> :
+       01. Le problème n’est presque jamais le manque de documents.
+       02. Ce que vous y gagnez.
+       03. Trois hésitations, trois réponses.
+       04. Les prestations adaptées à votre situation.
+       05. Ce que l’on nous demande, dans votre cas.
+       06. Nos prestations
+       07. Notre approche
+       08. Parlons de votre copropriété.
+
+     Entrées : Accueil, plan du site, 6 articles de ressources, recherche.
+     Sorties : contact.html (formulaire pré-rempli), services.html, approche.html.
+     ================================================================== -->
+
 <title>Conseil syndical : contrôler la gestion sans y passer vos soirées | Copro Performance Conseil</title>
-<meta name="description" content="Vous siégez au conseil syndical ? Nous lisons les charges, les contrats et les procès-verbaux à votre place et vous rendons un rapport clair. Premier échange et pré-diagnostic gratuits.">
-<link rel="canonical" href="https://coproperformanceconseil.fr/conseil-syndical.html">
+<meta name="description" content="Vous siégez au conseil syndical ? Nous lisons les charges, les contrats et les procès-verbaux à votre place et vous rendons un rapport clair. Premier échange gratuit et engagement écrit.">
+<link rel="canonical" href="https://coproperformanceconseil.fr/pages/conseil-syndical.html">
 
 <meta name="theme-color" content="#0B1C2C">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
@@ -16,17 +41,17 @@
 <meta property="og:site_name" content="Copro Performance Conseil">
 <meta property="og:title" content="Conseil syndical : contrôler la gestion sans y passer vos soirées">
 <meta property="og:description" content="Comprendre, rassembler, analyser, restituer, accompagner : notre méthode de conseil indépendant en copropriété.">
-<meta property="og:url" content="https://coproperformanceconseil.fr/conseil-syndical.html">
+<meta property="og:url" content="https://coproperformanceconseil.fr/pages/conseil-syndical.html">
 <meta property="og:image" content="https://coproperformanceconseil.fr/assets/img/og-image.jpg">
 <meta name="twitter:card" content="summary_large_image">
 
-<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
-<link rel="manifest" href="site.webmanifest">
-<link rel="stylesheet" href="assets/css/style.css">
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="manifest" href="../site.webmanifest">
+<link rel="stylesheet" href="../assets/css/style.css?v=20260830">
 <!-- Calque « Le Relevé » — direction artistique, illustrations et animations -->
-<link rel="stylesheet" href="assets/css/signature.css">
-<script src="assets/js/main.js" defer></script>
-<script src="assets/js/signature.js" defer></script>
+<link rel="stylesheet" href="../assets/css/signature.css?v=20260830">
+<script src="../assets/js/main.js?v=20260830" defer></script>
+<script src="../assets/js/signature.js?v=20260830" defer></script>
 
 
 
@@ -37,7 +62,7 @@
   "@type": "BreadcrumbList",
   "itemListElement": [
     { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://coproperformanceconseil.fr/" },
-    { "@type": "ListItem", "position": 2, "name": "Conseil syndical", "item": "https://coproperformanceconseil.fr/conseil-syndical.html" }
+    { "@type": "ListItem", "position": 2, "name": "Conseil syndical", "item": "https://coproperformanceconseil.fr/pages/conseil-syndical.html" }
   ]
 }
 </script>
@@ -48,7 +73,7 @@
   "mainEntity": [
     { "@type": "Question", "name": "Que peut demander le conseil syndical au syndic ?", "acceptedAnswer": { "@type": "Answer", "text": "Le conseil syndical assiste le syndic et contrôle sa gestion. Ce rôle s’accompagne d’un droit d’accès aux pièces se rapportant à la gestion et à l’administration de la copropriété. Nous détaillons ce point sur la page Ressources." } },
     { "@type": "Question", "name": "Quels documents faut-il préparer ?", "acceptedAnswer": { "@type": "Answer", "text": "Principalement les annexes comptables des derniers exercices, les procès-verbaux d’assemblée générale, le contrat de syndic, les principaux contrats d’entretien et le règlement de copropriété. Nous vous transmettons une liste précise après le premier échange, et nous travaillons avec ce qui est disponible." } },
-    { "@type": "Question", "name": "L’accompagnement peut-il se faire à distance ?", "acceptedAnswer": { "@type": "Answer", "text": "Oui. L’analyse documentaire et les restitutions se déroulent très bien en visioconférence, ce qui permet d’intervenir partout en France." } }
+    { "@type": "Question", "name": "L’accompagnement peut-il se faire à distance ?", "acceptedAnswer": { "@type": "Answer", "text": "Oui. L’analyse documentaire et les restitutions se déroulent très bien en visioconférence." } }
   ]
 }
 </script>
@@ -81,23 +106,21 @@
 
 <header class="header" data-header>
   <div class="container header__inner">
-    <a class="logo" href="index.html" aria-label="Copro Performance Conseil — accueil">
-      <img class="logo__mark" src="assets/img/logo.svg" alt="Logo Copro Performance Conseil" width="34" height="34">
+    <a class="logo" href="../index.html" aria-label="Copro Performance Conseil — accueil">
+      <img class="logo__mark" src="../assets/img/logo.svg" alt="Logo Copro Performance Conseil" width="34" height="34">
       <span class="logo__text">
         <span class="logo__name">Copro Performance Conseil</span>
         <span class="logo__tag">Conseil indépendant en copropriété</span>
       </span>
     </a>
     <nav class="nav" aria-label="Navigation principale">
-      <a class="nav__link" href="services.html">Services</a>
-      <a class="nav__link" href="approche.html">Notre approche</a>
       <a class="nav__link" href="a-propos.html">À propos</a>
       <a class="nav__link" href="ressources.html">Ressources</a>
       <a class="nav__link" href="faq.html">FAQ</a>
     </nav>
     <div class="header__actions">
       <a class="btn magnet" href="contact.html">
-        Demander un échange
+        Demander mon premier échange gratuit
         <svg class="btn__arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </a>
       <button class="burger" data-burger type="button" aria-expanded="false" aria-controls="menu-mobile" aria-label="Ouvrir le menu">
@@ -110,17 +133,15 @@
 <div class="mobile-nav" id="menu-mobile" data-mobile-nav aria-hidden="true">
   <nav aria-label="Navigation mobile">
     <ul class="mobile-nav__list">
-      <li><a class="mobile-nav__link" href="index.html">Accueil <span>01</span></a></li>
-      <li><a class="mobile-nav__link" href="services.html">Services <span>02</span></a></li>
-      <li><a class="mobile-nav__link" href="approche.html">Notre approche <span>03</span></a></li>
-      <li><a class="mobile-nav__link" href="a-propos.html">À propos <span>04</span></a></li>
-      <li><a class="mobile-nav__link" href="ressources.html">Ressources <span>05</span></a></li>
-      <li><a class="mobile-nav__link" href="faq.html">FAQ <span>06</span></a></li>
-      <li><a class="mobile-nav__link" href="contact.html">Contact <span>07</span></a></li>
+      <li><a class="mobile-nav__link" href="../index.html">Accueil <span>01</span></a></li>
+      <li><a class="mobile-nav__link" href="a-propos.html">À propos <span>02</span></a></li>
+      <li><a class="mobile-nav__link" href="ressources.html">Ressources <span>03</span></a></li>
+      <li><a class="mobile-nav__link" href="faq.html">FAQ <span>04</span></a></li>
+      <li><a class="mobile-nav__link" href="contact.html">Contact <span>05</span></a></li>
     </ul>
   </nav>
   <div class="mobile-nav__footer">
-    <a class="btn btn--block" href="contact.html">Demander un premier échange</a>
+    <a class="btn btn--block" href="contact.html">Demander mon premier échange gratuit</a>
   </div>
 </div>
 
@@ -129,7 +150,7 @@
   <div class="container">
     <nav class="breadcrumb" aria-label="Fil d'Ariane">
       <ol>
-        <li><a href="index.html">Accueil</a></li>
+        <li><a href="../index.html">Accueil</a></li>
         <li aria-current="page">Conseil syndical</li>
       </ol>
     </nav>
@@ -141,10 +162,6 @@
       <h1 data-split>Contrôler la gestion, sans y passer vos soirées.</h1>
       <p class="lead" data-reveal style="--d:1">Vous êtes bénévole. On vous demande de contrôler un budget à cinq ou six chiffres, de relire des contrats techniques et de trancher des sujets qui engagent l’immeuble pour des années — sur votre temps libre.</p>
 
-      <p class="hero__free mt-5" data-reveal style="--d:2">
-        <span class="hero__free__tag">Gratuit</span>
-        Premier échange et pré-diagnostic écrit — sans engagement, sans relance.
-      </p>
     </div>
   </section>
 
@@ -236,8 +253,8 @@
         <div class="crainte" data-reveal>
           <p class="crainte__peur">« Nous ne savons pas ce que ça va coûter. »</p>
           <p class="crainte__reponse">
-            Le premier échange et le pré-diagnostic écrit sont gratuits. L’honoraire
-            exact est annoncé par écrit avant tout lancement, et jamais indexé sur
+            Le premier échange est gratuit. L’honoraire exact est annoncé par écrit
+            avant tout lancement, et jamais indexé sur
             les économies constatées. S’il n’y a pas lieu d’intervenir, nous vous
             le dirons.
           </p>
@@ -262,23 +279,23 @@
       </div>
       <div class="presta-liens" data-stagger>
         <a class="presta-lien" href="services.html#audit" data-reveal>
-          <span class="presta-lien__nom">Audit complet des charges</span>
+          <span class="presta-lien__nom">Audit complet des contrats</span>
           <span class="presta-lien__desc">La vue d’ensemble, quand on ne sait pas encore par où commencer.</span>
           <span class="presta-lien__fleche" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
         </a>
         <a class="presta-lien" href="services.html#charges" data-reveal>
-          <span class="presta-lien__nom">Analyse des charges</span>
+          <span class="presta-lien__nom">Analyse des dépenses de la copropriété</span>
           <span class="presta-lien__desc">Poste par poste, sur plusieurs exercices, pour distinguer le structurel du ponctuel.</span>
           <span class="presta-lien__fleche" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
         </a>
         <a class="presta-lien" href="services.html#accompagnement" data-reveal>
-          <span class="presta-lien__nom">Accompagnement du conseil syndical</span>
+          <span class="presta-lien__nom">Accompagnement et conseil</span>
           <span class="presta-lien__desc">Un appui dans la durée : préparation des AG, lecture des devis, questions au syndic.</span>
           <span class="presta-lien__fleche" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
         </a>
         <a class="presta-lien" href="services.html#contrats" data-reveal>
           <span class="presta-lien__nom">Renégociation des contrats</span>
-          <span class="presta-lien__desc">Pour clarifier ce que couvrent réellement syndic, ascenseur, chauffage et assurance.</span>
+          <span class="presta-lien__desc">Pour clarifier ce que couvrent réellement les contrats d’entretien, d’ascenseur, de chauffage, d’assurance et les autres contrats de prestataires.</span>
           <span class="presta-lien__fleche" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
         </a>
       </div>
@@ -331,7 +348,7 @@
             </button>
           </h3>
           <div class="faq__panel" id="conseil-syndical-q3" role="region" aria-labelledby="conseil-syndical-q3-btn">
-            <div class="faq__panel-inner"><p>Oui. L’analyse documentaire et les restitutions se déroulent très bien en visioconférence, ce qui permet d’intervenir partout en France.</p></div>
+            <div class="faq__panel-inner"><p>Oui. L’analyse documentaire et les restitutions se déroulent très bien en visioconférence.</p></div>
           </div>
         </div>
       </div>
@@ -342,7 +359,38 @@
   </section>
 
   <!-- ==================================================================
-       CTA — la qualité est pré-remplie dans le formulaire
+       ACCES AUX PAGES PRESTATIONS ET NOTRE APPROCHE
+       Les deux cartes sont les seuls chemins de cette page vers l'offre et
+       vers la methode : elles sont posees juste avant l'appel a l'action.
+       ================================================================== -->
+  <section class="section section--tight" aria-label="Pour aller plus loin">
+    <div class="container">
+      <div class="acces-cartes" data-reveal>
+
+        <a class="acces-carte" href="services.html">
+          <h2 class="acces-carte__titre">Nos prestations</h2>
+          <p class="acces-carte__texte">Ce que nous pouvons examiner pour votre copropriété, et dans quel ordre.</p>
+          <span class="btn acces-carte__lien">
+            Voir les prestations
+            <svg class="btn__arrow" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </span>
+        </a>
+
+        <a class="acces-carte" href="approche.html">
+          <h2 class="acces-carte__titre">Notre approche</h2>
+          <p class="acces-carte__texte">Un constat sans source n’est qu’une opinion. Voici comment nous procédons.</p>
+          <span class="btn acces-carte__lien">
+            Découvrir notre méthode
+            <svg class="btn__arrow" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================================================================
+       CTA — meme phrase et meme bouton que la page d'accueil
        ================================================================== -->
   <section class="section section--tight" aria-labelledby="t-cta-profil">
     <div class="container">
@@ -350,13 +398,13 @@
         <div>
           <h2 id="t-cta-profil">Parlons de votre copropriété.</h2>
           <p>
-            Le premier échange et le pré-diagnostic écrit sont gratuits. S’il en
-            ressort qu’aucune mission n’est justifiée, nous vous le dirons.
+            Le premier échange est gratuit. S’il en ressort qu’aucune mission n’est
+            justifiée, nous vous le dirons.
           </p>
         </div>
-        <div class="btn-group">
-          <a class="btn btn--lg magnet" href="contact.html?profil=conseil-syndical">
-            Demander mon pré-diagnostic gratuit
+        <div class="btn-group btn-group--cta">
+          <a class="btn btn--lg magnet" href="contact.html">
+            Demander mon premier échange gratuit
             <svg class="btn__arrow" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </a>
         </div>
@@ -366,58 +414,49 @@
 
 </main>
 
-<footer class="footer">
+<footer class="footer footer--compact">
   <div class="container">
+
     <div class="footer__top">
-      <div>
-        <a class="logo" href="index.html" aria-label="Copro Performance Conseil — accueil">
-          <img class="logo__mark" src="assets/img/logo.svg" alt="Logo Copro Performance Conseil" width="34" height="34">
+
+      <div class="footer__marque">
+        <a class="logo" href="../index.html" aria-label="Copro Performance Conseil — accueil">
+          <img class="logo__mark" src="../assets/img/logo.svg" alt="Logo Copro Performance Conseil" width="34" height="34">
           <span class="logo__text">
             <span class="logo__name">Copro Performance Conseil</span>
             <span class="logo__tag">Conseil indépendant en copropriété</span>
           </span>
         </a>
         <p class="footer__pitch">
-          Nous aidons les conseils syndicaux à comprendre les charges, les contrats
-          et le fonctionnement de leur copropriété, pour prendre des décisions fondées sur des faits.
+          Nous accompagnons les syndics professionnels et les conseils syndicaux dans l’analyse des charges, des contrats et des prestations de copropriété, afin de faciliter des décisions fondées sur des éléments clairs et vérifiables.
         </p>
       </div>
-      <div class="footer__col">
-        <h3>Vous êtes</h3>
-        <ul>
-          <li><a href="syndic-professionnel.html">Syndic professionnel</a></li>
-          <li><a href="conseil-syndical.html">conseil syndical</a></li>
-          <li><a href="coproprietaire.html">Copropriétaire</a></li>
-        </ul>
+
+      <div class="footer__cols">
+        <div class="footer__col">
+          <h3>Prestations</h3>
+          <ul>
+            <li><a href="services.html#audit">Audit complet des contrats</a></li>
+            <li><a href="services.html#charges">Analyse des dépenses de la copropriété</a></li>
+            <li><a href="services.html#contrats">Renégociation des contrats</a></li>
+            <li><a href="services.html#optimisation">Optimisation des charges</a></li>
+            <li><a href="services.html#accompagnement">Accompagnement et conseil</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__col">
+          <h3>Le cabinet</h3>
+          <ul>
+            <li><a href="a-propos.html">À propos</a></li>
+            <li><a href="approche.html">Notre approche</a></li>
+            <li><a href="faq.html">Questions fréquentes</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
       </div>
-      <div class="footer__col">
-        <h3>Prestations</h3>
-        <ul>
-          <li><a href="services.html#audit">Audit complet des charges</a></li>
-          <li><a href="services.html#charges">Analyse des charges</a></li>
-          <li><a href="services.html#contrats">Renégociation des contrats</a></li>
-          <li><a href="services.html#optimisation">Optimisation des charges</a></li>
-          <li><a href="services.html#accompagnement">Accompagnement du conseil syndical</a></li>
-        </ul>
-      </div>
-      <div class="footer__col">
-        <h3>Le cabinet</h3>
-        <ul>
-          <li><a href="a-propos.html">À propos</a></li>
-          <li><a href="approche.html">Notre approche</a></li>
-          <li><a href="faq.html">Questions fréquentes</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </div>
-      <div class="footer__col">
-        <h3>Nous joindre</h3>
-        <ul>
-          <li><a href="mailto:contact@coproperformanceconseil.fr">contact@coproperformanceconseil.fr</a></li>
-          <li><a href="tel:+33617470857">+33 6 17 47 08 57</a></li>
-          <li>Intervention dans toute la France (à distance)</li>
-        </ul>
-      </div>
+
     </div>
+
     <div class="footer__bottom">
       <p>© <span data-year>2026</span> Copro Performance Conseil. Tous droits réservés.</p>
       <nav class="footer__legal" aria-label="Liens légaux">
@@ -426,6 +465,7 @@
         <a href="plan-du-site.html">Plan du site</a>
       </nav>
     </div>
+
   </div>
 </footer>
 
@@ -438,7 +478,7 @@
      ================================================================== -->
 <div class="sticky-cta" data-sticky-cta>
   <a class="btn btn--block magnet" href="contact.html">
-    Pré-diagnostic gratuit
+    Premier échange gratuit
     <svg class="btn__arrow" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
   </a>
 </div>

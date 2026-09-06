@@ -15,7 +15,7 @@ Le site utilise **trois photographies réelles** et **une illustration vectoriel
 
 > **Depuis l'ajout du calque « Le Relevé »**, l'essentiel de l'iconographie du
 > site n'est plus photographique mais dessinée. Voir la section correspondante
-> du [`README.md`](README.md). Les cinq illustrations sont écrites directement
+> du [`README.md`](../README.md). Les cinq illustrations sont écrites directement
 > dans le HTML — c'est ce qui permet de les animer trait par trait — et n'ont
 > donc pas de fichier propre dans `assets/img/`.
 >

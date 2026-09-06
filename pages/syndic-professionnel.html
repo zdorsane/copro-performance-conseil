@@ -4,9 +4,36 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
+<!-- ==================================================================
+     PAGE 02/27 — Profil — Syndic professionnel
+     Fichier : pages/syndic-professionnel.html
+     URL     : /pages/syndic-professionnel.html
+     Gabarit : Page profil — voir ../docs/PAGES.md
+     ------------------------------------------------------------------
+     Rôle :
+     CIBLE PRIORITAIRE. Lever les deux objections du syndic avant tout
+     argumentaire : ce n'est pas un contrôle de sa gestion, et cela ne touche
+     pas à ses honoraires.
+
+     /!\ Le cadre commercial annoncé ici (gratuité pour le cabinet) est à
+     confirmer — voir ../docs/CONTENU-A-VALIDER.md.
+
+     Plan du <main> :
+       01. Trois choses à savoir avant d’aller plus loin
+       02. Quatre bénéfices concrets pour votre cabinet.
+       03. Ce que nous examinons, et ce que nous ne touchons pas.
+       04. Trois étapes, aucune charge pour vous.
+       05. Nos prestations
+       06. Notre approche
+       07. Un dossier à débloquer ?
+
+     Entrées : Sélecteur de profil de l'accueil, plan du site, recherche.
+     Sorties : contact.html (formulaire pré-rempli), services.html, approche.html.
+     ================================================================== -->
+
 <title>Syndic professionnel : externalisez l’analyse technique — Copro Performance Conseil</title>
-<meta name="description" content="Gratuit pour votre cabinet, sans impact sur vos honoraires : nous prenons en charge l’analyse des charges et des contrats de prestations pour faire gagner du temps à vos gestionnaires et rassurer vos conseils syndicaux.">
-<link rel="canonical" href="https://coproperformanceconseil.fr/syndic-professionnel.html">
+<meta name="description" content="Gratuit pour votre cabinet, sans impact sur vos honoraires : nous prenons en charge l’analyse des dépenses de la copropriété et des contrats de prestations pour faire gagner du temps à vos gestionnaires et rassurer vos conseils syndicaux.">
+<link rel="canonical" href="https://coproperformanceconseil.fr/pages/syndic-professionnel.html">
 
 <meta name="theme-color" content="#0B1C2C">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
@@ -16,17 +43,17 @@
 <meta property="og:site_name" content="Copro Performance Conseil">
 <meta property="og:title" content="Syndic professionnel : externalisez l’analyse technique">
 <meta property="og:description" content="Comprendre, rassembler, analyser, restituer, accompagner : notre méthode de conseil indépendant en copropriété.">
-<meta property="og:url" content="https://coproperformanceconseil.fr/syndic-professionnel.html">
+<meta property="og:url" content="https://coproperformanceconseil.fr/pages/syndic-professionnel.html">
 <meta property="og:image" content="https://coproperformanceconseil.fr/assets/img/og-image.jpg">
 <meta name="twitter:card" content="summary_large_image">
 
-<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
-<link rel="manifest" href="site.webmanifest">
-<link rel="stylesheet" href="assets/css/style.css">
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="manifest" href="../site.webmanifest">
+<link rel="stylesheet" href="../assets/css/style.css?v=20260830">
 <!-- Calque « Le Relevé » — direction artistique, illustrations et animations -->
-<link rel="stylesheet" href="assets/css/signature.css">
-<script src="assets/js/main.js" defer></script>
-<script src="assets/js/signature.js" defer></script>
+<link rel="stylesheet" href="../assets/css/signature.css?v=20260830">
+<script src="../assets/js/main.js?v=20260830" defer></script>
+<script src="../assets/js/signature.js?v=20260830" defer></script>
 
 
 
@@ -37,7 +64,7 @@
   "@type": "BreadcrumbList",
   "itemListElement": [
     { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://coproperformanceconseil.fr/" },
-    { "@type": "ListItem", "position": 2, "name": "Syndic professionnel", "item": "https://coproperformanceconseil.fr/syndic-professionnel.html" }
+    { "@type": "ListItem", "position": 2, "name": "Syndic professionnel", "item": "https://coproperformanceconseil.fr/pages/syndic-professionnel.html" }
   ]
 }
 </script>
@@ -81,23 +108,21 @@
 
 <header class="header" data-header>
   <div class="container header__inner">
-    <a class="logo" href="index.html" aria-label="Copro Performance Conseil — accueil">
-      <img class="logo__mark" src="assets/img/logo.svg" alt="Logo Copro Performance Conseil" width="34" height="34">
+    <a class="logo" href="../index.html" aria-label="Copro Performance Conseil — accueil">
+      <img class="logo__mark" src="../assets/img/logo.svg" alt="Logo Copro Performance Conseil" width="34" height="34">
       <span class="logo__text">
         <span class="logo__name">Copro Performance Conseil</span>
         <span class="logo__tag">Conseil indépendant en copropriété</span>
       </span>
     </a>
     <nav class="nav" aria-label="Navigation principale">
-      <a class="nav__link" href="services.html">Services</a>
-      <a class="nav__link" href="approche.html">Notre approche</a>
       <a class="nav__link" href="a-propos.html">À propos</a>
       <a class="nav__link" href="ressources.html">Ressources</a>
       <a class="nav__link" href="faq.html">FAQ</a>
     </nav>
     <div class="header__actions">
       <a class="btn magnet" href="contact.html">
-        Demander un échange
+        Demander mon premier échange gratuit
         <svg class="btn__arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </a>
       <button class="burger" data-burger type="button" aria-expanded="false" aria-controls="menu-mobile" aria-label="Ouvrir le menu">
@@ -110,17 +135,15 @@
 <div class="mobile-nav" id="menu-mobile" data-mobile-nav aria-hidden="true">
   <nav aria-label="Navigation mobile">
     <ul class="mobile-nav__list">
-      <li><a class="mobile-nav__link" href="index.html">Accueil <span>01</span></a></li>
-      <li><a class="mobile-nav__link" href="services.html">Services <span>02</span></a></li>
-      <li><a class="mobile-nav__link" href="approche.html">Notre approche <span>03</span></a></li>
-      <li><a class="mobile-nav__link" href="a-propos.html">À propos <span>04</span></a></li>
-      <li><a class="mobile-nav__link" href="ressources.html">Ressources <span>05</span></a></li>
-      <li><a class="mobile-nav__link" href="faq.html">FAQ <span>06</span></a></li>
-      <li><a class="mobile-nav__link" href="contact.html">Contact <span>07</span></a></li>
+      <li><a class="mobile-nav__link" href="../index.html">Accueil <span>01</span></a></li>
+      <li><a class="mobile-nav__link" href="a-propos.html">À propos <span>02</span></a></li>
+      <li><a class="mobile-nav__link" href="ressources.html">Ressources <span>03</span></a></li>
+      <li><a class="mobile-nav__link" href="faq.html">FAQ <span>04</span></a></li>
+      <li><a class="mobile-nav__link" href="contact.html">Contact <span>05</span></a></li>
     </ul>
   </nav>
   <div class="mobile-nav__footer">
-    <a class="btn btn--block" href="contact.html">Demander un premier échange</a>
+    <a class="btn btn--block" href="contact.html">Demander mon premier échange gratuit</a>
   </div>
 </div>
 
@@ -129,7 +152,7 @@
   <div class="container">
     <nav class="breadcrumb" aria-label="Fil d'Ariane">
       <ol>
-        <li><a href="index.html">Accueil</a></li>
+        <li><a href="../index.html">Accueil</a></li>
         <li aria-current="page">Syndic professionnel</li>
       </ol>
     </nav>
@@ -160,25 +183,25 @@
         </h2>
         <ul class="regles__liste" data-stagger>
         <li data-reveal style="--d:1">
-          <span class="regle__num">01</span>
-          <div>
-            <strong>Gratuit pour votre cabinet</strong>
-            <p>L’ensemble de nos prestations — audits, analyses, devis — est voté et pris en charge directement par le budget de la copropriété concernée.</p>
+          <div class="regle__entete">
+            <span class="regle__num" aria-hidden="true">01</span>
+            <h3 class="regle__titre">Gratuit pour votre cabinet</h3>
           </div>
+          <p class="regle__texte">Selon le cadre de la mission, notre intervention peut être prise en charge directement par le conseil syndical. Le cadre de validation et de financement est défini avant toute intervention.</p>
         </li>
         <li data-reveal style="--d:2">
-          <span class="regle__num">02</span>
-          <div>
-            <strong>Vos honoraires, 100 % préservés</strong>
-            <p>Nos audits portent exclusivement sur les contrats de prestations : chauffage, ascenseur, entretien, assurance. Jamais sur le contrat de syndic ni sur ses honoraires.</p>
+          <div class="regle__entete">
+            <span class="regle__num" aria-hidden="true">02</span>
+            <h3 class="regle__titre">Vos honoraires, 100 % préservés</h3>
           </div>
+          <p class="regle__texte">Nos audits portent sur les contrats des prestataires de la copropriété, jamais sur votre rémunération.</p>
         </li>
         <li data-reveal style="--d:3">
-          <span class="regle__num">03</span>
-          <div>
-            <strong>Du temps gagné, une réputation servie</strong>
-            <p>Nous soulageons vos gestionnaires de la phase fastidieuse d’analyse et apportons un regard neutre qui vous crédibilise auprès des conseils syndicaux exigeants.</p>
+          <div class="regle__entete">
+            <span class="regle__num" aria-hidden="true">03</span>
+            <h3 class="regle__titre">Du temps gagné, une réputation servie</h3>
           </div>
+          <p class="regle__texte">Nous soulageons vos gestionnaires de la phase fastidieuse d’analyse et apportons un regard neutre qui vous crédibilise auprès des conseils syndicaux exigeants.</p>
         </li>
         </ul>
       </div>
@@ -220,7 +243,7 @@
           </span>
           <p class="pilier__sur">Délais courts</p>
           <h3 class="pilier__titre">Traitement rapide et dédié</h3>
-          <p class="pilier__texte">Spécialisés à 100 % dans l’audit de copropriété, nos rapports synthétiques sont livrés dans des délais très courts pour débloquer vos dossiers complexes avant les assemblées générales.</p>
+          <p class="pilier__texte">Spécialisés dans l’analyse des charges et des contrats de copropriété, nous annonçons dès le départ un délai de restitution adapté aux échéances du dossier, notamment avant les assemblées générales.</p>
         </article>
         <article class="pilier tilt" data-reveal style="--d:3">
           <span class="pilier__icone" aria-hidden="true">
@@ -229,7 +252,7 @@
           </span>
           <p class="pilier__sur">Pris en charge par la copropriété</p>
           <h3 class="pilier__titre">Honoraires sanctuarisés</h3>
-          <p class="pilier__texte">Nos audits et devis sont directement imputés sur les charges de la copropriété mandante. Nos interventions ne portent jamais sur vos contrats ni sur vos honoraires de syndic.</p>
+          <p class="pilier__texte">Le financement de la mission est défini selon le cadre retenu avec la copropriété. Nos interventions ne portent jamais sur votre contrat de syndic, vos honoraires de gestion ni vos prestations particulières.</p>
         </article>
       </div>
     </div>
@@ -247,23 +270,16 @@
 
       <div class="perimetre">
         <div class="perimetre__col perimetre__col--oui" data-reveal>
-          <p class="perimetre__label">Nos audits portent sur</p>
-          <ul>
-            <li>Le contrat de chauffage collectif</li>
-            <li>Le contrat d’entretien de l’ascenseur</li>
-            <li>Les contrats d’entretien et de fourniture</li>
-            <li>Le contrat d’assurance de l’immeuble</li>
-            <li>L’exécution du budget, poste par poste</li>
-          </ul>
+          <p class="perimetre__phrase">
+            L’ensemble des contrats de prestataires souscrits par la copropriété,
+            ainsi que l’exécution de son budget, poste par poste.
+          </p>
         </div>
         <div class="perimetre__col perimetre__col--non" data-reveal style="--d:1">
-          <p class="perimetre__label">Nos audits ne portent jamais sur</p>
-          <ul>
-            <li>Le contrat de syndic</li>
-            <li>Vos honoraires de gestion</li>
-            <li>Vos prestations particulières</li>
-            <li>Votre organisation interne</li>
-          </ul>
+          <p class="perimetre__phrase">
+            Jamais votre contrat de syndic, votre rémunération ni votre organisation
+            interne, qui restent entièrement hors du périmètre de nos missions.
+          </p>
         </div>
       </div>
     </div>
@@ -282,23 +298,15 @@
         <article class="step" data-reveal>
           <div class="step__num">01<span class="step__bar" aria-hidden="true"></span></div>
           <div class="step__body">
-            <h3>Vous nous signalez le dossier</h3>
-            <p>
-              Une copropriété qui conteste ses charges, un conseil syndical qui
-              réclame des explications, un dossier repris d’un confrère. Le premier
-              échange et le pré-diagnostic écrit sont gratuits.
-            </p>
+            <h3>Vous nous confiez le dossier</h3>
+            <p>Vous nous mandatez pour l’audit de vos copropriétés.</p>
           </div>
         </article>
         <article class="step" data-reveal>
           <div class="step__num">02<span class="step__bar" aria-hidden="true"></span></div>
           <div class="step__body">
-            <h3>La copropriété vote la mission</h3>
-            <p>
-              C’est le syndicat des copropriétaires qui mandate et qui rémunère.
-              Votre cabinet n’avance rien et ne facture rien : la dépense est
-              imputée sur les charges de la copropriété concernée.
-            </p>
+            <h3>Nous menons l’analyse</h3>
+            <p>Nous analysons l’ensemble des contrats et réalisons les demandes de devis nécessaires.</p>
           </div>
         </article>
         <article class="step" data-reveal>
@@ -316,6 +324,37 @@
   </section>
 
   <!-- ==================================================================
+       ACCES AUX PAGES PRESTATIONS ET NOTRE APPROCHE
+       Les deux cartes sont les seuls chemins de cette page vers l'offre et
+       vers la methode : elles sont posees juste avant l'appel a l'action.
+       ================================================================== -->
+  <section class="section section--tight" aria-label="Pour aller plus loin">
+    <div class="container">
+      <div class="acces-cartes" data-reveal>
+
+        <a class="acces-carte" href="services.html">
+          <h2 class="acces-carte__titre">Nos prestations</h2>
+          <p class="acces-carte__texte">Cinq prestations, menées seules ou combinées, selon ce que vous cherchez à comprendre.</p>
+          <span class="btn acces-carte__lien">
+            Voir les prestations
+            <svg class="btn__arrow" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </span>
+        </a>
+
+        <a class="acces-carte" href="approche.html">
+          <h2 class="acces-carte__titre">Notre approche</h2>
+          <p class="acces-carte__texte">Comment nous travaillons, pièce par pièce, et ce que vous recevez à la fin.</p>
+          <span class="btn acces-carte__lien">
+            Découvrir notre méthode
+            <svg class="btn__arrow" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================================================================
        CTA
        ================================================================== -->
   <section class="section section--tight" aria-labelledby="t-cta-pro">
@@ -324,12 +363,11 @@
         <div>
           <h2 id="t-cta-pro">Un dossier à débloquer ?</h2>
           <p>
-            Le premier échange et le pré-diagnostic écrit sont gratuits, pour vous
-            comme pour la copropriété. S’il en ressort qu’aucune mission n’est
-            justifiée, nous vous le dirons.
+            Le premier échange est gratuit, pour vous comme pour la copropriété.
+            S’il en ressort qu’aucune mission n’est justifiée, nous vous le dirons.
           </p>
         </div>
-        <div class="btn-group">
+        <div class="btn-group btn-group--cta">
           <a class="btn btn--lg magnet" href="contact.html?profil=syndic-pro">
             Nous signaler un dossier
             <svg class="btn__arrow" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
@@ -341,58 +379,49 @@
 
 </main>
 
-<footer class="footer">
+<footer class="footer footer--compact">
   <div class="container">
+
     <div class="footer__top">
-      <div>
-        <a class="logo" href="index.html" aria-label="Copro Performance Conseil — accueil">
-          <img class="logo__mark" src="assets/img/logo.svg" alt="Logo Copro Performance Conseil" width="34" height="34">
+
+      <div class="footer__marque">
+        <a class="logo" href="../index.html" aria-label="Copro Performance Conseil — accueil">
+          <img class="logo__mark" src="../assets/img/logo.svg" alt="Logo Copro Performance Conseil" width="34" height="34">
           <span class="logo__text">
             <span class="logo__name">Copro Performance Conseil</span>
             <span class="logo__tag">Conseil indépendant en copropriété</span>
           </span>
         </a>
         <p class="footer__pitch">
-          Nous aidons les conseils syndicaux à comprendre les charges, les contrats
-          et le fonctionnement de leur copropriété, pour prendre des décisions fondées sur des faits.
+          Nous accompagnons les syndics professionnels et les conseils syndicaux dans l’analyse des charges, des contrats et des prestations de copropriété, afin de faciliter des décisions fondées sur des éléments clairs et vérifiables.
         </p>
       </div>
-      <div class="footer__col">
-        <h3>Vous êtes</h3>
-        <ul>
-          <li><a href="syndic-professionnel.html">Syndic professionnel</a></li>
-          <li><a href="conseil-syndical.html">conseil syndical</a></li>
-          <li><a href="coproprietaire.html">Copropriétaire</a></li>
-        </ul>
+
+      <div class="footer__cols">
+        <div class="footer__col">
+          <h3>Prestations</h3>
+          <ul>
+            <li><a href="services.html#audit">Audit complet des contrats</a></li>
+            <li><a href="services.html#charges">Analyse des dépenses de la copropriété</a></li>
+            <li><a href="services.html#contrats">Renégociation des contrats</a></li>
+            <li><a href="services.html#optimisation">Optimisation des charges</a></li>
+            <li><a href="services.html#accompagnement">Accompagnement et conseil</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__col">
+          <h3>Le cabinet</h3>
+          <ul>
+            <li><a href="a-propos.html">À propos</a></li>
+            <li><a href="approche.html">Notre approche</a></li>
+            <li><a href="faq.html">Questions fréquentes</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
       </div>
-      <div class="footer__col">
-        <h3>Prestations</h3>
-        <ul>
-          <li><a href="services.html#audit">Audit complet des charges</a></li>
-          <li><a href="services.html#charges">Analyse des charges</a></li>
-          <li><a href="services.html#contrats">Renégociation des contrats</a></li>
-          <li><a href="services.html#optimisation">Optimisation des charges</a></li>
-          <li><a href="services.html#accompagnement">Accompagnement du conseil syndical</a></li>
-        </ul>
-      </div>
-      <div class="footer__col">
-        <h3>Le cabinet</h3>
-        <ul>
-          <li><a href="a-propos.html">À propos</a></li>
-          <li><a href="approche.html">Notre approche</a></li>
-          <li><a href="faq.html">Questions fréquentes</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </div>
-      <div class="footer__col">
-        <h3>Nous joindre</h3>
-        <ul>
-          <li><a href="mailto:contact@coproperformanceconseil.fr">contact@coproperformanceconseil.fr</a></li>
-          <li><a href="tel:+33617470857">+33 6 17 47 08 57</a></li>
-          <li>Intervention dans toute la France (à distance)</li>
-        </ul>
-      </div>
+
     </div>
+
     <div class="footer__bottom">
       <p>© <span data-year>2026</span> Copro Performance Conseil. Tous droits réservés.</p>
       <nav class="footer__legal" aria-label="Liens légaux">
@@ -401,6 +430,7 @@
         <a href="plan-du-site.html">Plan du site</a>
       </nav>
     </div>
+
   </div>
 </footer>
 
@@ -413,7 +443,7 @@
      ================================================================== -->
 <div class="sticky-cta" data-sticky-cta>
   <a class="btn btn--block magnet" href="contact.html">
-    Pré-diagnostic gratuit
+    Premier échange gratuit
     <svg class="btn__arrow" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
   </a>
 </div>

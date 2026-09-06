@@ -554,83 +554,83 @@
   }
 
   /* ----------------------------------------------------------------------
-     13. Diagnostic rapide en trois questions
+     13. CTA flottant (page d'accueil)
      ----------------------------------------------------------------------
-     Trois questions, une orientation. Le module est entièrement construit
-     dans le HTML : sans JavaScript, les trois étapes restent lisibles et
-     les liens de sortie fonctionnent. Le script ne fait qu'enchaîner.
+     Le bouton ne se montre qu'une fois le premier bloc CTA dépassé :
+     l'afficher d'emblée reviendrait à couvrir le contenu au moment même où
+     le visiteur le découvre. Il s'efface dès qu'un des blocs CTA de la page,
+     le formulaire de contact ou le pied de page entre à l'écran — deux
+     appels à l'action simultanés se nuisent l'un à l'autre.
+
+     Le seuil est observé, jamais calculé en pixels : une valeur en dur ne
+     survit pas au premier changement de contenu.
      ---------------------------------------------------------------------- */
-  function initDiagnostic() {
-    var bloc = document.querySelector("[data-diagnostic]");
-    if (!bloc) return;
+  function initCtaFlottant() {
+    var flottant = document.querySelector("[data-cta-flottant]");
+    if (!flottant) return;
 
-    var etapes = bloc.querySelectorAll("[data-etape]");
-    var jalons = bloc.querySelectorAll(".diagnostic__jalon");
-    var sortie = bloc.querySelector("[data-diagnostic-sortie]");
-    var reponses = {};
+    var blocs = document.querySelectorAll("[data-cta]");
+    if (!blocs.length) return;
 
-    function montrer(i) {
-      etapes.forEach(function (e, k) {
-        e.hidden = k !== i;
-      });
-      jalons.forEach(function (j, k) {
-        j.classList.toggle("is-faite", k <= i);
-      });
-      // Déplacer le focus sur la question : sans cela, un utilisateur au
-      // clavier reste sur un bouton qui vient de disparaître.
-      var titre = etapes[i].querySelector(".diagnostic__question, h3");
-      if (titre) {
-        titre.setAttribute("tabindex", "-1");
-        titre.focus({ preventScroll: true });
-      }
+    function afficher(v) {
+      flottant.classList.toggle("is-visible", v);
+      flottant.setAttribute("aria-hidden", v ? "false" : "true");
     }
 
-    function conclure() {
-      // L'orientation dépend d'abord du rôle : c'est lui qui détermine la
-      // page de destination.
-      var carte = {
-        "syndic-pro": ["syndic-professionnel.html", "Votre page syndic professionnel"],
-        "conseil-syndical": ["conseil-syndical.html", "Votre page conseil syndical"],
-        coproprietaire: ["coproprietaire.html", "Votre page copropriétaire"]
-      };
-      var cible = carte[reponses.role] || ["contact.html", "Nous décrire votre situation"];
-
-      var presta = bloc.querySelector("[data-diagnostic-presta]");
-      if (presta) {
-        var textes = {
-          charges: "l’analyse des charges",
-          contrats: "la relecture de vos contrats",
-          ag: "la préparation de votre assemblée générale",
-          "sais-pas": "un audit complet, pour partir de la vue d’ensemble"
-        };
-        presta.textContent = textes[reponses.besoin] || textes["sais-pas"];
-      }
-
-      if (sortie) {
-        sortie.setAttribute("href", cible[0]);
-        var lib = sortie.querySelector("[data-diagnostic-libelle]");
-        if (lib) lib.textContent = cible[1];
-      }
-
-      montrer(etapes.length - 1);
+    // Sans IntersectionObserver, le bouton reste simplement affiché : mieux
+    // vaut un appel à l'action permanent que pas d'appel du tout.
+    if (!canObserve) {
+      afficher(true);
+      return;
     }
 
-    bloc.addEventListener("click", function (e) {
-      var b = e.target.closest("button[data-champ]");
-      if (b) {
-        reponses[b.getAttribute("data-champ")] = b.getAttribute("data-valeur");
-        var i = parseInt(b.closest("[data-etape]").getAttribute("data-etape"), 10);
-        if (i + 1 >= etapes.length - 1) conclure();
-        else montrer(i + 1);
-        return;
-      }
-      if (e.target.closest("[data-diagnostic-recommence]")) {
-        reponses = {};
-        montrer(0);
-      }
-    });
+    var depasse = false; // le premier bloc CTA est sorti par le haut
+    var vus = []; // éléments concurrents actuellement à l'écran
 
-    montrer(0);
+    function maj() {
+      afficher(depasse && vus.length === 0);
+    }
+
+    // 1. Franchissement du premier bloc CTA.
+    new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (e) {
+          // `top < 0` distingue « déjà lu » de « pas encore atteint ».
+          depasse = !e.isIntersecting && e.boundingClientRect.top < 0;
+          maj();
+        });
+      },
+      { threshold: 0 }
+    ).observe(blocs[0]);
+
+    // 2. Effacement dès qu'un vrai bouton occupe l'écran.
+    function surveiller(cibles, marge) {
+      var io = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (e) {
+            var i = vus.indexOf(e.target);
+            if (e.isIntersecting && i === -1) vus.push(e.target);
+            else if (!e.isIntersecting && i !== -1) vus.splice(i, 1);
+          });
+          maj();
+        },
+        { threshold: 0, rootMargin: marge || "0px" }
+      );
+      Array.prototype.forEach.call(cibles, function (c) {
+        if (c) io.observe(c);
+      });
+    }
+
+    surveiller(blocs);
+    surveiller([document.querySelector("main form")]);
+
+    // Le pied de page est haut : on ne masque le bouton qu'une fois qu'il
+    // occupe réellement le bas de l'écran, pour ne pas le faire disparaître
+    // trop tôt tout en ne recouvrant jamais les mentions légales.
+    surveiller(
+      [document.querySelector("footer, .footer")],
+      "0px 0px -40% 0px"
+    );
   }
 
   /* ----------------------------------------------------------------------
@@ -639,7 +639,7 @@
   function start() {
     initProfilUrl();
     initStickyCta();
-    initDiagnostic();
+    initCtaFlottant();
     initBoot();
     initDrawings();
     initReleve();

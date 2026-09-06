@@ -1,6 +1,11 @@
+# Ce qui n'est pas envoyé à l'hébergeur.
+# Le site publié ne contient que les pages, assets/ et les fichiers de
+# configuration : la documentation reste dans le dépôt.
+
+# La documentation du projet — sauf le README, utile depuis le dépôt.
 *.md
 !README.md
 
-# Les captures d'écran servent au dépôt, pas au site : inutile de les
-# publier sur coproperformanceconseil.fr.
+# Documentation, captures d'écran et livrables (docs/exports/) : ils servent
+# au dépôt et au client, pas aux visiteurs de coproperformanceconseil.fr.
 docs/

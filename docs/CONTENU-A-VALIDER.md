@@ -15,6 +15,11 @@
 
 ---
 
+> **Où sont les pages ?** Dans `pages/`, sauf `index.html` et `404.html`
+> qui restent à la racine. Voir [`PAGES.md`](PAGES.md).
+
+---
+
 ## Comment masquer les pastilles
 
 Les pastilles sont là pour la relecture. Deux options :
@@ -61,7 +66,7 @@ Aucune n'a pu être vérifiée auprès d'une source.
 | 05 | Accompagnement du conseil syndical | Idem — le format « dans la durée » correspond-il à l'offre ? |
 
 **Si une prestation n'est pas proposée**, supprimer le bloc correspondant dans
-`services.html`, sa carte dans `index.html`, sa ligne dans les pieds de page et
+`pages/services.html`, sa carte dans `index.html`, sa ligne dans les pieds de page et
 son entrée dans le JSON-LD `hasOfferCatalog` de `index.html`.
 
 **Si une prestation manque**, elle peut être ajoutée en dupliquant un bloc
@@ -87,7 +92,7 @@ Le site affiche désormais :
       Une fourchette rassure et filtre les demandes hors budget ; « Sur devis »
       préserve la marge de négociation.
 - [ ] Si des montants sont retenus, remplacer les cinq « Sur devis » dans
-      `services.html` § Tarifs et retirer la pastille de validation.
+      `pages/services.html` § Tarifs et retirer la pastille de validation.
 
 > **Attention à la cohérence.** Le site affirme par ailleurs que l'honoraire
 > n'est *jamais indexé sur les économies constatées*. Un tarif au succès
@@ -109,9 +114,9 @@ mais elles décrivent un **modèle économique** qui doit être confirmé.
 - [ ] « Nous ne tenons aucune liste de partenaires »
 
 **Où** : `index.html` (sections « Pourquoi nous » et « Engagements »),
-`a-propos.html` (section « L'indépendance, concrètement »),
-`services.html` (section « Ce que nous ne faisons pas »),
-`faq.html` (thème 04).
+`pages/a-propos.html` (section « L'indépendance, concrètement »),
+`pages/services.html` (section « Ce que nous ne faisons pas »),
+`pages/faq.html` (thème 04).
 
 > Une allégation d'indépendance inexacte relève de la pratique commerciale
 > trompeuse (art. L.121-2 du Code de la consommation). À ne pas laisser passer.
@@ -136,7 +141,7 @@ ancienneté et aucune qualification n'ont été inventés.
 
 ## 5. Pages légales — OBLIGATOIRES, incomplètes
 
-`mentions-legales.html` et `politique-confidentialite.html` sont des **trames
+`pages/mentions-legales.html` et `pages/politique-confidentialite.html` sont des **trames
 conformes** au droit français, mais elles **ne peuvent pas être publiées en
 l'état**. Tous les champs entre crochets `[…]` sont à renseigner.
 
@@ -171,8 +176,8 @@ Il apparaît dans :
 - les balises `og:url` et `og:image` — **une par page**
 - `robots.txt` (ligne `Sitemap:`)
 - `sitemap.xml` (9 balises `<loc>`)
-- les blocs JSON-LD de `index.html`, `services.html`, `approche.html`,
-  `a-propos.html`, `faq.html`, `contact.html`
+- les blocs JSON-LD de `index.html`, `pages/services.html`, `pages/approche.html`,
+  `pages/a-propos.html`, `pages/faq.html`, `pages/contact.html`
 
 Recherche / remplacement global sur `www.copro-performance-conseil.fr`.
 
@@ -182,13 +187,13 @@ Recherche / remplacement global sur `www.copro-performance-conseil.fr`.
 
 | Page | Élément | Question |
 |---|---|---|
-| `approche.html` | Durée d'une mission | Ordre de grandeur à communiquer ? |
-| `approche.html`, `faq.html` | Accord de l'AG / financement | Formulation prudente retenue — à faire valider juridiquement |
-| `faq.html` | Visite sur place | Proposée ? Facturée ? |
-| `faq.html` | Zone d'intervention sur site | Périmètre géographique réel |
-| `faq.html` | Tarification | Le principe « honoraire fixe, jamais au résultat » est-il exact ? |
-| `faq.html` | Références clients | Le principe « sur demande, avec accord » convient-il ? |
-| `services.html` | Bandeau « contenu à valider » en tête de page | À supprimer une fois les prestations confirmées |
+| `pages/approche.html` | Durée d'une mission | Ordre de grandeur à communiquer ? |
+| `pages/approche.html`, `pages/faq.html` | Accord de l'AG / financement | Formulation prudente retenue — à faire valider juridiquement |
+| `pages/faq.html` | Visite sur place | Proposée ? Facturée ? |
+| `pages/faq.html` | Zone d'intervention sur site | Périmètre géographique réel |
+| `pages/faq.html` | Tarification | Le principe « honoraire fixe, jamais au résultat » est-il exact ? |
+| `pages/faq.html` | Références clients | Le principe « sur demande, avec accord » convient-il ? |
+| `pages/services.html` | Bandeau « contenu à valider » en tête de page | À supprimer une fois les prestations confirmées |
 
 ---
 
@@ -209,4 +214,4 @@ faute de données réelles :
 Le site est conçu pour **fonctionner sans eux** : la réassurance repose sur des
 engagements de méthode plutôt que sur des preuves chiffrées. C'est un parti pris
 crédible pour un cabinet indépendant, et il pourra être enrichi plus tard sans
-refonte — voir `README.md` § « Faire évoluer le site ».
+refonte — voir `../README.md` § « Faire évoluer le site ».

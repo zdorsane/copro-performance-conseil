@@ -1,0 +1,297 @@
+{
+  "page": "accueil",
+  "fichier_source": "index.html",
+  "url": "https://coproperformanceconseil.fr/",
+  "langue": "fr",
+  "export": {
+    "genere_le": "2026-09-05",
+    "description": "Export du contenu éditorial de la page d'accueil de coproperformanceconseil.fr. Textes uniquement : la mise en forme, les illustrations SVG et les animations restent dans index.html."
+  },
+
+  "meta": {
+    "titre": "Copro Performance Conseil — Conseil indépendant en copropriété",
+    "description": "Conseil indépendant en copropriété : audit, analyse des dépenses de la copropriété, lecture des contrats et accompagnement du conseil syndical. Des analyses claires pour décider en connaissance de cause.",
+    "canonical": "https://coproperformanceconseil.fr/",
+    "robots": "index, follow, max-snippet:-1, max-image-preview:large",
+    "auteur": "Copro Performance Conseil",
+    "theme_color": "#0B1C2C",
+    "open_graph": {
+      "type": "website",
+      "locale": "fr_FR",
+      "site_name": "Copro Performance Conseil",
+      "titre": "Copro Performance Conseil — Conseil indépendant en copropriété",
+      "description": "Audit, analyse des dépenses de la copropriété, lecture des contrats et accompagnement du conseil syndical. Des analyses claires pour décider en connaissance de cause.",
+      "url": "https://coproperformanceconseil.fr/",
+      "image": "https://coproperformanceconseil.fr/assets/img/og-image.jpg",
+      "image_largeur": 1200,
+      "image_hauteur": 630,
+      "image_alt": "Copro Performance Conseil — conseil indépendant en copropriété"
+    },
+    "twitter": {
+      "card": "summary_large_image",
+      "titre": "Copro Performance Conseil — Conseil indépendant en copropriété",
+      "description": "Audit, analyse des dépenses de la copropriété, lecture des contrats et accompagnement du conseil syndical.",
+      "image": "https://coproperformanceconseil.fr/assets/img/og-image.jpg"
+    }
+  },
+
+  "identite": {
+    "nom": "Copro Performance Conseil",
+    "baseline": "Conseil indépendant en copropriété",
+    "logo": "assets/img/logo.svg",
+    "telephone": "+33617470857",
+    "telephone_affiche": "+33 6 17 47 08 57",
+    "email": "contact@coproperformanceconseil.fr",
+    "prise_de_rendez_vous": "https://calendly.com/contact-coproperformanceconseil/point-decouverte"
+  },
+
+  "header": {
+    "navigation": [
+      { "libelle": "À propos", "lien": "a-propos.html" },
+      { "libelle": "Ressources", "lien": "ressources.html" },
+      { "libelle": "FAQ", "lien": "faq.html" }
+    ],
+    "bouton": { "libelle": "Demander un échange", "lien": "contact.html" },
+    "navigation_mobile": [
+      { "numero": "01", "libelle": "Accueil", "lien": "index.html" },
+      { "numero": "02", "libelle": "À propos", "lien": "a-propos.html" },
+      { "numero": "03", "libelle": "Ressources", "lien": "ressources.html" },
+      { "numero": "04", "libelle": "FAQ", "lien": "faq.html" },
+      { "numero": "05", "libelle": "Contact", "lien": "contact.html" }
+    ],
+    "bouton_mobile": { "libelle": "Demander un premier échange", "lien": "contact.html" }
+  },
+
+  "sections": [
+    {
+      "id": "profils",
+      "ordre": 1,
+      "type": "selecteur-de-profil",
+      "surtitre": "Premiers repères",
+      "chapo": "Que vous soyez syndic professionnel, membre d’un conseil syndical ou copropriétaire, nous vous aidons à comprendre les charges, les contrats et le fonctionnement de votre copropriété.",
+      "question": "Vous êtes…",
+      "profils": [
+        {
+          "titre": "Syndic professionnel",
+          "accroche": "Externalisez l’analyse technique : du temps gagné pour vos gestionnaires, sans impact sur vos honoraires.",
+          "lien": "syndic-professionnel.html"
+        },
+        {
+          "titre": "Membre du conseil syndical",
+          "accroche": "Contrôler la gestion sans y passer vos soirées",
+          "lien": "conseil-syndical.html"
+        },
+        {
+          "titre": "Copropriétaire",
+          "accroche": "Comprendre ce que vous payez chaque trimestre",
+          "lien": "coproprietaire.html"
+        },
+        {
+          "titre": "Autre situation",
+          "accroche": "Décrivez votre situation en quelques lignes",
+          "lien": "contact.html"
+        }
+      ]
+    },
+    {
+      "id": "hero",
+      "ordre": 2,
+      "type": "hero",
+      "surtitre": "Une vision claire de votre copropriété",
+      "titre": "Externalisez l’analyse des charges et des contrats, sans alourdir le travail de vos équipes.",
+      "titre_emphase": "sans alourdir",
+      "sous_titre": "Copro Performance Conseil intervient en appui de vos gestionnaires pour analyser les charges, relire les contrats de prestataires et identifier les points qui méritent une vérification ou une optimisation. Vous gagnez du temps sur les dossiers complexes et disposez d’un rapport clair pour faciliter les échanges avec le conseil syndical.",
+      "mention_gratuite": {
+        "etiquette": "Gratuit",
+        "texte": "Premier échange gratuit et engagement écrit — sans engagement."
+      },
+      "bouton": {
+        "libelle": "Demander mon premier échange gratuit",
+        "lien": "contact.html"
+      },
+      "reperes_de_confiance": [
+        "Un tiers indépendant",
+        "Rapport écrit remis",
+        "Premier échange gratuit"
+      ],
+      "visuel": {
+        "image": "assets/img/hero-immeuble.jpg",
+        "image_webp": "assets/img/hero-immeuble.webp",
+        "alt": "Façade d'un immeuble résidentiel parisien : balcons en fer forgé, volets et vélo posé devant un escalier pavé",
+        "annotations_decoratives": [
+          { "categorie": "Poste examiné", "valeur": "Chauffage collectif" },
+          { "categorie": "Contrat", "valeur": "Ascenseur" }
+        ],
+        "etat": "Relevé en cours"
+      },
+      "encart": {
+        "titre": "Un tiers indépendant, pas une partie prenante",
+        "texte": "Nous n’encaissons aucune commission de prestataire et n’avons aucun intérêt dans les contrats analysés. Notre intervention reste indépendante et son cadre est défini avant chaque mission."
+      }
+    },
+    {
+      "id": "livrable",
+      "ordre": 3,
+      "type": "livrable",
+      "surtitre": "Ce que vous recevez",
+      "titre": "Ce que vous recevez, concrètement.",
+      "points": [
+        { "accroche": "Un rapport écrit", "suite": "structuré et hiérarchisé, du plus au moins significatif." },
+        { "accroche": "Chaque poste chiffré", "suite": "et confronté au contrat qui le régit." },
+        { "accroche": "Chaque constat sourcé", "suite": ": il renvoie à la pièce dont il est tiré." },
+        { "accroche": "Commenté à l’oral", "suite": "— un document qu’on ne comprend pas ne sert à personne." }
+      ]
+    },
+    {
+      "id": "cas-pratique",
+      "ordre": 4,
+      "type": "cas-pratique",
+      "surtitre": "Un cas concret",
+      "titre": "À quoi ressemble un constat.",
+      "chiffre": { "valeur": "50 %", "libelle": "d’économie" },
+      "etiquette": "Cas pratique illustratif",
+      "intitule": "Copropriété de 50 lots à Paris — contrats d’entretien de 2 ascenseurs",
+      "texte": "La copropriété disposait de deux ascenseurs d’environ 10 ans, dont les contrats d’entretien représentaient un coût total de 8 000 € par an. Après analyse du contrat et mise en concurrence de plusieurs prestataires, un changement d’ascensoriste a permis de conserver un niveau de service et des prestations équivalents, pour un coût ramené à 4 000 € par an. Résultat : 4 000 € d’économie chaque année, soit une réduction de 50 % du budget consacré à l’entretien des ascenseurs, sans diminution de la qualité de service.",
+      "note_interne": "Chiffre et situation issus du brief client : à confirmer comme correspondant à une mission réelle avant mise en ligne définitive."
+    },
+    {
+      "id": "contact-disponibilites",
+      "ordre": 5,
+      "type": "disponibilites",
+      "surtitre": "Nous joindre",
+      "titre": "Un interlocuteur à votre écoute.",
+      "canaux": [
+        {
+          "titre": "Par téléphone",
+          "texte": "Du lundi au vendredi, au +33 6 17 47 08 57",
+          "lien": "tel:+33617470857"
+        },
+        {
+          "titre": "En visioconférence",
+          "texte": "L’analyse et les échanges se déroulent très bien à distance, pour une bonne compréhension mutuelle"
+        },
+        {
+          "titre": "À distance",
+          "texte": "Tout se fait à distance : aucun frais de déplacement"
+        }
+      ],
+      "engagement": {
+        "etiquette": "Ce que la prestation vise",
+        "texte": "Que chaque copropriété — syndic professionnel, conseil syndical ou copropriétaire — dispose d’éléments vérifiables plutôt que d’impressions, et puisse répondre, pièce à l’appui, à chaque question posée."
+      }
+    },
+    {
+      "id": "resume",
+      "ordre": 6,
+      "type": "cloture",
+      "surtitre": "En deux mots",
+      "titre": "Cinq prestations, un premier échange gratuit.",
+      "prestations": [
+        { "libelle": "Audit complet des contrats", "lien": "services.html#audit" },
+        { "libelle": "Analyse des dépenses de la copropriété", "lien": "services.html#charges" },
+        { "libelle": "Renégociation des contrats", "lien": "services.html#contrats" },
+        { "libelle": "Optimisation des charges", "lien": "services.html#optimisation" },
+        { "libelle": "Accompagnement et conseil", "lien": "services.html#accompagnement" }
+      ],
+      "mention_gratuite": {
+        "etiquette": "Gratuit",
+        "texte": "Premier échange gratuit et engagement écrit — sans engagement."
+      },
+      "bouton": {
+        "libelle": "Demander mon premier échange gratuit",
+        "lien": "contact.html"
+      }
+    }
+  ],
+
+  "cta_flottant": {
+    "libelle": "Demander mon premier échange gratuit",
+    "lien": "https://calendly.com/contact-coproperformanceconseil/point-decouverte",
+    "cible": "_blank",
+    "aria_label": "Demander mon premier échange gratuit — prendre rendez-vous en ligne (nouvelle fenêtre)"
+  },
+
+  "footer": {
+    "pitch": "Nous accompagnons les syndics professionnels et les conseils syndicaux dans l’analyse des charges, des contrats et des prestations de copropriété, afin de faciliter des décisions fondées sur des éléments clairs et vérifiables.",
+    "colonnes": [
+      {
+        "titre": "Prestations",
+        "liens": [
+          { "libelle": "Audit complet des contrats", "lien": "services.html#audit" },
+          { "libelle": "Analyse des dépenses de la copropriété", "lien": "services.html#charges" },
+          { "libelle": "Renégociation des contrats", "lien": "services.html#contrats" },
+          { "libelle": "Optimisation des charges", "lien": "services.html#optimisation" },
+          { "libelle": "Accompagnement et conseil", "lien": "services.html#accompagnement" }
+        ]
+      },
+      {
+        "titre": "Le cabinet",
+        "liens": [
+          { "libelle": "À propos", "lien": "a-propos.html" },
+          { "libelle": "Notre approche", "lien": "approche.html" },
+          { "libelle": "Questions fréquentes", "lien": "faq.html" },
+          { "libelle": "Contact", "lien": "contact.html" }
+        ]
+      }
+    ],
+    "copyright": "© 2026 Copro Performance Conseil. Tous droits réservés.",
+    "liens_legaux": [
+      { "libelle": "Mentions légales", "lien": "mentions-legales.html" },
+      { "libelle": "Politique de confidentialité", "lien": "politique-confidentialite.html" },
+      { "libelle": "Plan du site", "lien": "plan-du-site.html" }
+    ]
+  },
+
+  "donnees_structurees": {
+    "organisation": {
+      "type": "ProfessionalService",
+      "nom": "Copro Performance Conseil",
+      "description": "Conseil indépendant en copropriété : audit, analyse des dépenses de la copropriété, analyse des contrats et accompagnement du conseil syndical.",
+      "url": "https://coproperformanceconseil.fr/",
+      "telephone": "+33617470857",
+      "email": "contact@coproperformanceconseil.fr",
+      "domaines": [
+        "Copropriété",
+        "Charges de copropriété",
+        "Conseil syndical",
+        "Contrats de copropriété",
+        "Audit complet des contrats"
+      ],
+      "offres": [
+        { "nom": "Premier échange gratuit", "prix": "0", "devise": "EUR" },
+        { "nom": "Audit complet des contrats", "prix_minimum": "400", "devise": "EUR" },
+        { "nom": "Suivi mensuel et conseil", "prix_minimum": "80", "devise": "EUR", "unite": "mois" },
+        { "nom": "Analyse des dépenses de la copropriété" },
+        { "nom": "Renégociation des contrats" },
+        { "nom": "Optimisation des charges" },
+        { "nom": "Accompagnement et conseil" }
+      ]
+    },
+    "faq": [
+      {
+        "question": "Pourquoi faire analyser sa copropriété ?",
+        "reponse": "Parce qu'une copropriété engage des sommes importantes chaque année, réparties sur des dizaines de postes et encadrées par des contrats reconduits d'exercice en exercice. Une analyse indépendante permet de comprendre à quoi correspondent réellement ces dépenses, de repérer les postes qui méritent un examen approfondi et de disposer d'éléments objectifs avant de voter en assemblée générale."
+      },
+      {
+        "question": "À qui s'adresse votre accompagnement ?",
+        "reponse": "Principalement aux conseils syndicaux qui souhaitent exercer pleinement leur mission de contrôle sans y consacrer un temps déraisonnable. Il s'adresse également aux copropriétaires souhaitant y voir plus clair dans leurs charges, ainsi qu'aux syndics bénévoles cherchant un appui méthodologique."
+      },
+      {
+        "question": "Êtes-vous indépendant du syndic ?",
+        "reponse": "Oui. Nous n'appartenons à aucun groupe de gestion immobilière et ne percevons aucune commission de la part de prestataires. Nous sommes rémunérés uniquement par la copropriété qui nous mandate, ce qui garantit que notre analyse ne sert aucun autre intérêt que le sien."
+      },
+      {
+        "question": "Comment se déroule un audit complet des charges ?",
+        "reponse": "L'intervention se déroule en cinq temps : un premier échange pour comprendre votre situation, la collecte des documents, l'analyse proprement dite, la restitution d'un rapport écrit commenté à l'oral, puis un accompagnement pour vous aider à utiliser ces conclusions."
+      },
+      {
+        "question": "Quels documents faut-il préparer ?",
+        "reponse": "Les principaux sont les annexes comptables des derniers exercices, les procès-verbaux d'assemblée générale, le contrat de syndic, les principaux contrats d'entretien et de fourniture, et le règlement de copropriété. Nous vous transmettons une liste précise après le premier échange, et nous travaillons avec ce qui est disponible."
+      },
+      {
+        "question": "L'accompagnement peut-il se faire à distance ?",
+        "reponse": "Oui. L'analyse documentaire et les échanges se déroulent très bien en visioconférence, pour une bonne compréhension mutuelle. L'ensemble de la mission se déroule à distance : il n'y a pas de frais de déplacement."
+      }
+    ]
+  }
+}

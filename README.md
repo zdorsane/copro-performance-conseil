@@ -1,41 +1,42 @@
 # Copro Performance Conseil — site web
 
-Site vitrine pour un cabinet de **conseil indépendant en copropriété**.
-HTML / CSS / JavaScript natifs, **aucune dépendance, aucun build**.
-
----
-
-## Dépôt et mise en ligne
+Site vitrine du cabinet **Copro Performance Conseil**, conseil indépendant en
+copropriété. 27 pages en HTML, CSS et JavaScript natifs — **aucune dépendance,
+aucun build, aucune base de données**.
 
 | | |
 |---|---|
-| **Site en ligne** | <https://copro-performance-conseil.vercel.app> |
-| Adresse historique | <https://copro-site.vercel.app> (toujours valide) |
+| **Site en ligne (préproduction)** | <https://copro-performance-conseil.vercel.app> |
 | **Dépôt** | <https://github.com/zdorsane/copro-performance-conseil> |
-| **Projet Vercel** | `dorsanes-projects/copro-site` |
-| **Déploiement** | automatique — un `git push` sur `main` met le site à jour |
-
-Le dépôt GitHub est **connecté au projet Vercel**. Le cycle de travail se
-résume donc à :
-
-    git add -A
-    git commit -m "Description du changement"
-    git push
-
-Vercel reconstruit et publie dans la foulée. Aucune commande de déploiement
-à lancer à la main.
+| **Domaine cible** | `coproperformanceconseil.fr` — *pas encore branché* |
+| **Publication** | automatique : un `git push` sur `main` met le site à jour |
+| **État** | ⚠️ **Prêt techniquement, pas prêt à publier** — voir § 5 |
 
 ---
 
+## Sommaire
 
-## Aperçu
+1. [Aperçu](#1-aperçu)
+2. [Démarrer](#2-démarrer)
+3. [Organisation du projet](#3-organisation-du-projet)
+4. [Les 27 pages, dans l'ordre](#4-les-27-pages-dans-lordre)
+5. [Avant la mise en ligne ⚠️](#5-avant-la-mise-en-ligne)
+6. [Modifier le site](#6-modifier-le-site)
+7. [Déploiement](#7-déploiement)
+8. [Qualité : accessibilité, SEO, performance](#8-qualité--accessibilité-seo-performance)
+9. [Documentation](#9-documentation)
+10. [Choix techniques assumés](#10-choix-techniques-assumés)
+
+---
+
+## 1. Aperçu
 
 <p align="center">
   <img src="docs/captures/selecteur.webp" alt="Sélecteur de profil en tête de la page d'accueil" width="100%">
 </p>
 
-**L'accueil aiguille, elle n'expose plus.** Le choix du profil est posé comme un
-**schéma** : un nœud racine « Vous êtes… » qui se ramifie vers cinq destinations.
+**L'accueil aiguille, il n'expose pas.** Le choix du profil est posé comme un
+**schéma** : un nœud racine « Vous êtes… » qui se ramifie vers ses destinations.
 Le visiteur se situe d'un coup d'œil, sans lire. Ce sont de vrais liens, pas des
 boutons JavaScript : crawlables, ouvrables dans un nouvel onglet, utilisables au
 clavier.
@@ -43,19 +44,16 @@ clavier.
 | | |
 |:--|:--|
 | <img src="docs/captures/accueil-hero.webp" alt="Le hero et son calque de relevé, sous le sélecteur" width="100%"> | <img src="docs/captures/page-profil.webp" alt="Une page profil : conseil syndical" width="100%"> |
-| **Le hero, sous le sélecteur.** Le calque d'architecte se dessine sur la photo — cotation en laiton, niveaux, annotations, balayage. La signature de la marque reste, la page ne fait plus que trois écrans. | **Une page profil.** Problème vécu, trois bénéfices, prestations retenues, FAQ ciblée. Le bouton final pré-remplit le formulaire : le visiteur ne redit pas qui il est. |
-| <img src="docs/captures/ressources.webp" alt="Page Ressources et ses sources officielles" width="100%"> | <img src="docs/captures/mobile.webp" alt="Le site sur mobile" width="300"> |
-| **La page Ressources.** Six repères pour les conseils syndicaux, chacun renvoyant à sa source officielle vérifiée en HTTP 200. | **Sur mobile.** Vérifié sans débordement de 320 px à 1440 px, sur les quinze pages. |
-
-> Toutes les animations s'effacent si le visiteur a demandé moins de mouvement
-> (`prefers-reduced-motion`) : l'état final s'affiche directement, sans qu'aucun
-> contenu ne soit masqué.
+| **Le hero, sous le sélecteur.** Le calque d'architecte se dessine sur la photo — cotation en laiton, niveaux, annotations, balayage. | **Une page profil.** Problème vécu, bénéfices, prestations retenues, FAQ ciblée. Le bouton final pré-remplit le formulaire de contact. |
+| <img src="docs/captures/ressources.webp" alt="La page Ressources" width="100%"> | <img src="docs/captures/mobile.webp" alt="Le site sur mobile" width="100%"> |
+| **Les ressources.** Treize articles de fond : le levier de référencement sur les requêtes précises. | **Sur mobile.** Échelle typographique fluide de 320 px à 2560 px, sans point de rupture visible. |
 
 ---
 
-## Démarrer
+## 2. Démarrer
 
-Le site est statique : il suffit d'ouvrir `index.html` dans un navigateur.
+Le site est statique : **ouvrir `index.html` dans un navigateur suffit** pour
+regarder.
 
 Pour un aperçu dans les conditions réelles (chemins absolus, `sitemap.xml`,
 `robots.txt`), lancer un serveur local :
@@ -67,852 +65,367 @@ python -m http.server 8000
 
 Puis ouvrir <http://localhost:8000>.
 
-> Le dossier du projet contient un `&` dans son nom. Sous Windows, si un outil en
-> ligne de commande s'en étrangle, encadrer le chemin de guillemets ou utiliser
-> `-LiteralPath` en PowerShell.
+> **Note Windows.** Le dossier du projet contient un `&` dans son nom. Si un
+> outil en ligne de commande s'en étrangle, encadrer le chemin de guillemets, ou
+> utiliser `-LiteralPath` en PowerShell.
 
 ---
 
-## Structure
+## 3. Organisation du projet
 
 ```
-.
-├── index.html                      Accueil (11 sections)
-├── services.html                   Prestations — Problème / Intervention / Bénéfice / CTA
-├── approche.html                   Méthode en 5 étapes
-├── a-propos.html                   Vision, mission, indépendance
-├── conseil-syndical.html           Page profil — cible principale
-├── coproprietaire.html             Page profil
-├── syndic-benevole.html            Page profil
-├── syndic-professionnel.html       Page profil ⚠️ cadre à confirmer
-├── ressources.html                 Repères copropriété + sources officielles
-├── faq.html                        FAQ complète, 4 thèmes, 21 questions
-├── contact.html                    Formulaire + coordonnées
-├── mentions-legales.html           ⚠️ à compléter
-├── politique-confidentialite.html  ⚠️ à compléter
-├── plan-du-site.html
-├── 404.html
+copro-performance-conseil/
 │
-├── assets/
-│   ├── css/style.css               Design system complet, 19 sections commentées
-│   ├── css/signature.css           Calque « Le Relevé » — 14 sections commentées
-│   ├── js/main.js                  ~330 lignes, vanilla, sans dépendance
-│   ├── js/signature.js             ~370 lignes, vanilla, sans dépendance
-│   └── img/                        SVG + og-image.jpg + icônes
+├── index.html                  ← LA PAGE D'ACCUEIL, servie sur le domaine :
+│                                  coproperformanceconseil.fr/
+├── 404.html                    ← LA PAGE D'ERREUR. L'hébergeur la cherche à
+│                                  la racine : elle ne peut pas être déplacée.
 │
+├── pages/                      ← LES 25 AUTRES PAGES DU SITE
+│   ├── syndic-professionnel.html      Le nom du fichier EST l'adresse :
+│   ├── conseil-syndical.html          pages/services.html se lit sur
+│   ├── coproprietaire.html            …fr/pages/services.html
+│   ├── services.html
+│   ├── approche.html                  Les articles sont regroupés par leur
+│   ├── a-propos.html                  PRÉFIXE de nom (ressources-*), pour
+│   ├── ressources.html                rester triés à côté de leur sommaire.
+│   ├── ressources-*.html  (×13)
+│   ├── faq.html                       → détail dans docs/PAGES.md
+│   ├── contact.html
+│   ├── plan-du-site.html
+│   ├── mentions-legales.html
+│   └── politique-confidentialite.html
+│
+├── assets/                     ← TOUT CE QUE LES PAGES CHARGENT
+│   ├── css/
+│   │   ├── style.css              Design system — 17 sections numérotées
+│   │   └── signature.css          Calque « Le Relevé » — 14 sections
+│   ├── js/
+│   │   ├── main.js                Comportement — 14 modules
+│   │   └── signature.js           Direction artistique — 12 modules
+│   └── img/                       Photos (webp + jpg + miniature), SVG, icônes
+│
+├── docs/                       ← DOCUMENTATION — non publiée sur le site
+│   ├── README.md                  Index de la documentation
+│   ├── PAGES.md                   Inventaire des 27 pages
+│   ├── DESIGN-SYSTEM.md           Couleurs, typographie, composants
+│   ├── DEVELOPPEMENT.md           Conventions de code, ajouter une page
+│   ├── verifier-le-site.py        Contrôle automatique avant livraison
+│   ├── DEPLOIEMENT.md             Vercel, domaine, formulaire
+│   ├── CONTENU-A-VALIDER.md       ⚠️ À LIRE EN PREMIER
+│   ├── AUDIT-SITE.md              Audit technique mesuré
+│   ├── IMAGE-BRIEFS.md            Direction artistique des images
+│   ├── CREDITS-PHOTOS.md          Sources et licences des photos
+│   ├── HISTORIQUE.md              Décisions et arbitrages du projet
+│   ├── captures/                  Captures d'écran de ce README
+│   └── exports/                   Livrables — dont accueil.json
+│
+├── sitemap.xml                 ← RÉFÉRENCEMENT ET CONFIGURATION
 ├── robots.txt
-├── sitemap.xml
 ├── site.webmanifest
-│
-├── docs/captures/                  Captures d'écran du README (hors déploiement)
-│
-├── CONTENU-A-VALIDER.md            ⚠️ À LIRE EN PREMIER
-├── IMAGE-BRIEFS.md                 Direction artistique et briefs photo
-└── README.md
+├── vercel.json                    En-têtes, cache, et le noindex à retirer
+├── .vercelignore                  Exclut docs/ et les .md du déploiement
+├── .gitignore
+└── README.md                      Ce fichier
 ```
 
+**Quatre règles qui expliquent ce rangement :**
+
+1. **Les pages sont dans `pages/`.** Leur nom de fichier est leur adresse :
+   `pages/services.html` se lit sur `…fr/pages/services.html`. Déplacer ou
+   renommer un fichier change donc son URL — il faut alors reprendre les liens
+   internes, le `canonical` de la page et le `sitemap.xml`.
+2. **Deux pages restent à la racine, et ne peuvent pas bouger.** `index.html`
+   est la page servie sur le domaine lui-même ; `404.html` est cherchée à la
+   racine par l'hébergeur pour les adresses inexistantes.
+3. **Tout ce que le navigateur charge est dans `assets/`.** Rien d'autre. Les
+   pages y accèdent en `../assets/…`, l'accueil en `assets/…`.
+4. **Tout ce qui documente est dans `docs/`.** Ce dossier n'est pas déployé.
+
 ---
 
-## ⚠️ Avant toute mise en production
+## 4. Les 27 pages, dans l'ordre
 
-Le dossier de départ était vide. Tout le **contenu marketing** a été rédigé de
-zéro ; **aucun fait n'a été inventé**.
+L'ordre est celui du **parcours du visiteur**, pas l'ordre alphabétique.
 
-Les données factuelles ont ensuite été alignées sur le site existant du cabinet
-(`coproperformanceconseil.fr`) : domaine, e-mail, téléphone, zone d'intervention,
-noms des prestations et tarifs réels.
+> Sauf mention contraire, tous les fichiers listés ci-dessous se trouvent dans
+> **`pages/`**. Seuls `index.html` et `404.html` sont à la racine.
 
-### Déjà réglé
+### Entrée
 
-- ✅ Domaine réel appliqué partout (canonical, Open Graph, JSON-LD, sitemap, robots)
-- ✅ Coordonnées réelles : `contact@coproperformanceconseil.fr` · `06 17 47 08 57`
-- ✅ Tarifs réels : gratuit / à partir de 400 € / à partir de 80 €/mois
-- ✅ Indépendance confirmée par le site du cabinet — pastilles levées
+| # | Fichier | Rôle |
+|---|---|---|
+| 1 | `index.html` *(racine)* | Aiguiller vers la page profil. Trois écrans, pas plus |
 
-### Reste bloquant
+### Pages profil — trois portes d'entrée
 
-1. **Compléter les deux pages légales.** Elles sont **obligatoires**
-   (art. 6-III de la LCEN) et incomplètes : SIRET, forme juridique, directeur
-   de publication, hébergeur. Le site actuel du cabinet ne les publie pas non
-   plus — c'est un risque à traiter, pas à reconduire.
-2. **Brancher le formulaire de contact** (voir plus bas) : il n'envoie rien.
-3. **Lire `CONTENU-A-VALIDER.md`** pour les points restants.
+| # | Fichier | Pour qui |
+|---|---|---|
+| 2 | `syndic-professionnel.html` | Le syndic qui externalise l'analyse technique — **cible prioritaire** |
+| 3 | `conseil-syndical.html` | Le conseiller syndical qui veut contrôler sans y passer ses soirées |
+| 4 | `coproprietaire.html` | Le copropriétaire qui veut comprendre ses charges |
 
-Les éléments à confirmer sont visibles dans le site sous forme de pastilles
-`À valider`. Pour les masquer pendant une démonstration :
+### Le cabinet
 
-```html
-<body class="hide-flags">
+| # | Fichier | Contenu |
+|---|---|---|
+| 5 | `services.html` | Les 5 prestations, chacune en Problème → Intervention → Bénéfice |
+| 6 | `approche.html` | La méthode en 5 étapes |
+| 7 | `a-propos.html` | Vision, convictions, indépendance |
+
+### Ressources — le levier de référencement
+
+| # | Fichier | Contenu |
+|---|---|---|
+| 8 | `ressources.html` | Le sommaire des 13 articles |
+| 9 | `ressources-droits-conseil-syndical.html` | Que peut demander le conseil syndical au syndic ? |
+| 10 | `ressources-lire-ses-charges.html` | Comment lire les charges de sa copropriété |
+| 11 | `ressources-assemblee-generale.html` | Préparer une assemblée générale |
+| 12 | `ressources-contrat-syndic.html` | Le contrat de syndic : ce qu'il faut regarder |
+| 13 | `ressources-renovation-energetique.html` | Rénovation énergétique : par où commencer |
+| 14 | `ressources-registre-national.html` | Le registre national des copropriétés |
+| 15 | `ressources-mise-en-concurrence-article-21.html` | Mise en concurrence : ce que dit l'article 21 |
+| 16 | `ressources-forfait-syndic-prestations-particulieres.html` | Forfait et prestations particulières |
+| 17 | `ressources-reconduction-tacite-contrats-entretien.html` | Reconduction tacite : le calendrier |
+| 18 | `ressources-comparer-devis-perimetre-commun.html` | Comparer des devis : le périmètre commun |
+| 19 | `ressources-contrat-chauffage-p1-p2-p3.html` | Contrat de chauffage : P1, P2, P3 |
+| 20 | `ressources-preparer-budget-previsionnel.html` | Le budget prévisionnel, poste par poste |
+| 21 | `ressources-reprendre-copropriete-pieces-a-rassembler.html` | Reprendre une copropriété |
+
+> Cet ordre est le même dans `ressources.html`, `plan-du-site.html` et
+> `sitemap.xml`. **Le conserver** lors d'un ajout.
+
+### Conversion
+
+| # | Fichier | Contenu |
+|---|---|---|
+| 22 | `faq.html` | 4 thèmes : comprendre · déroulement · pratique · confiance |
+| 23 | `contact.html` | Formulaire + coordonnées ⚠️ *non branché* |
+
+### Service et mentions légales
+
+| # | Fichier | Contenu |
+|---|---|---|
+| 24 | `plan-du-site.html` | Toutes les pages, classées en quatre colonnes |
+| 25 | `mentions-legales.html` | ⚠️ Trame à compléter — obligation légale |
+| 26 | `politique-confidentialite.html` | ⚠️ Trame à compléter |
+| 27 | `404.html` *(racine)* | Page d'erreur (hors sitemap, volontairement) |
+
+Le détail de chaque page — plan, gabarit, liens entrants et sortants — est dans
+**[`docs/PAGES.md`](docs/PAGES.md)**.
+
+---
+
+## 5. Avant la mise en ligne
+
+Le site est techniquement sain : aucun défilement horizontal quelle que soit la
+largeur d'écran, aucune erreur JavaScript, aucun lien interne mort (mesuré, voir
+[`docs/AUDIT-SITE.md`](docs/AUDIT-SITE.md)).
+
+**Il n'est pourtant pas publiable en l'état, pour trois raisons.** Aucune ne
+demande de développement.
+
+| # | Point bloquant | Ce qu'il faut faire | Qui |
+|---|---|---|---|
+| 1 | Le site demande aux moteurs de **ne pas l'indexer** | Retirer `X-Robots-Tag: noindex` de `vercel.json`, une fois le domaine réel branché | Technique |
+| 2 | Le **formulaire de contact n'envoie rien** | Renseigner son `action` — 5 minutes, voir [`DEPLOIEMENT.md`](docs/DEPLOIEMENT.md) § 4 | Technique |
+| 3 | Les **deux pages légales sont des trames** | Fournir SIREN, siège, directeur de publication, hébergeur | **Cabinet** |
+
+Le point 3 est une obligation légale (LCEN art. 6-III et RGPD) : en l'état, le
+site est en infraction.
+
+**S'y ajoute une relecture éditoriale** : quelques affirmations du site —
+notamment le cas pratique chiffré de l'accueil et le cadre commercial de la page
+syndic professionnel — proviennent du brief et n'ont pas pu être vérifiées.
+Elles sont listées une à une dans
+**[`docs/CONTENU-A-VALIDER.md`](docs/CONTENU-A-VALIDER.md)**, à lire avant
+publication.
+
+---
+
+## 6. Modifier le site
+
+### Changer un texte
+
+Ouvrir la page concernée, chercher le texte, le remplacer. C'est du HTML lisible
+et commenté : chaque page porte en tête un bloc qui décrit son rôle et son plan,
+et chaque grande section est encadrée par un commentaire.
+
+### Changer une coordonnée
+
+Le téléphone et l'e-mail apparaissent à plusieurs endroits (contenu, `tel:`,
+`mailto:`, données structurées JSON-LD). Les remplacer partout :
+
+```bash
+grep -rl "0617470857\|contact@coproperformanceconseil.fr" *.html pages/*.html
 ```
 
----
+### Changer les couleurs ou la typographie
 
-## Brancher le formulaire
+Tout est piloté par des variables CSS dans `assets/css/style.css` § 01. Changer
+l'identité visuelle ne demande de toucher à rien d'autre — voir
+[`docs/DESIGN-SYSTEM.md`](docs/DESIGN-SYSTEM.md).
 
-Le formulaire de `contact.html` **n'envoie rien** en l'état : son attribut
-`action` vaut `#`. Un message d'erreur explicite s'affiche si on le soumet,
-plutôt qu'un faux message de succès.
+### Après avoir modifié un CSS ou un JS
 
-Le JavaScript gère déjà la validation, l'état de chargement, les messages de
-retour, le piège à robots et le consentement RGPD. Il ne reste qu'à fournir une
-destination.
+Incrémenter le numéro de version sur toutes les pages, sinon les visiteurs déjà
+venus verront l'ancienne version :
 
-### Option A — service tiers, sans serveur (le plus simple)
-
-Créer un formulaire chez [Formspree](https://formspree.io),
-[Web3Forms](https://web3forms.com) ou [Formcarry](https://formcarry.com), puis :
-
-```html
-<form class="form" data-contact-form action="https://formspree.io/f/VOTRE_ID" method="post" novalidate>
+```bash
+sed -i 's/v=20260830/v=20260915/g' *.html pages/*.html
 ```
 
-C'est tout : `main.js` détecte l'`action` et envoie en `fetch` + `FormData`,
-en attendant une réponse HTTP 2xx.
+### Ajouter un article de ressource
 
-> Vérifier que le prestataire retenu héberge dans l'UE, ou documenter le
-> transfert dans la politique de confidentialité (§ 6).
+Copier un article existant **dans `pages/`**, puis le déclarer à **trois**
+endroits : `pages/ressources.html`, `pages/plan-du-site.html` et `sitemap.xml`.
+La procédure complète est dans
+[`docs/DEVELOPPEMENT.md`](docs/DEVELOPPEMENT.md) § 6.
 
-### Option B — endpoint maison (PHP, Node…)
+### Vérifier qu'on n'a rien cassé
 
-Même principe : renseigner `action` avec l'URL de l'endpoint. Celui-ci doit
-accepter un `POST` multipart et répondre avec un code 2xx.
-
-Champs envoyés : `prenom`, `nom`, `email`, `telephone`, `qualite`, `sujet`,
-`lots`, `message`, `consentement`, plus `_gotcha` (champ piège — si rempli,
-la requête vient d'un robot et doit être ignorée côté serveur également).
-
-### Option C — lien e-mail uniquement
-
-Si aucun back-end n'est souhaité dans l'immédiat, supprimer le formulaire et ne
-conserver que le panneau de coordonnées, déjà présent à droite.
-
----
-
-## Design system
-
-Tout est piloté par des variables CSS dans `assets/css/style.css` (§ 01).
-Changer l'identité visuelle ne demande pas de toucher au reste.
-
-```css
-:root {
-  --ink-900: #071320;   /* fonds sombres          */
-  --paper:   #FBFAF7;   /* fond général           */
-  --accent:  #17614F;   /* vert conseil           */
-  --brass:   #B9924F;   /* micro-accent premium   */
-  --container: 1200px;
-  --header-h: 76px;
-}
+```bash
+python docs/verifier-le-site.py
 ```
 
-**Typographie** — pile système (`Inter` si installée, sinon `system-ui`).
-Choix délibéré : pas de Google Fonts en CDN, dont l'usage a été jugé
-problématique au regard du RGPD par plusieurs autorités européennes, et qui
-coûterait une requête bloquante.
+Contrôle les 27 pages : liens et images qui pointent dans le vide, titres
+manquants ou dupliqués, `canonical` incohérent, page absente du `sitemap.xml`,
+problème d'encodage. Ne modifie rien. **À lancer après tout déplacement, ajout
+ou renommage de page.**
 
-Pour utiliser une police de marque, l'auto-héberger :
+### Faire évoluer le site plus tard
 
-```css
-@font-face {
-  font-family: "Inter";
-  src: url("../fonts/inter-var.woff2") format("woff2");
-  font-weight: 100 900;
-  font-display: swap;
-}
+Le contenu a été conçu pour tenir **sans preuves chiffrées**. Quand le cabinet
+disposera de matière réelle, ces ajouts s'intègrent sans refonte :
+
+| Ajout | Où |
+|---|---|
+| Témoignages clients (avec accord écrit) | Accueil, section « Un interlocuteur à votre écoute » |
+| Chiffres réels (missions, ancienneté) | Accueil et `a-propos.html` |
+| Études de cas anonymisées | Nouvelle page `realisations.html` |
+| Grille tarifaire | `services.html`, après chaque bloc de prestation |
+| Portrait du fondateur | `a-propos.html`, section « Qui est derrière… » |
+
+---
+
+## 7. Déploiement
+
+Le dépôt GitHub est connecté au projet Vercel. Publier se résume à :
+
+```bash
+git add -A
+git commit -m "Description du changement"
+git push
 ```
 
-Puis déposer le fichier dans `assets/fonts/`. La variable `--font-sans` la prend
-en compte automatiquement.
+Vercel reconstruit et publie dans la foulée.
 
-**Échelle typographique** — entièrement fluide via `clamp()`. Aucun texte n'a de
-taille fixe : la mise en page s'adapte de 320 px à 2560 px sans point de rupture
-visible.
-
----
-
-## JavaScript
-
-`assets/js/main.js`, chargé en `defer`, sans dépendance. Quatorze modules :
-
-| Module | Rôle |
-|---|---|
-| `initHeader` | État « collé » du header au scroll (rAF, listener passif) |
-| `initMobileNav` | Menu mobile : ARIA, verrou du scroll, fermeture à `Échap` |
-| `initStagger` | Décalage automatique en cascade des enfants |
-| `initSplitText` | Découpe les titres en mots pour une révélation en cascade |
-| `initReveals` | Apparitions au scroll via `IntersectionObserver` |
-| `initMedia` | Photos : chargement progressif + voile de révélation |
-| `initCheckLists` | Listes à puces en cascade |
-| `initSteps` | Surlignage de l'étape traversée dans la méthodologie |
-| `initFaq` | Accordéon accessible, ouverture par ancre `#id` |
-| `initParallax` | Parallaxe douce, désactivée sous 940 px |
-| `initScrollProgress` | Barre de progression de lecture en haut de page |
-| `initSectionCount` | Repère de section flottant (accueil, desktop) |
-| `initForm` | Validation, états, envoi, anti-spam |
-| `initYear` | Année courante dans les pieds de page |
-
-**Sans JavaScript**, le site reste lisible et navigable : seules les animations
-et l'accordéon FAQ perdent leur interactivité.
-
-### Animations au scroll
-
-Sept effets, tous en `transform`/`opacity` uniquement, tous pilotés par
-`IntersectionObserver` ou `requestAnimationFrame` avec des écouteurs passifs :
-
-1. **Barre de progression** — filet dégradé de 2 px en haut de page
-2. **Titres mot à mot** — chaque mot monte derrière un masque, en cascade
-3. **Voile de révélation des photos** — un rideau se retire verticalement
-4. **Chargement progressif** — miniature floutée puis fondu de la photo nette
-5. **Parallaxe** — hero et bandeau photo, désactivée sous 940 px
-6. **Étape active** — le numéro se colore et une barre se déploie au passage
-7. **Repère de section** — pastille flottante « 04 / 07 · Pourquoi nous »
-
-`prefers-reduced-motion: reduce` neutralise l'intégralité de ces effets sans
-jamais masquer de contenu — vérifié page par page (voir « Vérifications »).
-
-> **Le découpage des titres ne modifie pas le texte.** Chaque mot est enveloppé
-> dans `<span class="w"><span class="w-i">`, les éléments inline existants
-> (`.serif-em`, liens) sont préservés, et le texte restitué est identique au
-> texte source. C'est contrôlé automatiquement sur les 27 titres concernés.
+Brancher le domaine réel, changer d'hébergeur, brancher le formulaire, retirer
+le `noindex` : tout est détaillé dans
+**[`docs/DEPLOIEMENT.md`](docs/DEPLOIEMENT.md)**.
 
 ---
 
-## Le calque « Le Relevé »
+## 8. Qualité : accessibilité, SEO, performance
 
-`assets/css/signature.css` + `assets/js/signature.js`.
-
-### L'idée
-
-Le cabinet lit un immeuble comme un architecte lit un plan. Toute la direction
-artistique découle de cette phrase : tracés techniques, cotations, calques
-d'analyse qui se dessinent, grain d'impression. C'est ce qui distingue le site
-d'un modèle de cabinet de conseil — la mise en scène **est** la promesse
-commerciale, jouée littéralement.
-
-### Ce que le calque ajoute
-
-| Élément | Où | Ce que c'est |
-|---|---|---|
-| **Relevé du hero** | Accueil | Un calque d'architecte se dessine sur la photo : équerres de cadrage, cotation en laiton, niveaux, points de relevé, annotations, balayage d'analyse |
-| **Jeu d'illustrations** | Accueil + Services | Cinq dessins au trait créés pour le site, un par prestation, qui se tracent à l'entrée dans le champ |
-| **Pile de pièces** | Accueil | Les cinq documents d'une mission, empilés puis déployés en éventail |
-| **Frise défilante** | Accueil | Les pièces examinées, en bandeau continu |
-| **Rail de méthode** | Accueil | Un fil vertical qui se remplit au défilement le long des cinq étapes |
-| **Trame technique** | Plusieurs sections | Papier millimétré très pâle, en fond |
-| **Grain** | Toutes les pages | Voile de bruit à 3 % — sensation papier plutôt qu'écran |
-| **Rideau d'ouverture** | Toutes les pages | La marque se trace, **une seule fois par session** |
-| **Relief au pointeur** | Cartes | Inclinaison de 3° et lueur qui suit le curseur |
-| **Projecteur** | Sections sombres | Halo qui suit le curseur |
-| **Boutons magnétiques** | CTA principaux | Décalage de 6 px maximum vers le curseur |
-| **Compteurs** | Accueil | Chiffres animés — valeurs écrites en clair dans le HTML |
-
-### Principes tenus
-
-- **Aucune dépendance ajoutée.** Toujours zéro build, zéro bibliothèque.
-- **Aucune règle de `style.css` modifiée.** Le calque n'ajoute que des règles
-  nouvelles. Supprimer les deux lignes qui l'appellent dans le `<head>` rend le
-  site à son état antérieur, intact.
-- **Aucun fait inventé.** Les libellés des pièces sont ceux de la FAQ ; les
-  quatre compteurs (5 prestations, 5 étapes, 1 interlocuteur, 0 commission)
-  reprennent des affirmations déjà présentes sur le site.
-- **Tout le décor est `aria-hidden`.** Aucune information n'est portée
-  exclusivement par un élément décoratif.
-- **`prefers-reduced-motion: reduce` pose l'état final**, sans rien masquer :
-  pas de rideau, tracés complets, éventail déployé, chiffres justes.
-
-### Illustrations : aucune banque d'images
-
-Les cinq illustrations sont **dessinées à la main en SVG**, directement dans le
-HTML — ce qui permet de les animer trait par trait. Elles partagent une grammaire
-commune : `viewBox` de 300 × 168, trait de 1,7 px, vert de marque, laiton pour
-le point relevé, trame technique en fond.
-
-| Prestation | Ce que l'illustration montre |
-|---|---|
-| Audit complet | L'immeuble mis sous cotation, puis examiné à la loupe |
-| Analyse des charges | La même dépense suivie d'exercice en exercice |
-| Renégociation des contrats | Les pièces relues, la clause repérée, l'échéance |
-| Optimisation | Les leviers classés par gain et par effort |
-| Accompagnement | La table du conseil syndical, vue d'en haut |
-
-Pour en modifier une, chercher `class="illu"` dans `index.html` ou
-`services.html`. Les attributs pilotent l'animation :
-
-- `data-draw` — le trait se dessine ; sa longueur est mesurée en JS
-- `data-pop` — l'élément plein apparaît après le trait
-- `data-live` — le groupe s'anime au survol de la carte
-- `style="--i:N"` — l'ordre dans lequel les traits se posent
-
-**Aucune licence à surveiller** : ces dessins n'existent nulle part ailleurs.
-
----
-
-## Retour client — ce qui a été repris
-
-Quatre demandes, traitées et mesurées.
-
-### 1. « La page d'accueil est très longue »
-
-Mesuré avant : **14 409 px, soit 16 écrans, sur 13 sections**. Après : **8 518 px,
-9,5 écrans, 7 sections** — 41 % de moins.
-
-Rien n'a été jeté. Les sections retirées de l'accueil ont rejoint la page où
-elles ont leur place :
-
-| Section | Devenue |
-|---|---|
-| « Ce que nous ouvrons » (les pièces) | `approche.html`, après les cinq étapes |
-| Bandeau photo | `approche.html` |
-| « Ce sur quoi vous pouvez compter » | `a-propos.html`, après l'indépendance |
-| « Problématique » + « Notre rôle » | fondues en une section de trois points |
-| « Pourquoi nous » | déjà traitée en détail sur `a-propos.html` |
-| Frise défilante | supprimée (décorative) |
-
-Les prestations passent de 2 à 3 colonnes : cinq cartes tiennent en deux rangées
-au lieu de trois. Les étapes de la méthode utilisent la variante
-`.steps--compact` sur l'accueil ; `approche.html` garde la version détaillée.
-
-### 2. « L'intérêt n'est pas lisible » et « l'audit est gratuit »
-
-- Le sur-titre du hero nomme désormais la cible : **« Pour les conseils syndicaux »**.
-- Le sous-titre dit ce que le conseil syndical **y gagne**, plus ce que le cabinet fait.
-- Une mention **Gratuit** est posée juste au-dessus du bouton (`.hero__free`) :
-  c'est l'objection qu'elle lève, elle doit donc se voir avant le bouton.
-- Le bouton principal devient « Demander mon pré-diagnostic gratuit ».
-- Une section « Votre intérêt » remplace deux sections par trois bénéfices directs.
-
-> **Les tarifs n'ont pas bougé.** L'audit complet reste à partir de 400 €.
-> Ce qui est gratuit — et qui l'était déjà — c'est le premier échange et le
-> pré-diagnostic écrit. Annoncer « audit gratuit » aurait contredit la grille
-> de `services.html`, de la FAQ et des données structurées.
-
-### 3. « Rendre tout responsive : téléphone, tablette, PC »
-
-C'était un vrai bug, pas une impression : **la page débordait horizontalement
-en dessous de 420 px**. Trois causes, aucune visible au-dessus de 768 px.
-
-1. **`min-width: auto` sur les éléments de grille.** Un `<select>` prend la
-   largeur de sa plus longue option — ici « Un accompagnement du conseil
-   syndical ». Il élargissait son champ, puis le formulaire, puis la page.
-2. **Chaînes insécables.** `contact@coproperformanceconseil.fr` mesure 261 px
-   et ne comporte aucun point de césure.
-3. **Les révélations latérales.** `[data-reveal="right"]` décale l'élément de
-   26 px *en attendant* d'être déclenché : tout bloc encore sous la ligne de
-   flottaison poussait la page vers la droite.
-
-Correctifs dans `style.css` § 16 bis. Ajouté au passage : champs à 16 px sous
-640 px (en deçà, iOS zoome au focus), cibles tactiles à 44 px, boutons pleine
-largeur sur mobile.
-
-**Vérifié : aucun débordement sur les 11 pages, à 320 / 360 / 390 / 414 / 768 /
-1024 / 1440 px.**
-
-### 4. Page « Ressources »
-
-`ressources.html` : six repères pour les conseils syndicaux, chacun renvoyant à
-sa source officielle. Ajoutée à la navigation, au menu mobile, au plan du site
-et au `sitemap.xml`, avec ses propres données structurées (`CollectionPage` +
-`ItemList`).
-
-**Chaque lien externe a été testé en HTTP 200 avant d'être écrit.** Les six
-fiches `service-public.fr` retenues ont été trouvées par balayage et vérifiées
-une par une — plusieurs identifiants plausibles renvoyaient un 404, ou une page
-sans rapport avec la copropriété.
-
-> **Legifrance ne figure pas dans les sources.** Le site renvoie 403 à toute
-> requête automatisée, y compris sur sa racine : ses liens profonds n'ont pas pu
-> être vérifiés. Les textes sont donc cités par leur nom, sans lien. À ajouter à
-> la main si vous les vérifiez vous-même.
-
-#### Sur l'effet SEO attendu
-
-Une précision utile, parce que l'attente exprimée repose sur un malentendu
-courant : **les liens sortants vers des sites .gouv.fr n'apportent pas de
-référencement.** Le « jus » SEO circule des liens *entrants* vers votre site,
-pas l'inverse. Citer des sources officielles sert la **crédibilité** et la
-cohérence thématique — ce qui compte — mais ne fait pas venir Google.
-
-Ce qui amènera réellement du trafic sur cette page :
-
-1. **Le contenu lui-même**, qui répond à des questions réellement tapées
-   (« que peut demander le conseil syndical au syndic », « comment lire les
-   charges de copropriété »). C'est là qu'est la valeur de la page.
-2. **Le retrait du `noindex`.** Tant que l'en-tête `X-Robots-Tag: noindex,
-   nofollow` reste dans `vercel.json`, **cette page ne sera jamais indexée** et
-   tout le reste est sans effet. C'est le point bloquant numéro un.
-3. **La soumission du `sitemap.xml`** dans la Google Search Console, une fois le
-   domaine réel branché.
-
----
-
-
-## L'accueil comme aiguillage
-
-Demande du client : *« la page d'accueil doit être minimaliste, vu que l'on
-redirige le trafic sur différentes pages en fonction du type de personne »*.
-
-### Ce que ça donne
-
-**2 273 px, 2,5 écrans**, contre 14 409 px et 16 écrans au point de départ —
-**84 % de moins**. Trois blocs, dans cet ordre :
-
-1. **Le sélecteur** « Vous êtes… », cinq portes d'entrée
-2. **Le hero** et son calque de relevé
-3. **Une bande de clôture** : les cinq prestations en liste, la gratuité, un bouton
-
-Ont quitté l'accueil : les cartes de prestations, la grille tarifaire, la
-méthode, la FAQ et la section « Votre intérêt ». Tout existe sur `services.html`,
-`approche.html`, `faq.html` et sur les pages profil.
-
-### Pourquoi de vraies pages, et pas un filtre JavaScript
-
-| | Vraies pages | Filtre JS |
-|---|---|---|
-| Référencement | chaque page vise ses requêtes | tout reste sur `/` |
-| Lien partageable | oui | non |
-| Sans JavaScript | fonctionne | rien ne s'affiche |
-| Mesure | on sait quel profil convertit | invisible |
-
-Les cinq cartes sont des `<a href>`. Aucune ne dépend du JavaScript.
-
-### Les quatre pages profil
-
-| Page | Angle d'attaque | Prestations retenues |
-|---|---|---|
-| `conseil-syndical.html` | Contrôler sans y passer ses soirées | 4 |
-| `coproprietaire.html` | Comprendre son appel de fonds | 2 |
-| `syndic-benevole.html` | Ne pas être seul face aux textes | 3 |
-| `syndic-professionnel.html` | Objectiver un dossier | 3 |
-
-Chacune attaque par un problème **réellement distinct** et propose un
-sous-ensemble différent de prestations. C'est la condition pour que Google ne
-les lise pas comme des quasi-doublons et n'en garde qu'une.
-
-**Le bouton final pré-remplit le formulaire** : `contact.html?profil=…`
-sélectionne la qualité correspondante. Le visiteur a déjà dit qui il était en
-page d'accueil ; le lui redemander serait une question de trop. Une valeur d'URL
-inconnue est ignorée — un paramètre d'URL est une saisie extérieure, jamais une
-consigne.
-
-### ⚠️ Le point à trancher : « syndic professionnel »
-
-Ajouter ce profil met en tension le positionnement du site. **Neuf affirmations
-deviennent fausses** si un syndic peut vous mandater et vous rémunérer :
-
-| Où | Affirmation |
-|---|---|
-| `index.html` | « Aucun lien avec un syndic » (hero) |
-| `index.html` | « Un tiers, pas une partie » · « Notre seul mandant est la copropriété » |
-| `index.html` ×2 | « rémunérés uniquement par la copropriété qui nous mandate » (FAQ + JSON-LD) |
-| `approche.html` | « La copropriété nous mandate et nous rémunère. Personne d'autre. » |
-| `a-propos.html` | « Un seul mandant : la copropriété. » |
-| `faq.html` | « rémunérés uniquement par la copropriété qui nous mandate » |
-
-**Rien n'a été réécrit.** La page `syndic-professionnel.html` a été rédigée avec
-le seul cadrage qui ne contredit aucune de ces phrases :
-
-> Le syndic est **à l'origine** de l'intervention et en est l'interlocuteur ;
-> le **syndicat des copropriétaires reste le mandant** et le payeur.
-
-C'est aussi le cadrage qui rend le service vendable : un constat n'a de valeur
-pour un syndic que s'il est perçu comme neutre par le conseil syndical.
-
-La page porte une pastille **À valider** sur ce point. Deux suites possibles :
-
-- **Ce cadrage est le bon** → retirer la pastille, rien d'autre à faire.
-- **Vous entendez être payé directement par des syndics** → les neuf phrases
-  ci-dessus doivent être réécrites. La formulation qui resterait vraie :
-  *« Nous n'appartenons à aucun groupe de gestion immobilière et ne percevons
-  aucune commission de prestataire »* — l'indépendance devient financière et
-  structurelle, plus relationnelle.
-
----
-
-
-## L'échelle typographique, resserrée
-
-Retour client : *« le design est trop grand »*. C'était mesurable.
-
-| | Avant | Après |
-|---|---|---|
-| `h1` à 1440 px | 59 px | **46 px** |
-| `h2` | 47 px | **34 px** |
-| Corps de texte | 17 px | **16 px** |
-| Padding vertical de section | 128 px | **76 px** |
-| Tuile du sélecteur | 254 px de haut | **132 px** |
-| Page d'accueil | 2 925 px | **2 273 px** |
-
-### Pourquoi la modification est globale et non limitée à l'accueil
-
-La demande portait sur la page d'accueil. L'échelle typographique est pourtant
-une décision de design system : une accueil 30 % plus dense que le reste du site
-aurait produit un décrochage visible à chaque clic dans le menu. Les jetons
-`--fs-*` et `--section-y` ont donc été resserrés **partout**, ce qui bénéficie
-aussi aux pages longues — `services.html` passe de 10 900 à 8 944 px.
-
-Les valeurs basses des `clamp()` bougent à peine : sur mobile, la taille était
-déjà juste. C'est le haut de l'échelle — l'affichage sur grand écran — qui
-tenait de l'affiche plutôt que du document professionnel.
-
-### Le sélecteur, posé comme un diagramme
-
-Une rangée de cartes ne dit pas qu'il faut choisir. Un arbre, si. Le sélecteur
-est donc un schéma de branchement : nœud racine, tige, barre de distribution,
-descentes, nœuds.
-
-**Les traits sont tracés en CSS, pas en SVG.** Ils suivent ainsi la grille à
-toutes les largeurs, sans qu'aucune coordonnée n'ait à être recalculée.
-
-Deux détails de géométrie qui ne se voient que quand ils sont faux :
-
-- La barre de distribution ne s'étend pas de 10 % à 90 %. Avec cinq colonnes et
-  quatre gouttières, une demi-colonne vaut `(100% − 4 × gap) / 10` — soit 4,8 px
-  de plus à 1440 px. Sans cette correction, la barre n'atteint pas les descentes
-  extrêmes.
-- **Sous 960 px** l'arbre bascule à la verticale : une colonne vertébrale à
-  gauche, une amorce vers chaque nœud. Le seuil est haut parce qu'à 860 px un
-  nœud tombe à 151 px et « Membre du conseil syndical » se brise sur trois lignes.
-- La colonne vertébrale n'est pas un trait unique qu'on masquerait sous le
-  dernier nœud : **chaque nœud porte son segment**, et le dernier s'arrête à son
-  amorce. Le trait s'arrête parce qu'il n'est pas dessiné, pas parce qu'on le
-  recouvre — une ruse au rectangle de fond casse dès que le fond change.
-
-### Un défaut corrigé au passage
-
-Le hero réservait la hauteur du header (`padding-top: calc(var(--header-h) + …)`)
-alors qu'il n'ouvre plus la page depuis que le sélecteur le précède. Les deux
-espacements se cumulaient : près de 200 px de vide entre les deux blocs. La règle
-`.hero:not(:first-child)` supprime ce report.
-
-Le titre du sélecteur est par ailleurs passé de `<h2>` à un paragraphe stylé : il
-précédait le `<h1>` du hero, ce qui inversait la hiérarchie des titres. L'ordre
-est désormais `H1 > H2 > H3`.
-
----
-
-
-## Audit de responsivité
-
-Mené avant transmission au client. **15 pages × 17 largeurs = 255 mesures**,
-automatisées : chaque page est chargée une fois, puis le viewport varie sans
-rechargement. Les animations de révélation sont neutralisées avant mesure —
-sans quoi tout bloc encore sous la ligne de flottaison serait mesuré à son
-état initial, décalé et transparent, et non à sa place réelle.
-
-Largeurs couvertes : 320, 360, 375, 390, 412, 428, 480, 600, 640, 768, 820,
-1024, 1180, 1280, 1440, 1920, plus 844 × 390 en paysage. La mesure à 640 px
-tient lieu de **zoom 200 %** sur un portable 1280.
-
-### Résultat
-
-| Contrôle | Avant | Après |
-|---|---|---|
-| Débordement horizontal | **0 / 255** | 0 / 255 |
-| Lignes de plus de 95 caractères | 18 cas | **0** |
-| Cibles tactiles sous 44 px | 255 cas | **87, tous ≥ 1024 px** (souris) |
-| Texte sous 10,5 px | 4 composants | **0** |
-| Champs déclenchant le zoom iOS | 0 réel | 0 réel |
-
-### Ce qui a été corrigé
-
-- **Texte sous le plancher de lisibilité.** Les onglets « Pièce 01 » du dossier
-  tombaient à **9,0 px**, les sur-titres du relevé à 9,9 px, la baseline du logo
-  à 9,6 px. Tous remontés au-dessus de 10,5 px. Le public visé est composé de
-  bénévoles souvent âgés : en dessous, la lecture devient un effort.
-- **Mesure du texte.** Entre 721 et 960 px, les mises en page à deux colonnes se
-  replient mais le conteneur reste large : les paragraphes s'étiraient jusqu'à
-  **119 caractères**. Bornés à 74ch dans cette bande uniquement.
-- **Cibles tactiles.** Navigation d'ancres des pages prestation (39 px) et logo
-  (34 px) portés à 44 px sous 960 px.
-
-### Les faux positifs, et pourquoi ils en sont
-
-Un audit automatique signale beaucoup de choses ; les écarter demande de les
-regarder une par une.
-
-| Signalé | Verdict |
-|---|---|
-| `input` à 15,6 px sur contact | Le **piège à robots**, positionné à −9999 px. Jamais focalisé par un humain. |
-| Case de consentement 18 × 18 px | **Tout le label (323 × 105) est cliquable et coche la case.** Cible réelle conforme. |
-| Lien « politique de confidentialité » 160 × 18 | Lien **en plein milieu d'une phrase** : cas explicitement exempté par WCAG 2.5.5. |
-| 87 cibles sous 44 px restantes | Toutes à **1024 px et au-delà** — liens de navigation au pointeur, pas au doigt. |
-| `.flag` à 10,1 px | Les pastilles « À valider », marqueurs internes destinés à disparaître. |
-
-### ⚠️ Un point à trancher avant l'envoi
-
-**50 pastilles « À valider » sont visibles** sur le site :
-
-| Page | Pastilles |
-|---|---|
-| `mentions-legales.html` | 17 |
-| `politique-confidentialite.html` | 11 |
-| `faq.html` | 9 |
-| `a-propos.html` | 6 |
-| `approche.html`, `contact.html`, `services.html` | 2 chacune |
-| `syndic-professionnel.html` | 1 |
-
-Elles signalent ce que le cabinet doit confirmer — c'est leur raison d'être. Mais
-si le lien part vers un tiers, elles donnent l'impression d'un site inachevé.
-
-Un interrupteur existe, documenté plus haut : ajouter `hide-flags` sur le `<body>`
-les masque toutes sans les supprimer.
-
-    <body class="hide-flags">
-
----
-
-
-## Application du brief designer (août 2026)
-
-Le brief reçu du client a été appliqué et **vérifié point par point** : un
-script traduit chaque exigence en test sur le code réel, plutôt que de la
-déclarer faite. **52 vérifications, 52 conformes.**
-
-| Partie | Contenu | Vérifs |
-|---|---|---|
-| 1.1 | Suppression du profil « syndic bénévole » | 8 |
-| 1.1+ | Ordre demandé : syndic pro, conseil syndical, copropriétaire | 2 |
-| 1.2 | Repositionnement du syndic professionnel | 10 |
-| 2 | Les six leviers de conversion | 15 |
-| 3 | Corrections éditoriales | 12 |
-| 4 | Corrections techniques | 3 |
-| — | Bug de superposition signalé par le client | 2 |
-
-### Deux points du brief qui ne demandaient aucune correction
-
-**Le lien téléphone n'était pas cassé.** Le brief signalait un
-`href="about:invalid#zCSafez"` empêchant l'appel. Cette chaîne n'existe nulle
-part dans le code, ni en local ni en production : c'est un artefact du
-sanitiseur de Chrome, produit lorsqu'une page est copiée depuis les outils de
-développement. Le lien réel est `tel:+33617470857` et il fonctionne.
-
-**Le repositionnement du syndic professionnel lève une contradiction**
-signalée lors d'une itération précédente. En précisant que les prestations sont
-« votées et prises en charge par le budget de la copropriété » et qu'elles « ne
-portent jamais sur les contrats de syndic ni sur les honoraires », le brief
-confirme que le mandant reste la copropriété. Les neuf affirmations
-d'indépendance du site restent donc exactes : aucune n'a eu à être réécrite.
-
-### Le bug de superposition, et sa cause
-
-Le client a signalé le sur-titre « RESSOURCES » chevauchant le logo sur mobile.
-La superposition existait en réalité **à toutes les largeurs**.
-
-Le header est en `position: fixed` : il ne pousse rien. Sur toutes les pages, le
-fil d'Ariane placé en tête de `<main>` fait office de dégagement — sauf sur
-`ressources.html`, seule page à ouvrir directement sur `.page-head`, dont la
-marge haute ne valait que 24 px.
-
-Corrigé aux deux niveaux : le fil d'Ariane manquant a été ajouté (ses données
-structurées `BreadcrumbList` l'annonçaient déjà), et une règle
-`main > .page-head:first-child` réserve désormais la hauteur du header. Le
-problème ne peut plus réapparaître sur une page future.
-
-### ⚠️ Deux affirmations à confirmer avant diffusion large
-
-Le brief fournit un cas pratique chiffré et un témoignage client :
-
-- « Copropriété de 45 lots à Paris — 18 % de surcoût sur le chauffage »
-- « Un rapport neutre qui nous a permis d'aborder l'AG en toute sérénité »
-
-Ni l'un ni l'autre n'est vérifiable depuis le code. Les deux blocs portent une
-pastille **À valider**. S'ils ne correspondent pas à des missions réelles, ils
-doivent être retirés : publier un cas ou un avis client fabriqué relève de la
-pratique commerciale trompeuse.
-
----
-
-
-## Accessibilité
-
-Conçu en visant WCAG 2.1 niveau AA :
+### Accessibilité — visée WCAG 2.1 niveau AA
 
 - Structure sémantique (`header`, `nav`, `main`, `section`, `article`, `footer`)
 - Lien d'évitement, `aria-current`, `aria-expanded`, `aria-controls`, `role="region"`
 - Navigation clavier complète, `:focus-visible` visible sur fond clair et sombre
-- Contrastes vérifiés sur les deux fonds
-- `prefers-reduced-motion` respecté : toutes les animations sont neutralisées
+- Contrastes vérifiés sur les deux fonds (54 mesures)
+- `prefers-reduced-motion` respecté : toutes les animations sont neutralisées,
+  sans jamais masquer de contenu
 - `alt` sur chaque image porteuse de sens, `alt=""` sur le décoratif
 - Zones tactiles ≥ 44 px, formulaire entièrement étiqueté
 
----
-
-## SEO
+### Référencement
 
 - `<title>` et `<meta name="description">` uniques par page
 - `<link rel="canonical">` sur chaque page
 - Open Graph + Twitter Card complets, image 1200 × 630 fournie
-- JSON-LD : `ProfessionalService`, `FAQPage` (×2), `HowTo`, `BreadcrumbList`, `ContactPage`
-- `sitemap.xml` et `robots.txt`
-- Fil d'Ariane sur les pages intérieures
+- JSON-LD : `ProfessionalService`, `FAQPage`, `HowTo`, `BreadcrumbList`, `ContactPage`
+- `sitemap.xml` complet (26 pages) et `robots.txt`
+- Fil d'Ariane sur toutes les pages intérieures
 - Un seul `<h1>` par page, hiérarchie de titres continue
-- Maillage interne entre accueil, services, approche et FAQ
+- 13 articles de fond visant les requêtes longue traîne
 
-**Intentions de recherche visées** : conseil copropriété · audit copropriété ·
-analyse charges copropriété · conseil syndical · optimisation charges copropriété ·
-accompagnement conseil syndical · analyse contrats copropriété.
+### Performance
 
-Ces expressions sont intégrées naturellement dans les titres, les questions de
-FAQ et le corps de texte — sans bourrage.
+- Aucune dépendance externe : **zéro requête tierce**
+- Photos en WebP avec repli JPEG, toutes sous 170 Ko, miniature floutée pendant
+  le chargement
+- `width`/`height` sur toutes les images → décalage de mise en page nul
+- `fetchpriority="high"` sur le seul visuel du hero, `loading="lazy"` ailleurs
+- Animations en `transform` et `opacity` uniquement, écouteurs de défilement
+  passifs et lissés en `requestAnimationFrame`
+- CSS et JS livrés **non minifiés**, volontairement : ils sont faits pour être
+  relus et modifiés. La minification se fait à la mise en production.
 
----
-
-## Photographies
+### Images
 
 Trois photographies **CC0** (domaine public, usage commercial libre) issues de
-Wikimedia Commons, sélectionnées après examen visuel de quatorze candidates.
-Onze ont été écartées : architecture non française, personne identifiable,
-bâtiment dégradé, colorimétrie incompatible.
+Wikimedia Commons. Les illustrations sont **dessinées en SVG pour ce site** :
+aucune licence à surveiller, aucune banque d'images. **Aucune photographie de
+personne** n'est utilisée, et aucune ne doit l'être sans accord écrit.
 
-Chacune est déclinée en `.webp` (servi en priorité), `.jpg` (repli) et
-`-tiny.jpg` (miniature floutée pendant le chargement). Toutes sous 170 Ko.
-
-Sources tracées dans [`CREDITS-PHOTOS.md`](CREDITS-PHOTOS.md), procédure de
-remplacement dans [`IMAGE-BRIEFS.md`](IMAGE-BRIEFS.md).
-
-**Aucune photographie de personne** n'est utilisée, et aucune ne doit l'être
-sans accord écrit de la personne concernée.
+Sources dans [`docs/CREDITS-PHOTOS.md`](docs/CREDITS-PHOTOS.md), procédure de
+remplacement dans [`docs/IMAGE-BRIEFS.md`](docs/IMAGE-BRIEFS.md).
 
 ---
 
-## Performance
+## 9. Documentation
 
-- Aucune dépendance externe : zéro requête tierce
-- CSS ~46 Ko, JS ~19 Ko, non minifiés (lisibles pour la maintenance)
-- Photos en WebP avec repli JPEG, toutes sous 170 Ko
-- `width`/`height` sur toutes les images → CLS proche de zéro
-- `fetchpriority="high"` sur le seul visuel du hero, `loading="lazy"` ailleurs
-- Animations en `transform` et `opacity` uniquement, listeners de scroll passifs et throttlés en `requestAnimationFrame`
-
-**Avant mise en production** : minifier CSS et JS, activer gzip/brotli côté
-serveur, servir en HTTP/2, et poser des en-têtes de cache longs sur `/assets/`.
-
----
-
-## Déploiement en cours
-
-Le site est en ligne sur Vercel, en accès public.
-
-### Lien à transmettre au client
-
-**https://copro-performance-conseil.vercel.app**
-
-Les deux adresses pointent vers le même déploiement de production ;
-`copro-site.vercel.app` reste valide. La première porte le nom de la marque :
-c'est celle à donner.
-
-C'est l'URL stable du projet : elle pointe toujours vers le dernier déploiement
-de production. À privilégier sur les URL longues à identifiant
-(`copro-site-xxxxxxx-dorsanes-projects.vercel.app`), qui sont figées sur un
-déploiement précis et deviennent obsolètes à la mise à jour suivante.
-
-| Élément | Valeur |
+| Document | Ce qu'on y trouve |
 |---|---|
-| Projet Vercel | `dorsanes-projects/copro-site` |
-| URL stable | `https://copro-site.vercel.app` |
-| Cible | production |
-| Protection SSO | désactivée (sinon le client tombe sur une page de connexion) |
-| Indexation | **bloquée** via `X-Robots-Tag: noindex, nofollow` |
+| [`docs/CONTENU-A-VALIDER.md`](docs/CONTENU-A-VALIDER.md) | ⚠️ **À lire en premier** — ce qui demande une confirmation du cabinet |
+| [`docs/PAGES.md`](docs/PAGES.md) | Les 27 pages : rôle, gabarit, plan, maillage |
+| [`docs/DESIGN-SYSTEM.md`](docs/DESIGN-SYSTEM.md) | Couleurs, typographie, composants, calque « Le Relevé » |
+| [`docs/DEVELOPPEMENT.md`](docs/DEVELOPPEMENT.md) | Anatomie d'une page, conventions, modules JS, ajouter une page |
+| [`docs/DEPLOIEMENT.md`](docs/DEPLOIEMENT.md) | Vercel, domaine, formulaire, autres hébergeurs |
+| [`docs/AUDIT-SITE.md`](docs/AUDIT-SITE.md) | Audit technique mesuré : 216 mesures de mise en page, 54 de contraste |
+| [`docs/IMAGE-BRIEFS.md`](docs/IMAGE-BRIEFS.md) · [`docs/CREDITS-PHOTOS.md`](docs/CREDITS-PHOTOS.md) | Images : direction artistique, sources, licences |
+| [`docs/HISTORIQUE.md`](docs/HISTORIQUE.md) | Retours reçus, modifications apportées, arbitrages |
 
-### Deux points avant de brancher le vrai domaine
-
-**1. Retirer le `noindex`.** Il se trouve dans `vercel.json`, bloc
-`"source": "/(.*)"`. Il évite que l'URL `.vercel.app` soit indexée en doublon de
-`coproperformanceconseil.fr`, ce qui pénaliserait le référencement. Une fois le
-domaine réel branché, supprimer cette entrée et redéployer — sinon **le site ne
-sera jamais référencé**.
-
-**2. `coproperformanceconseil.fr` sert déjà un autre site.** Brancher le domaine
-sur Vercel le remplacera. À ne faire qu'une fois les mentions légales complétées.
-
-### Brancher le domaine réel
-
-    vercel domains add coproperformanceconseil.fr
-    vercel alias set copro-site.vercel.app coproperformanceconseil.fr
-
-Puis chez le registrar :
-
-| Type | Nom | Valeur |
-|---|---|---|
-| A | `@` | `76.76.21.21` |
-| CNAME | `www` | `cname.vercel-dns.com` |
-
-### Redéployer après modification
-
-Deux voies, selon que le dépôt Git est branché sur Vercel ou non.
-
-**Voie 1 — automatique (recommandée).** Si le dépôt GitHub est connecté au
-projet Vercel, un `git push` sur `main` déclenche seul un déploiement de
-production. Rien d'autre à faire.
-
-**Voie 2 — manuelle, via le CLI.** Le déploiement se fait depuis une **copie**
-du dossier : le `&` de `client&` fait échouer le CLI Vercel sans message
-d'erreur explicite.
-
-    DEPLOY=C:/Users/DELL/AppData/Local/Temp/copro-deploy
-    rm -rf "$DEPLOY" && mkdir -p "$DEPLOY"
-    cp -r *.html *.txt *.xml *.webmanifest vercel.json .vercelignore assets README.md "$DEPLOY/"
-    cd "$DEPLOY"
-    vercel link --yes --project copro-site
-    vercel deploy --prod --yes
-
-Vérifier ensuite que la mise à jour est bien en ligne :
-
-    curl -s https://copro-performance-conseil.vercel.app | grep -c signature.css
+Index complet : [`docs/README.md`](docs/README.md).
 
 ---
 
-## Déploiement — autres hébergeurs
-
-Un hébergement statique suffit — aucun PHP, aucun Node côté serveur.
-
-| Plateforme | Marche à suivre |
-|---|---|
-| **Netlify** | Glisser-déposer le dossier, ou connecter un dépôt Git |
-| **Vercel** | `vercel --prod` à la racine |
-| **GitHub Pages** | Pousser sur une branche, activer Pages dans les réglages |
-| **OVH / Infomaniak / o2switch** | Envoyer le contenu du dossier en FTP dans `www/` |
-
-Points à ne pas oublier :
-
-1. Activer **HTTPS** (Let's Encrypt est gratuit chez tous ces hébergeurs)
-2. Rediriger `http://` → `https://` et forcer une seule version du domaine (avec ou sans `www`)
-3. Configurer la page d'erreur 404 vers `404.html`
-4. Renseigner l'hébergeur dans les mentions légales — c'est une obligation légale
-5. Soumettre `sitemap.xml` dans la Google Search Console
-
----
-
-## Faire évoluer le site
-
-Le contenu a été volontairement conçu pour tenir **sans preuves chiffrées**.
-Quand le cabinet disposera de matière réelle, ces ajouts s'intègrent sans refonte :
-
-| Ajout | Où |
-|---|---|
-| Témoignages clients (avec accord écrit) | Nouvelle section entre « Engagements » et « FAQ » sur l'accueil |
-| Chiffres réels (missions, ancienneté) | Section « Engagements » de l'accueil, en remplacement ou complément |
-| Études de cas anonymisées | Nouvelle page `realisations.html`, à ajouter au menu et au sitemap |
-| Blog / ressources | Dossier `/ressources/` — excellent levier SEO sur les requêtes longue traîne |
-| Grille tarifaire | Page `services.html`, après chaque bloc de prestation |
-| Portrait du fondateur | `a-propos.html`, section actuellement en attente |
-
----
-
-## Choix techniques assumés
+## 10. Choix techniques assumés
 
 **Pourquoi du HTML statique plutôt que Next.js ou WordPress ?**
-Un site vitrine de neuf pages n'a pas besoin d'un framework. Ce choix apporte :
-zéro dépendance à mettre à jour, zéro faille applicative, un chargement
-quasi instantané, un hébergement à coût nul ou négligeable, et un contrôle total
-du balisage SEO. Le contenu est structuré pour être repris tel quel dans un CMS
-si le besoin se présente.
+Un site vitrine n'a pas besoin d'un framework. Ce choix apporte : zéro
+dépendance à mettre à jour, zéro faille applicative, un chargement quasi
+instantané, un hébergement à coût nul ou négligeable, et un contrôle total du
+balisage. Le contenu est structuré pour être repris tel quel dans un CMS si le
+besoin se présente — un export du contenu de l'accueil est d'ailleurs fourni
+dans [`docs/exports/accueil.json`](docs/exports/accueil.json).
 
-**Pourquoi des pastilles « À valider » visibles dans le site ?**
-Pour qu'aucune affirmation non vérifiée ne parte en production par inadvertance.
-Elles se retirent en une ligne (voir plus haut).
+**Pourquoi `index.html` et `404.html` ne sont-ils pas dans `pages/` ?**
+Parce qu'ils ne peuvent pas y être. `index.html` est le fichier servi quand on
+demande le domaine lui-même : le déplacer laisserait la page d'accueil sans
+adresse. `404.html` est cherchée à la racine par l'hébergeur pour répondre aux
+adresses inexistantes ; ailleurs, elle ne serait jamais servie. Les 25 autres
+pages n'ont pas cette contrainte et vivent dans `pages/`.
+
+**Le déplacement dans `pages/` a-t-il coûté du référencement ?**
+Non, parce qu'il a été fait avant la mise en ligne. Le site n'a jamais été
+indexé — le `noindex` de `vercel.json` est actif et le domaine réel n'est pas
+branché — donc aucune adresse `…fr/services.html` ne circule. **Après la mise
+en production, ce ne serait plus vrai** : déplacer une page demanderait alors de
+poser une redirection 301 depuis son ancienne adresse.
+
+**Pourquoi pas de Google Fonts ?**
+Leur usage en CDN a été jugé problématique au regard du RGPD par plusieurs
+autorités européennes, et coûterait une requête bloquante. Le site utilise une
+pile de polices système ; une police de marque peut être auto-hébergée.
 
 **Pourquoi pas de bandeau cookies ?**
 Parce que le site n'en dépose aucun. Ajouter un bandeau alors qu'il n'y a rien à
 consentir dégraderait l'expérience sans bénéfice juridique. Si un outil de
 statistiques est ajouté plus tard, la question se reposera — la politique de
 confidentialité le documente déjà (§ 7).
+
+**Pourquoi le code n'est-il pas minifié ?**
+Parce qu'il est fait pour être relu et repris. La minification est une étape de
+mise en production, pas une manière d'écrire.
