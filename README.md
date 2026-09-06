@@ -200,7 +200,7 @@ L'ordre est celui du **parcours du visiteur**, pas l'ordre alphabétique.
 | # | Fichier | Contenu |
 |---|---|---|
 | 22 | `faq.html` | 4 thèmes : comprendre · déroulement · pratique · confiance |
-| 23 | `contact.html` | Formulaire + coordonnées ⚠️ *non branché* |
+| 23 | `contact.html` | Formulaire branché sur FormSubmit + coordonnées |
 
 ### Service et mentions légales
 
@@ -228,7 +228,7 @@ demande de développement.
 | # | Point bloquant | Ce qu'il faut faire | Qui |
 |---|---|---|---|
 | 1 | Le site demande aux moteurs de **ne pas l'indexer** | Retirer `X-Robots-Tag: noindex` de `vercel.json`, une fois le domaine réel branché | Technique |
-| 2 | Le **formulaire de contact n'envoie rien** | Renseigner son `action` — 5 minutes, voir [`DEPLOIEMENT.md`](docs/DEPLOIEMENT.md) § 4 | Technique |
+| 2 | Le formulaire est branché, mais **FormSubmit n'est pas encore activé** | Envoyer un premier message depuis le site, puis cliquer le lien de confirmation reçu sur `contact@coproperformanceconseil.fr` — voir [`DEPLOIEMENT.md`](docs/DEPLOIEMENT.md) § 4 | **Cabinet** |
 | 3 | Les **deux pages légales sont des trames** | Fournir SIREN, siège, directeur de publication, hébergeur | **Cabinet** |
 
 Le point 3 est une obligation légale (LCEN art. 6-III et RGPD) : en l'état, le

@@ -158,7 +158,15 @@ l'état**. Tous les champs entre crochets `[…]` sont à renseigner.
 - [ ] Identité du responsable de traitement
 - [ ] Adresse e-mail dédiée aux demandes RGPD
 - [ ] Liste nominative des sous-traitants (hébergeur, messagerie, formulaire, stockage)
+      — au minimum **Vercel** (hébergement du site) et **FormSubmit**
+      (traitement du formulaire de contact), auxquels s'ajoute le fournisseur
+      de messagerie du cabinet
 - [ ] Localisation des données et garanties en cas de transfert hors UE
+      — ⚠️ **Vercel et FormSubmit hébergent hors Union européenne** : le
+      transfert doit être mentionné, avec sa garantie (clauses contractuelles
+      types). Alternative si le cabinet préfère l'éviter : un service de
+      formulaire établi dans l'UE, la bascule est décrite dans
+      [`DEPLOIEMENT.md`](DEPLOIEMENT.md) § 4
 - [ ] Confirmation des durées de conservation proposées
 - [ ] Confirmation du point « aucun cookie » (vrai en l'état, à revoir si un outil de statistiques est ajouté)
 - [ ] Date de dernière mise à jour

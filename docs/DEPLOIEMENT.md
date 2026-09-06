@@ -52,9 +52,15 @@ soit indexée en doublon du domaine réel, ce qui pénaliserait le référenceme
 Sans cela, le site ne sera jamais référencé, quel que soit le travail de
 référencement effectué par ailleurs.
 
-### 2.2 Brancher le formulaire de contact
+### 2.2 Activer l'adresse chez FormSubmit
 
-Il n'envoie rien en l'état — voir § 4 ci-dessous.
+Le formulaire est branché sur FormSubmit, vers
+`contact@coproperformanceconseil.fr`. Le service exige **une activation unique
+de l'adresse destinataire** : tant qu'elle n'est pas faite, les envois sont
+acceptés côté visiteur mais **aucun courriel n'arrive**.
+
+C'est l'affaire de deux minutes, et cela se fait depuis le site publié — voir
+§ 4 ci-dessous.
 
 ### 2.3 Compléter les deux pages légales
 
@@ -89,30 +95,66 @@ Search Console.
 
 ---
 
-## 4. Brancher le formulaire de contact
+## 4. Le formulaire de contact
 
-Le formulaire de `contact.html` **n'envoie rien** : son attribut `action` vaut
-`#`. Un message d'erreur explicite s'affiche si on le soumet, plutôt qu'un faux
-message de succès.
+### Ce qui est en place
 
-Le JavaScript gère déjà la validation, l'état de chargement, les messages de
-retour, le piège à robots et le consentement RGPD. Il ne reste qu'à fournir une
-destination.
-
-### Option A — service tiers, sans serveur (le plus simple)
-
-Créer un formulaire chez [Formspree](https://formspree.io),
-[Web3Forms](https://web3forms.com) ou [Formcarry](https://formcarry.com), puis :
+`pages/contact.html` poste vers **FormSubmit** :
 
 ```html
-<form class="form" data-contact-form action="https://formspree.io/f/VOTRE_ID" method="post" novalidate>
+<form class="form" data-contact-form
+      action="https://formsubmit.co/contact@coproperformanceconseil.fr"
+      method="post" novalidate>
 ```
 
-C'est tout : `main.js` détecte l'`action` et envoie en `fetch` + `FormData`, en
-attendant une réponse HTTP 2xx.
+Aucun compte, aucune clé d'API : le service prend l'adresse destinataire
+directement dans l'`action`. Les demandes arrivent par courriel sur
+`contact@coproperformanceconseil.fr`, mises en page en tableau
+(`_template`), avec pour objet « Nouvelle demande —
+coproperformanceconseil.fr » (`_subject`), et sans page captcha intermédiaire
+(`_captcha=false`).
 
-> Vérifier que le prestataire retenu héberge dans l'UE, ou documenter le
-> transfert dans la politique de confidentialité (§ 6).
+`main.js` gère la validation, l'état de chargement, les messages de retour, le
+piège à robots (`_honey`) et le consentement RGPD. À l'envoi, il bascule
+l'adresse vers la variante `https://formsubmit.co/ajax/…`, qui répond en JSON :
+le visiteur **ne quitte pas la page**. Si JavaScript est indisponible, le
+navigateur poste le formulaire normalement et FormSubmit affiche sa propre page
+de confirmation.
+
+### ⚠️ L'activation, à faire une fois
+
+FormSubmit n'envoie rien vers une adresse tant qu'elle n'a pas été confirmée.
+Au **tout premier envoi**, le service expédie un courriel d'activation
+contenant un lien à cliquer.
+
+1. Ouvrir la page contact **du site publié** (pas le fichier local : le service
+   refuse les envois venant de `file://`).
+2. Envoyer un message de test.
+3. Ouvrir la boîte `contact@coproperformanceconseil.fr`, cliquer le lien
+   d'activation de FormSubmit.
+4. Renvoyer un message de test : il doit désormais arriver dans la boîte.
+
+Tant que l'étape 3 n'est pas faite, le visiteur voit bien la confirmation
+« votre demande est bien enregistrée », mais **le message n'arrive pas**.
+C'est le point à vérifier en premier si le cabinet ne reçoit rien.
+
+> À refaire si l'adresse de réception change : l'activation porte sur
+> l'adresse, pas sur le site.
+
+### Changer de service
+
+`main.js` ne dépend d'aucun prestataire : il poste l'`action` en `fetch` +
+`FormData` et attend une réponse HTTP 2xx. Remplacer l'`action` par une adresse
+[Formspree](https://formspree.io), [Web3Forms](https://web3forms.com) ou
+[Formcarry](https://formcarry.com) suffit — seule la bascule vers `/ajax/` est
+propre à FormSubmit, et elle ne se déclenche que sur ses propres adresses.
+
+Penser alors à retirer les champs cachés `_subject`, `_template`, `_captcha` et
+à renommer le piège `_honey`, qui sont des conventions FormSubmit.
+
+> FormSubmit héberge **hors UE**. Le transfert est à documenter dans la
+> politique de confidentialité (§ 6) — point suivi dans
+> [`CONTENU-A-VALIDER.md`](CONTENU-A-VALIDER.md).
 
 ### Option B — endpoint maison (PHP, Node…)
 

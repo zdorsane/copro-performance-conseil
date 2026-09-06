@@ -226,7 +226,9 @@ quand on arrive par une ancre.
 Formulaire (validation, états, anti-spam, consentement RGPD) · autres moyens de
 contact · ce qui se passe ensuite · engagements sur les données.
 
-⚠️ **Le formulaire n'envoie rien** tant qu'il n'est pas branché — voir
+Le formulaire est branché sur **FormSubmit**, vers
+`contact@coproperformanceconseil.fr`. ⚠️ L'adresse doit être **activée une
+fois** chez le service avant que les messages arrivent — voir
 [`DEPLOIEMENT.md`](DEPLOIEMENT.md) § 4.
 
 ---
