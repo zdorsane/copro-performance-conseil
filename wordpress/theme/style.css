@@ -1,0 +1,18 @@
+/*
+Theme Name: Copro Performance Conseil
+Theme URI: https://coproperformanceconseil.fr/
+Author: Copro Performance Conseil
+Description: Theme sur mesure reprenant a l'identique le site Copro Performance Conseil - direction artistique Le Releve, animations et calques de signature inclus. Le contenu de chaque page est editable depuis WordPress.
+Version: 1.0.0
+Requires at least: 6.3
+Tested up to: 6.7
+Requires PHP: 7.4
+License: Tous droits reserves
+Text Domain: copro
+
+Ce fichier ne sert QU A declarer le theme : WordPress exige un style.css
+portant cet en-tete. Les vraies feuilles de style du site restent
+assets/css/style.css et assets/css/signature.css, chargees par
+functions.php et laissees strictement intactes pour que le rendu soit
+identique a celui du site d'origine.
+*/

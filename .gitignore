@@ -15,7 +15,6 @@ $RECYCLE.BIN/
 ._*
 
 # --- Éditeurs -------------------------------------------------------------
-.vscode/
 .idea/
 *.swp
 *~
@@ -27,3 +26,31 @@ node_modules/
 dist/
 .cache/
 *.log
+
+# Caches de l'interpréteur Python (tools/).
+__pycache__/
+*.pyc
+
+# --- Conversion WordPress -------------------------------------------------
+# Le dépôt garde les sources (wordpress/, tools/). Le produit de
+# tools/exporter-wordpress.py est ignoré — à une exception près : les
+# cinq livrables destinés au client sont suivis, pour qu'il puisse les
+# récupérer depuis GitHub sans relancer l'export.
+#
+# `build/*` plutôt que `build/` : git ne sait pas réinclure un fichier
+# situé sous un répertoire exclu.
+#
+# ⚠️ Ces fichiers sont un produit : les regenérer et les recommiter après
+# toute modification du site, sinon le client récupère une version périmée.
+build/*
+!build/wordpress/
+build/wordpress/*
+!build/wordpress/LISEZ-MOI.md
+!build/wordpress/contenu-copro.xml
+!build/wordpress/copro-performance.zip
+!build/wordpress/redirections.csv
+!build/wordpress/redirections.htaccess
+branch_structure.json
+temp_auto_push.bat
+temp_interactive_push.bat
+.gitignore
