@@ -9,3 +9,10 @@
 # Documentation, captures d'écran et livrables (docs/exports/) : ils servent
 # au dépôt et au client, pas aux visiteurs de coproperformanceconseil.fr.
 docs/
+
+# La conversion WordPress : sources du thème, script d'export et
+# livrables. Ils s'adressent au client et à son hébergeur WordPress,
+# pas aux visiteurs du site statique.
+wordpress/
+tools/
+build/
