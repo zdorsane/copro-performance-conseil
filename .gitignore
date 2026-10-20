@@ -2,8 +2,6 @@
 # .vercel contient l'identifiant du projet et .env.local un jeton OIDC :
 # ni l'un ni l'autre n'a sa place dans un dépôt.
 .vercel/
-.env
-.env.*
 !.env.example
 
 # --- Système --------------------------------------------------------------
@@ -54,3 +52,7 @@ branch_structure.json
 temp_auto_push.bat
 temp_interactive_push.bat
 .gitignore
+
+.vercel
+
+config.bat
